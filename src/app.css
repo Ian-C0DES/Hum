@@ -1,0 +1,12 @@
+:root {
+    --bgcolor:#32353b;
+    --textcolor:#e3e3e3;
+    --accent1:#1fb2eb;
+    --accent2:#e3c843;
+}
+
+body{
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--bgcolor);
+  }

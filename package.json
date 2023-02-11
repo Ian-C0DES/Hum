@@ -24,5 +24,10 @@
 		"vite": "^4.0.0",
 		"vitest": "^0.25.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"pocketbase": "^0.10.1",
+		"sass": "^1.58.0",
+		"svelte-preprocess": "^5.0.1"
+	}
 }
