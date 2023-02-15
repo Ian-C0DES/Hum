@@ -5,7 +5,8 @@
         import Navbar from '../lib/components/Navbar.svelte';
         import PreloadingIndicator from './PreloadingIndicator.svelte';
         import '../app.css'
-        
+        import '@fontsource/iceland'
+        import '@fontsource/jetbrains-mono'
         export let data;
         
     </script>
@@ -19,7 +20,7 @@
         <PreloadingIndicator />
     {/if}
     
-    <Navbar/>
+    <!-- <Navbar/> -->
         <slot />
     </main>
 
