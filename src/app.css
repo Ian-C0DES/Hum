@@ -5,6 +5,7 @@
     --accent2:#e3c843; */
     
     --bgcolor:#212121;
+    --dark:#151515;
     --textcolor:#FBF8F7;
     --accent1:#3E2BD2;
     --accent2:#ABABEC;
@@ -16,6 +17,7 @@ body{
     overflow-x: hidden;
     background-color: var(--bgcolor);
     background-image: url(./lib/assets/bgwaves.svg);
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
+    /* background-position: left; */
     background-size: cover;
   }
