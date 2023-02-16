@@ -1,12 +1,23 @@
 :root {
-    --bgcolor:#32353b;
+    /* --bgcolor:#32353b;
     --textcolor:#e3e3e3;
     --accent1:#1fb2eb;
-    --accent2:#e3c843;
+    --accent2:#e3c843; */
+    
+    --bgcolor:#212121;
+    --dark:#151515;
+    --textcolor:#FBF8F7;
+    --accent1:#3E2BD2;
+    --accent2:#ABABEC;
 }
 
 body{
+    /* background-color: #3E2BD2; */
     margin: 0;
     overflow-x: hidden;
     background-color: var(--bgcolor);
+    background-image: url(./lib/assets/bgwaves.svg);
+    background-repeat: repeat-y;
+    /* background-position: left; */
+    background-size: cover;
   }
