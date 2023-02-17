@@ -1,11 +1,16 @@
-<svg width="124" height="183" viewBox="0 0 124 183" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g filter="url(#filter0_i_27_92)">
+<script>
+    export let size = 124;
+
+</script>
+
+<svg width={size} height={size} viewBox="0 0 124 183" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g transform="scale(-1, 1) translate(-{124}, 0)" filter="url(#filter0_i_27_92)">
     <rect width="124" height="183" fill="url(#pattern0)"/>
     </g>
-    <g filter="url(#filter1_i_27_92)">
+    <g transform="scale(-1, 1) translate(-{124}, 0)"  filter="url(#filter1_i_27_92)">
     <rect x="60.4492" y="71.874" width="20.6667" height="30.585" fill="url(#pattern1)"/>
     </g>
-    <g filter="url(#filter2_i_27_92)">
+    <g transform="scale(-1, 1) translate(-{124}, 0)"  filter="url(#filter2_i_27_92)">
     <rect x="53.7339" y="53.0142" width="27.3833" height="43.3287" fill="url(#pattern2)"/>
     </g>
     <defs>
@@ -55,9 +60,9 @@
     </defs>
     </svg>
     
-
+<!-- 
     <style>
         svg {
-            height: 164px;
+            height: {size};
         }
-    </style>
+    </style> -->

@@ -5,13 +5,14 @@
     import bgwaves from '../lib/assets/bgwaves.svelte'
 </script>
 
-
+<body>
+    
 <div class="logoContainer">
     <span style="color: var(--accent1);">H</span>
     <span style="color: var(--accent2);">U</span>
     <span style="color: var(--textcolor);">M</span>
 
-    <svelte:component this={Humman} />
+    <Humman size={200}/>
 
 </div>
 
@@ -40,12 +41,18 @@
 
     </form>
 </div>
-
+</body>
 <style lang="scss">
     *{
-        outline: solid 1px red;
+
         font-family: "JetBrains Mono";
     }
+body{
+    background-image: url(../lib/assets/bgwaves.svg);
+    background-repeat: repeat-y;
+    background-size: cover;
+    height: 100vh;
+}
     .logoContainer{
         display: inline-block;
         margin-left: 5rem;
@@ -61,8 +68,8 @@
         background: radial-gradient(133.53% 172.98% at 0% 0%, #151515 31.85%, #3E2BD2 100%);
         width: fit-content;
         transform: translateY(100px);
-        // clip-path: inset(30px);
-        // height: 200px;
+        height: 200px;
+        // background-position: bottom center;
         margin-left: 5em;
         background-repeat: no-repeat;
         background-attachment: left bottom;
@@ -104,13 +111,26 @@
                 justify-content: space-between;
                 margin-top: 20px;
                 button{
-                    
+                    color: var(--textcolor);
+                    // width: 150px;
+                    font-size: 34px;
+                    font-family: "iceland";
+                    background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);
+                    cursor: pointer;
                 }
                 button:hover {
-                     background: radial-gradient(133.53% 172.98% at 0% 0%, #151515 31.85%, #3E2BD2 100%);
+                    background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);
+                    animation: radialGradienthover 1s forwards 1;
                     }
             }
         }
     }
+
+    @keyframes radialGradienthover {
+            from   {background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
+            // 25%  {background: radial-gradient(222% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
+            // 50%  {background: radial-gradient(311% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
+            to {background: radial-gradient(400% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
+        }
 
 </style>
