@@ -42,10 +42,6 @@
 </div>
 
 <style lang="scss">
-    *{
-        outline: solid 1px red;
-        font-family: "JetBrains Mono";
-    }
     .logoContainer{
         display: inline-block;
         margin-left: 5rem;
