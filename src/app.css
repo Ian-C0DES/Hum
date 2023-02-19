@@ -12,12 +12,21 @@
 }
 
 body{
-    /* background-color: #3E2BD2; */
     margin: 0;
     overflow-x: hidden;
     background-color: var(--bgcolor);
-    background-image: url(./lib/assets/bgwaves.svg);
-    background-repeat: repeat-y;
-    /* background-position: left; */
-    background-size: cover;
   }
+
+  @keyframes fadeIn {
+    from {opacity: 0%;}
+    to{opacity: 100%;}
+  }
+  @keyframes fadeOut {
+    from {opacity: 100%;}
+    to{opacity: 0%;}
+  }
+
+  @keyframes radialGradienthover {
+    from   {background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
+    to {background: radial-gradient(400% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
+}

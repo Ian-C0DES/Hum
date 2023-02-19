@@ -1,17 +1,15 @@
 <script>
-	import Navbar from "../lib/components/Navbar.svelte";
-    import Humman from '../lib/assets/humman.svelte'
-    import Waves from '../lib/assets/waves.svelte'
-    import bgwaves from '../lib/assets/bgwaves.svelte'
+    import Humman from '$lib/assets/humman.svelte'
 </script>
 
-
+<body>
+    
 <div class="logoContainer">
     <span style="color: var(--accent1);">H</span>
     <span style="color: var(--accent2);">U</span>
     <span style="color: var(--textcolor);">M</span>
 
-    <svelte:component this={Humman} />
+    <Humman size={200} inverted={false}/>
 
 </div>
 
@@ -21,31 +19,33 @@
     </p>
 </div>
 
-<!-- <div class="wavesContainer">
-<svelte:component this={Waves} />
-</div> -->
-
 <div class="loginContainer">
     <h1>Login</h1>
-    <form action="" method="post">
+    <form action="?/login" method="POST">
 
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Email" name="email" required>
     
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="password" required>
 
         <div class="buttons">
         <button type="submit">Login</button>
-        <a href="/about"><button>Register</button></a>
+        <a href="/register"><button>Register</button></a>
         </div>
 
     </form>
 </div>
-
+</body>
 <style lang="scss">
     *{
-        outline: solid 1px red;
+
         font-family: "JetBrains Mono";
     }
+body{
+    background-image: url(../lib/assets/svg/bgwaves.svg);
+    background-repeat: repeat-y;
+    background-size: cover;
+    height: 100vh;
+}
     .logoContainer{
         display: inline-block;
         margin-left: 5rem;
@@ -61,8 +61,7 @@
         background: radial-gradient(133.53% 172.98% at 0% 0%, #151515 31.85%, #3E2BD2 100%);
         width: fit-content;
         transform: translateY(100px);
-        // clip-path: inset(30px);
-        // height: 200px;
+        height: 200px;
         margin-left: 5em;
         background-repeat: no-repeat;
         background-attachment: left bottom;
@@ -90,7 +89,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            // background-color: #151515;
             width: fit-content;
             input{
                 margin-top: 20px;
@@ -104,10 +102,15 @@
                 justify-content: space-between;
                 margin-top: 20px;
                 button{
-                    
+                    color: var(--textcolor);
+                    font-size: 34px;
+                    font-family: "iceland";
+                    background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);
+                    cursor: pointer;
                 }
                 button:hover {
-                     background: radial-gradient(133.53% 172.98% at 0% 0%, #151515 31.85%, #3E2BD2 100%);
+                    background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);
+                    animation: radialGradienthover 1s forwards 1;
                     }
             }
         }
