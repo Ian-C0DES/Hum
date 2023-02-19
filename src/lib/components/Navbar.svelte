@@ -18,11 +18,12 @@
                 <i class="fa-solid fa-user"></i>
                 <p>User</p>
             </a>
-            <a class="navItem" href="/profile">
-                <i class="fa-solid fa-book"></i>
-              <p>Log</p>
-           
+
+            <a class="navItem" href="/stats">
+                <i class="fa-solid fa-chart-simple"></i>
+              <p>Stats</p>
           </a>
+
               <form action="/logout" method="POST"class="logout">
                 <button type="submit" class="logout"><i class="fa-solid fa-right-from-bracket"></i></button>
               </form>
