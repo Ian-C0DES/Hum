@@ -1,8 +1,5 @@
 <script>
-	import Navbar from "../lib/components/Navbar.svelte";
-    import Humman from '../lib/assets/humman.svelte'
-    import Waves from '../lib/assets/waves.svelte'
-    import bgwaves from '../lib/assets/bgwaves.svelte'
+    import Humman from '$lib/assets/humman.svelte'
 </script>
 
 <body>
@@ -12,7 +9,7 @@
     <span style="color: var(--accent2);">U</span>
     <span style="color: var(--textcolor);">M</span>
 
-    <Humman size={200}/>
+    <Humman size={200} inverted={false}/>
 
 </div>
 
@@ -22,21 +19,17 @@
     </p>
 </div>
 
-<!-- <div class="wavesContainer">
-<svelte:component this={Waves} />
-</div> -->
-
 <div class="loginContainer">
     <h1>Login</h1>
-    <form action="" method="post">
+    <form action="?/login" method="POST">
 
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Email" name="email" required>
     
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" name="password" required>
 
         <div class="buttons">
         <button type="submit">Login</button>
-        <a href="/about"><button>Register</button></a>
+        <a href="/register"><button>Register</button></a>
         </div>
 
     </form>
@@ -48,7 +41,7 @@
         font-family: "JetBrains Mono";
     }
 body{
-    background-image: url(../lib/assets/bgwaves.svg);
+    background-image: url(../lib/assets/svg/bgwaves.svg);
     background-repeat: repeat-y;
     background-size: cover;
     height: 100vh;
@@ -69,7 +62,6 @@ body{
         width: fit-content;
         transform: translateY(100px);
         height: 200px;
-        // background-position: bottom center;
         margin-left: 5em;
         background-repeat: no-repeat;
         background-attachment: left bottom;
@@ -97,7 +89,6 @@ body{
             display: flex;
             flex-direction: column;
             align-items: center;
-            // background-color: #151515;
             width: fit-content;
             input{
                 margin-top: 20px;
@@ -112,7 +103,6 @@ body{
                 margin-top: 20px;
                 button{
                     color: var(--textcolor);
-                    // width: 150px;
                     font-size: 34px;
                     font-family: "iceland";
                     background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);
@@ -125,12 +115,5 @@ body{
             }
         }
     }
-
-    @keyframes radialGradienthover {
-            from   {background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
-            // 25%  {background: radial-gradient(222% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
-            // 50%  {background: radial-gradient(311% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
-            to {background: radial-gradient(400% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
-        }
 
 </style>

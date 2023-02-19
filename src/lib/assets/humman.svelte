@@ -1,18 +1,33 @@
 <script>
     export let size = 124;
+    export let inverted = false;
 
 </script>
 
 <svg width={size} height={size} viewBox="0 0 124 183" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g transform="scale(-1, 1) translate(-{124}, 0)" filter="url(#filter0_i_27_92)">
+
+{#if inverted}
+    <g transform="scale(-1, 1) translate(-{120}, 0)" filter="url(#filter0_i_27_92)">
     <rect width="124" height="183" fill="url(#pattern0)"/>
     </g>
-    <g transform="scale(-1, 1) translate(-{124}, 0)"  filter="url(#filter1_i_27_92)">
+    <g transform="scale(-1, 1) translate(-{120}, 0)"  filter="url(#filter1_i_27_92)">
     <rect x="60.4492" y="71.874" width="20.6667" height="30.585" fill="url(#pattern1)"/>
     </g>
-    <g transform="scale(-1, 1) translate(-{124}, 0)"  filter="url(#filter2_i_27_92)">
+    <g transform="scale(-1, 1) translate(-{120}, 0)"  filter="url(#filter2_i_27_92)">
     <rect x="53.7339" y="53.0142" width="27.3833" height="43.3287" fill="url(#pattern2)"/>
     </g>
+{:else}
+    <g filter="url(#filter0_i_27_92)">
+    <rect width="124" height="183" fill="url(#pattern0)"/>
+    </g>
+    <g filter="url(#filter1_i_27_92)">
+    <rect x="60.4492" y="71.874" width="20.6667" height="30.585" fill="url(#pattern1)"/>
+    </g>
+    <g filter="url(#filter2_i_27_92)">
+    <rect x="53.7339" y="53.0142" width="27.3833" height="43.3287" fill="url(#pattern2)"/>
+    </g>
+{/if}
+
     <defs>
     <filter id="filter0_i_27_92" x="0" y="0" width="124" height="184" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -59,10 +74,3 @@
     <image id="image2_27_92" width="53" height="85" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADUAAABVCAYAAADpEqwqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFxEAABcRAcom8z8AAAy9SURBVHhe7Vt9jBTlGYeqNdZatK0avyNqqYqp1qppVKStIo3I7c7nzt6dCCK2WmrhbBo/4sjO53J3HsftvO/M3HF4aouHraatxVqjlKIV/CqaGFChIkVBETkUDu5gb/p7ZueQNP2nSRNeknuSN7sHO2/md7/n+T2/5925USMxEiMxEiMxEiMxEuLE5Pb2o/PN7KScFZ4j+/GFeD9ecfgFihWfbZjRN7OPHV4xBTdeZ/GJeS+cKdn8XtnjDyguvxvAbpHp3+0HT2loaj52arnruLzJTsLnz9St4Azl7kUnKnN6j8m2ESskq3JWzmYz8g6PsJ6VXP6i7PDnZDfqkbywSbKia2W/cqFsh9+TSlEOQG+VS2yGbIWTpHsrZ2XbiBVKa+e5eZffJTl8meSE78lO+AnWFoBaI3vho5IbzpUcVpQs9lPZ5q2SzX6Tc3in7IY/V+344mwbsSJntZ+T9/gc3PwyrA+w9gLMAFj6GKy9IrnBEoBheYDJ2/xFyQrfwvsVksV9vJ8wK4qOyrYSJxSbnya7bFrKihe+K/l8jzyfJ7If7VGcCIyFb6G+XpedYB1q7mPJDreDrTV5O1xQN49dT3WWbSVO5NyOb8g2+zGlFoC9KrvBZ4rHE80NE9Um1uKdihvukF3+ueRGVdTY3rzF34RathOoG50FJ2dbiROqWfmq7FauQKrdC6FYATY+AXP7ACgBQwlqq4q02w9mhhSvM4GI7AFbawCuLWcFkwyzRTzZT5JktNIcn533w19IXrxMduMtihcNQDQSxY0SNQUWJpD8BPVWBaCdAPhqzg6b6xx2tbp06RHZVmLFjU7nyUix6UixJYoXr9fcqB/AEtVFGgIUvSI1EwDaB3H4KG+FzwP0fZodfjfbQrwoer8+QbHDG5BabUi51zSL9wFcVQMY1WGoLZZA1ocg+3sVK3wPwHrzJTbTKHefl20hXjQ0P3wsBOP7ssXuUexguWoH21Qn3FdLPSzUF9UU2NkFKX9DLvGFEJa6qeWOU7MtxItrTPNIHd5PsYLZAPUnvH6oltgg0qtWU3iV7CjJO9GA6nd9BMaWwhv+cIqIInFwkIoBzHRYoMdghTbgtV8jsUgXgOGVVv2CR+jnVTkruuoGj52QXS5m1Jltx0MIbqTUQkN+XbEqOxWbDUHSE+pbKhQQYpIUWx9KwODKwwIUOfGcG6KuwnvA1PNqqbJNs9l+DUIB156oUENSRKO1JwHolSpAFUUHNRtzleKFF0Eg7oBgPCVZHVsKLsTCJjmHvHtx6jKKDy4GOLYy51fEZ8o0lx8plfh5EIZbwc4TmhNs1p1wUIecKyTrAKTjtb5lEf28UvUPA6YoyAdqdnATJH0JgP1ThyUiIIoXJIpPrwCFmtLt6AWY3wmK2fn17FJxg6bbgt2RByAOcG+ipj7TvXCoJhIkFgDVtjhBWr6E+era6c6iE7NLxQ2ltfeYolWZoNkVU3WCFUjBbbrL96sOWSYAgwoaLaR+UEeHK41+dGZ2qbihmuaXFa/jItz07bBHf0DtbAZDgxqEooCl+10Qi85dustWQA3nwCNeVt/e/rXscjGDnAWJhW7zm9GjHsd6H3ZogJjS3Tgp+FBAh3+OOnsZwCvEluSxsdnlYgaNETrGe8VijQDUi/TbCJcxQLOVBmAFpB9YGoTsb0Kvehq1d5/s8Yk3wBDj8tG1XQQLAgWZHlsDFfRqHtuINUAesODEiQG2dDccQr/6HGm5FiwuUdzgdtWuXExzWbaNWDEMSgcozWW9qs83Kj4fIA9YoPTDQh2RElbB1iewTS/BuTfjM9eRcmIL8YB9wVTUqHlhLxzGRsnjA0g5pF6Q6MNnF07K1m6sdzAV9+BzRclbNFZVVfGm4IOZ0t0AoPhG3PQA+hJEgqWgdKotGvO9cBAyvwmsPUlqifoaT0KTbSVOHGDKjRrhHno1N9iIPjWgw/cZPmwSecBMBdGU92MU2QzW/gjncafssUuEPAOk37TiVs4FM9PAylJMve/j5gEK6pemHk/7leFFQwUn7Mdn3oXhXQKFvEUpd40Tkin6TRvOwm8XYGqhck8AxL8KSDMDoAo+ehU1YWLM51WY3U/B0MswwG10bohrv4ItxBMKGj+QcpepLr8LQvEMgG3R/WgfAQE4Yoh8HzXgQYDaDFV8ipyF7HVdYprml7JtxAo6gCm4lcmqG7SoHlyDH+7Qy2FVJ3YgENSnKP2gensAaAME4hHNiuupDkeJ2qfIx4ElQ/dZj+aztzWf7y6UKd1qAqG7nSQQaT2BybfRlGPFjvN0Hj9qlIig1KVH0M2BoRm44cfhJDZB+faSSKRCAbY0Uj30qILN+1Fva9G/Qsj71PoHw1Owg3igLp0VHaWU2DgAmonUegI3vBn1M0CqR6AygYBdIlBgymUZKCYuKFK+XCk43/D5bYbNfw9GPgAbGDtIJCAQVFMACBBIP94PQOKDmty+7Gi1xC6F4s0FQ38GQ1vRh/ZRPaVMpS6dUhGgPN4PxtYBXISUzRfKXacKV1Mkx4rTfiJ+81MKXtysl6OXAGg7wFUJSAFNl3oULcNjcBd8j+Hy9WCpR7N4fdFMZyqxQM0odx1XdPiVqKUmAHhS8+L1cOhQvtQ9JEV4PYOsEhb1KSP1g2yz4bCnirgG6Xr55NntR2fbCRGj82b76ZoVTkcv6tbt6A3djXaQdBtIvSIJBIkFmdoyTwxIvOFGVbiMHfi/1wAyLDqsqJvxt4SxSaq/dAxueiLSrIQb/6tmR1sh0wNFpB3SDKAy9UudOv5tfpzUl7sI2D4A24S1rGjzuw2rchU9aJJte2hDNaMzNZvNhNo9ClDr0JvoYGXoADsEDmlXzFbKHoDhtVr0og+Qis9BFR/AL2GCEKDIQehOfLVucwvy/Tf0oY8BZpCEgU6Q8H/ppFuAk6gBGl4A5EZ9APQmAD+Mn28riDJ6FK3KWUipaaihHpjUt5Fmuwt+5xBSC2A6wVIXVm2MJ9ZopkK6UZ/aBQbX4f3jRa+zyShH18D/nSDEOYVS6hoHIL/MHPlW3Y3hyLvSGtJS89qZql+qemCtSMAcNogU/RCffxas3o+0/ZEwD2bRwSV9EY0p1gSYF8DMp7rXBVWjJovRHQDAINmi1J3Xu10AFaPxxrshJOswXy3GSN9A54TZloc+VD8ag5S7Ej2ppDnxKtXp7MN7FH+YNABUbYY60JeSeoDF2g/WtoO1v4NJr1gOfzDNXHx8tuWhj2FQYAMiEa1WnbhPcaIqsUMyTiNHOu1ikfcrQiCQfv1g6R2w2QsG78g7bHy2nRhxAJQdWQCyGkrXh99+lQ5ZakAIGJSO2MIy0JvwmW1Iy7/ATcyDoFxHz19k24kRw6AwFFpwE6sBrg+AqrhZgKqlXbEMoaAZKn3fTWm4HqrXgZ91ekoG24jl91TfHyMRKDAFz7caigZQUZVUD7VFjiFVvtq0C3DlxUNgalW9F8/WmrsvIyeSbSVOfAGKGm+4Gqz1gS24cupPAGVn6kdq6C8C0K71qLtAKwU5GjWEPGi5NgOlWLyk2uEqzY53wPcBVK2O0H+Sgk1pCIGg3uWEK6F6swulyoVCnu9RXGMuP5JOVZVSaCq4YQD6VIP6pYeVBCRtvgCIpltPoGz+JFZdQ7OADy0eHFNLbeMkhzXJNntacfgW1BZ8H9ItbbboT/NrbqI4v5u+n3qoMC+8QvhvDuusljMkq9IoW6xHsYN3UFfkFobSlKMjZmrA5MpbF5OxjTSTjZ9ipiex4kYjPWrqBpNUm5UVm72sWkEf2NqfOojUUWSNF6Ag5aze5BfMaRX0WfThUOa0HkOPYasWvwvAntEstkWxgnT0IKZSWaeaaia3zoKZVnx2JOI3G/8Zyj38NKUU3KQiBQFqLV530dmeQadHWPWQ+Fta4qTBagsmtfaK/zAIhforfwwcxQRMv/PUUrBcsdhWpN+AATehQw0NJ9zzE3/h9lmlFvNy8xGxReKgGJ0eN5cqN8sl1q3Y4RrF5TswVkDxwp0YCP9xq91WubNUnlr0PPGfRRoO+hJamkeNOJgLwfid7IQbZIfTI3Cf6Q5/bbrVtuBnTjk33WkX/7GdAwHLQ9Nr9tC9JdvhC7LFh1Q3qqJ/bSg47DHDDm5v8BZ+p6m56djsKvGDJuFcqfN8xWWNYKkboNaCqe2yw94He89IVnifbvGJdBaRXXIYRJKMTr+f8itXSW4wN33ww+GvABg9XPVbxQ3nakjRWRhZsisOj0gSOq1tPik/r+M6BfYJYDjWIqz7YZNy9PdSs2YdBn3qvwX9UYo8j10NYAXZCRokm10vmWyskI8U/C9BtZP349PpT/Xoz4noGYvsv0ZiJEZiJEbi/xijRv0bQkmltn+yNGAAAAAASUVORK5CYII="/>
     </defs>
     </svg>
-    
-<!-- 
-    <style>
-        svg {
-            height: {size};
-        }
-    </style> -->
