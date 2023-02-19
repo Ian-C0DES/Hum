@@ -1,7 +1,12 @@
 <script>
 export let data;
-import defaultpfp from '$lib/assets/images/defaultpfp.png' 
-let birthdate = data.user.birthdate.slice(0,9);
+import defaultpfp from '$lib/assets/images/defaultpfp.png';
+
+let editing = false;
+
+const handleEdit = () => {editing = !editing;}
+
+let birthdate = data.user.birthdate.slice(0,10);
 let today = new Date();
 let birthDate = new Date(birthdate);
 let age = today.getFullYear() - birthDate.getFullYear();
@@ -9,7 +14,7 @@ let m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
     }
-let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
+let BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100;
 </script>
 
 <body style="height: 100vh;">
@@ -18,17 +23,35 @@ let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
 <img src='' alt="">
     </div>
 
-    <div class="welcome">
-        <p class="message">Hello,<span style="color: var(--accent1);">{data.user.username[0]}</span><span style="color: var(--accent2);">{data.user.username[1]}</span>{data.user.username.substring(2)}👋</p>
-        <p class="email">{data.user.email}</p>
-        <p class="bmi">Current BMI: {BMI}</p>
+    <div class="welcome" style="animation: fadeIn 2s;">
+        <p class="message underline-gradient">Hello <span style="color: var(--accent1);">{data.user.username[0].toUpperCase()}</span><span style="color: var(--accent2);">{data.user.username[1]}</span>{data.user.username.substring(2)}👋</p>
+        <p class="email ">{data.user.email}</p>
+        <p class="bmi">Current BMI: 
+            {#if ( BMI >= 18.5 && BMI <= 25)}
+            <span style="
+            text-decoration: underline;
+            text-decoration-color: green;
+            ">
+                {BMI}
+            </span> 
+            {:else}
+            <span style="
+            text-decoration: underline;
+            text-decoration-color: red;
+            ">
+                {BMI}
+            </span> 
+            {/if}
+        </p>
+        <p class="rgtext age">{age}</p>
     </div>
 
-    <form class="userData" action="">
+    <form class="userData" action="?/update" method="POST">
 
         <div class="field">
-            <div class="age">
-            <input type="number" min="12" max="150" placeholder="0" value="{age}">
+            <div class="birthdate">
+            <!-- <input type="number" min="12" max="150" placeholder="0" value="{age}"> -->
+            <input style="margin-right: 10px; width: 250px;" type="datetime" name="" value="{birthdate}" readonly>
             </div>
             <div class="icon">
             <i class="fa-solid fa-cake-candles"></i>
@@ -41,7 +64,7 @@ let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
 
     <div class="field">
         <div class="lbs">
-        <input type="number" min="1" max="999" placeholder="0" value="{data.user.weight}">
+        <input name="weight" type="number" min="1" max="999" placeholder="0" value="{data.user.weight}" on:change={handleEdit}>
         </div>
         <div class="icon">
         <i class="fa-solid fa-weight-scale"></i>
@@ -54,7 +77,7 @@ let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
 
     <div class="field">
         <div class="height">
-        <input class="metricH" type="number" min="12" max="150" placeholder="0" value="{data.user.height}">
+        <input name="height" class="metricH" type="number" min="12" max="150" placeholder="0" value="{data.user.height}" on:change={handleEdit}>
         </div>
         <div class="icon">
         <i class="fa-solid fa-ruler"></i>
@@ -63,11 +86,32 @@ let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
         <i class="fa-solid fa-pencil"></i>
     </div>
     </div>
+{#if editing}
+<div style="display:contents; ">
+    <button style="
+    border-radius: 10%;
+    width:125px;
+    background-color: transparent;
+    font-size: 50px;
+    border:none;
+    postion: relative;
+    cursor: pointer;    
+    "
+    type="submit">
+    ✅
+    </button>
+</div>
+{:else}
+<div style="display:none;">
+    <button>
+    </button>
+</div>
+{/if}
 
     </form>
 
 
-    <div class="badgeContainer">
+    <div class="badgeContainer" style="animation: fadeIn 3s;">
         <h1>
             <span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges</h1>
         <p>When you get badges they will show up here</p>
@@ -82,7 +126,7 @@ let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
         background-size: cover;
     }
     .welcome{
-        background-color: var(--dark);
+        background-color: rgba(15, 15, 15, 0.75);
         padding: 10px 30px 10px 30px;
         margin-left: 10vw;
         margin-top: 10vh;
@@ -104,6 +148,10 @@ let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
         .email{
             font-size: 20px;
         }
+        .age{
+            font-size: 16px;
+            text-align: end;
+        }
     }
     .badgeContainer{
         position: relative;
@@ -112,7 +160,7 @@ let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
         left: 10vw;
         color: var(--textcolor);
         width: 80vw;
-        background-color: var(--dark);
+        background-color: rgba(15, 15, 15, 0.75);
         box-shadow: 5px 5px 5px #000000;
         h1{
             font-family: "iceland";
@@ -137,14 +185,14 @@ let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
     .userData{
         display: flex;
         margin: 100px 0px 0px 175px;
+        .birthdate{
+            text-decoration: none;
+            font-size: 10px;
+        }
         .field{
             width: fit-content;
             display: flex;
             padding: 0px 20px 0px 100px;
-        label{
-            color: var(--accent2);
-            font-size: 42px;
-        }
         input{
             cursor: pointer;
             position: relative;
@@ -170,9 +218,6 @@ let BMI = Math.round((703*age/(data.user.height*data.user.height)) * 100) / 100;
         }
         .field:hover{
             cursor: pointer;
-            label{
-            color: var(--accent1);
-        }
         .icon{
             animation: fadeOut .5s forwards;
         }
@@ -205,7 +250,7 @@ div::after{
   content: 'lbs';
 }
 .age::after {
-  content: 'y/o';
+  content: ' y/o';
 }
 .height::after {
   content: 'in';

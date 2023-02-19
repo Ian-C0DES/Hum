@@ -16,7 +16,22 @@ body{
     overflow-x: hidden;
     background-color: var(--bgcolor);
   }
+  .rgtext{
+    background: radial-gradient(150.81% 167.43% at 0% 0%, #3E2BD2 31.85%, #756EE3 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+  .underline-gradient {
+    background: linear-gradient(90deg, #3E2BD2, #756EE3);
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 300ms ease;
+  }
 
+  .underline-gradient:hover {
+    background-size: 100% 3px;
+  }
   @keyframes fadeIn {
     from {opacity: 0%;}
     to{opacity: 100%;}
