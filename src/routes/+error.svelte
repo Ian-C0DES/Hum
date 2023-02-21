@@ -6,7 +6,7 @@
     onMount(async () => {
       redirecting = true;
       setTimeout(() =>{
-        window.location.replace('/');
+        window.location.replace(document.referrer);
       },6000);
 	});
     
