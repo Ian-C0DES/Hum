@@ -3,8 +3,12 @@ export let data;
 import defaultpfp from '$lib/assets/images/defaultpfp.png';
 
 let editing = false;
+let BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100;
 
-const handleEdit = () => {editing = !editing;}
+const handleEdit = () => {
+    editing = !editing;
+    // BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100;
+}
 
 let birthdate = data.user.birthdate.slice(0,10);
 let today = new Date();
@@ -14,7 +18,6 @@ let m = today.getMonth() - birthDate.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
     }
-let BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100;
 </script>
 
 <body style="height: 100vh;">
@@ -50,8 +53,7 @@ let BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))
 
         <div class="field">
             <div class="birthdate">
-            <!-- <input type="number" min="12" max="150" placeholder="0" value="{age}"> -->
-            <input style="margin-right: 10px; width: 250px;" type="datetime" name="" value="{birthdate}" readonly>
+            <input style="margin-right: 50px; width: 250px;" type="datetime" name="" value="{birthdate}" readonly>
             </div>
             <div class="icon">
             <i class="fa-solid fa-cake-candles"></i>
@@ -78,13 +80,16 @@ let BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))
     <div class="field">
         <div class="height">
         <input name="height" class="metricH" type="number" min="12" max="150" placeholder="0" value="{data.user.height}" on:change={handleEdit}>
-        </div>
-        <div class="icon">
+    </div>
+    <div class="icon">
         <i class="fa-solid fa-ruler"></i>
-        </div>
-        <div class="edit">
+    </div>
+    <div class="edit">
         <i class="fa-solid fa-pencil"></i>
     </div>
+    <!-- <input style="display: none;" type="number" name="bmi" step="0.01" id="" value="{BMI}"> -->
+    <input type="number" style="display: none;" name="bmi" step="0.01" id="" bind:value={BMI}>
+
     </div>
 {#if editing}
 <div style="display:contents; ">
@@ -194,6 +199,9 @@ let BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))
             display: flex;
             padding: 0px 20px 0px 100px;
         input{
+            border:none;
+    outline-width: 0;
+            font-family: 'JetBrains Mono';
             cursor: pointer;
             position: relative;
             width: 150px;
@@ -248,11 +256,14 @@ div::after{
     /* set the unit abbreviation for each unit class */
 .lbs::after {
   content: 'lbs';
+  font-family: 'JetBrains Mono';
 }
 .age::after {
   content: ' y/o';
+  font-family: 'JetBrains Mono';
 }
 .height::after {
   content: 'in';
+  font-family: 'JetBrains Mono';
 }
 </style>

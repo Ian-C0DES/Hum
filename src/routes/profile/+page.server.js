@@ -1,13 +1,29 @@
 import { error, redirect } from '@sveltejs/kit';
 
+let result;
 export const actions = {
 	update: async ({ request, locals }) => {
 		const body = Object.fromEntries(await request.formData());
-		try {
-            await locals.pb.collection('users').update(locals.user.id, {
-                "height" : body.height,
-                "weight" : body.weight
-            });
+		// console.log(locals.user.statsID);
+		console.log(locals.user.stats);
+		try { 
+			Promise.all([
+				await locals.pb.collection('users').update(locals.user.id, {
+					"height" : body.height,
+					"weight" : body.weight
+				}),
+
+				// await locals.pb.collection('user_statistics').update(locals.user.statsID, {
+				//     // "weights" : {
+				// 	// },
+				//     // "bmi" : body.weight
+				// })
+
+				result = await locals.pb.collection('user_statistics').getOne(locals.user.statsID, {
+					expand: 'relField1,relField2.subRelField',
+				})
+			]);
+			console.log(result);
         } 
         catch (err) {
 			console.log('Error: ', err);
