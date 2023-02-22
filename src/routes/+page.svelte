@@ -37,7 +37,6 @@
 </body>
 <style lang="scss">
     *{
-
         font-family: "JetBrains Mono";
     }
 body{
@@ -74,7 +73,6 @@ body{
         }
         
     }
-
     .loginContainer{
     position: absolute;
     right: 10vw;
@@ -115,5 +113,4 @@ body{
             }
         }
     }
-
 </style>

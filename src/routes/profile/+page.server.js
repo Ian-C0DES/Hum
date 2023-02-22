@@ -2,6 +2,7 @@ import { error, redirect } from '@sveltejs/kit';
 
 let result;
 export const actions = {
+	
 	update: async ({ request, locals }) => {
 		const body = Object.fromEntries(await request.formData());
 		// console.log(locals.user.statsID);
