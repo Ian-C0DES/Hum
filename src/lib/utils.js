@@ -10,5 +10,5 @@ export const generateUsername = (name) => {
 };
 
 export const getImageURL = (collectionId, recordId, fileName, size = '0x0') => {
-	return `http://143.42.138.135:8080/api/files/${collectionId}/${recordId}/${fileName}?thumb=${size}`;
+	return `http://143.42.138.135:80/api/files/${collectionId}/${recordId}/${fileName}?thumb=${size}`;
 };
