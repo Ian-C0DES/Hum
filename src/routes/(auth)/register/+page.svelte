@@ -1,6 +1,9 @@
 <script>
-    import Humman from '../../lib/assets/humman.svelte'
+    import Humman from '$lib/assets/humman.svelte'
 </script>
+
+<body>
+    
 
 <div class="logoContainer">
     <span style="color: var(--accent1);">H</span>
@@ -17,7 +20,7 @@
     </div>
     <h1>Register for an account</h1>
     <p>Or <a href="/"> sign in</a> if you already have an account. </p>
-    <form action="" method="post">
+    <form action="?/register" method="post">
         
         <div class="icon">
             <i class="fa-solid fa-user"></i>
@@ -45,11 +48,26 @@
 
     </form>
 </div>
-
-
-
+</body>
 
 <style lang="scss">
+body {
+  /* Serious gradient: Black*/
+//   color: whitesmoke;
+width: 100vw;
+height: 100vh;
+  background: linear-gradient(
+    45deg,
+    #151515,
+    #1f1b44,
+    #2a2074,
+    #3425a3,
+    #3b29c2,
+    #3e2bd2,
+  );
+  background-size: 400% 400%;
+  animation: backgroundChange11 15s ease infinite;
+}
     .logoContainer{
         display: inline-block;
         margin-left: 5rem;
@@ -119,5 +137,15 @@
             }
         }
     }
-
+    @keyframes backgroundChange11 {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 </style>
