@@ -1,16 +1,17 @@
 <script>
 // import Chart from '$lib/components/Chart.svelte'
   import { chart } from "svelte-apexcharts";
+  let data = [1,2,3,4,5];
   let options1 = {
     chart: {
-      type: "bar",
+      type: "line",
       height: "500px",
       width: "500px",
     },
     series: [
       {
         name: "sales",
-        data: [30, 40, 35, 150, 49, 60, 70, 91, 125],
+        data: data,
       },
     ],
     xaxis: {
