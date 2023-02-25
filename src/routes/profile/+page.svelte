@@ -27,7 +27,7 @@ let m = today.getMonth() - birthDate.getMonth();
     </div>
 
     <div class="welcome" style="animation: fadeIn 2s;">
-        <p class="message underline-gradient">Hello <span style="color: var(--accent1);">{data.user.username[0].toUpperCase()}</span><span style="color: var(--accent2);">{data.user.username[1]}</span>{data.user.username.substring(2)}👋</p>
+        <p class="message underline-gradient">Hello <span style="color: var(--accent1);">{data.user.name[0].toUpperCase()}</span><span style="color: var(--accent2);">{data.user.name[1]}</span>{data.user.name.substring(2)}👋</p>
         <p class="email ">{data.user.email}</p>
         <p class="bmi">Current BMI: 
             {#if ( BMI >= 18.5 && BMI <= 25)}

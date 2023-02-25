@@ -1,19 +1,23 @@
-import { error, redirect } from '@sveltejs/kit';
+import { generateUsername, validateData } from "$lib/utils.js";
+
+import { error, invalid, redirect } from '@sveltejs/kit';
 
 export const actions = {
-	register: async ({ request, locals }) => {
-		const body = Object.fromEntries(await request.formData());
-		try {
-            await locals.pb.collection('users').update(locals.user.id, {
-                "height" : body.height,
-                "weight" : body.weight
-            });
-        } 
-        catch (err) {
-			console.log('Error: ', err);
-			throw error(500, 'Something went wrong when updating settings');
-		}
+	default: async ({ locals, request }) => {
+        const formData = Object.fromEntries(await request.formData());
+		let username = generateUsername(formData.name.split(' ').join('')).toLowerCase();
 
-		throw redirect(303, '/profile');
+		try {
+			await locals.pb.collection('users').create({ username, ...formData });
+		} catch (err) {
+			if (err.status === 400 && err.data.data.passwordConfirm.code == 'validation_values_mismatch'){
+			console.log('Error: ', err);
+			throw error(400, 'Passwords do not match. Please try again');
+		}else{
+			console.log('Error: ', err);
+		throw error(500, 'Something went wrong');
+		}
+	}
+		throw redirect(303, '/');
 	}
 };

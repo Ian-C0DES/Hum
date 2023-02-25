@@ -24,7 +24,7 @@ export const actions = {
 					expand: 'relField1,relField2.subRelField',
 				})
 			]);
-			console.log(result);
+			console.log(result.bmi.items);
         } 
         catch (err) {
 			console.log('Error: ', err);

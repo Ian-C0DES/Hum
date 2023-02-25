@@ -1,30 +1,25 @@
 <script>
     import Humman from '$lib/assets/humman.svelte'
-</script>
+    import Soundwave from '$lib/assets/soundwave.svelte'
 
-<body>
     
+</script>
+<body>
+    <div class="background"/>
 
-<div class="logoContainer">
-    <span style="color: var(--accent1);">H</span>
-    <span style="color: var(--accent2);">U</span>
-    <span style="color: var(--textcolor);">M</span>
-
-    <svelte:component this={Humman} />
-
-</div>
 
 <div class="registerContainer">
+<div class="registerContent">
     <div class="registerIcon">
         <i class="fa-solid fa-address-card"></i>
     </div>
     <h1>Register for an account</h1>
     <p>Or <a href="/"> sign in</a> if you already have an account. </p>
-    <form action="?/register" method="post">
+    <form method="POST">
         
         <div class="icon">
             <i class="fa-solid fa-user"></i>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <input type="text" placeholder="Enter Username" name="name" required>
         </div>
 
         <div class="icon">
@@ -34,12 +29,14 @@
 
         <div class="icon">
             <i class="fa-solid fa-lock"></i>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <!-- <input onchange={validatePassword} type="password" placeholder="Password" id="password" required> -->
         </div>
 
         <div class="icon">
             <i class="fa-solid fa-key"></i>
-            <input type="password" placeholder="Confirm Password" name="confirmpsw" required>
+            <input type="password" placeholder="Confirm Password" name="passwordConfirm" required>
+            <!-- <input onchange={validatePassword} type="password" placeholder="Confirm Password" id="confirm_password" required> -->
         </div>
 
         <div class="buttons">
@@ -48,15 +45,204 @@
 
     </form>
 </div>
+</div>
+<div class="wrapper">
+<!-- <Soundwave/> -->
+<div class="logoContainer">
+    <!-- <span style="color: var(--accent1);">H</span>
+    <span style="color: var(--accent2);">U</span>
+    <span style="color: var(--textcolor);">M</span> -->
+<span class="rgtext">HUM</span>
+    <!-- <svelte:component this={Humman} /> -->
+
+</div>
+<div class="missionStatment">
+    <div class="title underline-gradient">
+        Mission statment 📰
+    </div>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+        optio, eaque rerum! Provident similique accusantium nemo autem.
+    </p>
+</div>
+
+
+<div class="about">
+    <div class="title underline-gradient">
+        🏋️ A web-based solution for all your fitness needs
+    </div>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam
+    </p>
+
+<div class="listitem">
+    Get real-time health information
+</div>
+<div class="listitem">
+    Track your all your metrics in one place
+</div>
+<div class="listitem">
+    Share your accomplishments with a like-minded community
+</div>
+<div class="listitem">
+    and more
+</div>
+
+</div>
+
+<div class="demo">
+    <div class="title underline-gradient">
+        Demo 🚲
+    </div>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam
+    </p>
+    <div style=" display: flex; outline:red 1px solid; justify-content: center;">
+        <img style="height: 400px; width: 400px; outline:red 1px solid;"/>   
+        <!-- image carosel goes here -->
+    </div>
+</div>
+    
+        <div class="code">
+            <div class="title underline-gradient">
+                💻 Checkout the code
+            </div>
+        <p>
+            <a href="https://github.com/Ian-C0DES/Hum">GitHub Page🔗</a>
+        </p>
+    </div>
+
+
+<div class="license">
+    <div class="title underline-gradient">
+        Openly released 📖
+    </div>
+    <p>
+        All work released under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons</a>
+    </p>
+</div>
+<!-- <div style="padding-top:200px; display: flex; justify-content: center;">
+<Soundwave />
+</div> -->
+</div>
 </body>
 
 <style lang="scss">
-body {
-  /* Serious gradient: Black*/
-//   color: whitesmoke;
-width: 100vw;
-height: 100vh;
-  background: linear-gradient(
+    .license{
+        // padding-top: 100px;
+        padding: 100px;
+        color: var(--textcolor);
+    // width: 90vw;
+    .title{
+        font-family: 'iceland';
+        font-size: 64px;
+        // margin-left: 10vw;
+    }
+    P{
+        // margin-left: 10vw;
+        font-family: 'JetBrains mono';
+
+    }
+}
+
+    .code{
+    padding: 100px;
+    color: var(--textcolor);
+    // width: 90vw;
+    .title{
+        font-family: 'iceland';
+        font-size: 64px;
+        // margin-left: 10vw;
+        text-align: right;
+        // width: fit-content;
+    }
+    P{
+        font-family: 'JetBrains mono';
+        text-align: right;
+        // margin-left: 10vw;
+        
+    }
+}
+
+.demo{
+    text-align: right;
+    padding: 100px;
+    color: var(--textcolor);
+    // width: 90vw;
+    .title{
+        font-family: 'iceland';
+        font-size: 64px;
+        // margin-left: 10vw;
+    }
+    P{
+        // margin-left: 10vw;
+        font-family: 'JetBrains mono';
+
+    }
+}
+
+
+.about{
+    padding: 100px;
+    color: var(--textcolor);
+    // width: 90vw;
+    .title{
+        font-family: 'iceland';
+        font-size: 64px;
+        // margin-left: 10vw;
+        text-align: right;
+        // width: fit-content;
+    }
+    P{
+        font-family: 'JetBrains mono';
+        text-align: right;
+        // margin-left: 10vw;
+        
+    }
+    .listitem{
+        text-align: right;
+        // margin-left: 10vw;
+        font-family: 'JetBrains mono';
+        &::after{
+            content: " 👈";
+        }
+    }
+}
+.missionStatment{
+    text-align: right;
+    color: var(--textcolor);
+    // width: 90vw;
+    padding: 100px;
+    .title{
+        font-family: 'iceland';
+        font-size: 64px;
+    }
+    P{
+        // margin-left: 10vw;
+        font-family: 'JetBrains mono';
+
+    }
+    p::before{
+        content: '"';
+    }
+    p::after{
+        content: '" - The developers';
+    }
+}
+
+
+    .background{
+        display: flex;
+        position: absolute;
+        // max-height: 400vh;
+        // min-height: 300vh;
+        width: 100vw;
+        height: 300vh;
+        top: 0px;
+        z-index: -9;
+        background: linear-gradient(
     45deg,
     #151515,
     #1f1b44,
@@ -66,23 +252,76 @@ height: 100vh;
     #3e2bd2,
   );
   background-size: 400% 400%;
-  animation: backgroundChange11 15s ease infinite;
+  animation: backgroundChange11 30s ease infinite;
+
+    }
+        .wrapper{
+        // position: absolute;
+        z-index: -4;
+        background-color: rgba($color: #151515, $alpha: 10);
+        box-shadow: 5px 8px 5px var(--dark);
+        // margin-top: 90vh;
+        width: 90vw;
+        margin-left: 5vw;
+        // display: flex;
+        // height: 200vh;
+        height: fit-content;
+        // position: sticky;
+
+    }
+body {
+    background: none;
+    // z-index: 99;
+  /* Serious gradient: Black*/
+//   color: whitesmoke;
+
+    width: 100vw;
+    height:300vh;
+    // min-height: 400vh;
+//   background: linear-gradient(
+//     45deg,
+//     #151515,
+//     #1f1b44,
+//     #2a2074,
+//     #3425a3,
+//     #3b29c2,
+//     #3e2bd2,
+//   );
+//   background-size: 400% 400%;
+//   animation: backgroundChange11 30s ease infinite;
 }
     .logoContainer{
-        display: inline-block;
-        margin-left: 5rem;
-        margin-top: 20rem;
+        display: flex;
+        // align-self: center;
+        justify-content: center;
+        align-items: center;
+        // width: 100vw;
+        // margin-left: 5rem;
+        margin-top: 15vh;
         span {
             -webkit-text-stroke: 3px black;
             font-size: 240px;
             font-family: "Iceland", cursive;
         }
     }
-    
     .registerContainer{
-    position: absolute;
-    right: 6vw;
-    top: 20vh;
+        z-index: 999;
+        margin-top: 50px;
+        flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    // width: fit-content;   
+    .registerContent{
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    width: fit-content;
+    padding: 40px;
+    border-radius: 10%;
+    // background-color: rgba($color: #151515, $alpha: .9);
+    background-color: rgba($color: #ffffff, $alpha: .10);
     h1{
         font-family: "Iceland", cursive;
         text-align: center;
@@ -98,7 +337,7 @@ height: 100vh;
     .icon{
             text-shadow: 0px 5px 0px #000000;
             font-size: 20px;
-            color:var(--accent2);
+            color:var(--textcolor);
     }
     .registerIcon{
             text-shadow: 0px 5px 0px #000000;
@@ -135,8 +374,14 @@ height: 100vh;
                 animation: radialGradienthover 1s forwards 1;
                 }
             }
+
         }
+
     }
+
+    }
+
+
     @keyframes backgroundChange11 {
   0% {
     background-position: 0% 50%;
