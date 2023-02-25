@@ -42,7 +42,9 @@
         <div class="buttons">
         <button type="submit">Register</button>
         </div>
-
+        <div class="learnIcon">
+        <p><a href="#opening"> <i class="fa-solid fa-down-long"></i></a> Learn More</p>
+        </div>
     </form>
 </div>
 </div>
@@ -52,7 +54,7 @@
     <!-- <span style="color: var(--accent1);">H</span>
     <span style="color: var(--accent2);">U</span>
     <span style="color: var(--textcolor);">M</span> -->
-<span class="rgtext">HUM</span>
+<span class="rgtext" id="opening">HUM</span>
     <!-- <svelte:component this={Humman} /> -->
 
 </div>
@@ -122,6 +124,9 @@
     <p>
         All work released under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons</a>
     </p>
+    <p>
+        Some illistrations created through the use of <a href="https://openai.com/api/policies/sharing-publication/">OpenAI DALL-E</a>
+    </p>
 </div>
 <!-- <div style="padding-top:200px; display: flex; justify-content: center;">
 <Soundwave />
@@ -132,7 +137,7 @@
 <style lang="scss">
     .license{
         // padding-top: 100px;
-        padding: 100px;
+        padding: 50px;
         color: var(--textcolor);
     // width: 90vw;
     .title{
@@ -148,8 +153,9 @@
 }
 
     .code{
-    padding: 100px;
+    padding: 50px;
     color: var(--textcolor);
+    float: right;
     // width: 90vw;
     .title{
         font-family: 'iceland';
@@ -328,6 +334,9 @@ body {
         font-size: 64px;
         color: var(--textcolor);
     }
+    a{
+        color:var(--accent2);
+    }
     p{
         font-family: "Iceland", cursive;
         text-align: center;
@@ -344,7 +353,11 @@ body {
             font-size: 75px;
             color:var(--accent2);
             text-align: center;
-            margin-right: 0.5em;
+    }
+    .learnIcon{
+            font-size: 75px;
+            color:var(--accent2);
+            text-align: center;
     }
     form{
         display: flex;
