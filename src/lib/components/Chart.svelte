@@ -1,12 +1,12 @@
 <script >
 	import { onMount } from 'svelte';
-    import { chart1 } from "svelte-apexcharts";
+    import { chart } from "svelte-apexcharts";
 	export let options;
 
-	let ApexCharts = chart1 ;
+	let ApexCharts = chart ;
 	let loaded = false;
 
-	const chart = (node, options) => {
+	const chart1 = (node, options) => {
 
 		if (!loaded)
 			return

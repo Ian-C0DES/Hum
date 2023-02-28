@@ -7,7 +7,6 @@
         import '@fontsource/jetbrains-mono'
         export let data;
 </script>
-
 {#if !data.user}
     <main>
         {#if $navigating}

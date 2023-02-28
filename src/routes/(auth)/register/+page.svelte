@@ -7,25 +7,26 @@
 <body>
     <div class="background"/>
 
-
 <div class="registerContainer">
 <div class="registerContent">
-    <div class="registerIcon">
+    <!-- <div class="registerIcon">
         <i class="fa-solid fa-address-card"></i>
-    </div>
+    </div> -->
     <h1>Register for an account</h1>
     <p>Or <a href="/"> sign in</a> if you already have an account. </p>
     <form method="POST">
         
         <div class="icon">
             <i class="fa-solid fa-user"></i>
-            <input type="text" placeholder="Enter Username" name="name" required>
+            <input type="text" placeholder="Enter a display name" name="displayName" required>
         </div>
 
+        
         <div class="icon">
             <i class="fa-solid fa-envelope"></i>
             <input type="text" placeholder="Enter Email" name="email" required>
         </div>
+
 
         <div class="icon">
             <i class="fa-solid fa-lock"></i>
@@ -39,6 +40,12 @@
             <!-- <input onchange={validatePassword} type="password" placeholder="Confirm Password" id="confirm_password" required> -->
         </div>
 
+
+        <div class="icon">
+            <i class="fa-solid fa-cake-candles"></i>
+            <input type="date" name="birthdate" required>
+        </div>
+        
         <div class="buttons">
         <button type="submit">Register</button>
         </div>
@@ -68,6 +75,7 @@
         numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
         optio, eaque rerum! Provident similique accusantium nemo autem.
     </p>
+    <span> - The developers</span>
 </div>
 
 
@@ -234,7 +242,7 @@
         content: '"';
     }
     p::after{
-        content: '" - The developers';
+        content: '"';
     }
 }
 

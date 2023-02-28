@@ -1,5 +1,6 @@
 :root {
     /* --bgcolor:#32353b;
+    --dark:#151515;
     --textcolor:#e3e3e3;
     --accent1:#1fb2eb;
     --accent2:#e3c843; */
@@ -17,12 +18,12 @@ body{
     background-color: var(--bgcolor);
   }
   .rgtext{
-    background: radial-gradient(150.81% 167.43% at 0% 0%, #3E2BD2 31.85%, #756EE3 100%);
+    background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
   }
   .underline-gradient {
-    background: linear-gradient(90deg, #3E2BD2, #756EE3);
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
     background-size: 0% 3px;
     background-repeat: no-repeat;
     background-position: left bottom;

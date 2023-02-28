@@ -6,9 +6,9 @@
     onMount(async () => {
       redirecting = true;
       
-      console.log($page.url)
-      console.log($page.url.origin+"/");
-      console.log(document.referrer);
+      // console.log($page.url)
+      // console.log($page.url.origin+"/");
+      // console.log(document.referrer);
       setTimeout(() =>{
         window.location.replace((document.referrer != ($page.url.href)? document.referrer : "/"));
       },6000);

@@ -3,6 +3,7 @@
 	let p = 0;
 	let visible = false;
 	onMount(() => {
+		console.log("preloading...");
 		visible = true;
 		function next() {
 			p += 0.1;
