@@ -2,6 +2,7 @@
     import PocketBase from 'pocketbase';
     export let data;
     const {messages} = data;
+    console.log(messages);
 import defaultpfp from "$lib/assets/images/defaultpfp.png";
     let tos_status = false;
     const handleTos = () => {tos_status = !tos_status;};

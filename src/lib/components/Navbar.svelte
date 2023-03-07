@@ -16,26 +16,23 @@
 
             <div class="menuopts">
 
-              <a class="navItem" href="/profile">
-                <!-- <i class="fa-solid fa-user"></i> -->
-                <i class="fa-regular fa-address-card rgtext"></i>
+              <a class="navItem" href="/profile" >
+                <i class="fa-regular fa-address-card {$page.url.pathname === "/profile" ? 'active' : ''} rgtext"></i>
                 <p>User</p>
             </a>
 
             <a class="navItem" href="/stats">
-              <!-- <i class="fa-regular fa-chart-pie"></i> -->
-              <i style="margin-left: 5px;" class="fa-regular fa-chart-bar rgtext"></i>
+              <i style="margin-left: 5px;" class="fa-regular fa-chart-bar {$page.url.pathname === "/stats" ? 'active' : ''} rgtext"></i>
               <p>Stats</p>
           </a>
 
           <a class="navItem" href="/feed">
-            <i class="fa-regular fa-comments rgtext"></i>
+            <i class="fa-regular fa-comments {$page.url.pathname === "/feed" ? 'active' : ''} rgtext"></i>
           <p>Feed</p>
       </a>
 
               <form action="/logout" method="POST"class="logout">
                 <button type="submit" class="logout">
-                  <!-- <i class="fa-solid fa-right-from-bracket"></i> -->
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
               </form>
@@ -72,11 +69,11 @@
                 flex-direction: column;
                 flex-wrap: wrap;
                 align-items: center;
-
+                  
                 .navItem{
                   height: 50px;
                   text-decoration: none;
-                  color: var(--accent1);
+                  // color: var(--accent1);
                   padding: 20px 0px 20px 0px;
                   i{
                     animation: fadeIn 3s forwards;

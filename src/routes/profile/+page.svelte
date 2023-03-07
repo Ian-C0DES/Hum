@@ -17,9 +17,9 @@ const handleEdit = () => {
     // bmi_val.update(va val = (Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100) );
     // BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100;
     bmi_val.update(value => {
-		BMI = value;
+		// BMI = value;
         value = BMI
-        // return value;
+        return value;
     });
 }
 
