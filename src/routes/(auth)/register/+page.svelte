@@ -6,6 +6,7 @@
 <head>
     <title>Login</title>
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <!-- <link type='text/scss' rel="stylesheet" href="./style.scss"> -->
 </head>
 
 <body>
