@@ -1,7 +1,14 @@
 <script>
 import { chart } from "svelte-apexcharts";
+export let userdata;
+console.log(userdata);
+const keysArray = Object.keys(userdata); // creates an array of keys: ['1', '2', '3', '4']
+const valuesArray = Object.values(userdata); // creates an array of values: ['145', '150', '165', '175']
+console.log(keysArray);
+console.log(valuesArray);
 
-let data = [1,2,3,4,5];
+
+let data = valuesArray;
 let options1 = {
   chart: {
     type: "line",
@@ -10,12 +17,12 @@ let options1 = {
   },
   series: [
     {
-      name: "sales",
+      name: "Weight",
       data: data,
     },
   ],
   xaxis: {
-    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+    categories: keysArray,
   },
 };
 </script>

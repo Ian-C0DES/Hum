@@ -1,26 +1,36 @@
 <script>
 export let data;
 import defaultpfp from '$lib/assets/images/defaultpfp.png';
-import {bmi_val} from './store';
+// import {bmi_val} from './store';
 let BMI = (Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100);
-bmi_val.set(BMI);
+// bmi_val.set(BMI);
 
-bmi_val.subscribe(value => {
-		BMI = value;
-	});
-
+// bmi_val.subscribe(value => {
+// 		BMI = value;
+// 	});
+let bmi
 let editing = false;
-// let BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100;
 
-const handleEdit = () => {
-    editing = !editing;
-    // bmi_val.update(va val = (Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100) );
-    // BMI = Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100;
-    bmi_val.update(value => {
-		// BMI = value;
-        value = BMI
-        return value;
-    });
+$: bmi = BMI;
+
+
+const handleEdit = (e) => {
+    if (editing == false){
+        editing = true;
+    }
+    console.log(data.user.weight);
+    console.log(data.user.height);
+    if (e.target.name == "weight"){
+        BMI = Math.round((703*(e.target.value/(data.user.height*data.user.height))) * 100) / 100;
+        data.user.weight = e.target.value
+        console.log(data.user.weight);
+    }
+    else{
+        BMI = Math.round((703*(data.user.weight/(e.target.value*e.target.value))) * 100) / 100;
+        data.user.height = e.target.value
+        console.log(data.user.height);
+    }
+    console.log(bmi);
 }
 
 let birthdate = data.user.birthdate.slice(0,10);
@@ -43,19 +53,19 @@ let m = today.getMonth() - birthDate.getMonth();
         <p class="message underline-gradient">Hello <span style="color: var(--accent1);">{data.user.displayName[0].toUpperCase()}</span><span style="color: var(--accent2);">{data.user.displayName[1]}</span>{data.user.displayName.substring(2)}👋</p>
         <p class="email ">{data.user.email}</p>
         <p class="bmi">Current BMI: 
-            {#if ( BMI >= 18.5 && BMI <= 25)}
+            {#if ( bmi >= 18.5 && bmi <= 25)}
             <span style="
             text-decoration: underline;
             text-decoration-color: green;
             ">
-                {BMI}
+                {bmi}
             </span> 
             {:else}
             <span style="
             text-decoration: underline;
             text-decoration-color: red;
             ">
-                {BMI}
+                {bmi}
             </span> 
             {/if}
         </p>
@@ -71,9 +81,6 @@ let m = today.getMonth() - birthDate.getMonth();
             <div class="staticicon">
             <i class="fa-solid fa-cake-candles"></i>
             </div>  
-            <!-- <div class="edit">
-            <i class="fa-solid fa-pencil"></i>
-        </div> -->
         </div>
 
 
@@ -100,20 +107,19 @@ let m = today.getMonth() - birthDate.getMonth();
     <div class="edit">
         <i class="fa-solid fa-pencil"></i>
     </div>
-    <input style="display: none;" type="number" name="bmi" step="0.01" id="" value="{BMI}">
-    <!-- <input type="number" style="display: none;" name="bmi" step="0.01" id="" bind:value={$bmi}> -->
+    <input style="display: none;" type="number" name="bmi" step="0.01" id="" value="{bmi}">
 
     </div>
 {#if editing}
 <div style="display:contents; ">
     <button style="
     border-radius: 10%;
-    width:125px;
+    width:100px;
     background-color: transparent;
     font-size: 50px;
     border:none;
     postion: relative;
-    cursor: pointer;    
+    cursor: pointer;  
     "
     type="submit">
     ✅
