@@ -31,6 +31,12 @@
           <p>Feed</p>
       </a>
 
+      <a class="navItem {$page.url.pathname == "/workout" ? 'active' : ''}" href="/workout">
+        <i style="margin-left: 1rem" class="fa-solid fa-dumbbell rgtext"></i>
+      <p>Workout</p>
+  </a>
+
+
               <form action="/logout" method="POST"class="logout">
                 <button type="submit" class="logout">
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -52,7 +58,7 @@
             .navContainer{
               position:absolute;
               background-color: var(--dark);
-              width: 5vw;
+              min-width: 6vw;
               height: 100vh;
               align-items: center;
               .logoContainer{
@@ -113,7 +119,7 @@
                     color: var(--accent2);
                     font-size: 30px;
                     position: relative;
-                    top: 10vh;
+                    top: 5vh;
                   }
                   .logout:hover{
                     color: var(--accent1);

@@ -3,6 +3,7 @@ export let data;
 import defaultpfp from '$lib/assets/images/defaultpfp.png';
 // import {bmi_val} from './store';
 let BMI = (Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100);
+
 // bmi_val.set(BMI);
 
 // bmi_val.subscribe(value => {
