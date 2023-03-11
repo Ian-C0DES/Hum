@@ -1,14 +1,14 @@
 <script>
-    import PocketBase from 'pocketbase';
     export let data;
     const {messages} = data;
-import defaultpfp from "$lib/assets/images/defaultpfp.png";
+    console.log(messages);
+    import defaultpfp from "$lib/assets/images/defaultpfp.png";
     let tos_status = false;
     const handleTos = () => {tos_status = !tos_status;};
     import { onMount, onDestroy } from 'svelte';
 //   import { currentUser, pb } from './pocketbase';
 //  let pb = new PocketBase('http://143.42.138.135:80'); 
-  let newMessage ="";
+    let newMessage ="";
 //   let messages = [];
 //   let unsubscribe;
 //   let currentuserid = data.user

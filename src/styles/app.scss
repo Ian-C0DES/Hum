@@ -1,15 +1,30 @@
+@import 'typed';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+
 :root {
-    /* --bgcolor:#32353b;
-    --dark:#151515;
-    --textcolor:#e3e3e3;
-    --accent1:#1fb2eb;
-    --accent2:#e3c843; */
+
+    // --bgcolor:#32353b;
+    // --dark:#151515;
+    // --textcolor:#e3e3e3;
+    // --accent1:#1fb2eb;
+    // --accent2:#e3c843; 
+
+    // --bgcolor:#0c0b26;
+    // --dark:#0c0b26;
+    // --textcolor:#FBF8F7;
+    // --accent1:#df1b28; 
+    // --accent2:#d66004;
     
     --bgcolor:#212121;
     --dark:#151515;
     --textcolor:#FBF8F7;
     --accent1:#3E2BD2;
     --accent2:#ABABEC;
+
+
+    --font: "Inter";
+    // --subfont:'Source Sans Pro';
+    --subfont:'Inter';
 }
 
 body{
@@ -46,3 +61,16 @@ body{
     from   {background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
     to {background: radial-gradient(400% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
 }
+
+// ::-webkit-scrollbar{
+//   width:6px;
+//   border-left:1px solid #E6ECF8;
+//   opacity: .1;
+// }
+// ::-webkit-scrollbar:hover{
+//   width:15px;
+//   border-left:1px solid #E6ECF8;
+//   opacity: 1;
+//   transition: all 5s;
+// }
+// ::-webkit-scrollbar-thumb{background-color:orangered;}

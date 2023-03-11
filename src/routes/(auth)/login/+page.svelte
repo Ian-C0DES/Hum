@@ -1,11 +1,12 @@
 <script>
     import Humman from '$lib/assets/humman.svelte'
+
 </script>
 
 <head>
     <title>Login</title>
+    <!-- <link rel="stylesheet" href="../../styles/style.scss"> -->
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
-    <!-- <link type='text/scss' rel="stylesheet" href="./style.scss"> -->
 </head>
 
 <body>
@@ -20,9 +21,9 @@
     <nav>
         <a href="/">Home</a>
         <a href="/#downloads">Download <i class="fa-solid fa-arrow-turn-up" style="text-align:start"></i></a>
-        <a href="/contibutors">Contibutors</a>
-        <a href="/register" class="active">Register</a>
-        <a href="/login" ><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+        <a href="/">Contibutors</a>
+        <a href="/register">Register</a>
+        <a href="/login" class="active"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
     </nav>
 </div>
 
@@ -30,52 +31,30 @@
         
         <section class="panes">
 
+            <div class="left">
+                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+<p> Illum qui, natus veritatis quibusdam voluptate corporis totam quas libero beatae magni itaque facere consequuntur molestiae quia quaerat odit perferendis quidem aliquam.</p>
 
+                
+            </div>
 
-                <div class="registerContainer">
-                    <div class="registerContent">
-                        <!-- <div class="registerIcon">
-                            <i class="fa-solid fa-address-card"></i>
-                        </div> -->
-                        <h1>Register for an account</h1>
-                        <p>Or <a href="/login"> sign-in</a> if you already have an account. </p>
-                        <form method="POST">
-                            
-                            <div class="icon">
-                                <i class="fa-solid fa-user"></i>
-                                <input type="text" placeholder="Enter a display name" name="displayName" required>
-                            </div>
+            <div class="right">
+
+                <div class="loginContainer">
+                    <h1>Login</h1>
+                    <form action="?/login" method="POST">
+                
+                        <input type="text" placeholder="Enter Email" name="email" required>
                     
-                            
-                            <div class="icon">
-                                <i class="fa-solid fa-envelope"></i>
-                                <input type="text" placeholder="Enter Email" name="email" required>
-                            </div>
-                    
-                    
-                            <div class="icon">
-                                <i class="fa-solid fa-lock"></i>
-                                <input type="password" placeholder="Enter Password" name="password" required>
-                                <!-- <input onchange={validatePassword} type="password" placeholder="Password" id="password" required> -->
-                            </div>
-                    
-                            <div class="icon">
-                                <i class="fa-solid fa-key"></i>
-                                <input type="password" placeholder="Confirm Password" name="passwordConfirm" required>
-                                <!-- <input onchange={validatePassword} type="password" placeholder="Confirm Password" id="confirm_password" required> -->
-                            </div>
-                    
-                    
-                            <div class="icon">
-                                <i class="fa-solid fa-cake-candles"></i>
-                                <input type="date" name="birthdate" required>
-                            </div>
-                            
-                            <div class="buttons">
-                            <button type="submit">Register</button>
-                            </div>
-                        </form>
-                    </div>
+                        <input type="password" placeholder="Enter Password" name="password" required>
+                
+                        <div class="buttons">
+                        <button type="submit">Login</button>
+                        <a href="/register"><button>Register</button></a>
+                        </div>
+                
+                    </form>
+                </div>
 
             </div> 
 </section>
@@ -106,7 +85,7 @@ height: 100vh;
     height: inherit;
     // bottom: 100vh;
     z-index: 1;
-background-image: url("../../../lib/assets/images/abstract5.jpg");
+background-image: url("../../../lib/assets/images/abstract4.jpeg");
 background-repeat: no-repeat;
 background-size: cover;
 filter: blur(35px);
@@ -185,16 +164,16 @@ position: relative;
   z-index: 99;
   display: flex;
 .left{
-//     display: flex;
-// min-width: 40vw;
-// flex-direction: column;
-// align-items: center;
-// min-height: 80vh;
-// justify-content: center;
-// color: var(--textcolor);
-// font-size: 34px;
-// font-family: var(--font);
-// padding: 5%;    
+    display: flex;
+min-width: 40vw;
+flex-direction: column;
+align-items: center;
+min-height: 80vh;
+justify-content: center;
+color: var(--textcolor);
+font-size: 34px;
+font-family: var(--font);
+padding: 5%;    
 }
 .right{
 
@@ -202,24 +181,15 @@ position: relative;
 }
 
 
-.registerContent{
-padding: 10%;
+.loginContainer{
+padding: 5%;
 display: flex;
-min-width: 85vw;
+min-width: 50vw;
 flex-direction: column;
 align-items: center;
-min-height: 50vh;
+min-height: 80vh;
 justify-content: center;
-font-family: var(--font);
-color: var(--textcolor);
-a{
-    text-decoration:none;
-    color: var(--accent1);
-}
-.icon{
-    font-size: 2rem;
-    text-shadow: 0 10px 10px #000000;
-}
+
 h1{
     font-family: var(--font);
     text-align: center;
@@ -242,6 +212,7 @@ h1{
         }
         .buttons{
             display: flex;
+            width: 20rem;
             justify-content: space-between;
             margin-top: 20px;
             button{

@@ -1,7 +1,7 @@
 <script>
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
-    import bgwaves from '$lib/assets/svg/bgwaves.svg';
+    // import bgwaves from '$lib/assets/svg/bgwaves.svg';
     let redirecting = false;
     onMount(async () => {
       redirecting = true;
@@ -19,7 +19,7 @@
     <meta charset="utf-8" />
     <title>Ooops</title>
   </head>
-  <body style="background-image: url({bgwaves});">
+  <body>
     <div class="wrapper">
     <h1>An error has occured 😔</h1>
     <p class="code">ErrorCode:{$page.status}</p>
@@ -30,15 +30,38 @@
       <div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>  
     {/if}
+    <div class="bgimg"/>
   </body>
 
   <style lang="scss">
+    .bgimg{
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    // bottom: 100vh;
+    z-index: 1;
+background-image: url("../lib/assets/images/error.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+filter: blur(5px);
+-webkit-filter: blur(5px);
+// opacity: .7;
+
+}
     body {
-      background-repeat: no-repeat;
-      background-size: cover;
+      // background-repeat: no-repeat;
+      // background-size: cover;
+      max-width: 100vw;
+      max-height:100vh;
+      background-color: black;
+
     }
     .wrapper {
-      background-color: var(--dark);
+      position: relative;
+      z-index: 2;
+      background-color: #fff1;
       display: flex;
       height: 80vh;
       margin: 50px;
@@ -48,16 +71,16 @@
       justify-content: center;
     h1{
       color: var(--textcolor);
-      font-family: "iceland";
+      font-family: var(--font);
       font-size: 64px;
     }
     .code{
-      font-family: "JetBrains Mono";
+      font-family: var(--subfont);
       color: var(--textcolor);
       font-size: 24px;
     }
     .message{
-      font-family: "JetBrains Mono";
+      font-family: var(--subfont);
       color: var(--textcolor);
       font-size: 32px;
 

@@ -16,26 +16,29 @@
 
             <div class="menuopts">
 
-              <a class="navItem" href="/profile">
-                <!-- <i class="fa-solid fa-user"></i> -->
+              <a class="navItem {$page.url.pathname == "/profile" ? 'active' : ''}" href="/profile" >
                 <i class="fa-regular fa-address-card rgtext"></i>
                 <p>User</p>
             </a>
 
-            <a class="navItem" href="/stats">
-              <!-- <i class="fa-regular fa-chart-pie"></i> -->
-              <i style="margin-left: 5px;" class="fa-regular fa-chart-bar rgtext"></i>
+            <a class="navItem {$page.url.pathname == "/stats" ? 'active' : ''}" href="/stats">
+              <i style="margin-left: .3rem" class="fa-regular fa-chart-bar rgtext"></i>
               <p>Stats</p>
           </a>
 
-          <a class="navItem" href="/feed">
+          <a class="navItem {$page.url.pathname == "/feed" ? 'active' : ''}" href="/feed">
             <i class="fa-regular fa-comments rgtext"></i>
           <p>Feed</p>
       </a>
 
+      <a class="navItem {$page.url.pathname == "/workout" ? 'active' : ''}" href="/workout">
+        <i style="margin-left: 1rem" class="fa-solid fa-dumbbell rgtext"></i>
+      <p>Workout</p>
+  </a>
+
+
               <form action="/logout" method="POST"class="logout">
                 <button type="submit" class="logout">
-                  <!-- <i class="fa-solid fa-right-from-bracket"></i> -->
                   <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </button>
               </form>
@@ -55,7 +58,7 @@
             .navContainer{
               position:absolute;
               background-color: var(--dark);
-              width: 5vw;
+              min-width: 6vw;
               height: 100vh;
               align-items: center;
               .logoContainer{
@@ -72,12 +75,25 @@
                 flex-direction: column;
                 flex-wrap: wrap;
                 align-items: center;
-
+                  
                 .navItem{
-                  height: 50px;
+                  height: 6vh;
                   text-decoration: none;
-                  color: var(--accent1);
-                  padding: 20px 0px 20px 0px;
+                  // color: var(--accent1);
+                  padding: 1rem 0px 1rem 0px;
+                  &.active{
+                    i{
+                      display: none;
+                    }
+                    p{
+                      height: fit-content;
+                      opacity: 1;
+                      position: relative;
+                      top: 0px;
+                      // height: 0px;
+                    }
+                    // background-color: red;
+                  }
                   i{
                     animation: fadeIn 3s forwards;
                     font-size: 2.5rem;
@@ -90,7 +106,8 @@
                     opacity: 0%;
                     top: -65px;
                     height: 0px;
-                    animation: fadeOut 1s forwards;
+                    // display: none;
+                    // animation: fadeOut 1s forwards;
                     font-size: 1.5rem;
 
                   }
@@ -102,7 +119,7 @@
                     color: var(--accent2);
                     font-size: 30px;
                     position: relative;
-                    top: 10vh;
+                    top: 5vh;
                   }
                   .logout:hover{
                     color: var(--accent1);
@@ -112,6 +129,7 @@
                     animation: fadeOut 2s forwards;
                   }
                   p{
+                    opacity: 0;
                     animation: fadeIn 3s forwards;
                   }
 
