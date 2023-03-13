@@ -21,7 +21,7 @@
     <nav>
         <a href="/">Home</a>
         <a href="/#downloads">Download <i class="fa-solid fa-arrow-turn-up" style="text-align:start"></i></a>
-        <a href="/">Contibutors</a>
+        <a href="/contributors">Contributors</a>
         <a href="/register">Register</a>
         <a href="/login" class="active"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
     </nav>
