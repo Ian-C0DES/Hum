@@ -1,7 +1,10 @@
 <script>
     export let data;
-
+    const {userRoutines} = data;
     let newRoutinename;
+    let viewedRoutineID;
+    // const {userRoutines} = data;
+    console.log(userRoutines);
 
     const setNewname = (e) => {
         newRoutinename = e.target.value
@@ -11,11 +14,15 @@
         localStorage.setItem('newRoutinename_temp', newRoutinename);
         window.location.replace("/workout/create");
     }
+    const viewForm = () => {
+        localStorage.setItem('viewing', viewedRoutineID);
+        window.location.replace("/workout/view");
+    }
 </script>
 
 <body>
     <div id="content">
-        <!-- <h1> Workouts</h1> -->
+        <!-- <h1 class="rgtext"> Workouts</h1> -->
         <div class="container">
             
             <div class="create">
@@ -52,23 +59,39 @@
                 <p class="head">View</p>
                 <p class="subtext">Share and update</p>
                 <div class="cardContainer">
-                    
-                    <!-- <div class="card">
+                    {#each userRoutines as routine (routine.id)}
+                    <div class="card">
                         <div class="icon">
-                            <i class="fa-solid fa-circle-plus rgtext"></i>
+                        <!-- <input type="text" placeholder="routine id" name="id" value="{routine.id}" > -->
+                <a href="/workout/view/{routine.id}">
+                    <!-- <i class="fa-solid fa-circle-plus rgtext"></i> -->
+                    <i class="fa-solid fa-eye rgtext"></i>
+                </a>
+                    
                         </div>
                         <div class="title">
-                            <input type="text" placeholder="Enter routine name" name="title" id="">
+                            <p>
+                                {routine.name}                                
+                            </p>
                         </div>
-                        <p class="details">
-                            click to get started
-                        </p>
+                        <div class="details">
+        
+<ul>
+
+                                {#each Object.values(routine.routine) as thisExercise}
+                                <li>
+                                    {thisExercise.exercise} - {thisExercise.weight}lbs - {thisExercise.sets}x{thisExercise.reps}
+                                </li>
+                                {/each}
+                                
+          </ul>
+        </div>
                         <p class="footer">
-                            footer here
+                            {routine.created.slice(0,10)}
                         </p>
                         
-                    </div> -->
-
+                    </div>
+                    {/each}
                 </div>
             </div>
 
@@ -94,7 +117,8 @@ body {
         text-align: center;
     }
     .container{
-        flex-direction: row;
+        flex-direction: column;
+        // flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-evenly;
         display: flex;
@@ -132,7 +156,7 @@ body {
                 grid-template-areas:
                 "icons title title title"
                 "icons details details details"
-                "footer footer footer footer";
+                "icons footer footer footer";
                 border: 3px gray solid;
                 border-radius: 18px;
                 padding: .2rem;
@@ -140,6 +164,14 @@ body {
 
                 .title{
                     grid-area: title;
+                    p{
+                        all: unset;
+                        color: var(--textcolor);
+                        font-family: var(--font);
+                        font-size: 2rem;
+                        margin: none;
+                        font-weight: 500;
+                    }
                     input{
                         border: transparent;
                         background-color: transparent;
@@ -152,11 +184,19 @@ body {
                 }
                 .icon{
                     grid-area: icons;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     i{
-                        padding-top: 1rem;
+                        // padding-top: 1rem;
+                        cursor: pointer;
+                        padding: 1rem;
                         width: 100%;
                         text-align: center;
                         font-size: 3rem;
+                        &:hover{
+                            opacity: .4;
+                        }
                     }
                 }
                 .details{
