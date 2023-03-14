@@ -148,7 +148,7 @@ body {
         }
         .cardContainer{
             
-            min-height: 60vh;
+            // min-height: 60vh;
             padding: 1rem;
             background-color: rgba($color: #000000, $alpha: .10);
             .card{
@@ -158,9 +158,10 @@ body {
                 "icons title title title"
                 "icons details details details"
                 "icons footer footer footer";
-                border: 3px gray solid;
+                border: 1px rgba(255, 255, 255, 0.3) solid;
                 border-radius: 18px;
-                padding: .2rem;
+                padding: .5rem;
+                margin-bottom: 1rem;
                 // background-color: blue;
 
                 .title{
