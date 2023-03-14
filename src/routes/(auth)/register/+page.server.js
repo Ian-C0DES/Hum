@@ -14,7 +14,8 @@ export const actions = {
 		const defaultStatsData = {
 			"weights": "{}",
 			"bmi": "{}",
-			"caloric_intake": "{}"
+			"caloric_intake": "{}",
+			"routine_stats": "{}"
 		};
 		
 		// console.log(formData);
