@@ -20,7 +20,7 @@
     <nav>
         <a href="/">Home</a>
         <a href="/#downloads">Download <i class="fa-solid fa-arrow-turn-up" style="text-align:start"></i></a>
-        <a href="/contibutors">Contibutors</a>
+        <a href="/contributors">Contributors</a>
         <a href="/register" class="active">Register</a>
         <a href="/login" ><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
     </nav>
