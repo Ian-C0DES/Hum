@@ -100,6 +100,7 @@
                   }
                   p{
                     font-family: "iceland";
+                    // font-family: var(--font);
                     // font-weight: 1000px;
                     position: relative;
                     color: var(--accent2);

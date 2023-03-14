@@ -45,7 +45,7 @@
    
     {#each Array(cardAmount) as _, i}
     <!-- <li>{i + 1}</li> -->
-    <WorkoutCard cardNumber={cardAmount++} isFresh={true}/>
+    <WorkoutCard cardNumber={i++} isFresh={true}/>
 {/each}
 
 {#if cardAmount > 0}

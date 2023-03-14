@@ -13,7 +13,7 @@
       setTimeout(() =>{
         // window.location.replace((document.referrer != ($page.url.href)? document.referrer : "/"));
         window.location.replace((data.user? "/profile" : "/"));
-      },6000);
+      },3000);
 	});
     
 </script>

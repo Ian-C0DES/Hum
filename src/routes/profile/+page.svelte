@@ -157,7 +157,7 @@ let m = today.getMonth() - birthDate.getMonth();
         margin-top: 10vh;
         color: var(--textcolor);
         font-size: 52px;
-        font-family: 'JetBrains Mono';
+        font-family: var(--font);
         width: fit-content;
         position: absolute;
         top: 3vh;
@@ -188,11 +188,11 @@ let m = today.getMonth() - birthDate.getMonth();
         background-color: rgba(15, 15, 15, 0.75);
         box-shadow: 5px 5px 5px #000000;
         h1{
-            font-family: "iceland";
+            font-family: var(--font);
 
         }
         p{
-            font-family: 'JetBrains Mono';
+            font-family: var(--font);
         }
     }
     .pfpContainer{
@@ -221,7 +221,7 @@ let m = today.getMonth() - birthDate.getMonth();
         input{
             border:none;
     outline-width: 0;
-            font-family: 'JetBrains Mono';
+            font-family: var(--font);
             cursor: pointer;
             position: relative;
             width: 150px;
@@ -276,20 +276,20 @@ let m = today.getMonth() - birthDate.getMonth();
 div::after{
     position: relative;
     right: 75px;
-    font-family: "JetBrains Mono";
+    font-family: var(--font);
     color: var(--textcolor);
 }
     /* set the unit abbreviation for each unit class */
 .lbs::after {
   content: 'lbs';
-  font-family: 'JetBrains Mono';
+  font-family: var(--font);
 }
 .age::after {
   content: ' y/o';
-  font-family: 'JetBrains Mono';
+  font-family: var(--font);
 }
 .height::after {
   content: 'in';
-  font-family: 'JetBrains Mono';
+  font-family: var(--font);
 }
 </style>

@@ -16,11 +16,13 @@
 
 import squat from "$lib/assets/images/exercises/dallesquat.png"
 
-// cardNumber++;
+cardNumber++;
 const this_cardNumber = cardNumber;
 
 
 let selectedWorkout;
+
+let isCompleted = false;
 // let x = selectedWorkout.value
 onMount (() => {
         console.log("mounted card: "+ cardNumber)
@@ -33,6 +35,14 @@ onMount (() => {
         selectedWorkout = squat;
         console.log(selectedWorkout);
       };
+      const setCompleted =(e) =>{
+
+        console.log(isCompleted);
+        ( isCompleted?  isCompleted= false : isCompleted= true)
+        console.log(isCompleted);
+      };
+
+      
 </script>
 
 
@@ -50,8 +60,8 @@ onMount (() => {
  <!-- <h1>{this_cardNumber}</h1> -->
  
     <!-- <label for="exercise">Exercise:</label> -->
+    {#if !exercise}
     <div class="exercise">
-
     <select on:change={workoutChange} name="workout[{this_cardNumber}][exercise]" id="workout">
       <optgroup label="Arms">
         <option value="bicep_curls">Bicep Curls</option>
@@ -64,11 +74,12 @@ onMount (() => {
     </select>
   </div>
 
+  
   <div class="weight">
     <!-- <label for="weight">Lbs:</label> -->
 
 <input type="number" id="" name="workout[{this_cardNumber}][weight]"
-placeholder="Weight"
+placeholder=""
 >
   </div>
 
@@ -76,7 +87,7 @@ placeholder="Weight"
        <!-- <label for="sets">Sets:</label> -->
 
 <input type="number" id="" name="workout[{this_cardNumber}][sets]" 
-placeholder="Sets"
+placeholder="Set"
 >
 <!-- min="1" max="10" -->
 </div>
@@ -85,10 +96,106 @@ placeholder="Sets"
        <!-- <label for="reps">Reps:</label> -->
 
 <input type="number" id="" name="workout[{this_cardNumber}][reps]" 
-placeholder="Reps"
+placeholder="Rep"
 >
 <!-- min="10" max="100" -->
 </div>
+
+
+{:else}
+<!-- {this_cardNumber} -->
+
+<div class="exercise">
+<select style="padding-right: 1rem;" value="{exercise}" name="workout[{this_cardNumber}][exercise]" id="workout">
+<option value="{exercise}">{exercise}</option>
+</select>
+</div>
+
+<!-- <div class="weight">
+  <input readonly value=
+  {weight}lbs>
+</div>
+<div class="sets">
+  <input readonly value=
+  {sets}x
+  >
+</div>
+<div class="reps">
+  <input readonly value=
+  {reps}x>
+</div> -->
+
+<div class="weight">
+  <!-- <label for="weight">Lbs:</label> -->
+
+<input type="number" id="" name="workout[{this_cardNumber}][weight]"
+placeholder="{weight}"
+ value="{weight}"
+>
+</div>
+
+<div class="sets">
+     <!-- <label for="sets">Sets:</label> -->
+
+<input type="number" id="" name="workout[{this_cardNumber}][sets]" 
+placeholder="{sets}"
+ value="{sets}"
+>
+<!-- min="1" max="10" -->
+</div>
+
+<div class="reps">
+     <!-- <label for="reps">Reps:</label> -->
+
+<input type="number" id="" name="workout[{this_cardNumber}][reps]" 
+placeholder="{reps}"
+ value="{reps}"
+>
+<!-- min="10" max="100" -->
+</div>
+
+
+{#if isCompleted}
+<button on:click|preventDefault={setCompleted} style="" >
+  <input style="display: none;" type="text" name="workout[{this_cardNumber}][completed]" id="" value="{isCompleted}">
+  <i style="color: green; opacity:1;" class="fa-solid fa-check"></i>
+ </button>
+{:else}
+<button on:click|preventDefault={setCompleted} style="" >
+  <input style="display: none;" type="text" name="workout[{this_cardNumber}][completed]" id="" value="{isCompleted}">
+  <i class="fa-solid fa-check rgtext"></i>
+ </button>
+{/if}
+
+
+{/if}
+
+
+  <!-- <div class="weight">
+    <label for="weight">Lbs:</label> -->
+
+<!-- <input type="number" id="" name="workout[{this_cardNumber}][weight]"
+placeholder="Weight"
+> -->
+  <!-- </div> -->
+
+  <!-- <div class="sets"> -->
+       <!-- <label for="sets">Sets:</label> -->
+
+<!-- <input type="number" id="" name="workout[{this_cardNumber}][sets]" 
+placeholder="Sets"
+> -->
+<!-- min="1" max="10" -->
+<!-- </div> -->
+
+<!-- <div class="reps"> -->
+       <!-- <label for="reps">Reps:</label> -->
+
+<!-- <input type="number" id="" name="workout[{this_cardNumber}][reps]" 
+placeholder="Reps"
+> -->
+<!-- min="10" max="100" -->
+<!-- </div> -->
 
 </div>
     <!-- <i class="fa-solid fa-circle-plus rgtext"></i> -->
@@ -106,16 +213,20 @@ placeholder="Reps"
     </div>
       <div class="weight">
         <input readonly value=
-        {weight}lbs>
+        {weight}
+        style="opacity: 1;"
+        >
       </div>
       <div class="sets">
         <input readonly value=
-        {sets}x
+        {sets}
+        style="opacity: 1;"
         >
       </div>
       <div class="reps">
         <input readonly value=
-        {reps}x>
+        {reps}
+        style="opacity: 1;">
       </div>
   </div>
 </div>
@@ -171,19 +282,63 @@ placeholder="Reps"
           .weight{
             input{
               width: 4rem;
+              opacity: .4;
             }
+            &::after {
+            content: "lbs";
+            position: relative;
+            right: 2rem;
+            opacity: 0.4;
+          }
           }
           .sets{
             input{
               width: 4rem;
+              opacity: .4;
             }
+            &::after {
+            content: "x";
+            position: relative;
+            right: 2.5rem;
+            opacity: 0.4;
+          }
           }
           .reps{
             input{
               width: 4rem;
+              opacity: .4;
             }
+            &::after {
+            content: "x";
+            position: relative;
+            right: 2.5rem;
+            opacity: 0.4;
+          }
           }
 
+          input:focus{
+            // color: red;
+            opacity: 1;
+          }
+
+          button{
+            // color:gray;
+            all: unset; 
+            font-size: 1.6rem;
+            cursor:pointer;
+            i{
+              opacity: 0.2;
+            }
+
+          }
+        }
+        &:hover{
+          .fields {
+          i{
+            opacity: 1;
+            color: #000000;
+          }
+        }
         }
     }
     /* Chrome, Safari, Edge, Opera */

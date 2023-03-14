@@ -17,6 +17,7 @@
 
 {:else}
     <main>
+        
     {#if $navigating}
         <PreloadingIndicator />
     {/if}

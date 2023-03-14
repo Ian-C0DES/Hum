@@ -1,5 +1,5 @@
 <script>
-import Chart from '$lib/components/weightChart.svelte'
+import Chart from '$lib/components/Chart.svelte'
 export let data;
 const {userStats} = data;
 let expected = (Math.round((0.029*(data.user.height*data.user.height)) * 100) / 100); 

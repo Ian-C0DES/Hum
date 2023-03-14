@@ -4,11 +4,11 @@
     let newRoutinename;
     let viewedRoutineID;
     // const {userRoutines} = data;
-    console.log(userRoutines);
+    // console.log(userRoutines);
 
     const setNewname = (e) => {
         newRoutinename = e.target.value
-        console.log(newRoutinename);
+        // console.log(newRoutinename);
     }
     const createForm = () => {
         localStorage.setItem('newRoutinename_temp', newRoutinename);
@@ -43,10 +43,10 @@
                             <input type="text" placeholder="Enter routine name" name="title" id="" on:change={setNewname} >
                         </div>
                         <p class="details">
-                            click to get started
+                            A strong mind needs a strong body, Click the plus to create a new routine
                         </p>
                         <p class="footer">
-                            footer here
+                            {new Date().toJSON().slice(0,10)}
                         </p>
                         
                     </div>
@@ -126,6 +126,7 @@ body {
 
         }
         .view{
+            
 
         }
         .head{
@@ -202,7 +203,14 @@ body {
                 .details{
                     grid-area: details;
                     margin: 0px;
-                }
+                    font-family: var(--font);
+                    color: var(--textcolor);
+                    ul li{
+                        list-style-type: square;
+                        font-family: var(--font);
+                    color: var(--textcolor);
+                    }
+                }   
                 .footer
                 {
                     text-align: end;
