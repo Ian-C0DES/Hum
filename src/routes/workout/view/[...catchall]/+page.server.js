@@ -49,7 +49,8 @@ export const actions = {
             console.log(stats);     
 		try { 
             await locals.pb.collection('user_statistics').update(userstats.id, {
-                "routine_stats" : stats,
+                "userID": locals.user.id,
+                "routine_stats" : stats
             })
         } 
         catch (err) {

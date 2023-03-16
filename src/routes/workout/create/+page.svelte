@@ -81,12 +81,15 @@
             background-size: 100% 3px;
             background-repeat: no-repeat;
             background-position: left bottom;
+            align-items: center;
             h1{
                 color: var(--textcolor);
-                font-size: 3rem;
+                font-size: 2.5rem;
                 font-family: var(--font);
                 font-weight: 800;
                 margin-bottom: 1rem;
+                white-space:nowrap;
+                overflow-x: hidden;
             }
             button{
                 cursor: pointer;

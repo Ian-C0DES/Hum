@@ -1,10 +1,10 @@
 <script>
     import Humman from '$lib/assets/humman.svelte'
-    import abstract from '$lib/assets/images/abstract.jpg'
+    // import abstract from '$lib/assets/images/abstract.jpg'
     import { onMount } from 'svelte';
     // import './style.scss'
 
-    // const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
+    // const vw = Math.max(document.documentElement.    clientWidth || 0, window.innerWidth || 0)
 // const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 	let canvas;
     let vw;
