@@ -1,17 +1,23 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
     import WorkoutCard from '$lib/components/WorkoutCard.svelte';
+    import { page } from '$app/stores';
     export let data;
     const {routine} = data;
 
     let modalShow = false;
     let logging = false;
-
-
+    let shareClicked = false;
+    let deleteForm;
     onMount (() => {
-        // console.log("mounted")
+        console.log("mounted")
+        deleteForm = document.getElementById("delete");
+
       });
 
+      const confirmDelete = () =>{
+        deleteForm.action;
+      }
 </script>
 
 <body>
@@ -40,7 +46,16 @@
 
     <div class="btnContainer">
         {#if !logging}
-        <button ><i class="fa-solid fa-share-from-square rgtext"></i></button>
+
+        {#if shareClicked}
+        <div class="sharetoast"> Copied to clipboard </div>
+        {/if}
+        <button on:click={() => {
+        (!shareClicked? shareClicked = true: null);
+        setTimeout(() => {shareClicked = false},4500);
+        navigator.clipboard.writeText($page.url.href);}
+
+        }><i class="fa-solid fa-share-from-square rgtext"></i></button>
         {:else}
         <button type="submit" form="form" ><i class="fa-regular fa-square-check rgtext"></i></button>
         {/if}
@@ -50,12 +65,29 @@
         {#if data.user.id == routine.expand?.userID?.id}
 
         {#if modalShow}
-        <form action="?/delete" method="post">
+        <form action="?/delete" method="post" id="delete">
             <div class="modalContainer">
                 <div class="modal">
                     <p> Are you sure you want to delete this routine?</p>
-                    <button type="submit">CONFIRM</button>
-                    <button style="padding-top: 3rem; " on:click|preventDefault={()=>{(!modalShow? modalShow=true:modalShow=false); console.log(modalShow)}}>CANCEL</button>
+                    <div class="confirm">
+
+                        <button on:click={confirmDelete}>
+                            <a>Confirm
+                                <span></span>
+                                <span></span>
+                              </a>
+                        </button>
+
+                        <button class="cancelBtn" on:click|preventDefault={()=>{(!modalShow? modalShow=true:modalShow=false); console.log(modalShow)}}>
+                            <a>Cancel
+                                <span></span>
+                                <span></span>
+                              </a>
+                        </button>
+                    </div>
+                    
+                    <!-- <button type="submit">CONFIRM</button>
+                    <button style="padding-top: 3rem; " on:click|preventDefault={()=>{(!modalShow? modalShow=true:modalShow=false); console.log(modalShow)}}>CANCEL</button> -->
                 </div>
             </div>
         </form>
@@ -127,10 +159,12 @@
             background-position: left bottom;
             h1,span{
                 color: var(--textcolor);
-                font-size: 3rem;
+                font-size: 2.5rem;
                 font-family: var(--font);
                 font-weight: 800;
                 margin-bottom: 1rem;
+                white-space:nowrap;
+                overflow-x: hidden;
             }
             button{
                 cursor: pointer;
@@ -196,27 +230,145 @@
         z-index: 99;
         // background-color: red;
         left: 10vw;
-        .modal{
-    background-color: rgba($color: #000000, $alpha: .30);
-    display: flex;
+        display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+        .modal{
+    background-color: rgba($color: #000000, $alpha: .7);
+    // background-image: url(../../../../lib/assets/images/abstract4.jpeg);
+    // filter: blur(-30px);
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    height: 20vw;
+    width: fit-content;
     justify-content: center;
-    border-radius: 5rem;
+    border-radius: 2rem;
     p{
+        margin: 3rem;
         color: var(--textcolor);
-        text-decoration: underline red;
+        // text-decoration: underline red;
         font-family: var(--font);
         font-size: 2rem;
+        font-weight: 900;
+        background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            background-size: 100% 3px;
+            background-repeat: no-repeat;
+            background-position: left bottom;   
         
     }
-    button{
-        font-size: 3rem;
-        text-decoration: initial;
-        font-family: var(--font);
-        color: gray;
+    .confirm{
+        width: 100%;
+        // height: 100%;
+        display: flex;
+        // background-color: red;
+        justify-content: center;
     }
+    // button{
+    //     font-size: 3rem;
+    //     text-decoration: initial;
+    //     font-family: var(--font);
+    //     color: gray;
+    // }
+
+
+    a {
+  border-radius: 12px;
+  border: 3px outset #888;
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  color: var(--textcolor);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  overflow: hidden;
+  
+  box-shadow: 0 0 10px rgb(0, 0, 0, 1);
+  font-family: verdana;
+  font-size: 28px;
+  font-weight: bolder;
+  text-decoration: none;
+//   background:linear-gradient(160deg, #666, #444);
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+
+  transition: 0.2s;
+
+}
+a:hover {
+  border: 3px outset #ddd;
+  color: #fff;
+//   background: linear-gradient(160deg, #666, #444);
+  text-shadow: 0px 0px 4px #ccc;
+  box-shadow: 0 0 1rem var(--accent1), 0 0 .1rem var(--accent2), 0 0 1rem var(--accent1);
+  transition-delay: 1s;
+}
+
+a span {
+  position: absolute;
+  display: block;
+}
+
+a span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+}
+a:hover span:nth-child(1) {
+  left: 100%;
+  transition: 1s;
+}
+a span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+}
+a:hover span:nth-child(2) {
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+a span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+//   background: linear-gradient(270deg, transparent, #eee);
+}
+a:hover span:nth-child(3) {
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+}
+
+a span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+//   background: linear-gradient(360deg, transparent, #eee);
+}
+a:hover span:nth-child(4) {
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
+}
         }
+    }
+    .sharetoast{
+        color: var(--textcolor);
+        font-family: var(--font);
+        position: absolute;
+        padding: .5rem;
+        background-color: rgba($color: #000000, $alpha: .50);
+        border-radius: 18px;
+        opacity: 1;
+        right: 13rem;
+        top: 0;
+        animation: fadeOut 3s forwards;
+        animation-delay: 1s;
     }
 </style>

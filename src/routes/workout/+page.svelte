@@ -14,10 +14,6 @@
         localStorage.setItem('newRoutinename_temp', newRoutinename);
         window.location.replace("/workout/create");
     }
-    const viewForm = () => {
-        localStorage.setItem('viewing', viewedRoutineID);
-        window.location.replace("/workout/view");
-    }
 </script>
 
 <body>

@@ -1,29 +1,43 @@
 <script>
-import Chart from '$lib/components/Chart.svelte'
+import Chart from '$lib/components/Chart.svelte';
 export let data;
 const {userStats} = data;
 let expected = (Math.round((0.029*(data.user.height*data.user.height)) * 100) / 100); 
-console.log(expected);
-// console.log();
-// for (var i = 0; i < userStats.weights.length; i++) {
-//     labels.push(array[i].label);
-//     values.push(array[i].value);
-// }
-// const keysArray = Object.keys(userStats.weights); // creates an array of keys: ['1', '2', '3', '4']
-// const valuesArray = Object.values(userStats.weights); // creates an array of values: ['145', '150', '165', '175']
-// console.log(keysArray);
-// console.log(valuesArray);
+
 let currentChart = "weight"
-const changeChart = () => {
-  if (currentChart == "weight") {
-    currentChart = "bmi";
-    // console.log(currentChart);
-  }
-  else if (currentChart == "bmi") {
-  currentChart = "weight";
-  // console.log(currentChart);
-  }
+let pointer=0;
+let selected = null
+
+$: selected
+$: currentChart = charts[pointer]
+
+let charts={
+  0:"weights",
+  1:"bmi",
+  2:"workouts"
 }
+
+let subopts = [
+];
+
+let workouts= userStats.routine_stats;
+
+  Object.entries(userStats.routine_stats).forEach(element => {
+    subopts.push(element[0]);
+  });
+
+const incrementChart = () => {
+  ((pointer + 1)> (Object.entries(charts).length - 1)? pointer=0:pointer++);
+  console.log(pointer);
+  selected=null;
+}
+
+const decrementChart = () => {
+  ((pointer - 1)<=0? pointer=(Object.entries(charts).length - 1):pointer--);
+  console.log(pointer);
+  selected=null;
+}
+
 </script>
 
  <body>
@@ -47,24 +61,52 @@ const changeChart = () => {
     </div>
 
     <div class="chartContainer">
-      {#if currentChart == "weight"}
-      <h1>W e i g h t</h1>  
-      <div class="chart">
+      {#key currentChart}
+      <h1>
+      {#each currentChart as letter }
+      {" "+letter+" "}
+      {/each}
+    </h1> 
+    {#if currentChart != "workouts"}
+    <div class="chart">
+    <Chart goal={expected} chartType={currentChart} userdata={userStats[currentChart]}/>
+  </div>
+    {:else if currentChart == "workouts"  && selected == null}
+    <div class="chart">
+      <Chart chartType={"workouts"} userdata={workouts}/>
+    </div>
 
-      <Chart goal={expected} chartType={"weight"} userdata={userStats.weights}/>
-      <!-- <Chart userdata={userStats.bmi}/> -->
-      </div>
-      {:else if currentChart == "bmi"}
-      <h1>B M I</h1>
-      <div class="chart">
+    {/if}
+      {/key}
 
-      <Chart chartType={"bmi"} userdata={userStats.bmi}/>
-      <!-- <Chart userdata={userStats.bmi}/> -->
-      </div>
-      {/if}
+    {#if selected != null}
+    <div class="chart">
+      {#key selected}
+    <Chart chartType={"bmi"} userdata={userStats.routine_stats[selected]}/>
+    {/key}
+  </div>
+    {/if}
+
+
+
       <div class="btnContainer">
-        <button style="margin-right: 30vw;" on:click={changeChart}><i class="fa-solid fa-arrow-left"></i></button> 
-        <button style="margin-left: 30vw;" on:click={changeChart}><i class="fa-solid fa-arrow-right"></i></button>
+        <button style="margin-right: 30vw;" on:click={decrementChart}><i class="fa-solid fa-arrow-left rgtext"></i></button> 
+
+        {#if currentChart == "workouts"}
+        <select bind:value={selected} >
+
+          {#if selected == null}
+          <option value={selected} selected disabled hidden>▼</option>
+          {/if}
+          
+          {#each subopts as value}
+          <option {value}>{value}</option>
+          {/each}
+          
+        </select>
+        {/if}
+
+        <button style="margin-left: 30vw;" on:click={incrementChart}><i class="fa-solid fa-arrow-right rgtext"></i></button>
       </div>
     
     </div>
@@ -168,6 +210,25 @@ const changeChart = () => {
           // box-shadow: 10px 10px 0px var(--bgcolor);
         } 
     }
+    select{
+      all: unset;
+      background-color: rgba(0, 0, 0, 0.2);
+      margin: 1rem;
+      // padding: 0%;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 18px;
+      color: var(--textcolor);
+      font-family: var(--font);
+      font-size: 1rem;
+      text-align: center;
+      align-self: center;
+      option{
+        font-size: 1rem;
+        color: black;
+        background-color: rgba(0, 0, 0, 0.2);
+        // padding: 3rem;
+      }
+    } 
     @keyframes collapseSpacing{
       from{
         word-spacing: 4rem;
