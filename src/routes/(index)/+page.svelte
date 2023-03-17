@@ -4,19 +4,21 @@
     import { onMount } from 'svelte';
     // import './style.scss'
 
-    // const vw = Math.max(document.documentElement.    clientWidth || 0, window.innerWidth || 0)
-// const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
 	let canvas;
     let vw;
     let vh;
+
     onMount(() => {
+    //     const vw = Math.max(document.documentElement.    clientWidth || 0, window.innerWidth || 0)
+    // const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
         // x = document.getElementsByClassName('navtab')[0];
+
 
         vw = window.innerWidth;
         vh = window.innerHeight;
 
-        console.log(vw);
-        console.log(vh);
+        // console.log(vw);
+        // console.log(vh);
 		const ctx = canvas.getContext('2d');
 		let frame = requestAnimationFrame(loop);
         
@@ -348,6 +350,10 @@ z-index: -1;
 
 
 #content{
+width: fit-content;
+height: fit-content;
+overflow-y: hidden;
+overflow-x: hidden;
     .pane{
     padding: 5% 0 5% 0;
     display: flex;
