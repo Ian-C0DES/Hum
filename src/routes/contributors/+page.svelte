@@ -34,24 +34,28 @@
                     </div>
                     <div class="row">
                         <div class="column">
-                            <h2 align = center>Ian Dowlatkhah</h2>
-                            <img src="src\lib\assets\images\abstract5.jpg" alt="pic" style="width:100%">
+                            <h2 align = center> <i class="fa-solid fa-code"></i>  Ian Dowlatkhah</h2>
+                            <img src="src\lib\assets\images\Ian.jpg" alt="pic">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, tenetur eaque officiis dolore doloremque nostrum corrupti inventore accusantium cum.</p>
+                            <p> <i class="fa-brands fa-github"> </i> Visit my <a href="https://github.com/Ian-C0DES">GitHub</a></p>
                         </div>
                         <div class="column">
-                            <h2 align = center>Nicholas Addington</h2>
-                            <img src="src\lib\assets\images\abstract5.jpg" alt="pic" style="width:100%">
+                            <h2 align = center> <i class="fa-solid fa-code-compare"></i>  Nicholas Addington</h2>
+                            <img src="src\lib\assets\images\nicholas_addington.png" alt="pic">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, tenetur eaque officiis dolore doloremque nostrum corrupti inventore accusantium cum.</p>
+                            <p> <i class="fa-brands fa-github"> </i> Visit my <a href="https://github.com/naddington1">GitHub</a></p>
                         </div>
                         <div class="column">
-                            <h2 align = center>Joseph Kolarik</h2>
-                            <img src="src\lib\assets\images\abstract5.jpg" alt="pic" style="width:100%">
+                            <h2 align = center> <i class="fa-solid fa-code-branch"></i>  Joseph Kolarik</h2>
+                            <img src="src\lib\assets\images\Joseph.jpg" alt="pic">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, tenetur eaque officiis dolore doloremque nostrum corrupti inventore accusantium cum.</p>
+                            <p> <i class="fa-brands fa-github"> </i> Visit my <a href="https://github.com/jkolarikGGC">GitHub</a></p>
                         </div>
                         <div class="column">
-                            <h2 align = center>Nic Bechtel</h2>
-                            <img src="src\lib\assets\images\abstract5.jpg" alt="pic" style="width:100%">
+                            <h2 align = center> <i class="fa-solid fa-code-pull-request"></i>  Nic Bechtel</h2>
+                            <img src="src\lib\assets\images\Nic.jpg" alt="pic">
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, tenetur eaque officiis dolore doloremque nostrum corrupti inventore accusantium cum.</p>
+                            <p> <i class="fa-brands fa-github"> </i> Visit my <a href="https://github.com/nicb21">GitHub</a></p>
                         </div>
                     </div>
             </div> 
@@ -108,6 +112,10 @@ p{
         color: var(--textcolor);
         font-family: var(--subfont);
         font-size: 1.2rem;
+}
+img{
+    width: 400px;
+    height: 400px;
 }
 .navtab{
 z-index: 999;
