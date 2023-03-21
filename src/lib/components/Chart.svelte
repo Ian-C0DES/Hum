@@ -9,15 +9,15 @@ const keysArray = Object.keys(userdata);
 const valuesArray = Object.values(userdata);
 
 
-console.log(userdata);
-console.log(keysArray);
-console.log(valuesArray);
+// console.log(userdata);
+// console.log(keysArray);
+// console.log(valuesArray);
 
 
 
 
 
-if (chartType =="weight") {
+if (chartType =="weights") {
   options = {
           series: [
             {
@@ -160,6 +160,57 @@ if (chartType =="bmi"){
 };
 }
 
+if (chartType == "workouts"){
+//   console.log(userdata);
+// console.log(keysArray);
+// console.log(valuesArray);
+
+let treedata = []
+
+keysArray.forEach(key => {
+  let thisTreenode = {
+    x: key,
+    y : Object.entries(userdata[key]).length
+  }
+  treedata.push(thisTreenode)
+});
+// console.log(treedata)
+
+
+  options = {
+          series: [
+          {
+            data: treedata
+          }
+        ],
+          legend: {
+          show: false,
+        },
+        chart: {
+            fontFamily: 'Inter',
+            height: "100%",
+            width:"100%",
+          type: 'treemap'
+        },
+        colors: ['#3E2BD2'],
+        fill: {
+    type: "gradient",
+    gradient: {
+      shade:"light",
+      shadeIntensity: .2,
+      opacityFrom: 0.7,
+      opacityTo: 0.9,
+      stops: [0, 90, 100]
+    }
+  },
+        title: {
+          text: ''
+        }
+        
+        };
+
+}
+
 
 
 </script>
@@ -179,6 +230,9 @@ if (chartType =="bmi"){
 {/if}
 
 <style lang="scss">
+  *{
+    color: black;
+  }
 .container{
   flex-wrap: wrap;
   flex-direction: column;

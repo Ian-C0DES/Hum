@@ -1,4 +1,5 @@
 <script>
+   import { page } from '$app/stores';
     import { onMount, onDestroy } from 'svelte';
     
     export let isFresh;
@@ -16,25 +17,55 @@
 
 import squat from "$lib/assets/images/exercises/dallesquat.png"
 
+let x;
 cardNumber++;
 const this_cardNumber = cardNumber;
-
-
 let selectedWorkout;
+$: selectedWorkout;
+$: bgImage = getImageUrl(selectedWorkout)
 
 let isCompleted = false;
+
+let subopts= [
+  
+    {
+      "optGroup":"Arms",
+      "opts":["Bicep Curls","Bench Press"]
+    },
+    {
+      "optGroup":"Leg",
+      "opts":["Squat","Calf Raises"]
+    },
+    {
+      "optGroup":"Shoulder & Back",
+      "opts":["Upright Rows","Shoulder Press",]
+    },
+]
+
+
+const getImageUrl = (selectedWorkout) =>{
+  console.log($page.route.id == '/workout/view/[...catchall]');
+  if ($page.route.id == '/workout/view/[...catchall]'){
+    
+    return `background-image: url("../../src/lib/assets/images/exercises/${selectedWorkout}.png");`;
+  }
+  
+  return `background-image: url("../src/lib/assets/images/exercises/${selectedWorkout}.png");`;
+};
+
+
 // let x = selectedWorkout.value
 onMount (() => {
         console.log("mounted card: "+ cardNumber)
       });
 
-      const workoutChange =(e) =>{
+      // const workoutChange =(e) =>{
 
-        // console.log(e.target.value);
-        selectedWorkout = e.target.value;
-        selectedWorkout = squat;
-        console.log(selectedWorkout);
-      };
+      //   console.log(e.target.value);
+      //   selectedWorkout = e.target.value;
+      //   selectedWorkout = squat;
+      //   console.log(selectedWorkout);
+      // };
       const setCompleted =(e) =>{
 
         console.log(isCompleted);
@@ -47,31 +78,41 @@ onMount (() => {
 
 
 {#if isFresh}
-
 <div class="card">
 
-  {#if selectedWorkout}
+  {#key selectedWorkout}
+
+  <div class="image" style="{bgImage}"></div>
+  {/key}
+
+  <!-- {#if selectedWorkout}
   <div class="image" style="background-image: url({selectedWorkout});"></div>
   {:else}
+
+
   <div class="image"></div>
-{/if}
+{/if} -->
 
   <div class="fields">
- <!-- <h1>{this_cardNumber}</h1> -->
- 
-    <!-- <label for="exercise">Exercise:</label> -->
+
     {#if !exercise}
     <div class="exercise">
-    <select on:change={workoutChange} name="workout[{this_cardNumber}][exercise]" id="workout">
-      <optgroup label="Arms">
-        <option value="bicep_curls">Bicep Curls</option>
-        <option value="bench">Bench Press</option>
+
+      <select bind:value={selectedWorkout} name="workout[{this_cardNumber}][exercise]" id="workout">
+      {#each subopts as subopts (subopts.optGroup)}
+      <optgroup label={subopts.optGroup}>
+
+        {#each subopts.opts as option }
+        <option value={option}>{option}</option>
+        {/each}
+
       </optgroup>
-      <optgroup label="Legs">
-        <option value="squat">Squat</option>
-        <option value="calf_raise">Calf Raises</option>
-      </optgroup>
+      {/each}
+
     </select>
+
+
+
   </div>
 
   
@@ -106,27 +147,12 @@ placeholder="Rep"
 <!-- {this_cardNumber} -->
 
 <div class="exercise">
-<select style="padding-right: 1rem;" value="{exercise}" name="workout[{this_cardNumber}][exercise]" id="workout">
-<option value="{exercise}">{exercise}</option>
+<select style="padding-right: 1rem;" bind:value={selectedWorkout} name="workout[{this_cardNumber}][exercise]" id="workout">
+<option value={exercise}>{exercise}</option>
 </select>
 </div>
 
-<!-- <div class="weight">
-  <input readonly value=
-  {weight}lbs>
-</div>
-<div class="sets">
-  <input readonly value=
-  {sets}x
-  >
-</div>
-<div class="reps">
-  <input readonly value=
-  {reps}x>
-</div> -->
-
 <div class="weight">
-  <!-- <label for="weight">Lbs:</label> -->
 
 <input type="number" id="" name="workout[{this_cardNumber}][weight]"
 placeholder="{weight}"
@@ -135,23 +161,22 @@ placeholder="{weight}"
 </div>
 
 <div class="sets">
-     <!-- <label for="sets">Sets:</label> -->
 
 <input type="number" id="" name="workout[{this_cardNumber}][sets]" 
 placeholder="{sets}"
  value="{sets}"
 >
-<!-- min="1" max="10" -->
+
 </div>
 
 <div class="reps">
-     <!-- <label for="reps">Reps:</label> -->
+
 
 <input type="number" id="" name="workout[{this_cardNumber}][reps]" 
 placeholder="{reps}"
  value="{reps}"
 >
-<!-- min="10" max="100" -->
+
 </div>
 
 
@@ -170,47 +195,33 @@ placeholder="{reps}"
 
 {/if}
 
-
-  <!-- <div class="weight">
-    <label for="weight">Lbs:</label> -->
-
-<!-- <input type="number" id="" name="workout[{this_cardNumber}][weight]"
-placeholder="Weight"
-> -->
-  <!-- </div> -->
-
-  <!-- <div class="sets"> -->
-       <!-- <label for="sets">Sets:</label> -->
-
-<!-- <input type="number" id="" name="workout[{this_cardNumber}][sets]" 
-placeholder="Sets"
-> -->
-<!-- min="1" max="10" -->
-<!-- </div> -->
-
-<!-- <div class="reps"> -->
-       <!-- <label for="reps">Reps:</label> -->
-
-<!-- <input type="number" id="" name="workout[{this_cardNumber}][reps]" 
-placeholder="Reps"
-> -->
-<!-- min="10" max="100" -->
-<!-- </div> -->
-
 </div>
-    <!-- <i class="fa-solid fa-circle-plus rgtext"></i> -->
+
 
 </div>
 {:else}
 
 <div class="card">
-  <div class="image" style="background-image: url({exercise});"></div>
+  {#key selectedWorkout}
+
+  <div class="image" style="{bgImage}"></div>
+  {/key}
+  <!-- <div class="image" style="background-image: url({exercise});"></div> -->
   
   <div style= "justify-content: center;" class="fields">
 
-    <div style="padding-right:1rem;" class="exercise">
+    <!-- <input readonly value=
+    {weight}
+    style="opacity: 1;"
+    > -->
+    <!-- {selectedWorkout} -->
+<select bind:value={selectedWorkout} aria-readonly="true" name="" id="">
+<option value={exercise}>{exercise}</option>
+</select>
+
+    <!-- <div style="padding-right:1rem;" class="exercise">
     {exercise}
-    </div>
+    </div> -->
       <div class="weight">
         <input readonly value=
         {weight}
@@ -233,13 +244,16 @@ placeholder="Reps"
 {/if}
 
 
+
+
+
 <style lang="scss">
     .card{
         margin: 1%;
         background-color: rgba($color: #000000, $alpha: .30);
         border-radius: 18px;
         width: 25vw;
-        height: 25vh;
+        height: 35vh;
         display: flex;
         flex-direction: column;
         input,select{
@@ -254,10 +268,16 @@ placeholder="Reps"
         }
         .image{
           // background-image: url(../assets/images/dallesquat.png);
-          height: 100%;
-          width: 100%;
-          border-radius: 18px 18px 0px 0px;
-          background-size:contain;
+          height:100%;
+          width: 80%;
+          display: flex;
+          align-self: center;
+          // border-radius: 18px 18px 0px 0px;
+          // border-radius: 18px;
+          background-size: cover;
+          // background-size: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
           // position: relative;
           // z-index: 2;
         }
