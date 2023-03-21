@@ -1,6 +1,7 @@
 <script>
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
+    export let data;
     // import bgwaves from '$lib/assets/svg/bgwaves.svg';
     let redirecting = false;
     onMount(async () => {
@@ -10,8 +11,9 @@
       // console.log($page.url.origin+"/");
       // console.log(document.referrer);
       setTimeout(() =>{
-        window.location.replace((document.referrer != ($page.url.href)? document.referrer : "/"));
-      },6000);
+        // window.location.replace((document.referrer != ($page.url.href)? document.referrer : "/"));
+        window.location.replace((data.user? "/profile" : "/"));
+      },3000);
 	});
     
 </script>

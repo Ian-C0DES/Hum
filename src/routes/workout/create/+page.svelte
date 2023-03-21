@@ -3,13 +3,13 @@
     import WorkoutCard from '$lib/components/WorkoutCard.svelte';
     export let data;
     let newRoutinename = "New Routine_name";
-    let cardContainer;
+    // let cardContainer;
     let cardAmount = 0;
     // customElements.define(WorkoutCard);
     onMount (() => {
         console.log("mounted")
         newRoutinename = localStorage.getItem("newRoutinename_temp");
-        cardContainer = document.getElementsByClassName('container')[0];
+        // cardContainer = document.getElementsByClassName('container')[0];
         // node = document.createElement("WorkoutCard");
 // menu.removeChild(menu.lastElementChild);
       });
@@ -38,13 +38,24 @@
     </div>
 </div>
 
+<form action="?/save" method="POST">
+    <input style="display: none;" type="text" name="routineName" value="{newRoutinename}">
 <div class="container">
+
+   
     {#each Array(cardAmount) as _, i}
     <!-- <li>{i + 1}</li> -->
-    <WorkoutCard isFresh={true}/>
+    <WorkoutCard cardNumber={i++} isFresh={true}/>
 {/each}
 
+{#if cardAmount > 0}
+<button class="saveBtn">
+    <i class="fa-regular fa-floppy-disk rgtext"></i>
+</button>
+{/if}
+
 </div>
+</form>
 
     </div>
 </body>
@@ -85,6 +96,9 @@
                 i{
                     font-size: 3rem;
                 }
+                &:hover{
+            opacity: 40%;
+        }
             }
         }
     }
@@ -98,5 +112,16 @@
         //     width: 25vw;
         //     height: 25vh;
         // }
+    }
+    .saveBtn{
+        all:unset;
+        cursor:pointer;
+        position: absolute;
+        left: 93%;
+        top: 80%;
+        font-size: 3rem;
+        &:hover{
+            opacity: 40%;
+        }
     }
 </style>
