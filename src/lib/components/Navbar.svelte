@@ -39,7 +39,7 @@
 
               <form action="/logout" method="POST"class="logout">
                 <button type="submit" class="logout">
-                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  <i class="fa-solid fa-door-open rgtext"></i>
                 </button>
               </form>
             </div>
@@ -54,6 +54,7 @@
           .sticky {
             z-index: 999;
             position: fixed;
+            // filter: blur(30px);
           }
             .navContainer{
               position:absolute;

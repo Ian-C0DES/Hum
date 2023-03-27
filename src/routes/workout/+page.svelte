@@ -171,11 +171,18 @@ body {
                         font-weight: 500;
                     }
                     input{
+                        color: var(--textcolor);
+                        font-family: var(--font);
+                        font-size: 1rem;
+                        font-weight: 500;
                         border: transparent;
                         background-color: transparent;
                         width: 98%;
                         height: 85%;
+                        border: none;
+                        outline: none;
                         &:focus{
+
                             border: transparent;
                         }
                     }  
@@ -210,6 +217,8 @@ body {
                 }   
                 .footer
                 {
+                    color: var(--textcolor);
+                        font-family: var(--font);
                     text-align: end;
                     margin: 0px 1rem 0px 0px;
                     grid-area: footer;
