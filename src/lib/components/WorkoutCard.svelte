@@ -15,7 +15,7 @@
     // console.log(sets)
     // console.log(reps)
 
-import squat from "$lib/assets/images/exercises/dallesquat.png"
+// import squat from "$lib/assets/images/exercises/dallesquat.png"
 
 let x;
 cardNumber++;

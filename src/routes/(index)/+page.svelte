@@ -7,13 +7,27 @@
 	let canvas;
     let vw;
     let vh;
-
+    let deferredPrompt;
     onMount(() => {
     //     const vw = Math.max(document.documentElement.    clientWidth || 0, window.innerWidth || 0)
     // const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
         // x = document.getElementsByClassName('navtab')[0];
 
 
+    window.addEventListener('beforeinstallprompt', (e) => {
+        deferredPrompt = e;
+    });
+
+    const installApp = document.getElementById('installApp');
+    installApp.addEventListener('click', async () => {
+        if (deferredPrompt !== null) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                deferredPrompt = null;
+            }
+        }
+    });
         vw = window.innerWidth;
         vh = window.innerHeight;
 
@@ -201,10 +215,10 @@
     </div>
   </div>
 
-<section class="pane">
+<section class="pane1">
     <div class="text">
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, tenetur eaque officiis dolore doloremque nostrum corrupti inventore accusantium cum. Quo sed nesciunt veniam esse ut iste repellat error maiores officiis.
+        <span>Elevate Your Fitness Journey with Hum</span>
+        Hum is the comprehensive health and fitness app that caters to all levels of fitness enthusiasts. Whether you're a beginner or a seasoned fitness pro, Hum provides the necessary tools to help you achieve your health goals. 
     </div>
 
     
@@ -217,7 +231,7 @@
 
 
 
-<section class="paneodd">
+<section class="pane2">
 
         <div class="imageContainer">
         <div class="frame">
@@ -226,23 +240,40 @@
     </div>
 
     <div class="text">
-    <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, tenetur eaque officiis dolore doloremque nostrum corrupti inventore accusantium cum. Quo sed nesciunt veniam esse ut iste repellat error maiores officiis.
+    <span>Intelligent Tracking System</span>
+    Hum's intelligent tracking system is designed to help you achieve your fitness goals with ease. With Hum, you can easily monitor essential fitness metrics. Creating a comprehensive record of your workout routines, progress, and accomplishments to track how far you've come.
 </div>
 </section>
 
-<section class="pane">
+
+<section style="
+background: radial-gradient(100% 100% at 50% 80%, var(--textcolor) -800%, rgba(0, 0, 0, 1) 100%);
+width:100vw;
+height:10vh;
+"/>
+
+<section class="pane3">
     <div class="text">
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, tenetur eaque officiis dolore doloremque nostrum corrupti inventore accusantium cum. Quo sed nesciunt veniam esse ut iste repellat error maiores officiis.
+        <span>Connect, Compare, and Stay Inspired with Hum's Social Features</span>
+        Share your workout routines and compare your stats with other users to stay motivated towards achieving your fitness goals. Create groups, join communities, and follow other users to be part of a supportive community of like-minded individuals. 
+    </div>
+    <div class="imageContainer">
+        <div class="frame">
+            <img src="" alt="">
+        </div>
     </div>
 </section>
 
-<section class="largePane">
+<section class="largePane" id="download">
     <div class="text">
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. </span>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, tenetur eaque officiis dolore doloremque nostrum corrupti inventore accusantium cum. Quo sed nesciunt veniam esse ut iste repellat error maiores officiis.
+        <span>Achieve a Sound Mind and Body with Hum.</span>
+        At Hum, we understand that a busy lifestyle shouldn't come at the expense of your health and fitness goals. That's why we've created a progressive web app that enables you to access all the features of our comprehensive health and fitness app from any device, at any time. With this cutting edge technogly, you'll never have to worry about downloading software updates or losing your data.<br> Plus, you can seamlessly transition from your phone to your laptop, without skipping a beat. Whether you're at home, at work, or on-the-go, Hum's progressive web app is always at your fingertips, so you can stay on top of your health and fitness goals. 
+        <br>
+        <span class="underline-gradient">
+            Download the app today and start your journey to a healthier, happier you, anytime, anywhere.
+        </span> 
     </div>
+    <button id="installApp">Install</button>
 </section>
 
 
@@ -339,10 +370,8 @@ z-index: -1;
                 color: var(--textcolor);
                 text-shadow: 0px 0px 30px  white;
             }
-            &:active{color: yellow ;}
+            &:active{}
         }
-    
-        
         
     }
 }
@@ -354,8 +383,8 @@ width: fit-content;
 height: fit-content;
 overflow-y: hidden;
 overflow-x: hidden;
-    .pane{
-    padding: 5% 0 5% 0;
+    .pane1{
+    padding: 0% 0 5% 0;
     display: flex;
     min-width: 100vw;
     // min-height: 60vh;
@@ -409,8 +438,8 @@ overflow-x: hidden;
         }
 }
     }
-.paneodd{
-    padding: 5% 0 5% 0;
+.pane2{
+    padding: 5% 0 0 0;
     display: flex;
     min-width: 100vw;
     // min-height: 60vh;
@@ -465,13 +494,85 @@ overflow-x: hidden;
         }
 }
 }
+.pane3{
+    padding: 5% 0 5% 0;
+    display: flex;
+    min-width: 100vw;
+    // min-height: 60vh;
+    min-height: fit-content;
+    background: radial-gradient(300% 500% at 50% -475%, var(--textcolor) 40.22%, #000000 100%);  
+    background-color: #000000;
+    .text{
+        color: var(--textcolor);
+        font-family: var(--subfont);
+        font-size: 1.5rem;
+        width: 45vw;
+        padding: 5%;
+        span{
+
+            &::after {
+       content: '\a';
+       white-space: pre;
+   }
+            font-weight: Bold;
+        }
+    }
+    
+    .imageContainer{
+        // background-color: red;
+        // min-height: 60vh;
+        min-width: 50vw;
+        img{
+            box-shadow: inset (-100px) 0 100px (-34px);
+            background-image: url("../../lib/assets/images/abstract.jpg");
+            border:none;
+            // background-color: red;
+            position: relative;
+            width: 90%;
+            top: 10%;
+            left: 10%;
+            height: 80%;
+            // min-width: 50vw;
+        }
+        .frame{
+            position: relative;
+            width: 82%;
+            top: 10%;
+            left: 20%;
+            height: 80%;
+            background-color: rgba($color: #ffffff, $alpha: .10);
+            border-radius: 18px;
+            // display: flex;
+            // align-self: center;
+            // background-color: blue;
+            // min-width: max-content;
+            // min-height: 60vh;
+        }
+}
+    }
 .largePane{
-    min-height: 75vh;
+    min-height: 100vh;
     min-width: 100vw;
     color: var(--textcolor);
     background:radial-gradient(50% 800% at 50% 825%, var(--textcolor) 40.22%, #000000 100%); 
     font-family: var(--font);
-    font-size: 2rem;
+    // font-size: 2rem;
+    .text{
+        color: var(--textcolor);
+        font-family: var(--subfont);
+        font-size: 1.5rem;
+        width: 45vw;
+        padding: 5%;
+        span{
+        font-weight: bold;
+            &::after {
+       content: '\a';
+       white-space: pre;
+   }
+}
+    }
+    
+
 }
 }
 

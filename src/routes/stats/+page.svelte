@@ -33,7 +33,7 @@ const incrementChart = () => {
 }
 
 const decrementChart = () => {
-  ((pointer - 1)<=0? pointer=(Object.entries(charts).length - 1):pointer--);
+  ((pointer - 1)<0? pointer=(Object.entries(charts).length - 1):pointer--);
   console.log(pointer);
   selected=null;
 }

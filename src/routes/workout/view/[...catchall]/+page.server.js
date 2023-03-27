@@ -34,7 +34,7 @@ export const actions = {
 
         const formData = Object.fromEntries(await request.formData());
         const userstats = await locals.pb.collection('user_statistics').getFirstListItem('userID ~ "'+locals.user.id+'"')
-
+        let updatedScore= userstats.score;
         let stats = serializeNonPOJOs(userstats.routine_stats)
             let iterations = Object.entries(formData).length / 5;
 
@@ -43,14 +43,15 @@ export const actions = {
                 let thisWorkout={
                     [new Date().toJSON().slice(0,10)]:formData["workout["+ i +"][weight]"],
                 }
+                updatedScore += (formData["workout["+ i +"][weight]"] * formData["workout["+ i +"][sets]"] * formData["workout["+ i +"][reps]"]);
                 stats[formData["workout["+ i +"][exercise]"]] = Object.assign({},stats[formData["workout["+ i +"][exercise]"]],thisWorkout);
                     }
-                }
-            console.log(stats);     
+                }    
 		try { 
             await locals.pb.collection('user_statistics').update(userstats.id, {
                 "userID": locals.user.id,
-                "routine_stats" : stats
+                "routine_stats" : stats,
+                "score": updatedScore
             })
         } 
         catch (err) {

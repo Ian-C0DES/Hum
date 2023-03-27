@@ -32,8 +32,8 @@
         <section class="panes">
 
             <div class="left">
-                <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-<p> Illum qui, natus veritatis quibusdam voluptate corporis totam quas libero beatae magni itaque facere consequuntur molestiae quia quaerat odit perferendis quidem aliquam.</p>
+                <h1>Welcome to Hum, the all-in-one health and fitness app that helps you achieve your goals and become the best version of yourself. </h1>
+<!-- <p> Illum qui, natus veritatis quibusdam voluptate corporis totam quas libero beatae magni itaque facere consequuntur molestiae quia quaerat odit perferendis quidem aliquam.</p> -->
 
                 
             </div>

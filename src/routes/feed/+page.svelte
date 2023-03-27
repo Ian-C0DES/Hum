@@ -69,17 +69,17 @@
                 <ul> 
                     <li> <i class="fa-regular fa-id-badge rgtext"></i> 
                         <span>
-                        <a style="all:unset; cursor:pointer;" href="/profile/{data.user.username}"> Profile</a>
+                        <a style="all:unset; cursor:pointer;" href="/feed/profile/{data.user.username}"> Profile</a>
                     
                         </span></li>
                     <li> <i class="fa-solid fa-inbox rgtext"></i> 
                         <span>
-                        <a style="all:unset; cursor:pointer;" href="/inbox"> Inbox </a>
+                        <a style="all:unset; cursor:pointer;" href="/feed/inbox"> Inbox </a>
                     
                         </span></li>
                     <li> <i class="fa-solid fa-user-group rgtext"></i> 
                         <span>
-                        <a style="all:unset; cursor:pointer;" href="">Friends</a>
+                        <a style="all:unset; cursor:pointer;" href="/feed/friends">Friends</a>
                     
                         </span></li>
                     <li> <i class="fa-solid fa-hashtag rgtext"></i> 
@@ -116,7 +116,7 @@
 
 
 <div class="head">
-    <h1 class="">Whats the Hum?</h1>
+    <h1 class="rgtext">Whats the Hum?</h1>
 
     <div class="searchContainer">
         <i class="fa-solid fa-magnifying-glass rgtext"></i>
@@ -223,8 +223,8 @@ body {
 }
 .head{
     background-image: radial-gradient(var(--accent1) 1px, transparent 0);
-        background-size: 40px 40px;
-        background-position: -19px -19px;
+    background-size: 40px 40px;
+    background-position: -19px -19px;
     display: flex;
     align-content: center;
     align-items: center;
