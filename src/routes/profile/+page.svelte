@@ -1,32 +1,38 @@
 <script>
 export let data;
-import defaultpfp from '$lib/assets/images/defaultpfp.png';
-// import {bmi_val} from './store';
+import {getImageURL} from '$lib/utils.js';
+
+
 let BMI = (Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100);
 
-// bmi_val.set(BMI);
-
-// bmi_val.subscribe(value => {
-// 		BMI = value;
-// 	});
 let bmi
 let editing = false;
+let fileinput;
 
 $: bmi = BMI;
 
+const showPreview = (event) => {
+    const target = event.target;
+    const files = target.files;
+
+    if (files.length > 0) {
+        const src = URL.createObjectURL(files[0]);
+        const preview = document.getElementById("avatar");
+        preview.src = src;
+        handleEdit(event);
+    }
+}
 
 const handleEdit = (e) => {
     if (editing == false){
         editing = true;
     }
-    console.log(data.user.weight);
-    console.log(data.user.height);
     if (e.target.name == "weight"){
         BMI = Math.round((703*(e.target.value/(data.user.height*data.user.height))) * 100) / 100;
         data.user.weight = e.target.value
         console.log(data.user.weight);
     }
-    else{
+    else if (e.target.name == "height"){
         BMI = Math.round((703*(data.user.weight/(e.target.value*e.target.value))) * 100) / 100;
         data.user.height = e.target.value
         console.log(data.user.height);
@@ -46,9 +52,21 @@ let m = today.getMonth() - birthDate.getMonth();
 
 <body style="height: 100vh;">
 
-    <div class="pfpContainer" style="background-image: url({defaultpfp});">
+    <div class="pfpContainer" style=";">
 <img src='' alt="">
+
+
+        <img id="avatar" class="avatar" src={data.user.avatar? getImageURL(data.user?.collectionId, data.user?.id, data.user?.avatar):'https://ui-avatars.com/api/?name=$'+ data.user.name} alt="Profile" />
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="chan" on:click={()=>{fileinput.click();}}>
+            <i class="fa-solid fa-square-plus rgtext"></i>
+        </div>
+
     </div>
+    <!-- <div class="pfpContainer" style="background-image: url({defaultpfp});">
+<img src='' alt="">
+    </div> -->
+
 
     <div class="welcome" style="animation: fadeIn 2s;">
         <p class="message underline-gradient">Hello <span style="color: var(--accent1);">{data.user.displayName[0].toUpperCase()}</span><span style="color: var(--accent2);">{data.user.displayName[1]}</span>{data.user.displayName.substring(2)}👋</p>
@@ -73,7 +91,8 @@ let m = today.getMonth() - birthDate.getMonth();
         <p class="rgtext age">{age}</p>
     </div>
 
-    <form class="userData" action="?/update" method="POST">
+    <form id="userData" class="userData" action="?/update" method="POST" enctype="multipart/form-data">
+        <input style="display:none"  name="avatar" type="file" accept="image/*" value="" hidden on:change={showPreview} bind:this={fileinput} />
 
         <div class="field">
             <div class="birthdate">
@@ -146,7 +165,8 @@ let m = today.getMonth() - birthDate.getMonth();
 
 <style lang="scss">
     body {
-        background-image: url(../../lib/assets/svg/bgblob.svg);
+        // background-image: url(../../lib/assets/svg/bgblob.svg);
+        background: radial-gradient(400.81% 400.43% at -275% -220%, var(--textcolor) 40.22%, var(--dark) 100%); 
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -197,8 +217,8 @@ let m = today.getMonth() - birthDate.getMonth();
     }
     .pfpContainer{
         border: var(--dark) 2px solid;
-        width: 250px;
-        height: 250px;
+        width: 350px;
+        height: 350px;
         background-color: var(--textcolor);
         margin-left: 10vw;
         margin-right: none;
@@ -206,6 +226,32 @@ let m = today.getMonth() - birthDate.getMonth();
         border-radius: 50%;
         text-align: center;
         box-shadow: 5px 3px 5px var(--dark);
+
+        .avatar{
+        border-radius: 50%;
+        width: 101%;
+        height: 101%;
+        position: relative;
+        bottom: 7%;
+        right: .5%;
+        }
+
+        .chan{
+        opacity: 0;
+        position: relative;
+        bottom: 75%;
+        font-size: 4rem;
+        }
+        &:hover{
+            .avatar{
+                filter: blur(30px);
+                transition: all 1s;
+            }
+            .chan{
+                cursor: pointer;
+                animation: fadeIn 2s forwards;
+            }
+        }
     }
     .userData{
         display: flex;
@@ -267,6 +313,7 @@ let m = today.getMonth() - birthDate.getMonth();
 
 /* Firefox */
     input[type=number] {
+    appearance: textfield;
     -moz-appearance: textfield;
     }
     }

@@ -54,6 +54,7 @@
           .sticky {
             z-index: 999;
             position: fixed;
+            // filter: blur(30px);
           }
             .navContainer{
               position:absolute;

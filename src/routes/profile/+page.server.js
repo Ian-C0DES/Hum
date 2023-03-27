@@ -3,10 +3,33 @@ import { error, redirect } from '@sveltejs/kit';
 export const actions = {
 	
 	update: async ({ request, locals }) => {
-		const form = Object.fromEntries(await request.formData());
+		const data = await request.formData();
+		const form = Object.fromEntries(data);
+		const userAvatar = data.get("avatar");
+		
+		if (userAvatar.size ===0) {
+			data.delete("avatar");
+		}
+	
+	
+	
+	
+		// let avatar = form.avatar;
+		// console.log(avatar);
+		
+		// // avatar.name.lastModifiedDate = new Date();
+		// // avatar.name = form.avatar.name;
 
+		// let image = new File([form.avatar], "ProfilePicture.png", {
+        //     type: form.avatar["Symbol(kType)"]
+        // });
+		// console.log(image);
+		
+		
+		
+		
 		const userstats = await locals.pb.collection('user_statistics').getFirstListItem('userID ~ "'+locals.user.id+'"')
-		console.log(userstats);
+		// console.log(userstats);
 
 		// let today = new Date().toJSON().slice(0,10);
 
@@ -14,21 +37,18 @@ export const actions = {
 			// extend the data...
 			[new Date().toJSON().slice(0,10)]: form.bmi,
 		});
-		console.log(updatedBMIstats);
+		// console.log(updatedBMIstats);
 
 		let updatedweightsstats = Object.assign(userstats.weights, {
 			// extend the data...
 			[new Date().toJSON().slice(0,10)]: form.weight,
 		});
-		console.log(updatedweightsstats);
+		// console.log(updatedweightsstats);
 
 
 		try { 
 			Promise.all([
-				await locals.pb.collection('users').update(locals.user.id, {
-					"height" : form.height,
-					"weight" : form.weight
-				}),
+				await locals.pb.collection('users').update(locals.user.id, data),
 
 				await locals.pb.collection('user_statistics').update(userstats.id, {
 				    "weights" : updatedweightsstats,
