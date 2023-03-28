@@ -1,119 +1,34 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
-    import { page } from '$app/stores';
     import defaultpfp from '$lib/assets/images/defaultpfp.png';
+    import Sidepanel from '$lib/components/Sidepanel.svelte';
     export let data;
-    const {viewedUser, viewedUserMessages} = data;
+    const {viewedUser, viewedUserMessages, viewedUserStats} = data;
+    import {getImageURL} from '$lib/utils.js';
     import { fade, fly } from 'svelte/transition';
     let sidePanel=false;
     const toggleSidepanel = () => {(sidePanel? sidePanel=false: sidePanel=true);};
     onMount (() => {
-
+        console.log(viewedUserStats);
       });
 
 </script>
 <body>
     <div id="content">
 
-        {#if !sidePanel}
-        <div class="sidepanelContainer">
-    <div class="expandBtnContainer" in:fly="{{ x: 30, duration: 2000 }}" out:fly="{{ x: 30, duration: 1500 }}">
-    
-    
-        <button style="all:unset; cursor:pointer;" on:click={toggleSidepanel} class="panelExpand">
-            <i class="fa-solid fa-angles-left rgtext"></i>
-        </button>
-    
-    </div>
-    </div>
-    {:else }
-    
-    <div class="sidepanelContainer">
-    <div class="sidepanel" in:fly="{{ x: 30, duration: 2000 }}" out:fly="{{ x: 30, duration: 1500 }}">
-    
-    
-        <div class="panelItems">
-    
-            <div class="profileContainer">
-                <div class="pfp" style="border-radius: 50%; width:150px; height: 150px; background-image: url({defaultpfp});"></div>
-                <img src='' alt="">
-            </div>
-    
-    
-            <div class="menuContainer">
-                
-                <div class="menuOpts">
-                    
-                    <ul> 
-                        {#if viewedUser.id == data.user.id}
-                        <li style="
-                        background-color: rgba(255,255,255,.05);
-                        color: var(--textcolor);
-                        ">
-                         <i class="fa-regular fa-id-badge rgtext"></i> 
-                            <span style="text-shadow: 0px 0px 3px #ffffff;">
-                            <a style="all:unset; cursor:pointer;" href="/feed/profile/{data.user.username}"> Profile</a>
-                        
-                            </span></li>
-                            {:else}
-                            <li> <i class="fa-regular fa-id-badge rgtext"></i> 
-                                <span>
-                                <a style="all:unset; cursor:pointer;" href="/feed/profile/{data.user.username}"> Profile</a>
-                            
-                                </span></li>
-                            {/if}
+        <Sidepanel sidePanel={false} data={data}/>
 
-                        <li> <i class="fa-solid fa-inbox rgtext"></i> 
-                            <span>
-                            <a style="all:unset; cursor:pointer;" href="/inbox"> Inbox </a>
-                        
-                            </span></li>
-                        <li> <i class="fa-solid fa-user-group rgtext"></i> 
-                            <span>
-                            <a style="all:unset; cursor:pointer;" href="">Friends</a>
-                        
-                            </span></li>
-                        <li> <i class="fa-solid fa-hashtag rgtext"></i> 
-                            <span>
-                            <a style="all:unset; cursor:pointer;" href="">Hashtags</a>
-                        
-                            </span></li>
-                    </ul>
-                    
-                </div>
-                
-            </div>
-        
-            
-    
-    
-        </div>
-    
-    
-    
-            
-    
-    <div class="panelCloseContainer">
-        <button style="all:unset; cursor:pointer;" on:click={toggleSidepanel} class="panelClose">
-            <i class="fa-solid fa-xmark rgtext"></i>
-        </button>
-    </div>
-    
-    
-    </div>
-    </div>
-    {/if}
 
 
 
         {#if viewedUser.id == data.user.id}
         <!-- {viewedUser.id} -->
         <div class="bannerContainer">
-
+        
             <div class="banner">
 
                 <div class="pfp" style="border-radius: 50%; width:150px; height: 150px; background-image: url({defaultpfp});">
-                    <img src='' alt="">
+                    <img style="border-radius: 50%; width:150px; height: 150px;" src={viewedUser.avatar ? getImageURL(viewedUser?.collectionId, viewedUser?.id,viewedUser?.avatar):'https://ui-avatars.com/api/?name=$'+viewedUser?.name} alt="">
                 </div>
 
 
@@ -124,24 +39,42 @@
                     </div>
                 </div>
                 
-                
+                <div class="friends">
+                    <i class="fa-solid fa-user-group rgtext"></i>
+                    <span> 0 </span>
+                </div>
                 
                 <div class="score">
-<!-- {viewedUserMessages} -->
+                    <i class="fa-solid fa-dumbbell rgtext"></i>
+                    <span> {viewedUserStats.score} </span>
                 </div>
 
-                <div class="buttonContainer">
-                    
-                    <button formmethod="post" formaction="?/sendRequest">Send Request</button>
-                    <button>no</button>
 
-                </div>
 
 
             </div>
 
             <div class="subbanner">
-                
+
+                <div class="addFriend"> 
+                    Send Friend Request
+                </div>
+
+                <div class="compare"> 
+                    Compare Stats
+                </div>
+
+                <div class="sendMessage"> 
+                    Send Private Message
+                </div>
+                <!-- <div class="buttonContainer">
+                    
+                    <button formmethod="post" formaction="?/sendRequest">Send Request</button>
+                    <button>no</button>
+
+                </div> -->
+
+
             </div>
 
         </div>
@@ -154,7 +87,7 @@
             <div class="message">
                 <div class="messageAuthor"> 
         
-                        <img src={defaultpfp} alt="">
+                    <img src={viewedUserMessage.expand?.user?.avatar ? getImageURL(viewedUserMessage.expand?.user?.collectionId, viewedUserMessage.expand?.user?.id,viewedUserMessage.expand?.user?.avatar):'https://ui-avatars.com/api/?name=$'+viewedUserMessage.expand?.user?.name} alt="">
         
                     <div class="name"> {viewedUserMessage.expand?.user?.displayName} </div>
                     <div class="handle">@{viewedUserMessage.expand?.user?.username}</div>
@@ -188,7 +121,7 @@
 
 <style lang="scss">
     *{
-        outline: 1px red solid;
+        // outline: 1px red solid;
         // color:var(--textcolor);
         // font-family: var(--font);
     }
@@ -214,23 +147,67 @@
                 color: var(--textcolor);
                 font-family: var(--font);
                 align-items: flex-end;
+                padding-bottom: 2vh;
                 // justify-content: space-between;
                 width: 100%;
                 .pfp{}
                 .displayName{
+                    padding-left: 3vw;
+                    padding-right: 10vw;
                     font-size: 2rem;
+                    font-weight: bold;
                     .username{
+                        font-weight: normal;
                         font-size: 1rem;
-
+                    }
+                }
+                .friends{
+                    font-size: 3rem;
+                    span{
+                        font-size: 2rem;
+                    }
+                }
+                .score{
+                    padding-left: 10vw;
+                    font-size: 3rem;
+                    span{
+                        font-size: 2rem;
                     }
                 }
              }
              .subbanner{
                 height: 20%;
-                background-color: black;
-                // background: linear-gradient(90deg, var(--accent1), var(--accent2));
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+                flex-direction: row;
+                // filter: blur(2px);
+                // backdrop-filter: blur(1000px);
+                // opacity: 70%;
+                // background-color: black;
+                background: radial-gradient(500.81% 500.43% at -250% -250%, var(--textcolor) -100.22%, var(--dark) 100%);
                 width: 100%;
                 border-radius: 0 0 18px 18px;
+                div{
+                    // filter: blur(10px);
+                    width: fit-content;
+                    padding: .5rem;
+                    text-align: center;
+                    color: var(--textcolor);
+                    font-family: var(--font);
+                    border-radius: 18px;
+                    font-weight: bold;
+                    opacity: 20%;
+                    cursor: pointer;
+                    transition: all 1s;
+                    &:hover{
+                        // filter: blur(0px);
+                        text-shadow: 0px 0px 2px #ffffff;
+                        background-color: rgba($color: #ffffff, $alpha: .05);
+                        opacity: 100%;
+                        transition: all 1s;
+                    }
+                }
              }
 
          }
@@ -249,7 +226,9 @@
 
 
     .message {
-        outline: 1px dotted var(--textcolor);
+        border: 1px groove var(--accent2);
+        border-left:none;
+        border-right:none;
         width: 75vw;
         padding: 30px;
         min-height: 30vh;
@@ -302,81 +281,5 @@
 }
 }
 
-.sidepanelContainer{
-    pointer-events:none;
-    width: 30vw;
-    position: absolute;
-    right: 0;
-    top:3vh;
-    height: 90%;
 
-    .expandBtnContainer{
-        pointer-events:all;
-        position: absolute;
-        right: 0;
-        font-size: 3rem;
-    }
-
-
-    .sidepanel{    pointer-events:all;
-        position: absolute;
-        background-color: rgba($color: #000000, $alpha: .90);
-        width: 100%;
-        height: 100%;
-        border-radius: 18px 0px 0px 18px;
-
-        .panelItems{
-            flex-direction: column;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            .menuContainer{
-                .menuOpts{
-                    ul{
-                        padding: 0;
-                        list-style-type: none;
-                    li{
-                        font-family: var(--font);
-                        font-weight: 700;
-                        padding: .5rem;
-                        margin: .5rem;
-                        font-size: 2rem;
-                        border-radius: 18px;
-                        color: gray;
-                        &:hover{
-                            background-color: rgba($color: #ffffff, $alpha: .05);
-                            color: var(--textcolor);
-                            span{
-                                text-shadow: 0px 0px 3px #ffffff;
-                            }
-                        }
-    
-                    }
-                    }
-                    color: var(--textcolor);
-                }
-            }
-        }
-
-
-
-
-        .panelCloseContainer{
-            position: absolute;
-            bottom: 1px;
-            padding: 10%;
-            .panelClose{
-                i{
-                    font-size: 3rem;
-                }
-            }
-        }
-
-
-    }
-
-
-}
 </style>
