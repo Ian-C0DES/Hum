@@ -1,6 +1,8 @@
 <script>
 // import QuickSearchBar from "svelte-quicksearch-bar@latest";
 // import Search from "svelte-search";
+export let data
+import Sidepanel from '$lib/components/Sidepanel.svelte';
 </script>
 
 
@@ -8,7 +10,7 @@
 <body>
     <div id="content">
 
-
+        <Sidepanel sidePanel={false} data={data}/>
 <div class="panel">
 
 

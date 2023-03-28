@@ -39,7 +39,12 @@
 
               <form action="/logout" method="POST"class="logout">
                 <button type="submit" class="logout">
-                  <i class="fa-solid fa-door-open rgtext"></i>
+                  <i style="position: relative;
+                  left:1vw;" class="fa-solid fa-door-closed rgtext"></i>
+                  <i style="position: relative;
+                  right:1.5vw;
+                  opacity:0;
+                  " class="fa-solid fa-door-open rgtext open"></i>
                 </button>
               </form>
             </div>
@@ -125,14 +130,20 @@
                   }
                   .logout:hover{
                     color: var(--accent1);
+                    i{
+                      animation: fadeOut .5s forwards;
+                    }
+                    .open{
+                      animation: fadeIn .3s forwards;
+                    }
                   } 
                 .navItem:hover{
                   i{
-                    animation: fadeOut 2s forwards;
+                    animation: fadeOut 1s forwards;
                   }
                   p{
                     opacity: 0;
-                    animation: fadeIn 3s forwards;
+                    animation: fadeIn 2s forwards;
                   }
 
                 }

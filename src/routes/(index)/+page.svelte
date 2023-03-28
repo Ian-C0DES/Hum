@@ -1,5 +1,6 @@
 <script>
     import Humman from '$lib/assets/humman.svelte'
+    // import data from
     // import abstract from '$lib/assets/images/abstract.jpg'
     import { onMount } from 'svelte';
     // import './style.scss'
@@ -9,6 +10,7 @@
     let vh;
     let deferredPrompt;
     onMount(() => {
+
     //     const vw = Math.max(document.documentElement.    clientWidth || 0, window.innerWidth || 0)
     // const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
         // x = document.getElementsByClassName('navtab')[0];
@@ -267,7 +269,7 @@ height:10vh;
 <section class="largePane" id="download">
     <div class="text">
         <span>Achieve a Sound Mind and Body with Hum.</span>
-        At Hum, we understand that a busy lifestyle shouldn't come at the expense of your health and fitness goals. That's why we've created a progressive web app that enables you to access all the features of our comprehensive health and fitness app from any device, at any time. With this cutting edge technogly, you'll never have to worry about downloading software updates or losing your data.<br> Plus, you can seamlessly transition from your phone to your laptop, without skipping a beat. Whether you're at home, at work, or on-the-go, Hum's progressive web app is always at your fingertips, so you can stay on top of your health and fitness goals. 
+        At Hum, we understand that a busy lifestyle shouldn't come at the expense of your health and fitness goals. That's why we've created a progressive web app that enables you to access all the features of our comprehensive health and fitness app from any device, at any time. With this cutting edge technology, you'll never have to worry about downloading software updates or losing your data.<br> Plus, you can seamlessly transition from your phone to your laptop, without skipping a beat. Whether you're at home, at work, or on-the-go, Hum's progressive web app is always at your fingertips, so you can stay on top of your health and fitness goals. 
         <br>
         <span class="underline-gradient">
             Download the app today and start your journey to a healthier, happier you, anytime, anywhere.
