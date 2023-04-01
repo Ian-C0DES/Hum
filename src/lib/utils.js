@@ -1,4 +1,5 @@
 const { randomBytes } = await import('node:crypto');
+// import { VITE_POCKETBASE_URL } from '$env/static/private'
 
 export const serializeNonPOJOs = (obj) => {
 	return structuredClone(obj);
