@@ -30,15 +30,23 @@ let subopts= [
   
     {
       "optGroup":"Arms",
-      "opts":["Bicep Curls","Bench Press"]
+      "opts":["BicepCurls","BenchPress"]
     },
     {
       "optGroup":"Leg",
-      "opts":["Squat","Calf Raises"]
+      "opts":["Squat","CalfRaises"]
     },
     {
-      "optGroup":"Shoulder & Back",
-      "opts":["Upright Rows","Shoulder Press",]
+      "optGroup":"Shoulder",
+      "opts":["ShoulderPress",]
+    },
+    {
+    "optGroup":"Back",
+      "opts":["Upright Rows",]
+    },
+    {
+      "optGroup":"Core",
+      "opts":["Crunch","Plank",]
     },
 ]
 
@@ -269,7 +277,7 @@ placeholder="{reps}"
         .image{
           // background-image: url(../assets/images/dallesquat.png);
           height:100%;
-          width: 80%;
+          width: 90%;
           display: flex;
           align-self: center;
           // border-radius: 18px 18px 0px 0px;
