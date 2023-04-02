@@ -1,5 +1,6 @@
 <script>
     import Humman from '$lib/assets/humman.svelte'
+    import { enhance } from '$app/forms'
 
 </script>
 
@@ -42,7 +43,7 @@
 
                 <div class="loginContainer">
                     <h1>Login</h1>
-                    <form action="?/login" method="POST">
+                    <form action="?/login" method="POST" use:enhance>
                 
                         <input type="text" placeholder="Enter Email" name="email" required>
                     

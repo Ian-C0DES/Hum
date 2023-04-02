@@ -1,15 +1,12 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
-    import defaultpfp from '$lib/assets/images/defaultpfp.png';
     import Sidepanel from '$lib/components/Sidepanel.svelte';
     export let data;
-    const {viewedUser, viewedUserMessages, viewedUserStats} = data;
+    const {viewedUser, viewedUserMessages, viewedUserStats, friendShipStatus} = data;
     import {getImageURL} from '$lib/utils.js';
-    import { fade, fly } from 'svelte/transition';
-    let sidePanel=false;
-    const toggleSidepanel = () => {(sidePanel? sidePanel=false: sidePanel=true);};
+
     onMount (() => {
-        console.log(viewedUserStats);
+
       });
 
 </script>
@@ -21,13 +18,13 @@
 
 
 
-        {#if viewedUser.id == data.user.id}
+        <!-- {#if viewedUser.id != data.user.id} -->
         <!-- {viewedUser.id} -->
         <div class="bannerContainer">
         
             <div class="banner">
 
-                <div class="pfp" style="border-radius: 50%; width:150px; height: 150px; background-image: url({defaultpfp});">
+                <div class="pfp" style="border-radius: 50%; width:150px; height: 150px;">
                     <img style="border-radius: 50%; width:150px; height: 150px;" src={viewedUser.avatar ? getImageURL(viewedUser?.collectionId, viewedUser?.id,viewedUser?.avatar):'https://ui-avatars.com/api/?name=$'+viewedUser?.name} alt="">
                 </div>
 
@@ -41,7 +38,7 @@
                 
                 <div class="friends">
                     <i class="fa-solid fa-user-group rgtext"></i>
-                    <span> 0 </span>
+                    <span> {viewedUser.friends} </span>
                 </div>
                 
                 <div class="score">
@@ -55,9 +52,43 @@
             </div>
 
             <div class="subbanner">
-
+                {#if viewedUser.id != data.user.id}
                 <div class="addFriend"> 
-                    Send Friend Request
+                    {#if friendShipStatus?.accepted == undefined}
+                    <form name="form" action="?/sendfriendRequest" method="post" >
+                        <!-- <input type="hidden" name="requester" value={data.user.id}> -->
+                        <input type="hidden" name="adressee" value={viewedUser.id}>
+                    <button style="all:unset;" type="submit" >
+                        Send Friend Request
+                        
+                    </button>
+                    </form>
+                    {:else if friendShipStatus?.accepted == true}
+                    <form name="form" action="?/deletefriendRequest" method="post" >
+                        <!-- <input type="hidden" name="requester" value={data.user.id}> -->
+                        <input type="hidden" name="adressee" value={viewedUser.id}>
+                    <button style="all:unset;" type="submit" >
+                       Remove Friend
+                        
+                    </button>
+                    </form>
+                    {:else if friendShipStatus?.accepted == false && friendShipStatus.requester == data.user.id}
+                    <form name="form" action="?/deletefriendRequest" method="post" >
+                        <!-- <input type="hidden" name="requester" value={data.user.id}> -->
+                        <input type="hidden" name="adressee" value={viewedUser.id}>
+                    <button style="all:unset;" type="submit" >
+                       Pending
+                        
+                    </button>
+                    </form>
+
+                    {:else if friendShipStatus?.accepted == false && friendShipStatus.requester != data.user.id}
+                    <a style="all:unset;" href="/feed/friends">
+                    View Request
+                    </a>
+                    {/if}
+
+
                 </div>
 
                 <div class="compare"> 
@@ -73,7 +104,9 @@
                     <button>no</button>
 
                 </div> -->
-
+                {:else}
+                <!-- {"Hey this is u"} -->
+                {/if}
 
             </div>
 
@@ -107,9 +140,9 @@
 
 
 
-        {:else}
+        <!-- {:else}
         {"ur not the users"}
-        {/if}
+        {/if} -->
 
 
 

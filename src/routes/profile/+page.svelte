@@ -1,6 +1,7 @@
 <script>
 export let data;
 import {getImageURL} from '$lib/utils.js';
+import { enhance } from '$app/forms'
 
 
 let BMI = (Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100);
@@ -10,6 +11,15 @@ let editing = false;
 let fileinput;
 
 $: bmi = BMI;
+
+const submitForm = (input) => {
+// console.log(input);
+return async ({update}) =>{
+    editing = false;
+    await update();
+}
+};
+
 
 const showPreview = (event) => {
     const target = event.target;
@@ -91,7 +101,7 @@ let m = today.getMonth() - birthDate.getMonth();
         <p class="rgtext age">{age}</p>
     </div>
 
-    <form id="userData" class="userData" action="?/update" method="POST" enctype="multipart/form-data">
+    <form id="userData" class="userData" action="?/update" method="POST" enctype="multipart/form-data" use:enhance={submitForm}>
         <input style="display:none"  name="avatar" type="file" accept="image/*" value="" hidden on:change={showPreview} bind:this={fileinput} />
 
         <div class="field">
@@ -131,7 +141,7 @@ let m = today.getMonth() - birthDate.getMonth();
 
     </div>
 {#if editing}
-<div style="display:contents; ">
+<div style="display:contents;">
     <button style="
     border-radius: 10%;
     width:100px;
@@ -143,11 +153,6 @@ let m = today.getMonth() - birthDate.getMonth();
     "
     type="submit">
     ✅
-    </button>
-</div>
-{:else}
-<div style="display:none;">
-    <button>
     </button>
 </div>
 {/if}
@@ -234,6 +239,7 @@ let m = today.getMonth() - birthDate.getMonth();
         position: relative;
         bottom: 7%;
         right: .5%;
+        transition: all .5s;
         }
 
         .chan{

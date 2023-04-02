@@ -59,7 +59,9 @@
                 <img src={message.expand?.user?.avatar? getImageURL(message.expand?.user?.collectionId, message.expand?.user?.id,message.expand?.user?.avatar):'https://ui-avatars.com/api/?name=$'+message.expand?.user?.name} alt="">
 
             <div class="name"> {message.expand?.user?.displayName} </div>
-            <div class="handle">@{message.expand?.user?.username}</div>
+            <a style="all:unset; cursor:pointer;" href={"/feed/profile/"+message.expand?.user?.username}>
+                <div class="handle">@{message.expand?.user?.username}</div>
+            </a>
             <div class="time"> {message.created} </div>
          </div>
         <div class="messageContent">
