@@ -1,113 +1,106 @@
 @import './styles/typed.scss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
 
-html[data-theme="light"] {
-  --bgcolor:#1e2a5b;
-  --dark:#a3a3a3;
-  --textcolor:#fbfdfe;
-  --accent1:#3E2BD2;
-  --accent2:#e96016;
+html[data-theme='dark'] {
+	--bgcolor: #212121;
+	--dark: #151515;
+	--textcolor: #fbf8f7;
+	--accent1: #3e2bd2;
+	--accent2: #ababec;
 }
-html[data-theme="dark"] {
-  --bgcolor:#212121;
-  --dark:#151515;
-  --textcolor:#FBF8F7;
-  --accent1:#3E2BD2;
-  --accent2:#ABABEC;
+html[data-theme='light'] {
+	--bgcolor: #1e2a5b;
+	--dark: #a3a3a3;
+	--textcolor: #fbfdfe;
+	--accent1: #3e2bd2;
+	--accent2: #e96016;
 }
-html[data-theme="turtlemoss"] {
-  --bgcolor:#212121;
-  --dark:#212120;
-  --textcolor:#69d8d3;
-  --accent1:#299e47;
-  --accent2:#e0842c;
+html[data-theme='turtlemoss'] {
+	--bgcolor: #212121;
+	--dark: #212120;
+	--textcolor: #69d8d3;
+	--accent1: #299e47;
+	--accent2: #e0842c;
 }
-html[data-theme="bloodmoon"] {
-  --bgcolor:#212121;
-  --dark:#000000;
-  --textcolor:#fa9b1d;
-  --accent1:#e55f60;
-  --accent2:#9c4052;
+html[data-theme='bloodmoon'] {
+	--bgcolor: #212121;
+	--dark: #000000;
+	--textcolor: #fa9b1d;
+	--accent1: #e55f60;
+	--accent2: #9c4052;
 }
-html[data-theme="bubblegum"] {
-  --bgcolor:#212121;
-  --dark:#294150;
-  --textcolor:#ffb7d0;
-  --accent1:#ed4b8b;
-  --accent2:#34abe3;
+html[data-theme='bubblegum'] {
+	--bgcolor: #212121;
+	--dark: #294150;
+	--textcolor: #ffb7d0;
+	--accent1: #ed4b8b;
+	--accent2: #34abe3;
 }
-html[data-theme="nior"] {
-  --bgcolor:#12120e;
-  --dark:#000000;
-  --textcolor:#ffffff;
-  --accent1:#545454;
-  --accent2:#949494;
+html[data-theme='nior'] {
+	--bgcolor: #12120e;
+	--dark: #000000;
+	--textcolor: #ffffff;
+	--accent1: #545454;
+	--accent2: #949494;
 }
-html[data-theme="desertrose"] {
-  --bgcolor:#12120e;
-  --dark:#463f43;
-  --textcolor:#6cbee9;
-  --accent1:#fdfeb4;
-  --accent2:#c4aab7;
+html[data-theme='desertrose'] {
+	--bgcolor: #12120e;
+	--dark: #463f43;
+	--textcolor: #6cbee9;
+	--accent1: #fdfeb4;
+	--accent2: #c4aab7;
 }
 :root {
-    // --bgcolor:#32353b;
-    // --dark:#151515;
-    // --textcolor:#e3e3e3;
-    // --accent1:#1fb2eb;
-    // --accent2:#e3c843; 
-
-    // --bgcolor:#0c0b26;
-    // --dark:#0c0b26;
-    // --textcolor:#FBF8F7;
-    // --accent1:#df1b28; 
-    // --accent2:#d66004;
-    
-    // --bgcolor:#212121;
-    // --dark:#151515;
-    // --textcolor:#FBF8F7;
-    // --accent1:#3E2BD2;
-    // --accent2:#ABABEC;
-
-
-    --font: "Inter";
-    // --subfont:'Source Sans Pro';
-    --subfont:'Inter';
+	--font: 'Inter';
+	// --subfont:'Source Sans Pro';
+	--subfont: 'Inter';
 }
 
-body{
-    margin: 0;
-    overflow-x: hidden;
-    background-color: var(--bgcolor);
-  }
-  .rgtext{
-    background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-  }
-  .underline-gradient {
-    background: linear-gradient(90deg, var(--accent1), var(--accent2));
-    background-size: 0% 3px;
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    transition: background-size 300ms ease;
-  }
+body {
+	margin: 0;
+	overflow-x: hidden;
+	background-color: var(--bgcolor);
+}
+.rgtext {
+	background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+.underline-gradient {
+	background: linear-gradient(90deg, var(--accent1), var(--accent2));
+	background-size: 0% 3px;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	transition: background-size 300ms ease;
+}
 
-  .underline-gradient:hover {
-    background-size: 100% 3px;
-  }
-  @keyframes fadeIn {
-    from {opacity: 0%;}
-    to{opacity: 100%;}
-  }
-  @keyframes fadeOut {
-    from {opacity: 100%;}
-    to{opacity: 0%;}
-  }
+.underline-gradient:hover {
+	background-size: 100% 3px;
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0%;
+	}
+	to {
+		opacity: 100%;
+	}
+}
+@keyframes fadeOut {
+	from {
+		opacity: 100%;
+	}
+	to {
+		opacity: 0%;
+	}
+}
 
-  @keyframes radialGradienthover {
-    from   {background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
-    to {background: radial-gradient(400% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);}
+@keyframes radialGradienthover {
+	from {
+		background: radial-gradient(133.53% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);
+	}
+	to {
+		background: radial-gradient(400% 172.98% at 0% 0%, var(--dark) 31.85%, var(--accent1) 100%);
+	}
 }
 
 // ::-webkit-scrollbar{

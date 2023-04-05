@@ -15,12 +15,12 @@ export const getImageURL = (collectionId, recordId, fileName, size = '0x0') => {
 };
 
 export const EmptyBadge = {
-	"Login_Goal":{
-		"tier":0,
-		"progress":0
+	Login_Goal: {
+		tier: 0,
+		progress: 0
 	},
-	"Weight_Goal":{
-		"tier":0,
-		"progress":0
+	Weight_Goal: {
+		tier: 0,
+		progress: 0
 	}
 };

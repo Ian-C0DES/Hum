@@ -1,4 +1,4 @@
-export const load = ({ locals }) => {
+export const load = ({ locals, cookies }) => {
 	if (locals.user) {
 		return {
 			user: locals.user
@@ -9,11 +9,3 @@ export const load = ({ locals }) => {
 		user: undefined
 	};
 };
-// export const actions = {
-
-// 	setTheme: async ({ url, cookies,request, locals }) => {
-// 		const data = await request.formData();
-// 		const theme = url.searchParams.get('theme');
-// 		console.log(theme);
-// 	},
-// };
