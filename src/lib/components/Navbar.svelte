@@ -8,6 +8,7 @@
           
   
           {#if visible}
+          <div class="filter"/>
           <div class="sticky">
           <div class='navContainer'>
             <div class="logoContainer">
@@ -32,8 +33,8 @@
       </a>
 
       <a class="navItem {$page.url.pathname == "/workout" ? 'active' : ''}" href="/workout">
-        <i style="margin-left: 1rem" class="fa-solid fa-dumbbell rgtext"></i>
-      <p>Workout</p>
+        <i style="" class="fa-solid fa-dumbbell rgtext"></i>
+      <p style="padding-left: 1vw;">Workout</p>
   </a>
 
 
@@ -56,14 +57,26 @@
           {/if}
     
           <style lang="scss">
-          .sticky {
+            *{
+              // outline: 1px red solid;
+            }
+            .filter{
+              min-width: 6vw;
+              height: 100vh;
+              position: absolute;
+              box-shadow: var(--dark) 9px 0px 18px;
+
+            }
+            
+            .sticky {
             z-index: 999;
             position: fixed;
             // filter: blur(30px);
           }
             .navContainer{
               position:absolute;
-              background-color: var(--dark);
+              // background-color: var(--dark);
+              background-color: transparent;
               min-width: 6vw;
               height: 100vh;
               align-items: center;
@@ -83,19 +96,26 @@
                 align-items: center;
                   
                 .navItem{
+        
                   height: 6vh;
                   text-decoration: none;
                   // color: var(--accent1);
                   padding: 1rem 0px 1rem 0px;
+                  text-align: center;
+                  position: relative;
+                  right: .5vw;
+
                   &.active{
                     i{
+
                       display: none;
                     }
                     p{
-                      height: fit-content;
+                      color: var(--textcolor);
+                      height: 6vh;
                       opacity: 1;
                       position: relative;
-                      top: 0px;
+                      top: -1vw;
                       // height: 0px;
                     }
                     // background-color: red;
@@ -105,17 +125,20 @@
                     font-size: 2.5rem;
                   }
                   p{
-                    font-family: "iceland";
-                    // font-family: var(--font);
-                    // font-weight: 1000px;
+                    // font-family: "iceland";
+                    font-family: var(--font);
+                    font-weight: 900;
+                    // text-align: center;
                     position: relative;
-                    color: var(--accent2);
+                    // color: var(--accent2);
+                    // color: var(--textcolor);
+                    color: gray;
                     opacity: 0%;
                     top: -65px;
                     height: 0px;
                     // display: none;
                     // animation: fadeOut 1s forwards;
-                    font-size: 1.5rem;
+                    font-size: 1rem;
 
                   }
                 }
@@ -139,15 +162,16 @@
                   } 
                 .navItem:hover{
                   i{
-                    animation: fadeOut 1s forwards;
+                    animation: fadeOut .7s forwards;
                   }
                   p{
                     opacity: 0;
-                    animation: fadeIn 2s forwards;
+                    animation: fadeIn 1.5s forwards;
                   }
 
                 }
             }
             }
+            
           </style>
       

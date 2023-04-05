@@ -143,6 +143,7 @@ function showUsercard(data, context) {
                 {#key openUsercard}
                 <form id="userCard"name="userCard" method="POST">
                     <input hidden name="user" value={openUsercard?.id}>
+                    <input hidden name="name" value={openUsercard?.displayName}>
                 </form>
                 <!-- {(openUsercontext==undefined? "":openUsercontext.status)} -->
                 <!-- <UserCard openUsercard={openUsercard}/> -->
@@ -163,7 +164,7 @@ function showUsercard(data, context) {
             </a>
                 {#if openUsercontext==undefined}
                 <div class="buttons">
-                    <button><i class="fa-solid fa-envelope rgtext"></i> Send message</button>
+                    <button formaction="?/sendMessage" form="userCard"><i class="fa-solid fa-envelope rgtext"></i> Send message</button>
                     <button formaction="?/removeFriend" form="userCard"><i class="fa-solid fa-user-xmark rgtext"></i> Remove friend</button>
                 </div>
                 {:else if openUsercontext.status == "pending"}

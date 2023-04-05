@@ -1,7 +1,9 @@
 <script>
 export let data;
 import {getImageURL} from '$lib/utils.js';
+import { fade, fly,slide } from 'svelte/transition';
 import { enhance } from '$app/forms'
+import Badge from '$lib/components/Badge.svelte';
 
 
 let BMI = (Math.round((703*(data.user.weight/(data.user.height*data.user.height))) * 100) / 100);
@@ -9,9 +11,25 @@ let BMI = (Math.round((703*(data.user.weight/(data.user.height*data.user.height)
 let bmi
 let editing = false;
 let fileinput;
+let themedropdown = false;
 
 $: bmi = BMI;
+const themeToggle = () =>{
+    (themedropdown != true? themedropdown=true:themedropdown=false);
+};
+const submitTheme = ({ action }) => {
+    // console.log(action);
+let theme = action.searchParams.get('theme');
+// console.log(cookies.get("colortheme"));
+console.log(theme);
+document.documentElement.setAttribute('data-theme',theme);
+return async ({update}) =>{
+    // editing = false;
+    await update();
+}
+};
 
+// console.log(data.user.badges);
 const submitForm = (input) => {
 // console.log(input);
 return async ({update}) =>{
@@ -62,11 +80,54 @@ let m = today.getMonth() - birthDate.getMonth();
 
 <body style="height: 100vh;">
 
-    <div class="pfpContainer" style=";">
+
+
+    <div class="themeWrapper">
+        <div class="themeContainer">
+            <button on:click={themeToggle} class="dropBtn">
+                <i class="fa-solid fa-palette rgtext">
+                    <span>
+                         Theme
+                    </span>
+                </i>
+            </button>
+            {#if themedropdown == true}
+            <ul class="list" in:fly="{{ y: 5, duration: 2000 }}" out:fly="{{ y: 5, duration: 1500 }}">
+                <form method="POST" use:enhance={submitTheme}>
+                    <li transition:slide|local>
+                        <button formaction="?/setTheme&theme=dark">Dark</button>
+                    </li>
+                    
+                    <li transition:slide|local>
+                        <button formaction="?/setTheme&theme=light">Light</button>
+                    </li>
+                    <li transition:slide|local>
+                        <button formaction="?/setTheme&theme=turtlemoss">Turtle-moss</button>
+                    </li>
+                    <li transition:slide|local>
+                        <button formaction="?/setTheme&theme=bloodmoon">Bloodmoon</button>
+                    </li>
+                    <li transition:slide|local>
+                        <button formaction="?/setTheme&theme=bubblegum">Bubblegum</button>
+                    </li>
+                    <li transition:slide|local>
+                        <button formaction="?/setTheme&theme=nior">Nior</button>
+                    </li>
+                    <li transition:slide|local>
+                        <button formaction="?/setTheme&theme=desertrose">Desert Rose</button>
+                    </li>
+                </form>
+            </ul>
+            {/if}
+        </div>
+        </div>
+
+
+    <div class="pfpContainer" style="">
 <img src='' alt="">
 
 
-        <img id="avatar" class="avatar" src={data.user.avatar? getImageURL(data.user?.collectionId, data.user?.id, data.user?.avatar):'https://ui-avatars.com/api/?name=$'+ data.user.name} alt="Profile" />
+        <img id="avatar" class="avatar" src={data.user.avatar? getImageURL(data.user?.collectionId, data.user?.id, data.user?.avatar):'https://ui-avatars.com/api/?name='+ data.user.displayName} alt="Profile" />
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div class="chan" on:click={()=>{fileinput.click();}}>
             <i class="fa-solid fa-square-plus rgtext"></i>
@@ -77,9 +138,12 @@ let m = today.getMonth() - birthDate.getMonth();
 <img src='' alt="">
     </div> -->
 
+    <div class="welcomeContainer">
 
+    
     <div class="welcome" style="animation: fadeIn 2s;">
         <p class="message underline-gradient">Hello <span style="color: var(--accent1);">{data.user.displayName[0].toUpperCase()}</span><span style="color: var(--accent2);">{data.user.displayName[1]}</span>{data.user.displayName.substring(2)}👋</p>
+        <span class="username"><span class="rgtext">@</span>{data.user.username}</span>
         <p class="email ">{data.user.email}</p>
         <p class="bmi">Current BMI: 
             {#if ( bmi >= 18.5 && bmi <= 25)}
@@ -101,6 +165,7 @@ let m = today.getMonth() - birthDate.getMonth();
         <p class="rgtext age">{age}</p>
     </div>
 
+</div>
     <form id="userData" class="userData" action="?/update" method="POST" enctype="multipart/form-data" use:enhance={submitForm}>
         <input style="display:none"  name="avatar" type="file" accept="image/*" value="" hidden on:change={showPreview} bind:this={fileinput} />
 
@@ -162,8 +227,18 @@ let m = today.getMonth() - birthDate.getMonth();
 
     <div class="badgeContainer" style="animation: fadeIn 3s;">
         <h1>
-            <span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges</h1>
-        <p>When you get badges they will show up here</p>
+            <span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges
+        </h1>
+        <!-- {#each data.user.badges as badge, i} -->
+        {#each Object.entries(data?.user?.badges) as badge}
+        <div style="padding: 1%;">
+            <Badge size={10+"vh"} name={badge[0]} tier={badge[1].tier} progress={badge[1].progress}/>
+        </div>
+        <!-- {badge[0]}
+        {badge[1].tier}
+        {badge[1].progress} -->
+        <!-- {console.log(badge)} -->
+        {/each}
     </div>
 
 </body>
@@ -175,25 +250,106 @@ let m = today.getMonth() - birthDate.getMonth();
         background-repeat: no-repeat;
         background-size: cover;
     }
+    .themeWrapper{
+        position: relative;
+        width: 0;
+        height: 0;
+        .themeContainer{
+            position:absolute;
+            left: 90vw;
+            top: 5vh;
+            min-width: 5vw;
+            max-width: 5vw;
+            .dropBtn{
+                all: unset;
+                cursor: pointer;
+                min-width: 5vw;
+                max-width: 5vw;
+                background-color: rgba($color: #ffffff, $alpha: .1);
+                padding: 10%;
+                border-radius: 18px;
+                text-align: center;
+                i{
+                    font-size: .8rem;
+                    span{
+                        font-family: var(--font);
+                    }
+                }
+                &:hover{
+                    background-color: #ffffff;
+                }
+            }
+            .list{
+                all: unset;
+                list-style: none;
+                display: flex;
+                min-width: fit-content;
+                margin-top: 10%;
+                overflow-x: visible;
+                li{
+                    background-color: rgba($color: #ffffff, $alpha: .1);
+                    margin: 10%;
+                    overflow-x: visible;
+                    max-width: 5vw;
+                    width: 33%;
+                    
+                    min-height: fit-content;
+                    button{
+                        all: unset;
+                        // overflow-x: visible;
+                        white-space: nowrap;
+                        cursor: pointer;
+                        font-family: var(--font);
+                        font-weight: 900;
+                        color: var(--textcolor);
+
+                        font-size: .8rem;
+                    }
+                    &:hover{
+                        width: 100%;
+                        background-color: var(--accent1);
+                        transition: all 1s;
+                        button{
+                            text-shadow: #000000 0 0 18px;
+                            max-width: fit-content;
+                            color: var(--accent2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .welcomeContainer{
+        position: relative;
+        width: 0;
+        height: 0;
+    }
     .welcome{
         background-color: rgba(15, 15, 15, 0.75);
         padding: 10px 30px 10px 30px;
         margin-left: 10vw;
-        margin-top: 10vh;
         color: var(--textcolor);
         font-size: 52px;
         font-family: var(--font);
-        width: fit-content;
-        position: absolute;
-        top: 3vh;
-        right: 40vw;
+        min-width: 25vw;
+        position:absolute;
+        bottom: 5vh;
+        left: 25vw;
         box-shadow: 5px 5px 5px #000000;
         .message{
             margin-bottom: 3px;
             margin-top: 5px;
+            overflow-x: hidden;
+            font-weight: 900;
+        }
+        .username{
+            font-size: .8rem;
+            float: right;
+            // width: 100%;
         }
         .bmi{
-            font-size: 24px;
+            font-weight: 900;
+            font-size: 1.2rem;
         }
         .email{
             font-size: 20px;
@@ -206,19 +362,25 @@ let m = today.getMonth() - birthDate.getMonth();
     .badgeContainer{
         position: relative;
         margin-top: 50px;
+        margin-bottom: 3vh;
         padding: 5px 15px 10px 15px;
         left: 10vw;
         color: var(--textcolor);
         width: 80vw;
         background-color: rgba(15, 15, 15, 0.75);
         box-shadow: 5px 5px 5px #000000;
+        display: flex;
+        flex-wrap: wrap;
         h1{
+            min-width: 100%;
             font-family: var(--font);
-
         }
         p{
             font-family: var(--font);
         }
+        // .Badge{
+        //     width: 1px;
+        // }
     }
     .pfpContainer{
         border: var(--dark) 2px solid;
@@ -237,7 +399,7 @@ let m = today.getMonth() - birthDate.getMonth();
         width: 101%;
         height: 101%;
         position: relative;
-        bottom: 7%;
+        bottom: 0%;
         right: .5%;
         transition: all .5s;
         }
@@ -245,7 +407,7 @@ let m = today.getMonth() - birthDate.getMonth();
         .chan{
         opacity: 0;
         position: relative;
-        bottom: 75%;
+        bottom: 65%;
         font-size: 4rem;
         }
         &:hover{

@@ -1,11 +1,15 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
+    import { page } from '$app/stores';
     import Sidepanel from '$lib/components/Sidepanel.svelte';
     export let data;
     const {viewedUser, viewedUserMessages, viewedUserStats, friendShipStatus} = data;
+    import Badge from '$lib/components/Badge.svelte';
     import {getImageURL} from '$lib/utils.js';
 
     onMount (() => {
+        console.log(($page.route.id.match(/\//g) || []).length);
+        console.log($page.route.id)
 
       });
 
@@ -25,7 +29,7 @@
             <div class="banner">
 
                 <div class="pfp" style="border-radius: 50%; width:150px; height: 150px;">
-                    <img style="border-radius: 50%; width:150px; height: 150px;" src={viewedUser.avatar ? getImageURL(viewedUser?.collectionId, viewedUser?.id,viewedUser?.avatar):'https://ui-avatars.com/api/?name=$'+viewedUser?.name} alt="">
+                    <img style="border-radius: 50%; width:150px; height: 150px;" src={viewedUser.avatar ? getImageURL(viewedUser?.collectionId, viewedUser?.id,viewedUser?.avatar):'https://ui-avatars.com/api/?name=$'+viewedUser?.displayName} alt="">
                 </div>
 
 
@@ -46,7 +50,7 @@
                     <span> {viewedUserStats.score} </span>
                 </div>
 
-
+                <Badge badgeData={"test"}/>
 
 
             </div>
@@ -60,7 +64,6 @@
                         <input type="hidden" name="adressee" value={viewedUser.id}>
                     <button style="all:unset;" type="submit" >
                         Send Friend Request
-                        
                     </button>
                     </form>
                     {:else if friendShipStatus?.accepted == true}
@@ -69,7 +72,6 @@
                         <input type="hidden" name="adressee" value={viewedUser.id}>
                     <button style="all:unset;" type="submit" >
                        Remove Friend
-                        
                     </button>
                     </form>
                     {:else if friendShipStatus?.accepted == false && friendShipStatus.requester == data.user.id}
@@ -78,7 +80,6 @@
                         <input type="hidden" name="adressee" value={viewedUser.id}>
                     <button style="all:unset;" type="submit" >
                        Pending
-                        
                     </button>
                     </form>
 
@@ -221,11 +222,16 @@
                 background: radial-gradient(500.81% 500.43% at -250% -250%, var(--textcolor) -100.22%, var(--dark) 100%);
                 width: 100%;
                 border-radius: 0 0 18px 18px;
+                .addFriend{
+                    height: 50%;
+                    }
                 div{
                     // filter: blur(10px);
                     width: fit-content;
-                    padding: .5rem;
-                    text-align: center;
+                    // padding: .5rem;
+                    // align-self: center;
+                    // text-align: center;
+                    // vertical-align: middle;
                     color: var(--textcolor);
                     font-family: var(--font);
                     border-radius: 18px;
@@ -233,6 +239,7 @@
                     opacity: 20%;
                     cursor: pointer;
                     transition: all 1s;
+
                     &:hover{
                         // filter: blur(0px);
                         text-shadow: 0px 0px 2px #ffffff;

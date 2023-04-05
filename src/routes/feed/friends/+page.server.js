@@ -1,5 +1,7 @@
 import { serializeNonPOJOs } from '$lib/utils';
 import { error, redirect } from '@sveltejs/kit';
+import { goto } from "$app/navigation";
+import { $page } from "$app/stores"; 
 
 export async function load({ locals}) {
   let friends =[];
@@ -77,4 +79,19 @@ export const actions = {
   console.log(record);
   await locals.pb.collection('friendships').delete(record.id);
       },
+      sendMessage: async ({ request, locals,url }) => {
+        const form = Object.fromEntries(await request.formData());
+        let record = serializeNonPOJOs(await locals.pb.collection('friendships').getFirstListItem('adressee = "'+ locals.user.id +'" && requester ="'+ form.user +'"|| requester = "'+ locals.user.id +'" && adressee ="'+ form.user + '"'));
+       try{
+         let privatemessage = await locals.pb.collection('user_messages').create({"friendship":record.id, messages:{0:{"author":locals.user.username,"message":"Created a Private Message"}}});
+         await locals.pb.collection('friendships').update(record.id, {"messages":privatemessage.id});
+        }
+      finally{
+        const newUrl = new URL('/feed/inbox', url.origin);
+        newUrl.searchParams.set('sendTo',form.name);
+
+        throw redirect(302, newUrl);
+      }
+        
+          },
 };

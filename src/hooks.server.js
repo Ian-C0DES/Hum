@@ -3,6 +3,25 @@ import { serializeNonPOJOs } from '$lib/utils';
 import { VITE_POCKETBASE_URL } from '$env/static/private'
 
 export const handle = async ({ event, resolve }) => {
+	// let cookieTheme = event.cookies.get('colortheme');
+	// console.log(cookieTheme);
+	// let newTheme;
+	// // let newTheme = event.url.searchParams.get('theme');
+	// // console.log(newTheme);
+	// let theme;
+	// if (newTheme){
+	// 	theme = newTheme;
+	// } else if (cookieTheme) {
+	// 	theme = cookieTheme;
+	// }
+
+	// if (theme) {
+	// 	return await resolve(event,{
+	// 		transformPageChunk: ({ html }) =>
+	// 		html.replace('data-theme=""', 'data-theme="'+ theme +'"'),
+	// 	});
+	// }
+
 	event.locals.pb = new PocketBase(VITE_POCKETBASE_URL);
 	event.locals.pb.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
 
