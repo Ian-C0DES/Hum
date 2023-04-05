@@ -104,6 +104,7 @@
         font-size: 2rem;
     }
 .sidepanelContainer{
+    z-index: 9999; 
     pointer-events:none;
     width: 30vw;
     position: absolute;
@@ -119,7 +120,9 @@
     }
 
 
-    .sidepanel{    pointer-events:all;
+    .sidepanel{ 
+         
+        pointer-events: all;
         position: absolute;
         background-color: rgba($color: #000000, $alpha: .90);
         width: 100%;

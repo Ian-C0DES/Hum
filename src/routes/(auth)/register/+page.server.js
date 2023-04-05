@@ -1,4 +1,4 @@
-import { generateUsername, validateData } from "$lib/utils.js";
+import { generateUsername, validateData ,EmptyBadge } from "$lib/utils.js";
 
 import { error, invalid, redirect } from '@sveltejs/kit';
 
@@ -22,8 +22,10 @@ export const actions = {
 		try {
 			const newuser = await locals.pb.collection('users').create({ username,...defaultUserData, ...formData })
 			await locals.pb.collection('user_statistics').create( { 
-				"userID":[newuser.id]
-				,...defaultStatsData} )
+				"userID":[newuser.id],
+				...defaultStatsData,
+				"badges":EmptyBadge
+			})
 				
 		} catch (err) {
 			// if (err.status === 400 && err.data.data.code == 'validation_values_mismatch'){

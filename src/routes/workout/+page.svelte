@@ -11,7 +11,7 @@
         // console.log(newRoutinename);
     }
     const createForm = () => {
-        localStorage.setItem('newRoutinename_temp', newRoutinename);
+        localStorage.setItem('humCookie', newRoutinename);
         window.location.replace("/workout/create");
     }
 </script>

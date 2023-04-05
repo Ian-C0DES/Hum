@@ -8,7 +8,7 @@
     // customElements.define(WorkoutCard);
     onMount (() => {
         console.log("mounted")
-        newRoutinename = localStorage.getItem("newRoutinename_temp");
+        newRoutinename = localStorage.getItem("humCookie");
         // cardContainer = document.getElementsByClassName('container')[0];
         // node = document.createElement("WorkoutCard");
 // menu.removeChild(menu.lastElementChild);

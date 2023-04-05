@@ -286,6 +286,7 @@ height:10vh;
 
 
 <style lang="scss">
+    @import './src/app.scss';
     *{
         // outline: 1px red solid;
     }

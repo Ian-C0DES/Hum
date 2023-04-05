@@ -56,7 +56,7 @@ export const actions = {
         locals.user.id
     ,
     "adressee": form.adressee ,
-    "accepted": false
+    "accepted": false,
     });
 
   
@@ -65,8 +65,9 @@ export const actions = {
       deletefriendRequest: async ({ request, locals, params}) => {
         const form = Object.fromEntries(await request.formData());
         const FriendShipStatus =serializeNonPOJOs( await locals.pb.collection('friendships').getList(1, 1, {
-          filter: 'requester = "'+ locals.user.id +'" && adressee = "'+ form.adressee +'"',
+          filter: 'requester = "'+ locals.user.id +'" && adressee = "'+ form.adressee +'"||requester = "'+ form.adressee +'" && adressee = "'+ locals.user.id +'"',
       }));
+      console.log(form);
       await locals.pb.collection('friendships').delete(FriendShipStatus?.items[0]?.id);
     },
 
