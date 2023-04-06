@@ -1,7 +1,7 @@
 <script>
 export let tier;
 export let name;
-export let progress;
+// export let progress;
 export let size;
 
 
@@ -40,8 +40,9 @@ const getImageUrl = (name,tier) =>{
 let badgeImage = getImageUrl(name=name,tier=tier)
 </script>
 
-
+<div>
     <img style="height:{size};" src={badgeImage} alt="">
+</div>
 
 
 
@@ -50,6 +51,9 @@ let badgeImage = getImageUrl(name=name,tier=tier)
     // padding: 1%;
     img{
         // width: 100%;
+    &:hover{
+
+    }
     }
 }
 </style>

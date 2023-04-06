@@ -2,7 +2,7 @@
 	import Chart from '$lib/components/Chart.svelte';
 	export let data;
 	const { userStats } = data;
-	let expected = Math.round(0.029 * (data.user.height * data.user.height) * 100) / 100;
+	let expected = Math.round(0.029 * (data?.user?.height * data?.user?.height) * 100) / 100;
 
 	let currentChart = 'weight';
 	let pointer = 0;
@@ -19,9 +19,9 @@
 
 	let subopts = [];
 
-	let workouts = userStats.routine_stats;
+	let workouts = userStats?.routine_stats;
 
-	Object.entries(userStats.routine_stats).forEach((element) => {
+	Object.entries(userStats?.routine_stats).forEach((element) => {
 		subopts.push(element[0]);
 	});
 
@@ -44,11 +44,11 @@
 			<p class="label">Last updated</p>
 
 			<p class="time">
-				{userStats.updated.slice(10, 19)}
+				{userStats?.updated.slice(10, 19)}
 			</p>
 
 			<p class="date">
-				{userStats.updated.slice(0, 10)}
+				{userStats?.updated.slice(0, 10)}
 			</p>
 		</div>
 

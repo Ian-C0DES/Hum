@@ -43,6 +43,7 @@
 		return async ({ update }) => {
 			// editing = false;
 			await update();
+			location.reload();
 		};
 	};
 
