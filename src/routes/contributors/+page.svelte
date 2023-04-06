@@ -73,6 +73,7 @@
 	* {
 	}
 
+
 	body {
 		overflow-x: hidden;
 		background-color: #151515;
