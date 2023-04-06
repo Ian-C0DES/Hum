@@ -117,9 +117,6 @@ if (chartType =="weights") {
             fontFamily: 'Inter',
             height: "100%",
             width:"100%",
-          // redrawOnParentResize: true
-          // redrawOnWindowResize: true
-          // foreColor: '#000000',
         },
         plotOptions: {
           bar: {
