@@ -3,4 +3,4 @@ services:
     name: hum
     env: node
     buildCommand: npm install && npm run build
-    buildCommand: node build/index.js
+    startCommand: node build/index.js
