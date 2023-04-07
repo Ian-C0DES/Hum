@@ -1,4 +1,4 @@
-export const load = ({ locals }) => {
+export const load = ({ locals, cookies }) => {
 	if (locals.user) {
 		return {
 			user: locals.user
