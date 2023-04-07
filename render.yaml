@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: hum
-    env: node
-    buildCommand: npm install && npm run build
-    startCommand: node build/index.js
