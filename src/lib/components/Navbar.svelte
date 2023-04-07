@@ -23,18 +23,18 @@
             </a>
 
             <a class="navItem {$page.url.pathname == "/stats" ? 'active' : ''}" href="/stats">
-              <i style="margin-left: .3rem" class="fa-regular fa-chart-bar rgtext"></i>
+              <i  class="fa-regular fa-chart-bar rgtext stats"></i>
               <p>Stats</p>
           </a>
 
-          <a class="navItem {$page.url.pathname == "/feed" ? 'active' : ''}" href="/feed">
+          <a class="navItem {$page.url.pathname.includes("feed") ? 'active' : ''}" href="/feed">
             <i class="fa-regular fa-comments rgtext"></i>
           <p>Feed</p>
       </a>
 
       <a class="navItem {$page.url.pathname == "/workout" ? 'active' : ''}" href="/workout">
-        <i style="" class="fa-solid fa-dumbbell rgtext"></i>
-      <p style="padding-left: 1vw;">Workout</p>
+        <i style="" class="fa-solid fa-dumbbell rgtext workout"></i>
+      <p>Workout</p>
   </a>
 
 
@@ -76,7 +76,7 @@
             .navContainer{
               position:absolute;
               // background-color: var(--dark);
-              background-color: transparent;
+
               min-width: 6vw;
               height: 100vh;
               align-items: center;
@@ -104,7 +104,12 @@
                   text-align: center;
                   position: relative;
                   right: .5vw;
-
+                  .stats{
+                    margin-left: .3rem
+                  }
+                  .workout{
+                    padding-left: 1vw;
+                  }
                   &.active{
                     i{
 
@@ -172,6 +177,118 @@
                 }
             }
             }
-            
+            @media only screen and (max-width: 500px) {
+              .filter{
+              min-width: 100vw;
+              height: 10vh;
+              position: absolute;
+              top: 90vh;
+              backdrop-filter: blur(18px);
+              background-color: transparent transparent;
+              z-index: 999;
+            }
+            .navContainer{
+              z-index: 998;
+              pointer-events: all;
+              position:absolute;
+              min-width: 100vw;
+              height: 10vh;
+              align-items: center;
+              top: 90vh;
+
+              .logoContainer{
+              position: absolute;
+              top: 0%;
+              display: none;
+            }
+            .menuopts {
+                display: flex;
+                width: inherit;
+                position: relative;
+                // top: 20%;
+                z-index: 9999;
+                justify-content: space-around;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                  
+                .navItem{
+        
+                  // height: 5vh;
+                  text-decoration: none;
+                  // color: var(--accent1);
+                  padding: 0rem 0px 0rem 0px;
+                  text-align: center;
+                  position: relative;
+                  right: .0vw;
+
+                  &.active{
+                    i{
+                      display: none;
+                    }
+                    p{
+                      color: var(--textcolor);
+                      height: 6vh;
+                      opacity: 1;
+                      position: relative;
+                      top: -2vw;
+                      // height: 0px;
+                    }
+                    // background-color: red;
+                  }
+                  i{
+                    animation: fadeIn 3s forwards;
+                    font-size: 1.5rem;
+                  }
+                  p{
+                    // font-family: "iceland";
+                    font-family: var(--font);
+                    font-weight: 900;
+                    // text-align: center;
+                    position: relative;
+                    // color: var(--accent2);
+                    // color: var(--textcolor);
+                    color: gray;
+                    opacity: 0%;
+                    top: -70%;
+                    height: 0px;
+                    // display: none;
+                    // animation: fadeOut 1s forwards;
+                    font-size: 1rem;
+
+                  }
+                }
+                .logout{
+                    cursor: pointer;
+                    background: none;
+                    border: none;
+                    color: var(--accent2);
+                    font-size: 30px;
+                    position: relative;
+                    top: 0vh;
+                  }
+                  .logout:hover{
+                    color: var(--accent1);
+                    i{
+                      animation: fadeOut .5s forwards;
+                    }
+                    .open{
+                      animation: fadeIn .3s forwards;
+                    }
+                  } 
+                .navItem:hover{
+                  i{
+                    animation: fadeOut .7s forwards;
+                  }
+                  p{
+                    opacity: 0;
+                    animation: fadeIn 1.5s forwards;
+                  }
+
+                }
+            }
+              }
+}
+
           </style>
       
