@@ -30,23 +30,19 @@ let subopts= [
   
     {
       "optGroup":"Arms",
-      "opts":["BicepCurls","BenchPress"]
+      "opts":["Bicep Curls","Bench Press"]
     },
     {
       "optGroup":"Leg",
-      "opts":["Squat","CalfRaises"]
+      "opts":["Squat","Calf Raises"]
     },
     {
       "optGroup":"Shoulder",
-      "opts":["ShoulderPress",]
+      "opts":["Shoulder Press",]
     },
     {
     "optGroup":"Back",
       "opts":["Upright Rows",]
-    },
-    {
-      "optGroup":"Core",
-      "opts":["Crunch","Plank",]
     },
 ]
 
