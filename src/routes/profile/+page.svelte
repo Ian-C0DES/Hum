@@ -1,7 +1,7 @@
 <script>
 	export let data;
 	// let {x} = data;
-	import { getImageURL } from '$lib/utils.js';
+	import { getImageURL,getBadgeimage } from '$lib/utils.js';
 	import { fade, fly, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
@@ -294,7 +294,7 @@
 		<!-- {#each data.user.badges as badge, i} -->
 		{#each Object.entries(data?.user?.badges) as badge}
 			<div style="padding: 1%;">
-				<Badge size={10 + 'vh'} name={badge[0]} tier={badge[1].tier} progress={badge[1].progress} />
+				<Badge size={10 + 'vh'} progress={badge[1].progress} src={getBadgeimage(badge[0],badge[1].tier,$page)} />
 			</div>
 			<!-- {badge[0]}
         {badge[1].tier}

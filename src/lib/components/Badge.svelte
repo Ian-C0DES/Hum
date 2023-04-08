@@ -5,6 +5,7 @@ export let name;
 export let size;
 
 
+export let src;
 
 import { page } from '$app/stores';
 
@@ -13,19 +14,19 @@ const getImageUrl = (name,tier) =>{
     let filename="";
     switch (tier) {
         case 1:
-            filename += "I-";
+            filename += "I_";
             break;
         case 2:
-            filename += "II-";
+            filename += "II_";
             break;
         case 3:
-            filename += "III-";
+            filename += "III_";
             break;
         case 4:
-            filename += "IIII-";
+            filename += "IIII_";
             break;
         case 5:
-            filename += "IIIII-";
+            filename += "IIIII_";
             break;
         default:
             break;
@@ -41,7 +42,7 @@ let badgeImage = getImageUrl(name=name,tier=tier)
 </script>
 
 <div>
-    <img style="height:{size};" src={badgeImage} alt="">
+    <img style="height:{size};" src={src} alt="">
 </div>
 
 
