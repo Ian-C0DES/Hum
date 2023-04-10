@@ -56,7 +56,7 @@ let badgeImage = getImageUrl(name=name,tier=tier)
     }
     }
 }
-@media only screen and (max-width:500px) and (min-width:390px) {
+@media only screen and (max-width:600px) {
     img{
         width:2rem;
         max-height: 2rem;
