@@ -4,22 +4,15 @@ export let tier;
 export let name;
 // export let progress;
 export let size;
-const images = import.meta.globEager('../assets/images/badges/*.*');
+const images = import.meta.glob('../assets/images/badges/*.*');
 //  console.log(images);
 // export let src;
+const imgUrl = new URL('../assets/images/badges/I_Login_Goal.png', import.meta.url).href
 
 const imageUrls = {};
-import { onMount } from 'svelte';
 
-export let imageName;
 let imageUrl;
 
-onMount(async () => {
-  const response = await fetch(`../src/lib/assets/images/badges/${"III_Login_Goal.png"}`);
-  const blob = await response.blob();
-  imageUrl = URL.createObjectURL(blob);
-  console.log(imageUrl);
-});
 // Object.entries(images).forEach(([path, image]) => {
 //     const imageName = path.replace(/^.*[\\/]/, '').split('.')[0];
 //     const imageType = path.split('.')[1];
@@ -37,9 +30,11 @@ onMount(async () => {
 // let imageName = ;
 // const imageUrl = imageUrls[imageName];
 
-  console.log($page);
+  console.log(imgUrl);
 
-
+  function getImageUrl(name) {
+  return new URL(`../assets/images/badges/${name}.png`, import.meta.url).href
+}
 
 //   export async function preload({ params }) {
 //     const { imageName } = params;
@@ -85,7 +80,13 @@ let badgeImage = getImageUrl(name=name,tier=tier);
 </script>
 
 <div>
-    <img style="height:{size};" src={imageUrl} alt="">
+    <img style="height:{size};" src={imgUrl}  alt="">
+    <!-- {#each Object.keys(images) as imageName}
+    {console.log(imageName())} -->
+
+    <!-- <img tyle="height:{size};" src={imageName.default} alt={imageName} /> -->
+
+    <!-- {/each} -->
     <!-- <img src="{}" alt="My Image" /> -->
 </div>
 
