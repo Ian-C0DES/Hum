@@ -294,7 +294,7 @@
 		<!-- {#each data.user.badges as badge, i} -->
 		{#each Object.entries(data?.user?.badges) as badge}
 			<div style="padding: 1%;">
-				<Badge size={10 + 'vh'} progress={badge[1].progress} src={getBadgeimage(badge[0],badge[1].tier,$page)} />
+				<Badge size={10 + 'vh'} progress={badge[1].progress} tier={badge[1].tier} name={badge[0]} />
 			</div>
 			<!-- {badge[0]}
         {badge[1].tier}

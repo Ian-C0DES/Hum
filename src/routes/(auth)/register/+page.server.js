@@ -1,4 +1,4 @@
-import { generateUsername, validateData, EmptyBadge } from '$lib/utils.js';
+import { generateUsername, EmptyBadge } from '$lib/utils.js';
 
 import { error, invalid, redirect } from '@sveltejs/kit';
 
