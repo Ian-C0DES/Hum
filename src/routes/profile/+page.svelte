@@ -214,7 +214,7 @@
 		<div class="field">
 			<div class="birthdate">
 				<input
-					style="margin-right: 50px; width: 250px;"
+					
 					type="datetime"
 					name=""
 					value={birthdate}
@@ -571,5 +571,272 @@
 	.height::after {
 		content: 'in';
 		font-family: var(--font);
+	}
+
+	@media only screen and (max-width:500px) and (min-width:390px){
+		.themeWrapper {
+		position: relative;
+		width: 0;
+		height: 0;
+		.themeContainer {
+			position: absolute;
+			left: 70vw;
+			top: 10vh;
+			min-width: 4vw;
+			max-width: 4vw;
+			.dropBtn {
+				all: unset;
+				cursor: pointer;
+				min-width: 18vw;
+				max-width: 18vw;
+				background-color: rgba($color: #ffffff, $alpha: 0.1);
+				padding: 10%;
+				border-radius: 18px;
+				text-align: center;
+				i {
+					font-size: 0.8rem;
+					span {
+						font-family: var(--font);
+					}
+				}
+				&:hover {
+					background-color: #ffffff;
+				}
+			}
+			.list {
+				all: unset;
+				list-style: none;
+				display: flex;
+				min-width: fit-content;
+				margin-top: 10%;
+				overflow-x: visible;
+				li {
+					background-color: rgba($color: #ffffff, $alpha: 0.1);
+					margin: 10%;
+					overflow-x: visible;
+					max-width: 10vw;
+					width: 50%;
+
+					min-height: fit-content;
+					button {
+						all: unset;
+						// overflow-x: visible;
+						white-space: nowrap;
+						cursor: pointer;
+						font-family: var(--font);
+						font-weight: 900;
+						color: var(--textcolor);
+
+						font-size: 0.8rem;
+					}
+					&:hover {
+						width: 100%;
+						background-color: var(--accent1);
+						transition: all 1s;
+						button {
+							text-shadow: #000000 0 0 18px;
+							max-width: fit-content;
+							color: var(--accent2);
+						}
+					}
+				}
+			}
+		}
+	}
+	
+		.pfpContainer {
+		border: var(--dark) 2px solid;
+		width: 200px;
+		height: 200px;
+		background-color: var(--textcolor);
+		margin-left: 10vw;
+		margin-right: none;
+		margin-top: 10vh;
+		border-radius: 50%;
+		text-align: center;
+		box-shadow: 5px 3px 5px var(--dark);
+
+		.avatar {
+			border-radius: 50%;
+			width: 101%;
+			height: 101%;
+			position: relative;
+			bottom: 0%;
+			right: 0.5%;
+			transition: all 0.5s;
+		}
+
+		.chan {
+			opacity: 0;
+			position: relative;
+			bottom: 65%;
+			font-size: 4rem;
+		}
+		&:hover {
+			.avatar {
+				filter: blur(30px);
+				transition: all 1s;
+			}
+			.chan {
+				cursor: pointer;
+				animation: fadeIn 2s forwards;
+			}
+		}
+	}
+
+	.welcomeContainer {
+		position: relative;
+		width:auto;
+		height: 200px;
+	}
+	.welcome {
+		background-color: rgba(15, 15, 15, 0.75);
+		padding: 5px 40px 5px 20px;
+		margin-right: 2vw;
+		color: var(--textcolor);
+		font-size: 40px;
+		font-family: var(--font);
+		min-width: 25vw;
+		position: relative;
+		top: 5vw;
+		bottom: 5vh;
+		left: 0vw;
+		box-shadow: 5px 5px 5px #000000;
+		.message {
+			margin-bottom: 3px;
+			margin-top: 5px;
+			overflow-x: hidden;
+			font-weight: 500;
+		}
+		.username {
+			font-size: 0.8rem;
+			//float: right;
+			width: auto;
+			margin-bottom: 5px;
+		}
+		.bmi {
+			font-weight: 500;
+			font-size: 1.0rem;
+		}
+		.email {
+			font-size: 20px;
+			margin-bottom: 5px;
+		}
+		.age {
+			font-size: 16px;
+			text-align: end;
+		}
+	}
+
+	.userData {
+  flex-direction: column;
+  margin: 50px 10px 0px 10px;
+}
+.userData .birthdate {
+  font-size: 14px;
+}
+.userData .field {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.userData .field:last-child {
+  margin-bottom: 0px;
+}
+.userData .field input {
+  border: none;
+  outline: none;
+  font-family: var(--font);
+  font-size: 16px;
+  color: var(--textcolor);
+  width: 100%;
+}
+.userData .field .icon {
+  font-size: 30px;
+  color: var(--accent2);
+}
+.userData .field .staticicon {
+font-size: 30px;
+  width: 100%;
+  color: var(--accent2);
+  display: inline-block;
+  vertical-align: middle;
+  
+}
+.userData .field .edit {
+  font-size: 30px;
+  color: var(--accent1);
+}
+.userData .field:hover {
+  cursor: pointer;
+}
+.userData .field:hover .icon {
+  animation: fadeOut 0.5s forwards;
+}
+.userData .field:hover .edit {
+  animation: fadeIn 1s forwards;
+}
+
+/* Hide spin buttons on number inputs */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.badgeContainer {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 3vh;
+  padding: 5px 15px 10px 15px;
+  color: var(--textcolor);
+  width: 80vw;
+  background-color: rgba(15, 15, 15, 0.75);
+  box-shadow: 5px 5px 5px #000000;
+  display: flex;
+  flex-wrap: wrap;
+  h1 {
+    width: 100%;
+    font-family: var(--font);
+    font-size: 24px;
+  }
+  p {
+    font-family: var(--font);
+    font-size: 16px;
+  }
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+.userData:enabled {
+    background-color: aqua;
+  }
+  div::after {
+    position: relative;
+    left: 4px;
+    font-family: var(--font);
+    color: var(--textcolor);
+  }
+  /* set the unit abbreviation for each unit class */
+  .lbs::after {
+    content: 'lbs';
+    font-family: var(--font);
+  }
+  .age::after {
+    content: ' y/o';
+    font-family: var(--font);
+  }
+  .height::after {
+    content: 'in';
+    font-family: var(--font);
+  }
+
 	}
 </style>

@@ -90,6 +90,7 @@ on:mouseleave={() => {
     }
     }
 }
+
 .hintContainer{
     z-index: 999;
     // outline: red 1px solid;
