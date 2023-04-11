@@ -1,7 +1,7 @@
 <script>
 	export let data;
 	// let {x} = data;
-	import { getImageURL,getBadgeimage } from '$lib/utils.js';
+	import { getImageURL } from '$lib/utils.js';
 	import { fade, fly, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
@@ -11,7 +11,7 @@
 	onMount(() => {
 		// console.log(document.getElementsByTagName('html')[0]);
 		// console.log(onMount());
-		console.log($page);
+		// console.log($page);
 		//  theme = $page.url.searchParams.get('theme');
 		// theme = "light"
 		// document.documentElement.setAttribute('data-theme',theme);
@@ -292,7 +292,7 @@
 			<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges
 		</h1>
 		<!-- {#each data.user.badges as badge, i} -->
-		{#each Object.entries(data?.user?.badges) as badge}
+		{#each Object.entries(data?.user?.badges) as badge (badge[0])}
 			<div style="padding: 1%;">
 				<Badge size={10 + 'vh'} progress={badge[1].progress} tier={badge[1].tier} name={badge[0]} />
 			</div>

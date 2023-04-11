@@ -14,43 +14,14 @@ export const getImageURL = (collectionId, recordId, fileName, size = '0x0') => {
 	return `${PUBLIC_VITE_POCKETBASE_URL}/api/files/${collectionId}/${recordId}/${fileName}?thumb=${size}`;
 };
 
-	export const getBadgeimage = (name,tier,page) =>{
-		let src="";
-		let filename="";
-		switch (tier) {
-			case 1:
-				filename += "I_";
-				break;
-			case 2:
-				filename += "II_";
-				break;
-			case 3:
-				filename += "III_";
-				break;
-			case 4:
-				filename += "IIII_";
-				break;
-			case 5:
-				filename += "IIIII_";
-				break;
-			default:
-				break;
-		}
-		for (let index = 0; index < (page.route.id.match(/\//g) || []).length; index++) {
-			src += "../"
-		}
-		filename+=name;
-		src += "src/lib/assets/images/badges/"+filename+".png";
-		// let image = import(src);
-		// console.log(image);
-		return src;
-	};
+
+
 
 export const BadgeData = {
 	Login_Goal: {
 		tier: 0,
 		progress: 0,
-		hint:"Earn points by",
+		hint:"Earn points by logging data",
 		threshold:{
 			1:3,
 			2:7,
@@ -59,7 +30,13 @@ export const BadgeData = {
 	},
 	Weight_Goal: {
 		tier: 0,
-		progress: 0
+		progress: 0,
+		hint:"Earn points by hitting your weight goal and staying in good standing BMI range",
+		threshold:{
+			1:3,
+			2:7,
+			3:14,
+		},
 	}
 };
 
