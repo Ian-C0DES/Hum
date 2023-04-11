@@ -53,7 +53,63 @@
 		</div>
 
 		<div class="chartContainer">
-			{#key currentChart}
+			<div class="chart">
+				<Chart goal={expected} chartType={'weights'} userdata={userStats['weights']} />
+			</div>
+		</div>
+		<table>
+			<tr>
+
+				<td>
+
+					<div class="chartContainer-small">
+						<div class="chart">
+							<Chart goal={expected} chartType={"bmi"} userdata={userStats["bmi"]} />
+						</div>
+					</div>
+
+				</td>
+
+
+				
+				<td>
+
+					<div class="chartContainer-small">
+						<div class="chart">
+							<Chart goal={expected} chartType={currentChart} userdata={userStats[currentChart]} />
+						</div>
+					</div>
+
+				</td>
+			</tr>
+
+			<tr>
+
+				<td>
+
+					<div class="chartContainer-small">
+						<div class="chart">
+							<Chart goal={expected} chartType={currentChart} userdata={userStats[currentChart]} />
+						</div>
+					</div>
+
+				</td>
+
+
+				
+				<td>
+
+					<div class="chartContainer-small">
+						<div class="chart">
+							<Chart goal={expected} chartType={currentChart} userdata={userStats[currentChart]} />
+						</div>
+					</div>
+
+				</td>
+			</tr>
+			
+		</table>
+			<!-- {#key currentChart}
 				<h1>
 					{#each currentChart as letter}
 						{' ' + letter + ' '}
@@ -98,8 +154,11 @@
 				<button style="margin-left: 30vw;" on:click={incrementChart}>
 					<i class="fa-solid fa-arrow-right rgtext" />
 				</button>
-			</div>
-		</div>
+			</div> -->
+
+
+			
+		<!-- </div> -->
 
 	</div>
 </body>
@@ -125,7 +184,7 @@
 		/* // background-position: bottom ; */
 	}
 	#content {
-		margin-left: 5vw;
+		margin-left: 6vw;
 		h1 {
 			// font: 2rem center var(--font) 900;
 			font-family: var(--font);
@@ -142,9 +201,10 @@
 			position: absolute;
 			background-color: rgba(0, 0, 0, 0.2);
 			border-radius: 18px;
-			width: fit-content;
+			width: 10vw;
 			padding: 0.5%;
-			left: 90vw;
+			left: 85vw;
+			top: 2vh;
 			.label {
 				font-size: 0.6rem;
 				text-align: center;
@@ -165,7 +225,10 @@
 	}
 	.chartContainer {
 		display: flex;
-		width: 95vw;
+		width: 90vw;
+		height: 30vh;
+		margin-left: 2vw;
+		margin-top: 15vh;
 		justify-content: center;
 		flex-direction: column;
 		align-items: center;
@@ -184,8 +247,8 @@
 		}
 		.chart {
 			padding: 20px;
-			width: 80vw;
-			height: 60vh;
+			width: 50%;
+			min-height: 85%;
 			// background-image: radial-gradient(var(--textcolor) 1px, transparent 0);
 			// background-size: 40px 40px;
 			// background-position: 0px 0px;
@@ -195,7 +258,44 @@
 			border: 3px solid;
 			border-radius: 18px;
 			border-color: var(--bgcolor);
-			// box-shadow: 10px 10px 0px var(--bgcolor);
+			box-shadow: 10px 10px 0px var(--bgcolor);
+		}
+	}
+	table{
+		display: flex;
+		flex-direction: column;
+    	align-items: center;
+		tr{
+			// width: 100%;
+		}
+		td{
+			padding: 2rem;
+		}
+	}
+	.chartContainer-small {
+		display: flex;
+		width: 30vw;
+		height: 30vh;
+		// margin-left: 2vw;
+		// margin-top: 15vh;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+
+		.chart {
+			margin: 2%;
+			width: 100%;
+			min-height: 100%;
+			// background-image: radial-gradient(var(--textcolor) 1px, transparent 0);
+			// background-size: 40px 40px;
+			// background-position: 0px 0px;
+
+			// background: radial-gradient(400.81% 400.43% at -275% -220%, #0003 40.22%, var(--textcolor) 100%);
+			// border-radius: 10%;
+			border: 3px solid;
+			border-radius: 18px;
+			border-color: var(--bgcolor);
+			box-shadow: 10px 10px 0px var(--bgcolor);
 		}
 	}
 	select {
