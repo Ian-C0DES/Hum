@@ -11,8 +11,8 @@ import { fade, fly, slide } from 'svelte/transition';
 
 let active = false;
 let filename="";
-console.log(BadgeData);
-console.log(progress);
+// console.log(BadgeData);
+// console.log(progress);
 
 const getImageUrl = (name,tier) =>{
     switch (tier) {
@@ -40,9 +40,11 @@ const getImageUrl = (name,tier) =>{
 
 let badgeImage = getImageUrl(name=name,tier=tier);
 
-console.log(filename);
+// console.log(filename);
 </script>
 
+{#if tier != 0}
+    
 
 {#if active}
 
@@ -72,7 +74,7 @@ on:mouseleave={() => {
 </div>
 
 
-
+{/if}
 <style lang="scss">
 .badgeContainer.active{
     // background-color: black;

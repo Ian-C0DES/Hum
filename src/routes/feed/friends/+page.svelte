@@ -6,6 +6,7 @@
 	import { getImageURL } from '$lib/utils.js';
 	const { friends, pendingOUTRequests, pendingINRequests } = data;
 	import Sidepanel from '$lib/components/Sidepanel.svelte';
+	import Badge from '$lib/components/Badge.svelte';
 	// import UserCard from '$lib/components/UserCard.svelte';
 	let showOutgoing = false;
 	let openUsercard = null;
@@ -71,7 +72,7 @@
 												pendingOUTRequest.expand?.adressee?.id,
 												pendingOUTRequest.expand?.adressee?.avatar
 										  )
-										: 'https://ui-avatars.com/api/?name=$' +
+										: 'https://ui-avatars.com/api/?name=' +
 										  pendingOUTRequest.expand?.adressee?.name}
 									alt=""
 								/>
@@ -210,6 +211,16 @@
 									>
 								</div>
 							{/if}
+							<div class="badgeContainer">
+								<h1>
+									<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges
+								</h1>
+								{#each Object.entries(openUsercard?.badges) as badge (badge[0])}
+									<div style="padding: 3%;">
+										<Badge size={5 + 'vw'} progress={badge[1].progress} tier={badge[1].tier} name={badge[0]} />
+									</div>
+								{/each}
+							</div>
 						{/key}
 					{/if}
 				</div>
@@ -416,6 +427,18 @@
 				all: unset;
 				cursor: pointer;
 				padding: 0.5rem;
+				background-color: rgba($color: #ffffff, $alpha: 0.01);
+				border-radius: 18px;
+				font-size: 1.2rem;
+				color: grey;
+				i {
+					font-size: 1.3rem;
+					padding: 0.3rem;
+				}
+				&:hover{
+				all: unset;
+				cursor: pointer;
+				padding: 0.5rem;
 				background-color: rgba($color: #ffffff, $alpha: 0.05);
 				border-radius: 18px;
 				font-size: 1.2rem;
@@ -423,7 +446,9 @@
 					font-size: 1.3rem;
 					padding: 0.3rem;
 				}
+				}
 			}
+			
 		}
 	}
 
@@ -486,5 +511,36 @@
 
 	.outgoingTab.active {
 		background-image: linear-gradient(to top, rgba(255, 0, 0, 0), rgb(0, 0, 0));
+	}
+
+	.badgeContainer {
+		// margin: 3%;
+		// margin-left: 5%;
+		position: relative;
+		// margin-top: 50px;
+		// margin-bottom: 3vh;
+		padding: .5%;
+		// left: 10vw;
+		color: var(--textcolor);
+		width: 25vw;
+		// height: 10vh;
+		background-color: rgba(15, 15, 15, 0.75);
+		box-shadow: 5px 5px 5px #000000;
+		display: flex;
+		flex-wrap: wrap;
+		h1 {
+			text-align: center;
+			font-size: 1.5rem;
+			padding: 1%;
+			margin: 0px;
+			min-width: 100%;
+			font-family: var(--font);
+		}
+		p {
+			font-family: var(--font);
+		}
+		// .Badge{
+		//     width: 1px;
+		// }
 	}
 </style>

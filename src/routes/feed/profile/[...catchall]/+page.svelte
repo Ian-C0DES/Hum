@@ -5,11 +5,12 @@
 	export let data;
 	const { viewedUser, viewedUserMessages, viewedUserStats, friendShipStatus } = data;
 	import Badge from '$lib/components/Badge.svelte';
-	import { getImageURL } from '$lib/utils.js';
+	import { getImageURL, abbrNum } from '$lib/utils.js';
 
 	onMount(() => {
 		console.log(($page.route.id.match(/\//g) || []).length);
 		console.log($page.route.id);
+		console.log(viewedUser.badges);
 	});
 </script>
 
@@ -24,7 +25,7 @@
 				<div class="pfp" style="border-radius: 50%; width:150px; height: 150px;">
 					<img
 						style="border-radius: 50%; width:150px; height: 150px;"
-						src={viewedUser.avatar
+						src={viewedUser?.avatar
 							? getImageURL(viewedUser?.collectionId, viewedUser?.id, viewedUser?.avatar)
 							: 'https://ui-avatars.com/api/?name=$' + viewedUser?.displayName}
 						alt=""
@@ -45,10 +46,24 @@
 
 				<div class="score">
 					<i class="fa-solid fa-dumbbell rgtext" />
-					<span> {viewedUserStats.score} </span>
+					<span> {abbrNum(viewedUserStats.score,2)} </span>
 				</div>
 
-				<Badge badgeData={'test'} />
+				<!-- <div class="badgeContainer"> -->
+					<div class="badgeContainer">
+						<h1>
+							<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges
+						</h1>
+
+						{#each Object.entries(viewedUser?.badges) as badge (badge[0])}
+							<div style="padding: 3%;">
+								<Badge size={3 + 'vw'} progress={badge[1].progress} tier={badge[1].tier} name={badge[0]} />
+							</div>
+						{/each}
+					</div>
+
+				<!-- </div> -->
+
 			</div>
 
 			<div class="subbanner">
@@ -296,5 +311,34 @@
 				color: var(--textcolor);
 			}
 		}
+	}
+	.badgeContainer {
+		// margin: 3%;
+		margin-left: 5%;
+		position: relative;
+		// margin-top: 50px;
+		// margin-bottom: 3vh;
+		padding: .5%;
+		// left: 10vw;
+		color: var(--textcolor);
+		width: 25vw;
+		// height: 10vh;
+		background-color: rgba(15, 15, 15, 0.75);
+		box-shadow: 5px 5px 5px #000000;
+		display: flex;
+		flex-wrap: wrap;
+		h1 {
+			font-size: 1.5rem;
+			padding: 1%;
+			margin: 0px;
+			min-width: 100%;
+			font-family: var(--font);
+		}
+		p {
+			font-family: var(--font);
+		}
+		// .Badge{
+		//     width: 1px;
+		// }
 	}
 </style>

@@ -214,7 +214,7 @@
 		<div class="field">
 			<div class="birthdate">
 				<input
-					
+					class="birthdate-input"
 					type="datetime"
 					name=""
 					value={birthdate}
@@ -222,7 +222,7 @@
 				/>
 			</div>
 			<div class="staticicon">
-				<i class="fa-solid fa-cake-candles" />
+				<i class="fa-solid fa-cake-candles cake" />
 			</div>
 		</div>
 
@@ -292,7 +292,8 @@
 			<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges
 		</h1>
 		<!-- {#each data.user.badges as badge, i} -->
-		{#each Object.entries(data?.user?.badges) as badge (badge[0])}
+		{#if Object.entries(data.user?.badges).length > 0}
+		{#each Object.entries(data.user?.badges) as badge (badge[0])}
 			<div style="padding: 1%;">
 				<Badge size={10 + 'vh'} progress={badge[1].progress} tier={badge[1].tier} name={badge[0]} />
 			</div>
@@ -301,6 +302,7 @@
         {badge[1].progress} -->
 			<!-- {console.log(badge)} -->
 		{/each}
+		{/if}
 	</div>
 </body>
 
@@ -402,6 +404,7 @@
 		left: 25vw;
 		box-shadow: 5px 5px 5px #000000;
 		.message {
+			white-space: nowrap;
 			margin-bottom: 3px;
 			margin-top: 5px;
 			overflow-x: hidden;
@@ -466,6 +469,7 @@
 			position: relative;
 			bottom: 0%;
 			right: 0.5%;
+			aspect-ratio: 1/1;
 			transition: all 0.5s;
 		}
 
@@ -497,6 +501,9 @@
 			width: fit-content;
 			display: flex;
 			padding: 0px 20px 0px 100px;
+			.birthdate-input{
+				width: 15rem;
+			}
 			input {
 				border: none;
 				outline-width: 0;
@@ -519,6 +526,9 @@
 				font-size: 50px;
 				color: var(--accent2);
 				cursor: default;
+				.cake{
+					// margin-left: 150px;
+				}
 			}
 			.edit {
 				text-shadow: 0px 5px 0px #000000;
