@@ -222,4 +222,117 @@
 			}
 		}
 	}
+
+	@media only screen and (max-width:500px){
+		#content {
+	margin-left: 4vw;
+	max-width: 92vw;
+	h1 {
+		text-align: center;
+	}
+	.container {
+		flex-direction: column;
+		justify-content: space-evenly;
+		display: flex;
+		.create {
+		}
+		.view {
+		}
+		.head {
+			color: var(--textcolor);
+			font-size: 2rem;
+			font-family: var(--font);
+			font-weight: 800;
+			margin-bottom: 1rem;
+			background: linear-gradient(90deg, var(--accent1), var(--accent2));
+			background-size: 100% 3px;
+			background-repeat: no-repeat;
+			background-position: left bottom;
+		}
+		.subtext {
+			font-family: var(--font);
+			color: var(--textcolor);
+			font-size: 1rem;
+		}
+		.cardContainer {
+			padding: 0.5rem;
+			background-color: rgba($color: #000000, $alpha: 0.1);
+			.card {
+				font-family: var(--font);
+				display: grid;
+				grid-template-areas:
+					'icons title title title'
+					'icons details details details'
+					'icons footer footer footer';
+				border: 1px rgba(255, 255, 255, 0.3) solid;
+				border-radius: 18px;
+				padding: 0.5rem;
+				margin-bottom: 1rem;
+				.title {
+					grid-area: title;
+					p {
+						all: unset;
+						color: var(--textcolor);
+						font-family: var(--font);
+						font-size: 1.5rem;
+						margin: none;
+						font-weight: 500;
+					}
+					input {
+						color: var(--textcolor);
+						font-family: var(--font);
+						font-size: 1rem;
+						font-weight: 500;
+						border: transparent;
+						background-color: transparent;
+						width: 98%;
+						height: 85%;
+						border: none;
+						outline: none;
+						&:focus {
+							border: transparent;
+						}
+					}
+				}
+				.icon {
+					grid-area: icons;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					i {
+						cursor: pointer;
+						padding: 1rem;
+						width: 100%;
+						text-align: center;
+						font-size: 2rem;
+						&:hover {
+							opacity: 0.4;
+						}
+					}
+				}
+				.details {
+					grid-area: details;
+					margin: 0px;
+					font-family: var(--font);
+					color: var(--textcolor);
+					ul li {
+						list-style-type: square;
+						font-family: var(--font);
+						color: var(--textcolor);
+					}
+				}
+				.footer {
+					color: var(--textcolor);
+					font-family: var(--font);
+					text-align: end;
+					margin: 0px 0.5rem 0px 0px;
+					grid-area: footer;
+					font-size: 0.5rem;
+				}
+			}
+		}
+	}
+}
+
+	}
 </style>
