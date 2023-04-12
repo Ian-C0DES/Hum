@@ -65,6 +65,8 @@ body {
 	background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
 	-webkit-text-fill-color: transparent;
 	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
 }
 .underline-gradient {
 	background: linear-gradient(90deg, var(--accent1), var(--accent2));

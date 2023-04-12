@@ -22,11 +22,14 @@ export const actions = {
 		try {
 			const newuser = await locals.pb
 				.collection('users')
-				.create({ username, ...defaultUserData, ...formData });
+				.create({ username, ...defaultUserData, ...formData, "badges":EmptyBadge});
 			await locals.pb.collection('user_statistics').create({
 				userID: [newuser.id],
 				...defaultStatsData,
 				badges: EmptyBadge
+			});
+			await locals.pb.collection('likes').create({
+				"user": newuser.id,
 			});
 		} catch (err) {
 			// if (err.status === 400 && err.data.data.code == 'validation_values_mismatch'){

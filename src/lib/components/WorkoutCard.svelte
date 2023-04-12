@@ -254,6 +254,11 @@
 			// background-size: 100%;
 			background-position: center;
 			background-repeat: no-repeat;
+			filter:saturate(100) brightness(-2) contrast(10) hue-rotate(100deg);
+			// filter:contrast(10);
+			mix-blend-mode: multiply;
+
+			// filter: hue-rotate(90deg);
 			// position: relative;
 			// z-index: 2;
 		}
@@ -357,4 +362,6 @@
 	//       left: 100px;
 	//       z-index: 2;
 	//     }
+
+	
 </style>

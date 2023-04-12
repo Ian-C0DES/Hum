@@ -1,16 +1,40 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
+	import { enhance } from '$app/forms';
 	import { fade, fly } from 'svelte/transition';
-	import { getImageURL } from '$lib/utils.js';
+	import { getImageURL, abbrNum, timeSince } from '$lib/utils.js';
 	import Sidepanel from '$lib/components/Sidepanel.svelte';
 
 	export let data;
-	const { messages } = data;
+	const { messages, likes } = data;
 
+	// console.log(likes);
 	// console.log(messages);
+	// console.log(messages[9]);
+	// console.log(likes.filter(e => e.id == message.id).length > 0);
 
-	// import defaultpfp from "$lib/assets/images/defaultpfp.png";
-
+	const messageAction = (input) => {
+		// let form = Object.fromEntries(input?.data);
+		// console.log(form);
+		// console.log(likes);
+		// console.log(input.form);
+		// if (input.action.search == '?/likemessage'){
+			// console.log("liking a message");
+			// console.log(messages);
+			// messages.slice(x);
+			// let x = likes.findIndex(e => e.id === form.message);
+			// console.log(x);
+			// }
+			// let x = likes.findIndex(e => e.id === form.message);
+			return async ({ update }) => {	
+				// messages.pop();
+				// console.log(x);
+			// editing = false;
+			// likes.slice(x);
+			await update({ reset: false });
+			// await update();
+		};
+	};
 	let sidePanel = false;
 	let messagePanel = false;
 
@@ -38,7 +62,7 @@
 
 <body>
 	<div id="content">
-		<Sidepanel sidePanel={false} {data} />
+		<Sidepanel sidePanel={false} data={data} />
 
 		<div class="head">
 			<h1 class="rgtext">Whats the Hum?</h1>
@@ -52,7 +76,44 @@
 		<div class="feedContainer">
 			<div class="messagesContainer">
 				{#each messages as message (message.id)}
+				<form hidden method="POST" id="messageForm{message.id}" >
+					<input type="text" name="message" value={message.id}/>
+					<!-- {#if likes.filter(e => e.id == message.id).length > 0}
+					<input type="text" name="message" value={message.id}/>
+					{/if} -->
+
+				</form>
 					<div class="message">
+						<div class="actionsContainer">
+							{#if likes?.filter(e => e.id == message.id).length > 0}
+							<button form="messageForm{message.id}" formaction="?/dislikemessage" class="likebtn liked">
+							
+								<i class="fa-solid fa-fire">
+									<span>
+										&nbsp;{abbrNum(message.likes,2)}
+									</span>
+								</i>
+							</button>
+							{:else}
+							<button form="messageForm{message.id}" formaction="?/likemessage" class="likebtn">
+							
+								<i class="fa-solid fa-fire">
+									<span>
+										&nbsp;{abbrNum(message.likes,2)}
+									</span>
+								</i>
+							</button>
+							{/if}
+
+							<button class="commentbtn">
+								<i class="fa-regular fa-comment-dots">									
+								<span>
+									&nbsp;{abbrNum(0,2)}
+								</span>
+							</i>
+							</button>
+							
+						</div>
 						<div class="messageAuthor">
 							<img
 								src={message.expand?.user?.avatar
@@ -72,11 +133,22 @@
 							>
 								<div class="handle">@{message.expand?.user?.username}</div>
 							</a>
-							<div class="time">{message.created}</div>
+							<div class="time"><i class="fa-solid fa-clock-rotate-left rgtext"></i> {timeSince(new Date(message.created))} ago</div>
 						</div>
 						<div class="messageContent">
 							{message.text}
 						</div>
+						<!-- <div class="actionsContainer">
+
+							<button class="likebtn">
+								<i class="fa-solid fa-fire"></i>
+							</button>
+
+							<button class="commentbtn">
+								<i class="fa-regular fa-comment-dots"></i>
+							</button>
+
+						</div> -->
 					</div>
 				{/each}
 			</div>
@@ -256,7 +328,7 @@
 	//Legacy CSS
 
 	.messagesContainer {
-		height: 80vh;
+		max-height: 80vh;
 		top: 0px;
 		width: 95vw;
 		display: flex;
@@ -266,12 +338,13 @@
 		overflow-y: scroll;
 
 		.message {
-			border: 1px groove var(--accent2);
+			border: 2px dotted var(--accent1);
 			border-left: none;
 			border-right: none;
 			width: 75vw;
 			padding: 30px;
 			min-height: 30vh;
+			max-height: 60vh;
 			background-image: radial-gradient(var(--accent1) 1px, transparent 0);
 			background-size: 40px 40px;
 			background-position: -19px -19px;
@@ -315,8 +388,88 @@
 			.messageContent {
 				padding-top: 1rem;
 				color: var(--textcolor);
+				font-size: 1.4rem;
 			}
+			.actionsContainer{
+			// min-width: fit-content;
+			// width: fit-content;
+			// max-width: fit-content;
+			position: relative;
+        	width: 0;
+        	height: 0;
+			top: 10vh;
+			left: 90%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			padding: 1%;
+			.likebtn{
+				all: unset;
+				font-size: 2rem;
+				padding: 20%;
+
+				// border: red 1px solid;
+				position:absolute;
+				top:525%;
+				right: 50%;
+				width:fit-content;
+				height:fit-content;
+				background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				cursor: pointer;
+				span{
+					font-size: 1.5rem;
+				}
+				&:hover{
+				background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				}
+				&.liked{
+				background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				}
+			}
+			.commentbtn{
+				all: unset;
+				padding: 20%;
+				font-size: 2rem;
+				
+				// border: blue 1px solid;
+				position:absolute;
+				top:525%;
+				left:225%;
+				width:fit-content;
+				height:fit-content;
+				background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				cursor: pointer;
+				span{
+					font-size: 1.5rem;
+				}
+				&:hover{
+				background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				}
+				}
+			}
+			
 		}
+
 	}
 
 	@media only screen and (max-width:500px){
