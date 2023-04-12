@@ -1,6 +1,6 @@
 import PocketBase from 'pocketbase';
 import { serializeNonPOJOs } from '$lib/utils';
-import { VITE_POCKETBASE_URL } from '$env/static/private'
+import { VITE_POCKETBASE_URL } from '$env/static/private';
 
 export const handle = async ({ event, resolve }) => {
 	event.locals.pb = new PocketBase(VITE_POCKETBASE_URL);
