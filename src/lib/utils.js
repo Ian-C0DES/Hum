@@ -14,13 +14,19 @@ export const getImageURL = (collectionId, recordId, fileName, size = '0x0') => {
 	return `${PUBLIC_VITE_POCKETBASE_URL}/api/files/${collectionId}/${recordId}/${fileName}?thumb=${size}`;
 };
 
+
+
+
+// Utils for formatting primitives
+
 export const abbrNum = (n,d) => {
 	let x=(''+n).length;
 	let p=Math.pow;
 	d=p(10,d);
 	x-=x%3
 return Math.round(n*d/p(10,x))/d+" kMGTPE"[x/3]
-}
+};
+
 export const timeSince = (date) => {
 	var seconds = Math.floor((new Date() - date) / 1000);
   
@@ -46,8 +52,10 @@ export const timeSince = (date) => {
 	  return Math.floor(interval) + " minutes";
 	}
 	return Math.floor(seconds) + " seconds";
-  }
+  };
 
+
+// Utils for Badges
 
 export const BadgeData = {
 	Login_Goal: {
@@ -82,3 +90,58 @@ export const EmptyBadge = {
 		progress: 0
 	}
 };
+
+
+// Utils for food Items
+
+export const foodItems = {
+	Proteins:{
+		Chicken: {
+			calories: 3.1,
+			fats: 0.2,
+			carbohydrates: 0.1,
+			proteins: 0.2,
+		},
+	},
+	Grains:{
+	White_rice: {
+		calories: 3.6,
+		fats: 0,
+		carbohydrates: 0.8,
+		proteins: 0.1,
+	}
+},
+Fruits:{
+	White_rice: {
+		calories: 3.6,
+		fats: 0,
+		carbohydrates: 0.8,
+		proteins: 0.1,
+	}
+},
+Veggies:{
+	White_rice: {
+		calories: 3.6,
+		fats: 0,
+		carbohydrates: 0.8,
+		proteins: 0.1,
+	}
+},
+Fats:{
+	White_rice: {
+		calories: 3.6,
+		fats: 0,
+		carbohydrates: 0.8,
+		proteins: 0.1,
+	}
+},
+Dairy:{
+	White_rice: {
+		calories: 3.6,
+		fats: 0,
+		carbohydrates: 0.8,
+		proteins: 0.1,
+	}
+},
+};
+

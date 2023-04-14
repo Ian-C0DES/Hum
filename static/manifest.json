@@ -10,8 +10,8 @@
       }
     ],
     "background_color": "#3367D6",
-    "display": "standalone",
-    "scope": "/",
+    "display": "fullscreen",
+    "scope": "/*",
     "theme_color": "#3367D6",
 
     "description": "Lofi to lofi beats, while using the scratchpad to list down tasks and thoughts"
