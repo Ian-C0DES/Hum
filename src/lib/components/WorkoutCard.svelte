@@ -40,14 +40,34 @@
 		}
 	];
 
-	const getImageUrl = (selectedWorkout) => {
-		console.log($page.route.id == '/workout/view/[...catchall]');
-		if ($page.route.id == '/workout/view/[...catchall]') {
-			return `background-image: url("../../src/lib/assets/images/exercises/${selectedWorkout}.png");`;
-		}
 
-		return `background-image: url("../src/lib/assets/images/exercises/${selectedWorkout}.png");`;
-	};
+	const getImageUrl = (name) =>{
+	let filename="";
+	console.log(name);
+    filename+=name;
+	if ($page.route.id == '/workout/view/[...catchall]') {
+    return new URL(`../assets/images/exercises/${name}.png`, import.meta.url).href;
+	}
+    return new URL(`../assets/images/exercises/${name}.png`, import.meta.url).href;
+};
+
+// let badgeImage = getImageUrl(selectedWorkout);
+
+
+
+	// const getImageUrl = (selectedWorkout) => {
+	// 	console.log($page.route.id == '/workout/view/[...catchall]');
+	// 	if ($page.route.id == '/workout/view/[...catchall]') {
+	// 		return `background-image: url("../../src/lib/assets/images/exercises/${selectedWorkout}.png");`;
+	// 	}
+
+	// 	return `background-image: url("../src/lib/assets/images/exercises/${selectedWorkout}.png");`;
+	// };
+
+
+
+
+
 
 	// let x = selectedWorkout.value
 	onMount(() => {
@@ -71,7 +91,10 @@
 {#if isFresh}
 	<div class="card">
 		{#key selectedWorkout}
-			<div class="image" style={bgImage} />
+			<div class="image"  style="background-image: url({bgImage});">
+				<!-- <img src={bgImage} alt=""> -->
+			</div>	
+
 		{/key}
 
 		<!-- {#if selectedWorkout}
@@ -192,7 +215,7 @@
 {:else}
 	<div class="card">
 		{#key selectedWorkout}
-			<div class="image" style={bgImage} />
+			<div class="image" style="background-image: url({bgImage});" />
 		{/key}
 		<!-- <div class="image" style="background-image: url({exercise});"></div> -->
 
@@ -254,9 +277,12 @@
 			// background-size: 100%;
 			background-position: center;
 			background-repeat: no-repeat;
-			filter:saturate(100) brightness(-2) contrast(10) hue-rotate(100deg);
+
+			filter: var(--huerotation);
+			// filter: hue-rotate(295deg);
+
 			// filter:contrast(10);
-			mix-blend-mode: multiply;
+			// mix-blend-mode: multiply;
 
 			// filter: hue-rotate(90deg);
 			// position: relative;

@@ -7,6 +7,7 @@ html[data-theme='dark'] {
 	--textcolor: #fbf8f7;
 	--accent1: #3e2bd2;
 	--accent2: #ababec;
+	--huerotation: hue-rotate(0deg);
 }
 html[data-theme='light'] {
 	--bgcolor: #1e2a5b;
@@ -14,6 +15,7 @@ html[data-theme='light'] {
 	--textcolor: #fbfdfe;
 	--accent1: #3e2bd2;
 	--accent2: #e96016;
+	--huerotation: hue-rotate(120deg);
 }
 html[data-theme='turtlemoss'] {
 	--bgcolor: #212121;
@@ -21,6 +23,7 @@ html[data-theme='turtlemoss'] {
 	--textcolor: #69d8d3;
 	--accent1: #299e47;
 	--accent2: #e0842c;
+	--huerotation: hue-rotate(230deg);
 }
 html[data-theme='bloodmoon'] {
 	--bgcolor: #212121;
@@ -28,6 +31,7 @@ html[data-theme='bloodmoon'] {
 	--textcolor: #fa9b1d;
 	--accent1: #e55f60;
 	--accent2: #9c4052;
+	--huerotation: hue-rotate(80deg);
 }
 html[data-theme='bubblegum'] {
 	--bgcolor: #212121;
@@ -35,6 +39,7 @@ html[data-theme='bubblegum'] {
 	--textcolor: #ffb7d0;
 	--accent1: #ed4b8b;
 	--accent2: #34abe3;
+	--huerotation: hue-rotate(55deg);
 }
 html[data-theme='nior'] {
 	--bgcolor: #12120e;
@@ -42,6 +47,7 @@ html[data-theme='nior'] {
 	--textcolor: #ffffff;
 	--accent1: #545454;
 	--accent2: #949494;
+	--huerotation: hue-rotate(168deg);
 }
 html[data-theme='desertrose'] {
 	--bgcolor: #12120e;
@@ -49,6 +55,7 @@ html[data-theme='desertrose'] {
 	--textcolor: #6cbee9;
 	--accent1: #fdfeb4;
 	--accent2: #c4aab7;
+	--huerotation: hue-rotate(295deg);
 }
 :root {
 	--font: 'Inter';

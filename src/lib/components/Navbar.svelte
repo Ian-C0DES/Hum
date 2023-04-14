@@ -16,26 +16,31 @@
           </div>
 
             <div class="menuopts">
-
+              
+              <a class="navItem {$page.url.pathname.includes("feed") ? 'active' : ''}" href="/feed">
+                <i class="fa-regular fa-comments rgtext"></i>
+              <p>Feed</p>
+          </a>
+              <a class="navItem {$page.url.pathname == "/stats" ? 'active' : ''}" href="/stats">
+                <i  class="fa-regular fa-chart-bar rgtext stats"></i>
+                <p>Stats</p>
+            </a>
+    
               <a class="navItem {$page.url.pathname == "/profile" ? 'active' : ''}" href="/profile" >
                 <i class="fa-regular fa-address-card rgtext"></i>
                 <p>User</p>
-            </a>
-
-            <a class="navItem {$page.url.pathname == "/stats" ? 'active' : ''}" href="/stats">
-              <i  class="fa-regular fa-chart-bar rgtext stats"></i>
-              <p>Stats</p>
+              </a>
+              
+              <a class="navItem {$page.url.pathname == "/nutrition" ? 'active' : ''} nutrition" href="/nutrition">
+                <i class="fa-solid fa-utensils rgtext"></i>
+              <p>Nutrition</p>
           </a>
 
-          <a class="navItem {$page.url.pathname.includes("feed") ? 'active' : ''}" href="/feed">
-            <i class="fa-regular fa-comments rgtext"></i>
-          <p>Feed</p>
-      </a>
+              <a class="navItem {$page.url.pathname == "/workout" ? 'active' : ''} workout" href="/workout">
+                <i style="" class="fa-solid fa-dumbbell rgtext workout"></i>
+              <p>Workout</p>
+          </a>
 
-      <a class="navItem {$page.url.pathname == "/workout" ? 'active' : ''}" href="/workout">
-        <i style="" class="fa-solid fa-dumbbell rgtext workout"></i>
-      <p>Workout</p>
-  </a>
 
 
               <form action="/logout" method="POST"class="logout">
@@ -88,7 +93,7 @@
                 display: flex;
                 width: inherit;
                 position: relative;
-                top: 20%;
+                top: 10%;
                 z-index: 9999;
                 justify-content: space-around;
                 flex-direction: column;
@@ -105,10 +110,11 @@
                   position: relative;
                   right: .5vw;
                   .stats{
-                    margin-left: .3rem
+                    // margin-left: .3rem
+                    font-weight: 900;
                   }
                   .workout{
-                    padding-left: 1vw;
+                    // padding-left: 1vw;
                   }
                   &.active{
                     i{
@@ -125,9 +131,17 @@
                     }
                     // background-color: red;
                   }
+                  &.nutrition{
+                    p{ margin-left: 10%;}
+
+                  }
+                  &.workout{
+                    p{ margin-left: 10%;}
+                  }
                   i{
                     animation: fadeIn 3s forwards;
-                    font-size: 2.5rem;
+                    font-size: 250%;
+                    // font-weight: 600;
                   }
                   p{
                     // font-family: "iceland";
@@ -135,6 +149,7 @@
                     font-weight: 900;
                     // text-align: center;
                     position: relative;
+                    margin-left: 10%;
                     // color: var(--accent2);
                     // color: var(--textcolor);
                     color: gray;
