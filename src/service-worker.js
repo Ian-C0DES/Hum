@@ -1,4 +1,4 @@
-<reference lib="webworker" />
+{/* <reference lib="webworker" /> */}
 
 import { build, files, version } from '$service-worker';
 
