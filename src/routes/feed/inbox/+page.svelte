@@ -507,7 +507,7 @@
 
 	.messagepanelContainer {
 		pointer-events: none;
-		width: 44.5vw;
+		min-width: 44.65vw;
 		position: fixed;
 		bottom: 3vh;
 		height: 20%;

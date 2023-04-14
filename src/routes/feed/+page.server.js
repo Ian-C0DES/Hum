@@ -14,7 +14,7 @@ export const load = async ({ fetch, locals }) => {
 		sort: '-updated',
 		expand: 'messages',
 	});
-	likes = serializeNonPOJOs(records.items[0].expand.messages);
+	likes = serializeNonPOJOs(records.items[0]?.expand?.messages);
 	return {
 		messages: messages,
 		likes: likes
@@ -54,8 +54,8 @@ export const actions = {
 		{expand: 'messages',}
 		);
 
-		let targetmessage = userLikes?.expand.messages[userLikes?.expand.messages.findIndex(e => e.id == data.message)];
-		userLikes.messages.splice(userLikes.messages.indexOf(data.message),1);
+		let targetmessage = userLikes?.expand?.messages[userLikes?.expand?.messages.findIndex(e => e.id == data.message)];
+		userLikes?.messages.splice(userLikes?.messages.indexOf(data.message),1);
 
 		await locals.pb.collection('likes').update(userLikes.id, {
 			'messages':[...userLikes.messages]
