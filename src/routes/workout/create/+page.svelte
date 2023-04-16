@@ -1,6 +1,8 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import WorkoutCard from '$lib/components/WorkoutCard.svelte';
+	import { fade, fly, slide } from 'svelte/transition';
+
 	export let data;
 	let newRoutinename = 'New Routine_name';
 	// let cardContainer;
@@ -44,7 +46,7 @@
 			<div class="container">
 				{#each Array(cardAmount) as _, i}
 					<!-- <li>{i + 1}</li> -->
-					<WorkoutCard cardNumber={i++} isFresh={true} />
+					<WorkoutCard cardNumber={i++} isFresh={true}  />
 				{/each}
 
 				{#if cardAmount > 0}

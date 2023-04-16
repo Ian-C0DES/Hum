@@ -1,10 +1,24 @@
 <script>
     // import { fade, fly } from 'svelte/transition';
     // import { foodItems } from '$lib/utils.js';
+    import { enhance } from '$app/forms';
     import IntakeRow from '$lib/components/IntakeRow.svelte';
     export let mealtype;
+    export let fresh;
+    export let data;
+
     let itemNum = 2;
 
+
+		// console.log(data);
+
+    const submitForm = (input) => {
+		// console.log(input);
+		return async ({ update }) => {
+			// editing = false;
+			await update();
+		};
+	};
     const addCard = () => {
 		if(itemNum ==0){
             itemNum+=2;
@@ -12,27 +26,33 @@
         } 
         else if (itemNum < 20) {
 			itemNum++;
-			console.log(itemNum);
+			// console.log(itemNum);
 		}
 	};
 	const removeCard = () => {
 		(itemNum > 0 ? itemNum-- : null);
 	};
+  const clearCards = () => {
+    itemNum = 0;
+  };
 </script>
-
+{#if fresh}
 <div class="btnContainer">
     <button on:click={addCard} id="addItemBTN"><i class="fa-solid fa-plus" /></button>
     <button on:click={removeCard} id="removeItemBTN"
         ><i class="fa-solid fa-minus" /></button
     >
 </div>
+{/if}
   <div class="tbl-header">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
         <tr>
           <th> <span class="rgtext">{mealtype}</span> </th>
           <th>Item</th>
+          {#if fresh}
           <th>Quantity</th>
+          {/if}
           <th>Calories</th>
           <th>Protein</th>
           <th>Carbs</th>
@@ -41,18 +61,38 @@
       </thead>
     </table>
   </div>
-
+  <form id="IntakeForm" method="POST" novalidate use:enhance={submitForm} style="all:unset;">
+    <input 
+    hidden
+    type="text" 
+   name="mealtype"
+   value={mealtype}
+   
+   >
   <div class="tbl-content">
     <table cellpadding="0" cellspacing="0" border="0">
       <tbody>
+        {#if fresh}
+        
         {#each Array(itemNum) as _, i}
         <!-- <li>{i + 1}</li> -->
-        <IntakeRow itemNum={i++} />
+        <IntakeRow fresh={true} itemNum={i++}/>
         {/each}
+
+        {:else}
+        {#each Array(data.length) as _, i}
+        <IntakeRow fresh={false} data={data[i]} itemNum={i++}/>
+        
+        <!-- {console.log(i)}
+        {console.log(data)} -->
+        {/each}
+        {/if}
+     
       </tbody>
     </table>
   </div>
-
+</form>
+{#if fresh}
   <div class="tbl-footer">
     <table cellpadding="0" cellspacing="0" border="0">
       <thead>
@@ -63,15 +103,16 @@
           <th></th>
           <th></th>
           <th>
-            <button class="clearbtn"> Clear </button>
+            <button on:click={clearCards} class="clearbtn"> Clear </button>
           </th>
           <th>
-            <button class="savebtn"> Save </button>
+            <button  class="savebtn" form="IntakeForm" formaction="?/test"> Save </button>
           </th>
         </tr>
       </thead>
     </table>
   </div>
+  {/if}
 
 <style lang="scss">
     table{

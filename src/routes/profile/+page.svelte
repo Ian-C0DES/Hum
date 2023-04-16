@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 	import { enhance } from '$app/forms';
 	import Badge from '$lib/components/Badge.svelte';
+	import { end_hydrating } from 'svelte/internal';
 
 	onMount(() => {
 		// console.log(document.getElementsByTagName('html')[0]);
@@ -59,7 +60,7 @@
 	const showPreview = (event) => {
 		const target = event.target;
 		const files = target.files;
-
+		console.log(event);
 		if (files.length > 0) {
 			const src = URL.createObjectURL(files[0]);
 			const preview = document.getElementById('avatar');
@@ -69,9 +70,10 @@
 	};
 
 	const handleEdit = (e) => {
-		if (editing == false) {
-			editing = true;
-		}
+		// if (editing == false) {
+		// 	editing = true;
+		// }
+		editing? null:editing =true ;
 		if (e.target.name == 'weight') {
 			BMI = Math.round(703 * (e.target.value / (data.user.height * data.user.height)) * 100) / 100;
 			data.user.weight = e.target.value;
@@ -109,22 +111,22 @@
 							<button formaction="?/setTheme&theme=dark">Dark</button>
 						</li>
 
-						<li transition:slide|local>
+						<li transition:slide|local={{delay:50}}>
 							<button formaction="?/setTheme&theme=light">Light</button>
 						</li>
-						<li transition:slide|local>
+						<li transition:slide|local={{delay:100}}>
 							<button formaction="?/setTheme&theme=turtlemoss">Turtle-moss</button>
 						</li>
-						<li transition:slide|local>
+						<li transition:slide|local={{delay:150}}>
 							<button formaction="?/setTheme&theme=bloodmoon">Bloodmoon</button>
 						</li>
-						<li transition:slide|local>
+						<li transition:slide|local={{delay:200}}>
 							<button formaction="?/setTheme&theme=bubblegum">Bubblegum</button>
 						</li>
-						<li transition:slide|local>
+						<li transition:slide|local={{delay:250}}>
 							<button formaction="?/setTheme&theme=nior">Nior</button>
 						</li>
-						<li transition:slide|local>
+						<li transition:slide|local={{delay:300}}>
 							<button formaction="?/setTheme&theme=desertrose">Desert Rose</button>
 						</li>
 					</form>
@@ -159,7 +161,7 @@
     </div> -->
 
 	<div class="welcomeContainer">
-		<div class="welcome" style="animation: fadeIn 2s;">
+		<div class="welcome">
 			<p class="message underline-gradient">
 				Hello <span style="color: var(--accent1);">{data.user.displayName[0].toUpperCase()}</span
 				><span style="color: var(--accent2);">{data.user.displayName[1]}</span
@@ -268,20 +270,9 @@
 			<input style="display: none;" type="number" name="bmi" step="0.01" id="" value={bmi} />
 		</div>
 		{#if editing}
-			<div style="display:contents;">
-				<button
-					style="
-    border-radius: 10%;
-    width:100px;
-    background-color: transparent;
-    font-size: 50px;
-    border:none;
-    postion: relative;
-    cursor: pointer;  
-    "
-					type="submit"
-				>
-					✅
+			<div>
+				<button class="updateBtn" type="submit">
+					<i class="fa-solid fa-square-check"></i>
 				</button>
 			</div>
 		{/if}
@@ -316,6 +307,28 @@
 		);
 		background-repeat: no-repeat;
 		background-size: cover;
+	}
+	.updateBtn{
+		border-radius: 10%;
+    width:fit-content;
+    background-color: transparent;
+    font-size: 2.5rem;
+    border:none;
+	font-weight: 900;
+    position: relative;
+    cursor: pointer;  
+	background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	&:hover{
+		background: radial-gradient(150.81% 167.43% at 0% 0%, green 21.85%, white 100%);
+		-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	}
 	}
 	.themeWrapper {
 		position: relative;

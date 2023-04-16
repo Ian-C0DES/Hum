@@ -5,7 +5,7 @@
 	let { friends, params, openDMS } = data;
 	import { enhance } from '$app/forms';
 	import { getImageURL } from '$lib/utils.js';
-	import { fade, fly } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
 	// const {friends ,pendingOUTRequests, pendingINRequests} = data;
 	import Sidepanel from '$lib/components/Sidepanel.svelte';
 	// import UserCard from '$lib/components/UserCard.svelte';
@@ -17,7 +17,7 @@
 	let messagePanel = true;
 
 	// let obj = friends.find(obj => obj.displayName == params);
-	console.log(openDMS);
+	// console.log(openDMS);
 
 	// console.log(openDMS);
 	// console.log(pb);
@@ -65,7 +65,7 @@
 				<div class="friendsContainer">
 					{#each friends as friend}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
-						<div on:click={showUsercard((data = friend))} class="friendCell">
+						<div on:click={showUsercard((data = friend))} class="friendCell" >
 							<div class="userdisplay">
 								<img
 									class="thumb"

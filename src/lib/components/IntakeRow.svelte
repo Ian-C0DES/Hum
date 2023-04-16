@@ -1,11 +1,14 @@
 <script>
     import { fade, fly } from 'svelte/transition';
     import { foodItems } from '$lib/utils.js';
+	export let fresh;
 	export let itemNum;
+  export let data;
+  // console.log(data.item);
 	// export let cardNumber;
 
 let selectedQty,selectedCalories,selectedProteins,selectedFats,selectedCarbs;
-let selectedItem = "Chicken";
+let selectedItem = (fresh?"Chicken": data.item.name);
 let selected;
 let status = "editing";
     // let itemNum = 0;
@@ -30,25 +33,25 @@ const qtychange = () => {
 </script>
 
 
-{#if (itemNum == 0)}
-<div/>
-{:else}
+{#if fresh&&(itemNum != 0)}
+<!-- <div/> -->
+<!-- {:else if fresh} -->
 
 <tr in:fly={{ x: 30, duration: 2000 }}
 out:fly={{ x: 30, duration: 1500 }}
 >
 
-  <td><i class="fa-solid fa-hashtag rgtext" /> {itemNum++}</td>
+  <td><i class="fa-solid fa-hashtag rgtext" /> {itemNum}</td>
 
   <!-- <td>Grilled Chicken</td> -->
   <td>
     <div class="item underline-gradient">
         <select
-        
             bind:value={selectedItem}
-            name="meals[{"dinner"}][exercise]"
+            name="item[{itemNum}][name]"
             id="workout"
         >
+
             {#each Object.keys(foodItems) as optGroup (optGroup)}
                 <optgroup label={optGroup}>
                     <!-- {#each Array(foodItems[optGroup]) as option} -->
@@ -62,13 +65,47 @@ out:fly={{ x: 30, duration: 1500 }}
 
   </td>
 
+  <!-- form for data submisson -->
+
+  <input 
+  hidden
+  type="number" 
+ name="item[{itemNum}][calories]"
+ value={selectedCalories}
+ 
+ >
+  <input 
+  hidden
+  type="number" 
+ name="item[{itemNum}][proteins]"
+ value={selectedProteins}
+ 
+ >
+  <input 
+  hidden
+  type="number" 
+ name="item[{itemNum}][carbs]"
+ value={selectedCarbs}
+ 
+ >
+  <input 
+  hidden
+  type="number" 
+ name="item[{itemNum}][fats]"
+ value={selectedFats}
+ 
+ >
+
+
 {#if status === "loading" }
 <td class="qty">{(selectedQty == undefined || selectedQty <= 0 ? qtychange():selectedQty)} g
     <span on:click={qtychange} class="editBtn">
         <i class="fa-solid fa-weight-hanging rgtext icon"/> <i class="fa-solid fa-pen-to-square pencil rgtext"/>
     </span>
 </td>
-<td>{selectedCalories} kcals</td>
+<td>
+  {selectedCalories} kcals
+</td>
 <td>{selectedProteins} g</td>
 <td>{selectedCarbs} g</td>
 <td>{selectedFats} g</td>
@@ -77,7 +114,7 @@ out:fly={{ x: 30, duration: 1500 }}
 <td><div class="lds-ripple"><div/><div/></div></td>
 <td><div class="lds-ripple"><div/><div/></div></td> -->
 {:else if status === "editing"}
-<td><input on:focusout={qtychange} on:change={qtychange} bind:value={selectedQty} name="qty" class="qty-input" type="number" min="1" step=".1"></td>
+<td><input on:focusout={qtychange} on:change={qtychange} bind:value={selectedQty} name="qty" class="qty-input" type="number" min="1" step=".1" form="IntakeForm"></td>
 <td><div class="lds-ripple"><div/><div/><div/></div></td>
 <td><div class="lds-ripple"><div/><div/></div></td>
 <td><div class="lds-ripple"><div/><div/></div></td>
@@ -86,6 +123,94 @@ out:fly={{ x: 30, duration: 1500 }}
 
 
 </tr>
+{:else if !fresh}
+
+<tr in:fly={{ x: 30, duration: 2000 }}
+out:fly={{ x: 30, duration: 1500 }}
+>
+
+  <td><i class="fa-solid fa-hashtag rgtext" /> {itemNum++}</td>
+
+  <td >
+    <div class="item underline-gradient">
+      <select >
+        <option  value={data.item.name}>{(data.item.name.includes("_")? data.item.name.split('_').join(' '):data.item.name)}</option>
+        <!-- {data.item.name} -->
+      </select>
+    </div>
+  </td>
+  <!-- <td>
+    <div class="item underline-gradient">
+        <select
+            bind:value={selectedItem}
+            name="item[{itemNum}][name]"
+            id="workout"
+        >
+
+            {#each Object.keys(foodItems) as optGroup (optGroup)}
+                <optgroup label={optGroup}>
+                    {#each Object.keys(foodItems[optGroup]) as option}
+                        <option  value={option}>{(option.includes("_")? option.split('_').join(' '):option)}</option>
+                    {/each}
+                </optgroup>
+            {/each}
+        </select>
+    </div>
+
+  </td> -->
+
+  <!-- form for data submisson -->
+
+  <input 
+  hidden
+  type="number" 
+ name="item[{itemNum}][calories]"
+ value={selectedCalories}
+ 
+ >
+  <input 
+  hidden
+  type="number" 
+ name="item[{itemNum}][proteins]"
+ value={selectedProteins}
+ 
+ >
+  <input 
+  hidden
+  type="number" 
+ name="item[{itemNum}][carbs]"
+ value={selectedCarbs}
+ 
+ >
+  <input 
+  hidden
+  type="number" 
+ name="item[{itemNum}][fats]"
+ value={selectedFats}
+ 
+ >
+
+
+<!-- {#if status === "loading" } -->
+<td>
+  {data.item.calories} kcals
+</td>
+<td>{data.item.proteins} g</td>
+<td>{data.item.carbs} g</td>
+<td>{data.item.fats} g</td>
+<!-- <td><div class="lds-ripple"><div/><div/><div/></div></td>
+<td><div class="lds-ripple"><div/><div/></div></td>
+<td><div class="lds-ripple"><div/><div/></div></td>
+<td><div class="lds-ripple"><div/><div/></div></td> -->
+<!-- {:else if status === "editing"}
+<td><input on:focusout={qtychange} on:change={qtychange} bind:value={selectedQty} name="qty" class="qty-input" type="number" min="1" step=".1" form="IntakeForm"></td>
+<td><div class="lds-ripple"><div/><div/><div/></div></td>
+<td><div class="lds-ripple"><div/><div/></div></td>
+<td><div class="lds-ripple"><div/><div/></div></td>
+<td><div class="lds-ripple"><div/><div/></div></td>
+{/if} -->
+
+
 {/if}
 
 
@@ -135,7 +260,6 @@ td{
 }
 .item {
     cursor: pointer;
-    input,
 		select {
 			-webkit-appearance: none;
 			appearance: none;
@@ -157,46 +281,6 @@ td{
                     // background-image: radial-gradient(150.81% 167.43% at 0% 0%, rgba(0,0,0,.2) 31.85%, rgba(0,0,0,.05) 100%);
 				}
 			}
-
-    .btnContainer{
-        // outline: red 1px solid;
-        position: absolute;
-        min-width: 90%;
-        text-align: end;
-        font-weight: 900;
-        font-size: 2rem;
-        #addItemBTN{
-            all: unset;
-            // border-radius: 18px;
-            cursor: pointer;
-            // padding: .6% .6% .6% .6%;
-            // margin: 0px;
-            color: grey;
-            // background-color: rgba(255, 255, 255, 0.05);
-            &:hover{
-                background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
-                -webkit-text-fill-color: transparent;
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-            }
-        }
-        #removeItemBTN{
-            all: unset;
-            cursor: pointer;
-            padding: .6% .6% .6% .6%;
-            // margin: 0px;
-            color: grey;
-            // background-color: rgba(255, 255, 255, 0.05);
-            &:hover{
-                background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
-                -webkit-text-fill-color: transparent;
-                -webkit-background-clip: text;
-                background-clip: text;
-                color: transparent;
-            }
-        }
-    }
 
 
     .lds-ripple {

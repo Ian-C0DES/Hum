@@ -1,6 +1,7 @@
 <script>
 	import Chart from '$lib/components/Chart.svelte';
 	export let data;
+	import { fade, fly, slide } from 'svelte/transition';
 	const { userStats } = data;
 	let expected = Math.round(0.029 * (data?.user?.height * data?.user?.height) * 100) / 100;
 
