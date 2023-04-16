@@ -17,7 +17,7 @@ export const actions = {
 			caloric_intake: '{}',
 			routine_stats: '{}'
 		};
-
+		
 		// console.log(formData);
 		try {
 			const newuser = await locals.pb
@@ -31,6 +31,7 @@ export const actions = {
 			await locals.pb.collection('likes').create({
 				"user": newuser.id,
 			});
+			await pb.collection('user_meals').create({"user": newuser.id});
 		} catch (err) {
 			// if (err.status === 400 && err.data.data.code == 'validation_values_mismatch'){
 			if (err.status === 400) {

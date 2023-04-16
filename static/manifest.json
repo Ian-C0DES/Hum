@@ -11,8 +11,33 @@
     ],
     "background_color": "#3367D6",
     "display": "fullscreen",
-    "scope": "/*",
+    "scope": "/",
     "theme_color": "#3367D6",
 
-    "description": "Lofi to lofi beats, while using the scratchpad to list down tasks and thoughts"
+    "description": "Lofi to lofi beats, while using the scratchpad to list down tasks and thoughts",
+  "shortcuts": [
+    {
+      "name":"The name you would like to be displayed for your shortcut",
+      "url":"The url you would like to open when the user chooses this shortcut. This must be a URL local to your PWA. For example: If my start_url is /, this URL must be something like /shortcut",
+      "description":"A description of the functionality of this shortcut"
+    }
+  ]
+
+,
+  "protocol_handlers": [
+    {
+      "protocol":"The protocol you would like to handle. For example: web+myapp",
+      "url":"The url you would like to open when the user chooses this shortcut. This must be a URL local to your PWA. For example: If my start_url is /, this URL must be something like /shortcut"
+    }
+  ]
+,
+  "file_handlers": [
+    {
+      "action": "The url you would like to open when the user chooses to share content to your app. This URL must have code to do something with the returned file.",
+      "accept": {
+        "text/*": [".txt"]
+      }
+    }
+  ]
+
 }

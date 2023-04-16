@@ -112,7 +112,7 @@ export const foodItems = {
 	}
 },
 Fruits:{
-	White_rice: {
+	Apple: {
 		calories: 3.6,
 		fats: 0,
 		carbohydrates: 0.8,

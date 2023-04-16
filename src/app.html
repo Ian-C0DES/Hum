@@ -32,13 +32,15 @@ const createFavicon = (hex) => {
 		/>
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" type="image/png">
 
-		<link  rel="manifest" crossorigin="use-credentials" href="manifest.json" />
+		<link  rel="manifest" crossorigin="use-credentials" href="%sveltekit.assets%/manifest.json" />
 
 		<meta name="viewport" content="width=device-width" />
 		%sveltekit.head%
 	</head>
 	<!-- <body data-sveltekit-preload-data="hover"> -->
-	<body>
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+	<div style="display: contents;">
+		
+		%sveltekit.body%
+	</div>
+
 </html>

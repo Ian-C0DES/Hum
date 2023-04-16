@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import { onMount, onDestroy } from 'svelte';
-
+	import {fly} from 'svelte/transition';
 	export let isFresh;
 	export let cardNumber;
 
@@ -42,9 +42,6 @@
 
 
 	const getImageUrl = (name) =>{
-	let filename="";
-	console.log(name);
-    filename+=name;
 	if ($page.route.id == '/workout/view/[...catchall]') {
     return new URL(`../assets/images/exercises/${name}.png`, import.meta.url).href;
 	}
@@ -89,9 +86,11 @@
 </script>
 
 {#if isFresh}
-	<div class="card">
+	<div class="card"
+	in:fly={{ x:-30, duration:1050}}
+	out:fly={{x:30, duration: 1000 }}>
 		{#key selectedWorkout}
-			<div class="image"  style="background-image: url({bgImage});">
+			<div class="image"  style=" background-image: url({bgImage});">
 				<!-- <img src={bgImage} alt=""> -->
 			</div>	
 
@@ -213,7 +212,9 @@
 		</div>
 	</div>
 {:else}
-	<div class="card">
+	<div class="card"
+	in:fly={{ x:-30, duration:1050}}
+	out:fly={{x:30, duration: 1000 }}>
 		{#key selectedWorkout}
 			<div class="image" style="background-image: url({bgImage});" />
 		{/key}
