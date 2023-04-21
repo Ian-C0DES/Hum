@@ -68,7 +68,7 @@
             .filter{
               min-width: 6vw;
               height: 100vh;
-              position: absolute;
+              position: fixed;
               box-shadow: var(--dark) 9px 0px 18px;
 
             }
@@ -196,7 +196,8 @@
               .filter{
               min-width: 100vw;
               height: 10vh;
-              position: absolute;
+              // max-height: 20vh;
+              position: fixed;
               top: 90vh;
               backdrop-filter: blur(18px);
               background-color: transparent transparent;

@@ -1,13 +1,17 @@
+
 <script>
 	import { onMount, onDestroy } from 'svelte';
 	import { enhance } from '$app/forms';
-	import { fade, fly } from 'svelte/transition';
-	import { getImageURL, abbrNum, timeSince } from '$lib/utils.js';
+	import { fade, fly, slide } from 'svelte/transition';
 	import Sidepanel from '$lib/components/Sidepanel.svelte';
+	import Feeditem, { replyingTo } from '$lib/components/Feeditem.svelte';
 
 	export let data;
 	const { messages, likes } = data;
 
+	let draftbtn;
+	console.log($replyingTo);
+	console.log(draftbtn);
 	// console.log(likes);
 	// console.log(messages);
 	// console.log(messages[9]);
@@ -47,17 +51,26 @@
 		sidePanel ? (sidePanel = false) : (sidePanel = true);
 	};
 	const toggleMessagepanel = () => {
-		messagePanel ? (messagePanel = false) : (messagePanel = true);
+		// messagePanel ? (messagePanel = false) : (messagePanel = true);
+		// console.log(messagePanel == true || $replyingTo != "none");
+		if (messagePanel){
+			messagePanel = false
+			// replyingTo.set("none")
+			// $replyingTo = String("none");
+		}else{
+			messagePanel = true
+		}
 	};
 
-	let myDiv;
-
+	let element;
+	// console.log(messagesContainer)
 	let newMessage = '';
 
-	onMount(() => {
-		myDiv = document.getElementsByClassName('messagesContainer')[0];
-		myDiv.scrollTop = -9999999999;
-	});
+	onMount(() => scrollToBottom(element))
+
+  const scrollToBottom = async (node) => {
+    node.scroll({ top: node.scrollHeight * -1, behavior: 'smooth' });
+  }; 
 </script>
 
 <body>
@@ -74,116 +87,35 @@
 		</div>
 
 		<div class="feedContainer">
-			<div class="messagesContainer">
+			<div class="messagesContainer" bind:this={element}>
 				{#each messages as message (message.id)}
 				<form hidden method="POST" id="messageForm{message.id}" >
 					<input type="text" name="message" value={message.id}/>
-					<!-- {#if likes.filter(e => e.id == message.id).length > 0}
-					<input type="text" name="message" value={message.id}/>
-					{/if} -->
-
 				</form>
-					<div class="message">
-						<div class="actionsContainer">
-							{#if likes?.filter(e => e.id == message.id).length > 0}
-							<button form="messageForm{message.id}" formaction="?/dislikemessage" class="likebtn liked">
-							
-								<i class="fa-solid fa-fire">
-									<span>
-										&nbsp;{abbrNum(message.likes,2)}
-									</span>
-								</i>
-							</button>
-							{:else}
-							<button form="messageForm{message.id}" formaction="?/likemessage" class="likebtn">
-							
-								<i class="fa-solid fa-fire">
-									<span>
-										&nbsp;{abbrNum(message.likes,2)}
-									</span>
-								</i>
-							</button>
-							{/if}
-
-							<button class="commentbtn">
-								<i class="fa-regular fa-comment-dots">									
-								<span>
-									&nbsp;{abbrNum(0,2)}
-								</span>
-							</i>
-							</button>
-							
-						</div>
-						<div class="messageAuthor">
-							<img
-								src={message.expand?.user?.avatar
-									? getImageURL(
-											message.expand?.user?.collectionId,
-											message.expand?.user?.id,
-											message.expand?.user?.avatar
-									  )
-									: 'https://ui-avatars.com/api/?name=$' + message.expand?.user?.name}
-								alt=""
-							/>
-
-							<div class="name">{message.expand?.user?.displayName}</div>
-							<a
-								style="all:unset; cursor:pointer;"
-								href={'/feed/profile/' + message.expand?.user?.username}
-							>
-								<div class="handle">@{message.expand?.user?.username}</div>
-							</a>
-							<div class="time"><i class="fa-solid fa-clock-rotate-left rgtext"></i> {timeSince(new Date(message.created))} ago</div>
-						</div>
-						<div class="messageContent">
-							{message.text}
-						</div>
-						<!-- <div class="actionsContainer">
-
-							<button class="likebtn">
-								<i class="fa-solid fa-fire"></i>
-							</button>
-
-							<button class="commentbtn">
-								<i class="fa-regular fa-comment-dots"></i>
-							</button>
-
-						</div> -->
-					</div>
+					<Feeditem data={message} userLikes={likes} context={data.user}/>
 				{/each}
 			</div>
 		</div>
 
-		{#if !messagePanel}
-			<div class="messagepanelContainer">
-				<div
-					class="draftBtnContainer"
-					in:fly={{ y: 30, duration: 2000 }}
-					out:fly={{ y: 30, duration: 1500 }}
-				>
-					<button
-						style="all:unset; cursor:pointer;"
-						on:click={toggleMessagepanel}
-						class="panelExpand"
-					>
-						<i class="fa-solid fa-pen-to-square rgtext" />
-					</button>
-				</div>
-			</div>
-		{:else}
+		{#if (messagePanel == true )}
+		<!-- if statement to force open panel when commenting is focused -->
+		<!-- {#if (messagePanel == true || $replyingTo != "none")} -->
 			<div class="messagepanelContainer">
 				<div
 					class="messagepanel"
-					in:fly={{ y: 30, duration: 2000 }}
-					out:fly={{ y: 30, duration: 1500 }}
+					in:fly={{ y: 50, duration: 500 }}
+					out:fly={{ y: 50, duration: 1000 }}
 				>
-					<form action="?/send" method="POST">
+					<form method="POST">
+						{#if $replyingTo != "none"}
+						<input hidden type="text" name="replyto" id="" value={$replyingTo}>
+						{/if}
 						<div class="inputContainer">
 							<div class="textinputContainer">
-								<textarea name="message" placeholder="Message" type="text" />
+								<textarea name="message" placeholder="{$replyingTo != "none"? "Craft your comment":"Create a post"}" type="text"/>
 							</div>
 
-							<button class="sendbtn" type="submit">
+							<button class="sendbtn" formaction="?/send">
 								<i class="fa-solid fa-paper-plane rgtext" />
 							</button>
 
@@ -194,8 +126,26 @@
 					</form>
 				</div>
 			</div>
-		{/if}
-	</div>
+		{:else }
+			<div class="messagepanelContainer">
+				<div
+					class="draftBtnContainer"
+					in:fly={{ y: 30, duration: 500 }}
+					out:fly={{ y: 30, duration: 1000 }}
+				>
+					<button
+						style="all:unset; cursor:pointer;"
+						bind:this={draftbtn}
+						on:click={toggleMessagepanel}
+						class="panelExpand"
+					>
+						<i class="{$replyingTo != "none"? "fa-solid fa-comment-dots rgtext" :"fa-solid fa-pen-to-square rgtext"}" />
+					</button>
+				</div>
+			</div>
+
+			{/if}
+		</div>
 </body>
 
 <style lang="scss">
@@ -205,7 +155,7 @@
 	}
 	body {
 		height: 100vh;
-		overflow-x: hidden;
+		overflow-y: hidden;
 		background: radial-gradient(
 			400.81% 400.43% at -275% -220%,
 			var(--textcolor) 40.22%,
@@ -254,6 +204,7 @@
 		right: 2vw;
 		bottom: 0vh;
 		height: 30%;
+		z-index: 999;
 		.draftBtnContainer {
 			pointer-events: all;
 			position: absolute;
@@ -277,7 +228,7 @@
 
 			.inputContainer {
 				.textinputContainer {
-					height: 100%;
+					// height: 100%;
 					width: 95%;
 					margin: 2%;
 					textarea {
@@ -337,138 +288,138 @@
 		align-items: center;
 		overflow-y: scroll;
 
-		.message {
-			border: 2px dotted var(--accent1);
-			border-left: none;
-			border-right: none;
-			width: 75vw;
-			padding: 30px;
-			min-height: 30vh;
-			max-height: 60vh;
-			background-image: radial-gradient(var(--accent1) 1px, transparent 0);
-			background-size: 40px 40px;
-			background-position: -19px -19px;
-			.messageAuthor {
-				font-family: var(--font);
-				display: grid;
-				grid-template-areas:
-					'pfp username username time'
-					'pfp handle handle handle';
-				img {
-					grid-area: pfp;
-					border-radius: 50%;
-					width: min-content;
-					width: 75px;
-					height: 75px;
-					border: var(--dark) 1px solid;
-				}
+		// .message {
+		// 	border: 2px dotted var(--accent1);
+		// 	border-left: none;
+		// 	border-right: none;
+		// 	width: 75vw;
+		// 	padding: 30px;
+		// 	min-height: 30vh;
+		// 	max-height: 60vh;
+		// 	background-image: radial-gradient(var(--accent1) 1px, transparent 0);
+		// 	background-size: 40px 40px;
+		// 	background-position: -19px -19px;
+		// 	.messageAuthor {
+		// 		font-family: var(--font);
+		// 		display: grid;
+		// 		grid-template-areas:
+		// 			'pfp username username time'
+		// 			'pfp handle handle handle';
+		// 		img {
+		// 			grid-area: pfp;
+		// 			border-radius: 50%;
+		// 			width: min-content;
+		// 			width: 75px;
+		// 			height: 75px;
+		// 			border: var(--dark) 1px solid;
+		// 		}
 
-				.handle {
-					grid-area: handle;
-					position: relative;
-					right: 12vw;
-					color: var(--accent2);
-					font-size: 0.8rem;
-				}
-				.name {
-					font-family: var(--font);
-					grid-area: username;
-					position: relative;
-					right: 12vw;
-					color: var(--textcolor);
-					font-size: 1.7rem;
-				}
-				.time {
-					grid-area: time;
-					text-align: right;
-					color: var(--accent2);
-					font-size: 1rem;
-				}
-			}
-			.messageContent {
-				padding-top: 1rem;
-				color: var(--textcolor);
-				font-size: 1.4rem;
-			}
-			.actionsContainer{
-			// min-width: fit-content;
-			// width: fit-content;
-			// max-width: fit-content;
-			position: relative;
-        	width: 0;
-        	height: 0;
-			top: 10vh;
-			left: 90%;
-			display: flex;
-			flex-direction: row;
-			flex-wrap: nowrap;
-			padding: 1%;
-			.likebtn{
-				all: unset;
-				font-size: 2rem;
-				padding: 20%;
+		// 		.handle {
+		// 			grid-area: handle;
+		// 			position: relative;
+		// 			right: 12vw;
+		// 			color: var(--accent2);
+		// 			font-size: 0.8rem;
+		// 		}
+		// 		.name {
+		// 			font-family: var(--font);
+		// 			grid-area: username;
+		// 			position: relative;
+		// 			right: 12vw;
+		// 			color: var(--textcolor);
+		// 			font-size: 1.7rem;
+		// 		}
+		// 		.time {
+		// 			grid-area: time;
+		// 			text-align: right;
+		// 			color: var(--accent2);
+		// 			font-size: 1rem;
+		// 		}
+		// 	}
+		// 	.messageContent {
+		// 		padding-top: 1rem;
+		// 		color: var(--textcolor);
+		// 		font-size: 1.4rem;
+		// 	}
+		// 	.actionsContainer{
+		// 	// min-width: fit-content;
+		// 	// width: fit-content;
+		// 	// max-width: fit-content;
+		// 	position: relative;
+        // 	width: 0;
+        // 	height: 0;
+		// 	top: 10vh;
+		// 	left: 90%;
+		// 	display: flex;
+		// 	flex-direction: row;
+		// 	flex-wrap: nowrap;
+		// 	padding: 1%;
+		// 	.likebtn{
+		// 		all: unset;
+		// 		font-size: 2rem;
+		// 		padding: 20%;
 
-				// border: red 1px solid;
-				position:absolute;
-				top:525%;
-				right: 50%;
-				width:fit-content;
-				height:fit-content;
-				background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
-				-webkit-text-fill-color: transparent;
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
-				cursor: pointer;
-				span{
-					font-size: 1.5rem;
-				}
-				&:hover{
-				background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
-				-webkit-text-fill-color: transparent;
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
-				}
-				&.liked{
-				background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
-				-webkit-text-fill-color: transparent;
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
-				}
-			}
-			.commentbtn{
-				all: unset;
-				padding: 20%;
-				font-size: 2rem;
+		// 		// border: red 1px solid;
+		// 		position:absolute;
+		// 		top:525%;
+		// 		right: 50%;
+		// 		width:fit-content;
+		// 		height:fit-content;
+		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
+		// 		-webkit-text-fill-color: transparent;
+		// 		-webkit-background-clip: text;
+		// 		background-clip: text;
+		// 		color: transparent;
+		// 		cursor: pointer;
+		// 		span{
+		// 			font-size: 1.5rem;
+		// 		}
+		// 		&:hover{
+		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
+		// 		-webkit-text-fill-color: transparent;
+		// 		-webkit-background-clip: text;
+		// 		background-clip: text;
+		// 		color: transparent;
+		// 		}
+		// 		&.liked{
+		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
+		// 		-webkit-text-fill-color: transparent;
+		// 		-webkit-background-clip: text;
+		// 		background-clip: text;
+		// 		color: transparent;
+		// 		}
+		// 	}
+		// 	.commentbtn{
+		// 		all: unset;
+		// 		padding: 20%;
+		// 		font-size: 2rem;
 				
-				// border: blue 1px solid;
-				position:absolute;
-				top:525%;
-				left:225%;
-				width:fit-content;
-				height:fit-content;
-				background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
-				-webkit-text-fill-color: transparent;
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
-				cursor: pointer;
-				span{
-					font-size: 1.5rem;
-				}
-				&:hover{
-				background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
-				-webkit-text-fill-color: transparent;
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
-				}
-				}
-			}
+		// 		// border: blue 1px solid;
+		// 		position:absolute;
+		// 		top:525%;
+		// 		left:225%;
+		// 		width:fit-content;
+		// 		height:fit-content;
+		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
+		// 		-webkit-text-fill-color: transparent;
+		// 		-webkit-background-clip: text;
+		// 		background-clip: text;
+		// 		color: transparent;
+		// 		cursor: pointer;
+		// 		span{
+		// 			font-size: 1.5rem;
+		// 		}
+		// 		&:hover{
+		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
+		// 		-webkit-text-fill-color: transparent;
+		// 		-webkit-background-clip: text;
+		// 		background-clip: text;
+		// 		color: transparent;
+		// 		}
+		// 		}
+		// 	}
 			
-		}
+		// }
 
 	}
 
