@@ -3,9 +3,10 @@
 	import { page } from '$app/stores';
 	import Sidepanel from '$lib/components/Sidepanel.svelte';
 	export let data;
-	const { viewedUser, viewedUserMessages, viewedUserStats, friendShipStatus } = data;
+	const { viewedUser, viewedUserMessages, viewedUserStats, friendShipStatus, likes} = data;
 	import Badge from '$lib/components/Badge.svelte';
 	import { getImageURL, abbrNum } from '$lib/utils.js';
+	import Feeditem, { replyingTo } from '$lib/components/Feeditem.svelte';
 
 	onMount(() => {
 		console.log(($page.route.id.match(/\//g) || []).length);
@@ -110,7 +111,11 @@
 		<div class="feedContainer">
 			<div class="messagesContainer">
 				{#each viewedUserMessages.items as viewedUserMessage (viewedUserMessage.id)}
-					<div class="message">
+				<form hidden method="POST" id="messageForm{viewedUserMessage.id}" >
+					<input type="text" name="message" value={viewedUserMessage.id}/>
+				</form>
+					<Feeditem data={viewedUserMessage} userLikes={likes} context={data.user}/>
+					<!-- <div class="message">
 						<div class="messageAuthor">
 							<img
 								src={viewedUserMessage.expand?.user?.avatar
@@ -130,7 +135,7 @@
 						<div class="messageContent">
 							{viewedUserMessage.text}
 						</div>
-					</div>
+					</div> -->
 				{/each}
 			</div>
 		</div>

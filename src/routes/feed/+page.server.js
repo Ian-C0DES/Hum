@@ -4,35 +4,53 @@ export const load = async ({ fetch, locals }) => {
 	let messages,likes;
 	const resultList = await locals.pb.collection('messages').getList(1, 50, {
 		sort: 'created',
-		expand: 'user'
+		expand: 'user',
 	});
+	console.log(resultList);
 	messages = serializeNonPOJOs(resultList.items);
 
 
 	const records = await locals.pb.collection('likes').getList(1, 50, {
 		filter: 'user = "'+ locals.user.id +'"',
 		sort: '-updated',
-		expand: 'messages',
+		expand: 'messages,comments',
 	});
+	console.log(records);
 	likes = serializeNonPOJOs(records.items[0]?.expand?.messages);
 	return {
 		messages: messages,
-		likes: likes
+		likes: {messageLikes: serializeNonPOJOs(records.items[0]?.expand?.messages),
+				commentLikes: serializeNonPOJOs(records.items[0]?.expand?.comments)
+		}
 	};
 };
 
 export const actions = {
 	send: async ({ request, locals }) => {
 		const message = Object.fromEntries(await request.formData());
+		console.log(message);
 		// newMessage = '';
-		const data = {
-			user: locals.user.id,
-			text: message.message
-			// "username": locals.user.username
-		};
-		// console.log(data);
+		if(message?.replyto){
+			console.log(message.replyto);
+			const record = await locals.pb.collection('message_comments').getFirstListItem("message='" + message.replyto + "'");
+			console.log(record);
 
-		const record = await locals.pb.collection('messages').create(data);
+			const record2 = await locals.pb.collection('comments').create({
+				"user":locals.user.id,
+				"text": message.message,
+			});
+			await locals.pb.collection('message_comments').update(record.id, {"comment":[{...record?.comment},record2.id]});
+		
+		}else{
+			const data = {
+				user: locals.user.id,
+				text: message.message
+			};
+			// console.log(data);
+	
+			const messagerecord = await locals.pb.collection('messages').create(data);
+			await locals.pb.collection('message_comments').create({"message":messagerecord.id});
+		}
 	},
 	likemessage: async ({ request, locals }) => {
 		const data = Object.fromEntries(await request.formData());
@@ -61,6 +79,37 @@ export const actions = {
 			'messages':[...userLikes.messages]
 		});
 		await locals.pb.collection('messages').update(targetmessage.id, {
+			'likes':targetmessage.likes -= 1
+		});
+	},
+	likecomment: async ({ request, locals }) => {
+		const data = Object.fromEntries(await request.formData());
+		console.log(data);
+
+		let userLikes = await locals.pb.collection('likes').getFirstListItem("user='" + locals.user.id + "'",
+		{expand: 'comments',}
+		);
+		let targetmessage = await locals.pb.collection('comments').getOne(data.message);
+		await locals.pb.collection('likes').update(userLikes.id, {
+			'comments':[...userLikes.comments,data.message]
+		});
+		await locals.pb.collection('comments').update(targetmessage.id, {
+			'likes':targetmessage.likes += 1
+		});
+	},
+	dislikecomment: async ({ request, locals }) => {
+		const data = Object.fromEntries(await request.formData());
+		let userLikes = await locals.pb.collection('likes').getFirstListItem("user='" + locals.user.id + "'",
+		{expand: 'comments',}
+		);
+
+		let targetmessage = userLikes?.expand?.comments[userLikes?.expand?.comments.findIndex(e => e.id == data.message)];
+		userLikes?.comments.splice(userLikes?.comments.indexOf(data.message),1);
+
+		await locals.pb.collection('likes').update(userLikes.id, {
+			'comments':[...userLikes.comments]
+		});
+		await locals.pb.collection('comments').update(targetmessage.id, {
 			'likes':targetmessage.likes -= 1
 		});
 	},

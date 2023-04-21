@@ -1,5 +1,6 @@
 <script>
 	import Humman from '$lib/assets/humman.svelte';
+	import promo1 from '$lib/assets/images/promo1.png';
 	// import data from
 	// import abstract from '$lib/assets/images/abstract.jpg'
 	import { onMount } from 'svelte';
@@ -195,7 +196,7 @@
 
 		<section class="pane1">
 			<div class="text">
-				<span>Elevate Your Fitness Journey with Hum</span>
+				<span>Elevate Your Fitness Journey</span>
 				Hum is the comprehensive health and fitness app that caters to all levels of fitness enthusiasts.
 				Whether you're a beginner or a seasoned fitness pro, Hum provides the necessary tools to help
 				you achieve your health goals.
@@ -203,7 +204,8 @@
 
 			<div class="imageContainer">
 				<div class="frame">
-					<img src="" alt="" />
+					<div class="img"></div>
+					<!-- <img src="" alt="" /> -->
 				</div>
 			</div>
 		</section>
@@ -211,7 +213,8 @@
 		<section class="pane2">
 			<div class="imageContainer">
 				<div class="frame">
-					<img src="" alt="" />
+					<div class="img"></div>
+					<!-- <img src="" alt="" /> -->
 				</div>
 			</div>
 
@@ -233,7 +236,7 @@ height:10vh;
 
 		<section class="pane3">
 			<div class="text">
-				<span>Connect, Compare, and Stay Inspired with Hum's Social Features</span>
+				<span>Connect, Compare, and Stay Inspired</span>
 				Share your workout routines and compare your stats with other users to stay motivated towards
 				achieving your fitness goals. Create groups, join communities, and follow other users to be part
 				of a supportive community of like-minded individuals.
@@ -247,7 +250,7 @@ height:10vh;
 
 		<section class="largePane" id="download">
 			<div class="text">
-				<span>Achieve a Sound Mind and Body with Hum.</span>
+				<span>Achieve a Sound Mind and Body</span>
 				At Hum, we understand that a busy lifestyle shouldn't come at the expense of your health and
 				fitness goals. That's why we've created a progressive web app that enables you to access all
 				the features of our comprehensive health and fitness app from any device, at any time. With this
@@ -370,34 +373,41 @@ height:10vh;
 			min-height: fit-content;
 			background: radial-gradient(300% 500% at 50% 575%, var(--textcolor) 40.22%, #000000 100%);
 			.text {
-				color: var(--textcolor);
+				// color: var(--textcolor);
+				color: grey;
 				font-family: var(--subfont);
-				font-size: 1.5rem;
+				font-size: 1.8rem;
 				width: 45vw;
 				padding: 5%;
 				span {
+					font-weight: Bold;
+					color: white;
+					font-size: 2.5rem;
 					&::after {
 						content: '\a';
 						white-space: pre;
 					}
-					font-weight: Bold;
 				}
 			}
 
 			.imageContainer {
 				// background-color: red;
-				// min-height: 60vh;
-				min-width: 50vw;
-				img {
-					box-shadow: inset (-100px) 0 100px (-34px);
-					background-image: url('../../lib/assets/images/abstract.jpg');
+				// min-height: 45vh;
+				min-width: 60%;
+				max-width: 60%;
+				.img {
+					background-image: url('../../lib/assets/images/promo1.png');
+					// box-shadow: inset (-100px) 10px 100px (-0px);
+					background-size: contain;
 					border: none;
+					background-repeat: no-repeat;
+					// back
 					// background-color: red;
 					position: relative;
 					width: 90%;
-					top: 10%;
-					left: 10%;
-					height: 80%;
+					top: 15%;
+					left: 5%;
+					height: 65%;
 					// min-width: 50vw;
 				}
 				.frame {
@@ -417,21 +427,29 @@ height:10vh;
 			}
 		}
 		.pane2 {
-			padding: 5% 0 0 0;
+			padding: 5% 5% 0 0;
 			display: flex;
 			min-width: 100vw;
 			// min-height: 60vh;
 			background: radial-gradient(300% 500% at 50% -475%, var(--textcolor) 40.22%, #000000 100%);
 			text-align: right;
 			.text {
-				color: var(--textcolor);
-				font-family: var(--subfont);
-				font-size: 1.5rem;
+				// color: var(--textcolor);:
+				// font-family: var(--subfont);
+				// font-size: 1.5rem;
 				position: relative;
+				// width: 45vw;
+				// padding: 5%;
+				color: grey;
+				font-family: var(--subfont);
+				font-size: 1.8rem;
 				width: 45vw;
 				padding: 5%;
 				// left: 45%;
 				span {
+					font-weight: Bold;
+					color: white;
+					font-size: 2.5rem;
 					&::after {
 						content: '\a';
 						white-space: pre;
@@ -441,15 +459,33 @@ height:10vh;
 			}
 			.imageContainer {
 				// background-color: red;
-				// min-height: 60vh;
-				min-width: 50vw;
-				img {
-					box-shadow: inset 100px 0 100px (-28px);
-					background-image: url('../../lib/assets/images/abstract.jpg');
+				min-height: 50vh;
+				min-width: 40vw;
+				// img {
+					// 	background-image: url('../../lib/assets/images/abstract.jpg');
+					// 	border: none;
+					// 	// background-color: red;
+					// 	position: relative;
+					// 	width: 90%;
+					// 	top: 10%;
+					// 	right: 10%;
+					// 	height: 80%;
+					// 	// min-width: 50vw;
+					// }
+					.img {
+					box-shadow: inset (100px) 0 100px (-2px);
+					// outline: 1px solid red;
+					background-image: url('../../lib/assets/images/promo1.png');
+					// box-shadow: inset 100px 0 100px (-28px);
+					background-size: contain;
 					border: none;
+					background-repeat: no-repeat;
+					background-position: right;
+					// back
 					// background-color: red;
 					position: relative;
-					width: 90%;
+					width: 100%;
+					// max-width: fit-content;
 					top: 10%;
 					right: 10%;
 					height: 80%;
@@ -457,12 +493,13 @@ height:10vh;
 				}
 				.frame {
 					position: relative;
-					width: 82%;
+					// width: 90%;
 					top: 10%;
 					right: 3%;
 					height: 80%;
 					background-color: rgba($color: #ffffff, $alpha: 0.1);
 					border-radius: 18px;
+					
 					// display: flex;
 					// align-self: center;
 					// background-color: blue;
