@@ -7,20 +7,35 @@
   // console.log(data.item);
 	// export let cardNumber;
 
-let selectedQty,selectedCalories,selectedProteins,selectedFats,selectedCarbs;
-let selectedItem = (fresh?"Chicken": data.item.name);
-let selected;
+let selectedCalories,selectedProteins,selectedFats,selectedCarbs,Selector;
+let selectedItem = (fresh?"Beef": "Beef");
+let selectedItemGroup = (fresh?"Proteins": "Proteins");
+let selectedQty;
 let status = "editing";
+
     // let itemNum = 0;
+    // console.log(Object.values(Object.values(foodItems)));
+    // console.log(foodItems[selectedItemGroup][selectedItem]);
+    // console.log(Object.values(Object.keys(foodItems['Proteins']).find(obj=> obj === "Salmon")));
+    // console.log(Object.values(Object.values(foodItems).find(obj=> console.log(obj))));
+	$: Selector;
+	$: item = foodItems[selectedItemGroup][selectedItem];
 	$: selectedItem;
-    $: selectedQty;
-    $: selectedCalories = (Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0].calories * selectedQty).toFixed(1);
-    $: selectedProteins = (Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0].proteins* selectedQty).toFixed(2);
-    $: selectedFats = (Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0].fats* selectedQty).toFixed(2);
-    $: selectedCarbs = (Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0].carbohydrates* selectedQty).toFixed(2);
+	$: selectedItemGroup;
+  $: selectedQty;
+  $: selectedCalories = (item?.calories/100 * selectedQty).toFixed(2);
+  $: selectedProteins  = (item?.proteins/100 * selectedQty).toFixed(2);
+  $: selectedFats  = (item?.fats/100 * selectedQty).toFixed(2);
+  $: selectedCarbs  = (item?.carbohydrates/100 * selectedQty).toFixed(2);
+    // $: selectedCalories =(Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0].calories <= 0?0:((Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0]?.calories/100) * selectedQty));
+    // $: selectedProteins = (Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0]?.proteins <= 0?0:((Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0].proteins/100)* selectedQty).toFixed(2));
+    // $: selectedFats = (Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0]?.fats <= 0?0:((Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0].fats/100)* selectedQty).toFixed(2));
+    // $: selectedCarbs = (Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0]?.carbohydrates <= 0?0:((Object.values(Object.values(foodItems).find(obj=>(Object.keys(obj)[0]) === selectedItem))[0]?.carbohydrates/100)* selectedQty).toFixed(2));
 
-
-
+const toggleSelectedItem = (event) => {
+  selectedItemGroup = Selector.options[Selector.selectedIndex].parentNode.label;
+  // selectedItemGroup = event.target.selectedOptions[0].parentElement.label
+};
 const qtychange = () => {
     if (status == "editing"){
         status = "loading";
@@ -47,9 +62,12 @@ out:fly={{ x: 30, duration: 1500 }}
   <td>
     <div class="item underline-gradient">
         <select
+        on:input={() => toggleSelectedItem(event)}
+        bind:this={Selector}
             bind:value={selectedItem}
             name="item[{itemNum}][name]"
             id="workout"
+
         >
 
             {#each Object.keys(foodItems) as optGroup (optGroup)}

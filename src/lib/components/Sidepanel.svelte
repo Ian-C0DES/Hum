@@ -69,12 +69,12 @@
 									<a style="all:unset; cursor:pointer;" href="/feed/friends">Friends</a>
 								</span>
 							</li>
-							<li class={$page.url.pathname == '/feed/trending' ? 'active' : ''}>
+							<!-- <li class={$page.url.pathname == '/feed/trending' ? 'active' : ''}>
 								<i class="fa-solid fa-hashtag rgtext" />
 								<span>
 									<a style="all:unset; cursor:pointer;" href="/feed/trending">Hashtags</a>
 								</span>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 				</div>
@@ -90,6 +90,9 @@
 {/if}
 
 <style lang="scss">
+	// *{
+	// 	outline: red 1px solid;
+	// }
 	.homeBtn {
 		position: relative;
 		left: 3vw;

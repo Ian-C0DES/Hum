@@ -20,18 +20,34 @@ export const actions = {
 		
 		// console.log(formData);
 		try {
-			const newuser = await locals.pb
+			await locals.pb
 				.collection('users')
-				.create({ username, ...defaultUserData, ...formData, "badges":EmptyBadge});
-			await locals.pb.collection('user_statistics').create({
-				userID: [newuser.id],
+				.create({ username, ...defaultUserData, ...formData, "badges":EmptyBadge}).then(async result => {
+					// console.log(result);
+								await locals.pb.collection('user_statistics').create({
+				"userID": [result.id],
 				...defaultStatsData,
-				badges: EmptyBadge
+				"badges": EmptyBadge
 			});
-			await locals.pb.collection('likes').create({
-				"user": newuser.id,
+			
+						await locals.pb.collection('likes').create({
+				"user": result.id,
 			});
-			await pb.collection('user_meals').create({"user": newuser.id});
+			await locals.pb.collection('user_meals').create({"user": result.id});
+				})
+				.catch((err) => {
+					console.log(err);
+					
+				});
+			// await locals.pb.collection('user_statistics').create({
+			// 	userID: [newuser.id],
+			// 	...defaultStatsData,
+			// 	badges: EmptyBadge
+			// });
+			// await locals.pb.collection('likes').create({
+			// 	"user": newuser.id,
+			// });
+			// await pb.collection('user_meals').create({"user": newuser.id});
 		} catch (err) {
 			// if (err.status === 400 && err.data.data.code == 'validation_values_mismatch'){
 			if (err.status === 400) {
