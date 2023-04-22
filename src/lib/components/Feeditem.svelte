@@ -55,7 +55,7 @@
                                 
                                     <i class="fa-solid fa-fire">
                                         <span>
-                                            &nbsp;{abbrNum(data.likes,2)}
+                                            &nbsp;{(data.likes <= 999? data.likes: abbrNum(data.likes,2))}
                                         </span>
                                     </i>
                                 </button>
@@ -64,7 +64,7 @@
                                 
                                     <i class="fa-solid fa-fire">
                                         <span>
-                                            &nbsp;{abbrNum(data.likes,2)}
+                                            &nbsp;{(data.likes <= 999? data.likes: abbrNum(data.likes,2))}
                                         </span>
                                     </i>
                                 </button>
@@ -143,7 +143,7 @@
 										
 											<i class="fa-solid fa-fire">
 												<span>
-													&nbsp;{abbrNum(item.likes,2)}
+													&nbsp;{(item.likes <= 999? item.likes: abbrNum(item.likes,2))}
 												</span>
 											</i>
 										</button>
@@ -152,7 +152,7 @@
 										
 											<i class="fa-solid fa-fire">
 												<span>
-													&nbsp;{abbrNum(item.likes,2)}
+													&nbsp;{(item.likes <= 999? item.likes: abbrNum(item.likes,2))}
 												</span>
 											</i>
 										</button>

@@ -35,21 +35,30 @@ export const actions = {
 			const record = await locals.pb.collection('message_comments').getFirstListItem("message='" + message.replyto + "'");
 			console.log(record);
 
-			const record2 = await locals.pb.collection('comments').create({
-				"user":locals.user.id,
-				"text": message.message,
-			});
-			await locals.pb.collection('message_comments').update(record.id, {"comment":[{...record?.comment},record2.id]});
-		
-		}else{
+			
+try {
+				const record2 = await locals.pb.collection('comments').create({
+					"user":locals.user.id,
+					"text": message.message,
+				});
+				
+				await locals.pb.collection('message_comments').update(record.id, {"comment":[...record?.comment,record2.id]});
+} catch (error) {
+	if (error.data.data.user.code === "validation_not_unique"){
+		console.log(error);
+	}
+}
+		}
+		else{
 			const data = {
 				user: locals.user.id,
 				text: message.message
+				// "username": locals.user.username
 			};
 			// console.log(data);
 	
-			const messagerecord = await locals.pb.collection('messages').create(data);
-			await locals.pb.collection('message_comments').create({"message":messagerecord.id});
+			const record = await locals.pb.collection('messages').create(data);
+			await locals.pb.collection('message_comments').create({"message":record.id});
 		}
 	},
 	likemessage: async ({ request, locals }) => {

@@ -243,7 +243,8 @@ height:10vh;
 			</div>
 			<div class="imageContainer">
 				<div class="frame">
-					<img src="" alt="" />
+					<div class="img"></div>
+					<!-- <img src="" alt="" /> -->
 				</div>
 			</div>
 		</section>
@@ -396,18 +397,20 @@ height:10vh;
 				min-width: 60%;
 				max-width: 60%;
 				.img {
+					// outline: red 1px solid;
 					background-image: url('../../lib/assets/images/promo1.png');
 					// box-shadow: inset (-100px) 10px 100px (-0px);
 					background-size: contain;
-					border: none;
+					// border: none;
+					border-radius: 30px;
 					background-repeat: no-repeat;
 					// back
 					// background-color: red;
 					position: relative;
-					width: 90%;
-					top: 15%;
-					left: 5%;
-					height: 65%;
+					width: 120%;
+					top: 10%;
+					left: 7%;
+					height: 75%;
 					// min-width: 50vw;
 				}
 				.frame {
@@ -454,7 +457,6 @@ height:10vh;
 						content: '\a';
 						white-space: pre;
 					}
-					font-weight: Bold;
 				}
 			}
 			.imageContainer {
@@ -517,12 +519,18 @@ height:10vh;
 			background: radial-gradient(300% 500% at 50% -475%, var(--textcolor) 40.22%, #000000 100%);
 			background-color: #000000;
 			.text {
-				color: var(--textcolor);
-				font-family: var(--subfont);
-				font-size: 1.5rem;
+				// color: var(--textcolor);
+				// font-family: var(--subfont);
+				// font-size: 1.5rem;
 				width: 45vw;
 				padding: 5%;
+				color: grey;
+				font-family: var(--subfont);
+				font-size: 1.8rem;
 				span {
+					font-weight: Bold;
+					color: white;
+					font-size: 2.5rem;
 					&::after {
 						content: '\a';
 						white-space: pre;
@@ -534,17 +542,24 @@ height:10vh;
 			.imageContainer {
 				// background-color: red;
 				// min-height: 60vh;
-				min-width: 50vw;
-				img {
-					box-shadow: inset (-100px) 0 100px (-34px);
-					background-image: url('../../lib/assets/images/abstract.jpg');
-					border: none;
+				// min-width: 50vw;
+				min-width: 60%;
+				max-width: 60%;
+				.img {
+					// outline: red 1px solid;
+					background-image: url('../../lib/assets/images/promo3.png');
+					// box-shadow: inset (-100px) 10px 100px (-0px);
+					background-size: contain;
+					// border: none;
+					border-radius: 30px;
+					background-repeat: no-repeat;
+					// back
 					// background-color: red;
 					position: relative;
-					width: 90%;
+					width: 120%;
 					top: 10%;
-					left: 10%;
-					height: 80%;
+					left: 7%;
+					height: 70%;
 					// min-width: 50vw;
 				}
 				.frame {
@@ -561,6 +576,32 @@ height:10vh;
 					// min-width: max-content;
 					// min-height: 60vh;
 				}
+				// img {
+				// 	box-shadow: inset (-100px) 0 100px (-34px);
+				// 	background-image: url('../../lib/assets/images/abstract.jpg');
+				// 	border: none;
+				// 	// background-color: red;
+				// 	position: relative;
+				// 	width: 90%;
+				// 	top: 10%;
+				// 	left: 10%;
+				// 	height: 80%;
+				// 	// min-width: 50vw;
+				// }
+				// .frame {
+				// 	position: relative;
+				// 	width: 82%;
+				// 	top: 10%;
+				// 	left: 20%;
+				// 	height: 80%;
+				// 	background-color: rgba($color: #ffffff, $alpha: 0.1);
+				// 	border-radius: 18px;
+				// 	// display: flex;
+				// 	// align-self: center;
+				// 	// background-color: blue;
+				// 	// min-width: max-content;
+				// 	// min-height: 60vh;
+				// }
 			}
 		}
 		.largePane {
