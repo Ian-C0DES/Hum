@@ -243,7 +243,7 @@
 
 #content {
 	width: 100vw;
-  	height: 120vh;
+  	height: 100vh;
   
 .bgimg {
     position: absolute;
@@ -332,7 +332,7 @@
   }
 
   .icon {
-    font-size: 2rem;
+    font-size: 1.3rem;
     text-shadow: 0 10px 10px #000000;
 	padding-top: 5px;
   }
