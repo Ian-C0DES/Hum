@@ -68,7 +68,7 @@
 
 	// let x = selectedWorkout.value
 	onMount(() => {
-		console.log('mounted card: ' + cardNumber);
+		// console.log('mounted card: ' + cardNumber);
 	});
 
 	// const workoutChange =(e) =>{
@@ -185,31 +185,31 @@
 					/>
 				</div>
 
-				{#if isCompleted}
-					<button on:click|preventDefault={setCompleted} style="">
-						<input
-							style="display: none;"
-							type="text"
-							name="workout[{this_cardNumber}][completed]"
-							id=""
-							value={isCompleted}
-						/>
-						<i style="color: green; opacity:1;" class="fa-solid fa-check" />
-					</button>
-				{:else}
-					<button on:click|preventDefault={setCompleted} style="">
-						<input
-							style="display: none;"
-							type="text"
-							name="workout[{this_cardNumber}][completed]"
-							id=""
-							value={isCompleted}
-						/>
-						<i class="fa-solid fa-check rgtext" />
-					</button>
 				{/if}
+			</div>
+			{#if isCompleted}
+				<button class="completedbtn" on:click|preventDefault={setCompleted} style="">
+					<input
+						style="display: none;"
+						type="text"
+						name="workout[{this_cardNumber}][completed]"
+						id=""
+						value={isCompleted}
+					/>
+					<i style="color: green; opacity:1;" class="fa-solid fa-check" />
+				</button>
+			{:else}
+				<button class="completedbtn" on:click|preventDefault={setCompleted} style="">
+					<input
+						style="display: none;"
+						type="text"
+						name="workout[{this_cardNumber}][completed]"
+						id=""
+						value={isCompleted}
+					/>
+					<i class="fa-solid fa-check rgtext" />
+				</button>
 			{/if}
-		</div>
 	</div>
 {:else}
 	<div class="card"
@@ -348,25 +348,37 @@
 				// color: red;
 				opacity: 1;
 			}
-
-			button {
-				// color:gray;
-				all: unset;
-				font-size: 1.6rem;
-				cursor: pointer;
-				i {
-					opacity: 0.2;
-				}
-			}
 		}
-		&:hover {
-			.fields {
-				i {
-					opacity: 1;
-					color: #000000;
-				}
-			}
-		}
+		.completedbtn{
+			all: unset;
+			position: absolute;
+			// bottom: 100px;
+							// color:gray;
+							font-weight: 900;
+							font-size: 3.6rem;
+							cursor: pointer;
+							width: 25vw;
+							display: flex;
+							justify-content: center;
+							i {
+								// position: relative;
+								
+								opacity: 0.2;
+							}
+						
+						}
+						&:hover {
+							&{
+								filter: drop-shadow(3px 3px 8px rgba(255,255,255,.2));
+							}
+							
+							i {
+									// filter: blur(-10px);
+									opacity: 1;
+									color: #000000;
+								}
+							
+						}
 	}
 	/* Chrome, Safari, Edge, Opera */
 	input::-webkit-outer-spin-button,

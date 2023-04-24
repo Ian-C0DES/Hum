@@ -74,7 +74,7 @@
 			{#if selected != null}
 				<div class="chart">
 					{#key selected}
-						<Chart chartType={'bmi'} userdata={userStats.routine_stats[selected]} />
+						<Chart chartType={'routine'} userdata={userStats.routine_stats[selected]} context={selected} />
 					{/key}
 				</div>
 			{/if}

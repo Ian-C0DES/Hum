@@ -251,7 +251,7 @@ height:10vh;
 
 		<section class="largePane" id="download">
 			<div class="text">
-				<span>Achieve a Sound Mind and Body</span>
+				<span class="title">Achieve a Sound Mind and Body</span>
 				At Hum, we understand that a busy lifestyle shouldn't come at the expense of your health and
 				fitness goals. That's why we've created a progressive web app that enables you to access all
 				the features of our comprehensive health and fitness app from any device, at any time. With this
@@ -260,12 +260,20 @@ height:10vh;
 				skipping a beat. Whether you're at home, at work, or on-the-go, Hum's progressive web app is
 				always at your fingertips, so you can stay on top of your health and fitness goals.
 				<br />
-				<span class="underline-gradient">
+				<span class="prompt">
 					Download the app today and start your journey to a healthier, happier you, anytime,
 					anywhere.
 				</span>
+				<div class="installBtnContainer">
+					<button id="installApp">
+						<!-- Install -->
+						<span class="circle" aria-hidden="true">
+							<span class="icon arrow"></span>
+						  </span>
+						  <span class="button-text">Install</span>
+					</button>
+				</div>
 			</div>
-			<button id="installApp">Install</button>
 		</section>
 	</div>
 </body>
@@ -526,8 +534,9 @@ height:10vh;
 				padding: 5%;
 				color: grey;
 				font-family: var(--subfont);
-				font-size: 1.8rem;
+				font-size: 1.5rem;
 				span {
+					font-family: var(--font);
 					font-weight: Bold;
 					color: white;
 					font-size: 2.5rem;
@@ -605,20 +614,49 @@ height:10vh;
 			}
 		}
 		.largePane {
-			min-height: 100vh;
+			*{
+				// outline: RED SOLID 1PX;
+			}
+			min-height: 105vh;
 			min-width: 100vw;
 			color: var(--textcolor);
 			background: radial-gradient(50% 800% at 50% 825%, var(--textcolor) 40.22%, #000000 100%);
 			font-family: var(--font);
 			// font-size: 2rem;
 			.text {
+				margin: 0 3%;
 				color: var(--textcolor);
 				font-family: var(--subfont);
 				font-size: 1.5rem;
-				width: 45vw;
-				padding: 5%;
+				width: 93vw;
+				color: gray;
+				.title{
+					font-family: var(--font);
+					font-weight: Bold;
+					font-style: italic;
+					color: white;
+					font-size: 2.8rem;
+					display: flex;
+					justify-content: center;
+					padding: 3%;
+					
+					// text-align: center;
+					// width: 100px;
+				}
+				.prompt{
+					font-family: var(--font);
+					font-weight: Bold;
+					color: white;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					padding: 3%;
+					// font-size: 2.5rem;
+				}
 				span {
-					font-weight: bold;
+					// font-weight: Bold;
+					// color: white;
+					// font-size: 2.5rem;
 					&::after {
 						content: '\a';
 						white-space: pre;
@@ -627,6 +665,135 @@ height:10vh;
 			}
 		}
 	}
+
+	
+	.installBtnContainer {
+		// outline: red solid 1px;
+// 		$bg: #f3f8fa;
+// $white: #fff;
+// $black: #282936;
+
+@mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65,0,.076,1)) {
+  transition: $property $duration $ease;
+}
+
+* {
+  box-sizing: border-box;
+  &::before, &::after {
+    box-sizing: border-box;
+  }
+}
+
+
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+//   min-height: 100vh;
+//   background: $bg;
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  &#installApp {
+    width: 12rem;
+    height: auto;
+    .circle {
+      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      position: relative;
+      display: block;
+      margin: 0;
+      width: 3rem;
+      height: 3rem;
+      background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
+      border-radius: 1.625rem;
+      .icon {
+        @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: white;
+        &.arrow {
+          @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+          left: 0.625rem;
+          width: 1.125rem;
+          height: 0.125rem;
+          background: none;
+          &::before {
+            position: absolute;
+            content: '';
+            top: -0.25rem;
+            right: 0.0625rem;
+            width: 0.625rem;
+            height: 0.625rem;
+            border-top: 0.125rem solid #fff;
+            border-right: 0.125rem solid #fff;
+            transform: rotate(45deg);
+          }
+        }
+      }
+    }
+    .button-text {
+      @include transition(all, 0.45s, cubic-bezier(0.65,0,.076,1));
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 0;
+      margin: 0 0 0 1.85rem;
+      color: grey;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+  &#installApp:hover {
+    .circle {
+      width: 100%;
+      .icon {
+        &.arrow {
+        background: white;
+        transform: translate(1rem, 0);
+        }
+      }
+    }
+    .button-text {
+      color: white;
+    }
+  }
+}
+
+// @supports (display: grid) {
+//   body {
+//     display: grid;
+//   grid-template-columns: repeat(4, 1fr);
+//   grid-gap: 0.625rem;
+//   grid-template-areas: ". main main ." ". main main .";
+//   }
+  
+//   #container {
+//     grid-area: main;
+//     align-self: center;
+//     justify-self: center;
+//   }
+// }
+	}
+
 
 	.header {
 		position: absolute;
