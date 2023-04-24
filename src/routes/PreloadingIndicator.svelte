@@ -30,15 +30,15 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		height: 100vh;
+		/* height: 100vh; */
 		z-index: 999;
 	}
 	.progress {
 		position: absolute;
 		/* width: 0; */
 		left: 0;
-		bottom: 0;
-		height: 10%;
+		top: 0;
+		height: 2%;
 		background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
 		transition: width 0.4s;
 	}
@@ -46,7 +46,7 @@
 		position: fixed;
 		bottom: 0;
 		width: 100%;
-		height: 10%;
+		height: 2%;
 		background-color: rgba(0, 0, 0, 0.5);
 		pointer-events: none;
 		z-index: 998;

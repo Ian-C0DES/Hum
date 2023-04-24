@@ -3,6 +3,7 @@ import { chart } from "svelte-apexcharts";
 export let userdata;
 export let goal;
 export let chartType;
+export let context;
 let options;
 
 const keysArray = Object.keys(userdata);
@@ -187,7 +188,7 @@ keysArray.forEach(key => {
             fontFamily: 'Inter',
             height: "100%",
             width:"100%",
-          type: 'treemap'
+          type: 'treemap',
         },
         colors: ['#3E2BD2'],
         fill: {
@@ -208,10 +209,42 @@ keysArray.forEach(key => {
 
 }
 
+if (chartType == "routine"){
+console.log(Object.values(userdata));
+console.log(Object.keys(userdata));
+
+ options = {
+          series: [{
+          name: "lbs",
+          data: valuesArray
+        }],
+          chart: {
+            height: "100%",
+            width:"100%",
+          type: 'area'
+        },
+        dataLabels: {
+          enabled: true
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: keysArray
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy'
+          },
+        },
+        };
+
+}
 
 
 </script>
-{#if (keysArray.length < 7 && chartType == 'weight') }
+{#if (keysArray.length < 7 && chartType == 'weights') }
 <div class="container">
   
   <a style="color:var(--textcolor);" href="/profile">
@@ -223,7 +256,7 @@ keysArray.forEach(key => {
 </div>
 
 {:else}
-<div  class="chart" use:chart={options} />
+<div class="chart" use:chart={options} />
 {/if}
 
 <style lang="scss">
@@ -249,5 +282,4 @@ keysArray.forEach(key => {
     align-self: start;
   }
 }
-
 </style>
