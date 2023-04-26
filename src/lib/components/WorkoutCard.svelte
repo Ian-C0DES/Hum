@@ -27,17 +27,45 @@
 
 	let subopts = [
 		{
-			optGroup: 'Arms',
-			opts: ['Bicep Curls', 'Bench Press']
+			optGroup: 'Chest',
+			opts: ['Bench Press']
+		},
+		{
+			optGroup: 'Shoulders',
+			opts: ['Shoulder Press','Upright Rows' ]
+		},
+		{
+			optGroup: 'Back',
+			opts: ['Pull Up', 'Dumbbell Row', 'Lat Pulldown', ]
+		},
+		{
+			optGroup: 'Biceps',
+			opts: ['Bicep Curls', 'Hammer Curl']
+		},
+		{
+			optGroup: 'Triceps',
+			opts: ['Standing Triceps Extension', 'Lying Triceps Extension']
 		},
 		{
 			optGroup: 'Leg',
-			opts: ['Squat', 'Calf Raises']
+			opts: ['Squat']
 		},
 		{
-			optGroup: 'Shoulder & Back',
-			opts: ['Upright Rows', 'Shoulder Press']
-		}
+			optGroup: 'Quadriceps',
+			opts: [ 'Leg Extension']
+		},
+		{
+			optGroup: 'Hamstrings',
+			opts: ['Romanian Deadlift']
+		},
+		{
+			optGroup: 'Glutes',
+			opts: ['Hip Thrust']
+		},
+		{
+			optGroup: 'Calves',
+			opts: ['Calf Raises']
+		},
 	];
 
 
