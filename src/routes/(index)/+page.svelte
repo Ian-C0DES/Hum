@@ -228,10 +228,9 @@
 
 		<section
 			style="
-background: radial-gradient(100% 100% at 50% 80%, var(--textcolor) -800%, rgba(0, 0, 0, 1) 100%);
-width:100vw;
-height:10vh;
-"
+		background: radial-gradient(100% 100% at 50% 80%, var(--textcolor) -800%, rgba(0, 0, 0, 1) 100%);
+		width:100vw;
+		height:10vh;"
 		/>
 
 		<section class="pane3">
@@ -389,6 +388,7 @@ height:10vh;
 				width: 45vw;
 				padding: 5%;
 				span {
+					font-family: var(--font);
 					font-weight: Bold;
 					color: white;
 					font-size: 2.5rem;
@@ -408,17 +408,17 @@ height:10vh;
 					// outline: red 1px solid;
 					background-image: url('../../lib/assets/images/promo1.png');
 					// box-shadow: inset (-100px) 10px 100px (-0px);
-					background-size: contain;
+					background-size: cover;
 					// border: none;
-					border-radius: 30px;
+					border-radius: 40px;
 					background-repeat: no-repeat;
 					// back
 					// background-color: red;
 					position: relative;
-					width: 120%;
+					width: 100%;
 					top: 10%;
 					left: 7%;
-					height: 75%;
+					height: 80%;
 					// min-width: 50vw;
 				}
 				.frame {
@@ -458,6 +458,7 @@ height:10vh;
 				padding: 5%;
 				// left: 45%;
 				span {
+					font-family: var(--font);
 					font-weight: Bold;
 					color: white;
 					font-size: 2.5rem;
@@ -483,16 +484,17 @@ height:10vh;
 					// 	// min-width: 50vw;
 					// }
 					.img {
-					box-shadow: inset (100px) 0 100px (-2px);
-					// outline: 1px solid red;
-					background-image: url('../../lib/assets/images/promo1.png');
-					// box-shadow: inset 100px 0 100px (-28px);
-					background-size: contain;
-					border: none;
-					background-repeat: no-repeat;
-					background-position: right;
-					// back
-					// background-color: red;
+						// box-shadow: inset (100px) 0 100px (-2px);
+						// outline: 1px solid red;
+						background-image: url('../../lib/assets/images/promo2.png');
+						// box-shadow: inset 100px 0 100px (-28px);
+						background-size: cover;
+						// border: none;
+						background-repeat: no-repeat;
+						background-position: right;
+						// back
+						// background-color: red;
+						border-radius: 18px;
 					position: relative;
 					width: 100%;
 					// max-width: fit-content;
@@ -558,17 +560,17 @@ height:10vh;
 					// outline: red 1px solid;
 					background-image: url('../../lib/assets/images/promo3.png');
 					// box-shadow: inset (-100px) 10px 100px (-0px);
-					background-size: contain;
+					background-size: cover;
 					// border: none;
-					border-radius: 30px;
+					border-radius: 40px;
 					background-repeat: no-repeat;
 					// back
 					// background-color: red;
 					position: relative;
-					width: 120%;
+					width: 100%;
 					top: 10%;
 					left: 7%;
-					height: 70%;
+					height: 80%;
 					// min-width: 50vw;
 				}
 				.frame {

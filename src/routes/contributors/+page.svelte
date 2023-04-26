@@ -44,8 +44,18 @@
 				<a href="https://github.com/Ian-C0DES" target="_blank" class="popup"><i class="fa-brands fa-github"></i></a>
 			</div>
 		  <h1>Ian Dowalatkhah</h1>
-		  <p>Developer Sneakerhead Gamer </p>
-		  <p class="price">Lead Programmer - I did xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx<span></span></p>
+		  <p>
+			<span class="rgtext">
+				@
+			</span>
+			Ian-C0DES</p>
+		  <p>Engineer Hiker Gamer </p>
+		  <p class="text">
+			Lead Programmer:
+			 <span>
+			When developing the preliminary iternation of hum, we surveyed our target audience and asked; "What do you wish you had on your current fitness app?". So we strived to fill those gaps. I served to develop both the front & backend, aswell as devops and server configurations.
+		  </span>
+		</p>
 		</div>
 		
 	  </div>
@@ -99,17 +109,7 @@
 			opacity: 1;
 		}
 	}
-	.column {
-		float: left;
-		width: 20%;
-		padding: 45px;
-		margin-bottom: 5em;
-	}
-	.row::after {
-		content: '';
-		clear: both;
-		display: table;
-	}
+
 	h2 {
 		color: var(--textcolor);
 		font-family: var(--subfont);
@@ -119,6 +119,7 @@
 		color: var(--textcolor);
 		font-family: var(--subfont);
 		font-size: 1.2rem;
+		text-align: center;
 	}
 	.navtab {
 		z-index: 999;
@@ -217,18 +218,15 @@
   align-items:center;
   min-height:100vh;
   background:#212121;
+  margin: 3%;
 	}
 
-	.phone{
-  height:350px;
-  width:auto;
-  z-index: 8;
-}
+
 .card{
 	font-family: var(--font);
   position:relative;
   width:360px;
-  height:650px;
+  height:fit-content;
   background:linear-gradient(rgba(255,255, 255,.3), var(--accent1));
   border-radius:20px;
   overflow:hidden;
@@ -300,11 +298,12 @@
   text-transform:uppercase;
   letter-spacing:2px;
 }
-.card .container .price{
+.card .container .text{
   font-size:24px;
   color:white;
   font-weight:700;
   letter-spacing:1px;
+  padding: 30px;
 }
 .card .container .popup{
   position:relative;
@@ -315,7 +314,7 @@
   margin:0 0 0 3%;
   color:#000000;
   text-decoration:none;
-  background:linear-gradient(rgb(207, 214, 230,.6), rgb(231, 239, 249,.2));
+  background:linear-gradient(rgba(0, 0, 0, 0.8), rgba(26, 26, 26, 0.6));
   border-radius:18px;
   text-transform:uppercase;
   font-size: 2rem;
@@ -332,10 +331,17 @@
   }
   
 }
+.text{
+	span{
+		font-size: 1rem;
+		color:var(--accent2);
+	}
+}
 .card:hover .container .popup{
   top:0;
   opacity:1;
   box-shadow: 8px 8px 8px black;
+
   &:hover{
 	i{
 	background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
