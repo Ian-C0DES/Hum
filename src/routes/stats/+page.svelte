@@ -74,7 +74,7 @@
 			{#if selected != null}
 				<div class="chart">
 					{#key selected}
-						<Chart chartType={'routine'} userdata={userStats.routine_stats[selected]} context={selected} />
+						<Chart chartType={'routine'} userdata={userStats.routine_stats[selected]} context={{selected:selected, color:'#008FFB',grid:true}} />
 					{/key}
 				</div>
 			{/if}
