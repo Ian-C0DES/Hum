@@ -20,7 +20,7 @@
 
 	let subopts = [];
 
-	let workouts = userStats?.routine_stats;
+	// let workouts = userStats?.routine_stats;
 
 	Object.entries(userStats?.routine_stats).forEach((element) => {
 		subopts.push(element[0]);
@@ -66,7 +66,7 @@
 					</div>
 				{:else if currentChart == 'workouts' && selected == null}
 					<div class="chart">
-						<Chart chartType={'workouts'} userdata={workouts} />
+						<Chart chartType={'workouts'} userdata={userStats?.routine_stats} />
 					</div>
 				{/if}
 			{/key}

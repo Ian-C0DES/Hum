@@ -93,9 +93,28 @@
 						{/if}
 					</div>
 
-					<div class="compare">Compare Stats</div>
+					<div class="compare">
+						{#if friendShipStatus?.accepted == true}
+						<a style="all:unset;" href="/stats/view/{viewedUser.username}">
+							Compare Stats
+						</a>
+						{:else}
+						<i class="fa-solid fa-lock"></i>
+						Compare Stats
+						{/if}
+					</div>
 
-					<div class="sendMessage">Send Private Message</div>
+					<div class="sendMessage">
+						{#if friendShipStatus?.accepted == true}
+						<a style="all:unset;" href="/feed/inbox?sendTo={viewedUser.displayName}">
+							Send Private Message
+						</a>
+						{:else}
+						<i class="fa-solid fa-lock"></i>
+						Send Private Message
+						{/if}
+					
+					</div>
 					<!-- <div class="buttonContainer">
                     
                     <button formmethod="post" formaction="?/sendRequest">Send Request</button>
@@ -175,9 +194,9 @@
 		justify-content: flex-end;
 		.banner {
 			display: flex;
+			align-items: center;
 			color: var(--textcolor);
 			font-family: var(--font);
-			align-items: flex-end;
 			padding-bottom: 2vh;
 			// justify-content: space-between;
 			width: 100%;
@@ -194,15 +213,26 @@
 				}
 			}
 			.friends {
+				display: flex;
+				align-items: center;
+				flex-wrap: nowrap;
+				flex-direction: row;
+				// padding-left: 3vw;
 				font-size: 3rem;
 				span {
+					padding: 10%;
 					font-size: 2rem;
 				}
 			}
 			.score {
-				padding-left: 10vw;
+				display: flex;
+				align-items: center;
+				flex-wrap: nowrap;
+				flex-direction: row;
+				padding-left: 5vw;
 				font-size: 3rem;
 				span {
+					padding: 10%;
 					font-size: 2rem;
 				}
 			}

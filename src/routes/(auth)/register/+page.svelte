@@ -1,5 +1,23 @@
 <script>
 	import Humman from '$lib/assets/humman.svelte';
+	import { enhance } from '$app/forms';
+
+let registerstatus;
+const attemptregister = ({ action }) => {
+	registerstatus = "Creating your account...";
+	return async ( update ) => {
+		console.log(update);
+		console.log(update.result);
+		if (update.result.type == "redirect"){
+			registerstatus = "success";
+			window.location.replace(update.result.location);
+		}
+		else if (update.result.type == "error"){
+			registerstatus = update.result.error.data.data[Object.keys(update.result.error.data.data)[0]].message;
+		}
+		await update();
+	};
+};
 </script>
 
 <head>
@@ -34,7 +52,7 @@
                         </div> -->
 					<h1>Register for an account</h1>
 					<p>Or <a href="/login"> sign-in</a> if you already have an account.</p>
-					<form method="POST">
+					<form method="POST" use:enhance={attemptregister}>
 						<div class="icon">
 							<i class="fa-solid fa-user" />
 							<input type="text" placeholder="Enter a display name" name="displayName" required />
@@ -71,6 +89,14 @@
 							<button type="submit">Register</button>
 						</div>
 					</form>
+					{#if registerstatus != undefined}
+					{#if registerstatus == "success"}
+					Success!
+					{/if}
+					{#if registerstatus != "success"}
+					{registerstatus}
+					{/if}
+					{/if}
 				</div>
 			</div>
 		</section>

@@ -210,8 +210,6 @@ keysArray.forEach(key => {
 }
 
 if (chartType == "routine"){
-console.log(Object.values(userdata));
-console.log(Object.keys(userdata));
 
  options = {
           series: [{
@@ -221,13 +219,17 @@ console.log(Object.keys(userdata));
           chart: {
             height: "100%",
             width:"100%",
-          type: 'area'
+          type: 'area',
         },
+        colors:  [context?.color],
+        grid: {
+        show: (context?.grid == true ?true:false),
+      },
         dataLabels: {
           enabled: true
         },
         stroke: {
-          curve: 'smooth'
+          curve: 'smooth',
         },
         xaxis: {
           type: 'datetime',
