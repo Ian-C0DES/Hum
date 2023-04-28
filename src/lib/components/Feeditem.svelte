@@ -544,6 +544,7 @@
 		animation-delay: -1.25s;
 	}
 
+
 	@keyframes lds-ripple {
 		0% {
 			top: 50%;
@@ -574,4 +575,366 @@
 			opacity: 0;
 		}
 	}
+
+
+@media only screen and (max-width:500px){
+
+	.messageWrapper{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+	.commentsWrapper.collapsible{
+		overflow: hidden;
+		max-height: 100000px;
+		transition: max-height 1.5s ease-in-out;
+	}
+	.commentsWrapper.collapsed{
+		transition: max-height 1.5s ease-in-out;
+		max-height: 0;
+		// transition: max-height 3s both;
+	}
+    .commentsContainer{
+        // height: 20vh;
+		// height: 100%;
+		// transition: height 4s;
+        // background:  linear-gradient(var(--dark) 70%, var(--accent1));
+		z-index: 5;
+		display: flex;
+		flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+	.banner{
+		font-size: 1.3rem;
+		font-family: var(--font);
+		font-weight: 900;
+		color: var(--textcolor);
+	}
+		.comment {
+			z-index: 6;
+			border: 2px solid var(--accent1);
+			border-left: none;
+			border-right: none;
+			min-width: 90%;
+			padding: 30px;
+			min-height: 30vh;
+			max-height: 60vh;
+			background-image: radial-gradient(var(--accent2) 1px, transparent 0);
+			background-size: 40px 40px;
+			background-position: -19px -19px;
+			.messageAuthor {
+				font-family: var(--font);
+				display: grid;
+				grid-template-areas:
+					'pfp username username time'
+					'pfp handle handle handle';
+				img {
+					grid-area: pfp;
+					border-radius: 50%;
+					width: min-content;
+					width: 75px;
+					height: 75px;
+					border: var(--dark) 1px solid;
+				}
+
+				.handle {
+					grid-area: handle;
+					position: relative;
+					right: 0vw;
+					color: var(--accent2);
+					font-size: 0.8rem;
+				}
+				.name {
+					font-family: var(--font);
+					grid-area: username;
+					position: relative;
+					right: 0vw;
+					color: var(--textcolor);
+					font-size: 1rem;
+				}
+				.time {
+					grid-area: time;
+					text-align: right;
+					color: var(--accent2);
+					font-size: 1rem;
+				}
+			}
+			.messageContent {
+				padding-top: 1rem;
+				color: var(--textcolor);
+				font-size: 1.0rem;
+				word-wrap: break-word;
+			}
+			.actionsContainer{
+			// min-width: fit-content;
+			// width: fit-content;
+			// max-width: fit-content;
+			position: relative;
+        	width: 0;
+        	height: 0;
+			top: 10vh;
+			left: 90%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			padding: 1%;
+			.likebtn{
+				all: unset;
+				font-size: 1.5rem;
+				padding: 20%;
+				// border: red 1px solid;
+				position:absolute;
+				top:2340%;
+				right: 50%;
+				width:fit-content;
+				height:fit-content;
+				background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				cursor: pointer;
+				span{
+					font-size: 1.5rem;
+				}
+				&:hover{
+				background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				}
+				&.liked{
+				background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				}
+			}
+			.commentbtn{
+				all: unset;
+				padding: 20%;
+				font-size: 2rem;
+				
+				// border: blue 1px solid;
+				position:absolute;
+				top:2250%;
+				left:225%;
+				width:fit-content;
+				height:fit-content;
+				background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				cursor: pointer;
+				span{
+					font-size: 1.5rem;
+				}
+				&:hover, &.active{
+				background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				}
+
+				}
+			}
+			
+		}
+    }
+		.message {
+			z-index: 6;
+			border: 2px dotted var(--accent1);
+			border-left: none;
+			border-right: none;
+			width: 75vw;
+			padding: 30px;
+			min-height: 30vh;
+			max-height: 60vh;
+			background-image: radial-gradient(var(--accent1) 1px, transparent 0);
+			background-size: 40px 40px;
+			background-position: -19px -19px;
+			.messageAuthor {
+				font-family: var(--font);
+				display: grid;
+				grid-template-areas:
+					'pfp username username time'
+					'pfp handle handle handle';
+				img {
+					grid-area: pfp;
+					border-radius: 50%;
+					width: min-content;
+					width: 75px;
+					height: 75px;
+					border: var(--dark) 1px solid;
+				}
+
+				.handle {
+					grid-area: handle;
+					position: relative;
+					right: 0vw;
+					color: var(--accent2);
+					font-size: 0.8rem;
+				}
+				.name {
+					font-family: var(--font);
+					grid-area: username;
+					position: relative;
+					right: 0vw;
+					color: var(--textcolor);
+					font-size: 1.0rem;
+				}
+				.time {
+					grid-area: time;
+					position: relative;
+					color: var(--accent2);
+					left: 7vw;
+					font-size: 1rem;
+				}
+			}
+			.messageContent {
+				padding-top: 1rem;
+				color: var(--textcolor);
+				font-size: 1.0rem;
+				word-wrap: break-word;
+			}
+			.actionsContainer{
+			// min-width: fit-content;
+			// width: fit-content;
+			// max-width: fit-content;
+			position: relative;
+        	width: 0;
+        	height: 0;
+			top: 10vh;
+			left: 90%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			padding: 1%;
+			.likebtn{
+				all: unset;
+				font-size: 1.5rem;
+				padding: 20%;
+
+				 //border: red 1px solid;
+				position:absolute;
+				top:2340%;
+				right: 50%;
+				width:fit-content;
+				height:fit-content;
+				background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				cursor: pointer;
+				span{
+					font-size: 1.5rem;
+				}
+				&:hover{
+				background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				}
+				&.liked{
+				background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				}
+			}
+			.commentbtn{
+				all: unset;
+				padding: 20%;
+				font-size: 2rem;
+				
+				// border: blue 1px solid;
+				position:absolute;
+				top:2250%;
+				left:225%;
+				width:fit-content;
+				height:fit-content;
+				background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				cursor: pointer;
+				span{
+					font-size: 1.5rem;
+				}
+				&:hover, &.active{
+				background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+				}
+
+				}
+			}
+			
+		}
+		.lds-ripple {
+//   display: inline-block;
+  position: relative;
+  min-width: 2rem;
+  height: fit-content;
+  display: flex;
+//   content: " ";
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid var(--accent1);
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple random(2)+s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+    border: 4px solid var(--accent2);
+  animation-delay: -0.5s;
+}
+.lds-ripple div:nth-child(3) {
+    border: 4px solid var(--textcolor);
+  animation-delay: -1.25s;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    opacity: .5;
+  }
+  100% {
+    top: 0%;
+    left: 0%;
+    width: fit-content;
+    height: fit-content;
+    opacity: 0 ;
+  }
+}
+
+}
 </style>
