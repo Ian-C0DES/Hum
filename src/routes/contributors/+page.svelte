@@ -24,9 +24,6 @@
 	</div>
 
 	<div id="content">
-		<!-- <div class="githubcontainer">
-			<script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FIan-C0DES%2FHum%2Fblob%2Fmaster%2FREADME.md&style=tokyo-night-dark&type=markdown&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on&fetchFromJsDelivr=on"></script>
-		</div> -->
 		<div class="cardContainer">
 	<div class="card">
 
@@ -34,7 +31,6 @@
 			<div class="avatarContainer">
 				<img class="avatar" src="https://avatars.githubusercontent.com/u/93730836?v=4" alt="">
 			</div>
-		  <!-- <img class="phone"  src="https://ariskost.github.io/images-for-test-projects/galaxy-s23-ultra.png" alt="Samsung Galaxy S23 Ultra"> -->
 		</div>
 		
 		<div class="container">
@@ -53,7 +49,100 @@
 		  <p class="text">
 			Lead Programmer:
 			 <span>
-			When developing the preliminary iternation of hum, we surveyed our target audience and asked; "What do you wish you had on your current fitness app?". So we strived to fill those gaps. I served to develop both the front & backend, aswell as devops and server configurations.
+			When developing the preliminary iternation of hum, we surveyed our target audience and asked; <span style="color: white;"> "What do you wish you had on your current fitness app?"</span>. So we strived to fill those gaps. I served to develop both the front & backend, aswell as devops and server configurations.
+		  </span>
+		</p>
+		</div>
+		
+	  </div>
+	  
+	<div class="card">
+
+		<div class="img-container">
+			<div class="avatarContainer">
+				<img class="avatar" src="https://avatars.githubusercontent.com/u/93730836?v=4" alt="">
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="popupContainer">
+				<a href="#"  target="_blank" class="popup"><i class="fa-solid fa-icons"></i></a>
+				<a href="" target="_blank" class="popup"><i class="fa-solid fa-earth-americas"></i></a>
+				<a href="" target="_blank" class="popup"><i class="fa-brands fa-github"></i></a>
+			</div>
+		  <h1>Name</h1>
+		  <p>
+			<span class="rgtext">
+				@
+			</span>
+			GITHUB</p>
+		  <p>Your_3_word_intro </p>
+		  <p class="text">
+			Your_role:
+			<span>
+				 xxx
+		  </span>
+		</p>
+		</div>
+		
+	  </div>
+	  
+	<div class="card">
+
+		<div class="img-container">
+			<div class="avatarContainer">
+				<img class="avatar" src="https://avatars.githubusercontent.com/u/93730836?v=4" alt="">
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="popupContainer">
+				<a href="#"  target="_blank" class="popup"><i class="fa-solid fa-icons"></i></a>
+				<a href="" target="_blank" class="popup"><i class="fa-solid fa-earth-americas"></i></a>
+				<a href="" target="_blank" class="popup"><i class="fa-brands fa-github"></i></a>
+			</div>
+		  <h1>Name</h1>
+		  <p>
+			<span class="rgtext">
+				@
+			</span>
+			GITHUB</p>
+		  <p>Your_3_word_intro </p>
+		  <p class="text">
+			Your_role:
+			<span>
+				 xxx
+		  </span>
+		</p>
+		</div>
+		
+	  </div>
+	  
+	<div class="card">
+
+		<div class="img-container">
+			<div class="avatarContainer">
+				<img class="avatar" src="https://avatars.githubusercontent.com/u/93730836?v=4" alt="">
+			</div>
+		</div>
+		
+		<div class="container">
+			<div class="popupContainer">
+				<a href="#"  target="_blank" class="popup"><i class="fa-solid fa-icons"></i></a>
+				<a href="" target="_blank" class="popup"><i class="fa-solid fa-earth-americas"></i></a>
+				<a href="" target="_blank" class="popup"><i class="fa-brands fa-github"></i></a>
+			</div>
+		  <h1>Name</h1>
+		  <p>
+			<span class="rgtext">
+				@
+			</span>
+			GITHUB</p>
+		  <p>Your_3_word_intro </p>
+		  <p class="text">
+			Your_role:
+			<span>
+				 xxx
 		  </span>
 		</p>
 		</div>
