@@ -131,12 +131,10 @@ export const actions = {
 				)
 		);
 		try {
-			let privatemessage = await locals.pb
-				.collection('user_messages')
-				.create({
-					friendship: record.id,
-					messages: { 0: { author: locals.user.username, message: 'Created a Private Message' } }
-				});
+			let privatemessage = await locals.pb.collection('user_messages').create({
+				friendship: record.id,
+				messages: { 0: { author: locals.user.username, message: 'Created a Private Message' } }
+			});
 			await locals.pb.collection('friendships').update(record.id, { messages: privatemessage.id });
 		} finally {
 			const newUrl = new URL('/feed/inbox', url.origin);

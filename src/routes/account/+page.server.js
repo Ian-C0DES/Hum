@@ -27,7 +27,6 @@ export const actions = {
 			[new Date().toJSON().slice(0, 10)]: form.weight
 		});
 
-
 		try {
 			Promise.all([
 				await locals.pb.collection('users').update(locals.user.id, data),

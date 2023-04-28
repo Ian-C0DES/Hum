@@ -213,11 +213,18 @@
 							{/if}
 							<div class="badgeContainer">
 								<h1>
-									<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges
+									<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);"
+										>a</span
+									>dges
 								</h1>
 								{#each Object.entries(openUsercard?.badges) as badge (badge[0])}
 									<div style="padding: 3%;">
-										<Badge size={5 + 'vw'} progress={badge[1].progress} tier={badge[1].tier} name={badge[0]} />
+										<Badge
+											size={5 + 'vw'}
+											progress={badge[1].progress}
+											tier={badge[1].tier}
+											name={badge[0]}
+										/>
 									</div>
 								{/each}
 							</div>
@@ -435,20 +442,19 @@
 					font-size: 1.3rem;
 					padding: 0.3rem;
 				}
-				&:hover{
-				all: unset;
-				cursor: pointer;
-				padding: 0.5rem;
-				background-color: rgba($color: #ffffff, $alpha: 0.05);
-				border-radius: 18px;
-				font-size: 1.2rem;
-				i {
-					font-size: 1.3rem;
-					padding: 0.3rem;
-				}
+				&:hover {
+					all: unset;
+					cursor: pointer;
+					padding: 0.5rem;
+					background-color: rgba($color: #ffffff, $alpha: 0.05);
+					border-radius: 18px;
+					font-size: 1.2rem;
+					i {
+						font-size: 1.3rem;
+						padding: 0.3rem;
+					}
 				}
 			}
-			
 		}
 	}
 
@@ -519,7 +525,7 @@
 		position: relative;
 		// margin-top: 50px;
 		// margin-bottom: 3vh;
-		padding: .5%;
+		padding: 0.5%;
 		// left: 10vw;
 		color: var(--textcolor);
 		width: 25vw;

@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import Sidepanel from '$lib/components/Sidepanel.svelte';
 	export let data;
-	const { viewedUser, viewedUserMessages, viewedUserStats, friendShipStatus, likes} = data;
+	const { viewedUser, viewedUserMessages, viewedUserStats, friendShipStatus, likes } = data;
 	import Badge from '$lib/components/Badge.svelte';
 	import { getImageURL, abbrNum } from '$lib/utils.js';
 	import Feeditem, { replyingTo } from '$lib/components/Feeditem.svelte';
@@ -47,24 +47,30 @@
 
 				<div class="score">
 					<i class="fa-solid fa-dumbbell rgtext" />
-					<span> {abbrNum(viewedUserStats.score,2)} </span>
+					<span> {abbrNum(viewedUserStats.score, 2)} </span>
 				</div>
 
 				<!-- <div class="badgeContainer"> -->
-					<div class="badgeContainer">
-						<h1>
-							<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges
-						</h1>
+				<div class="badgeContainer">
+					<h1>
+						<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);"
+							>a</span
+						>dges
+					</h1>
 
-						{#each Object.entries(viewedUser?.badges) as badge (badge[0])}
-							<div style="padding: 3%;">
-								<Badge size={3 + 'vw'} progress={badge[1].progress} tier={badge[1].tier} name={badge[0]} />
-							</div>
-						{/each}
-					</div>
+					{#each Object.entries(viewedUser?.badges) as badge (badge[0])}
+						<div style="padding: 3%;">
+							<Badge
+								size={3 + 'vw'}
+								progress={badge[1].progress}
+								tier={badge[1].tier}
+								name={badge[0]}
+							/>
+						</div>
+					{/each}
+				</div>
 
 				<!-- </div> -->
-
 			</div>
 
 			<div class="subbanner">
@@ -95,25 +101,22 @@
 
 					<div class="compare">
 						{#if friendShipStatus?.accepted == true}
-						<a style="all:unset;" href="/stats/view/{viewedUser.username}">
-							Compare Stats
-						</a>
+							<a style="all:unset;" href="/stats/view/{viewedUser.username}"> Compare Stats </a>
 						{:else}
-						<i class="fa-solid fa-lock"></i>
-						Compare Stats
+							<i class="fa-solid fa-lock" />
+							Compare Stats
 						{/if}
 					</div>
 
 					<div class="sendMessage">
 						{#if friendShipStatus?.accepted == true}
-						<a style="all:unset;" href="/feed/inbox?sendTo={viewedUser.displayName}">
-							Send Private Message
-						</a>
+							<a style="all:unset;" href="/feed/inbox?sendTo={viewedUser.displayName}">
+								Send Private Message
+							</a>
 						{:else}
-						<i class="fa-solid fa-lock"></i>
-						Send Private Message
+							<i class="fa-solid fa-lock" />
+							Send Private Message
 						{/if}
-					
 					</div>
 					<!-- <div class="buttonContainer">
                     
@@ -130,10 +133,10 @@
 		<div class="feedContainer">
 			<div class="messagesContainer">
 				{#each viewedUserMessages.items as viewedUserMessage (viewedUserMessage.id)}
-				<form hidden method="POST" id="messageForm{viewedUserMessage.id}" >
-					<input type="text" name="message" value={viewedUserMessage.id}/>
-				</form>
-					<Feeditem data={viewedUserMessage} userLikes={likes} context={data.user}/>
+					<form hidden method="POST" id="messageForm{viewedUserMessage.id}">
+						<input type="text" name="message" value={viewedUserMessage.id} />
+					</form>
+					<Feeditem data={viewedUserMessage} userLikes={likes} context={data.user} />
 					<!-- <div class="message">
 						<div class="messageAuthor">
 							<img
@@ -353,7 +356,7 @@
 		position: relative;
 		// margin-top: 50px;
 		// margin-bottom: 3vh;
-		padding: .5%;
+		padding: 0.5%;
 		// left: 10vw;
 		color: var(--textcolor);
 		width: 25vw;

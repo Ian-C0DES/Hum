@@ -1,21 +1,27 @@
 <script>
-document.documentElement.setAttribute('data-theme', localStorage.getItem('colortheme') || 'dark');
-document.addEventListener('readystatechange', event => { 
-	if (event.target.readyState === "interactive") {
-	let hex = getComputedStyle(document.documentElement).getPropertyValue('--accent2').slice(2);
-	document.head.append(createFavicon(getComputedStyle(document.documentElement).getPropertyValue('--accent1').slice(2)));
-}
-});
+	document.documentElement.setAttribute('data-theme', localStorage.getItem('colortheme') || 'dark');
+	document.addEventListener('readystatechange', (event) => {
+		if (event.target.readyState === 'interactive') {
+			let hex = getComputedStyle(document.documentElement).getPropertyValue('--accent2').slice(2);
+			document.head.append(
+				createFavicon(
+					getComputedStyle(document.documentElement).getPropertyValue('--accent1').slice(2)
+				)
+			);
+		}
+	});
 
-const createFavicon = (hex) => {
-  const link = document.createElement("link");
-  link.rel = "icon";
-  link.type = "image/svg";
-  link.className = "icon";
-  link.href = "data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20700%20650%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cpath%20id%3D%22heartfill%22%20d%3D%22M606.741%20293.71C606.741%20293.71%20600.896%20300.729%20589.331%20312.063C577.765%20323.396%20365.117%20531.767%20365.117%20531.767C361.382%20535.426%20356.502%20537.251%20351.612%20537.251C346.723%20537.251%20341.842%20535.426%20338.108%20531.767C338.108%20531.767%20125.459%20323.387%20113.894%20312.053C102.328%20300.72%2096.4834%20293.701%2096.4834%20293.701C76.9911%20270.95%2065.1008%20241.741%2065.1008%20209.697C65.1008%20137.336%20124.963%2078.6758%20198.806%2078.6758C235.728%2078.6758%20269.154%2093.3315%20293.345%20117.056L293.431%20116.972L338.108%20160.742C345.567%20168.051%20357.658%20168.051%20365.117%20160.742L409.793%20116.972L409.879%20117.056C434.07%2093.3315%20467.497%2078.6758%20504.418%2078.6758C578.262%2078.6758%20638.124%20137.336%20638.124%20209.697C638.124%20241.741%20626.234%20270.95%20606.741%20293.71Z%22%20fill%3D%22%23"+hex+"%22%2F%3E%20%3Cpath%20d%3D%22M504.419%20116.11C499.137%20116.11%20494.868%20120.294%20494.868%20125.469C494.868%20130.644%20499.137%20134.828%20504.419%20134.828C546.612%20134.828%20580.822%20168.351%20580.822%20209.697C580.822%20214.873%20585.091%20219.056%20590.372%20219.056C595.653%20219.056%20599.922%20214.873%20599.922%20209.697C599.922%20158.019%20557.156%20116.11%20504.419%20116.11Z%22%20fill%3D%22black%22%2F%3E%20%3Cpath%20d%3D%22M649.94%20224C651.093%20181.02%20635.267%20137.669%20602.467%20104.867C539.087%2041.4883%20436.33%2041.4883%20372.95%20104.867L350%20127.818L327.05%20104.867C263.67%2041.4883%20160.913%2041.4883%2097.534%20104.867C34.1553%20168.246%2034.1553%20271.003%2097.534%20334.383L350%20586.846L413.117%20523.73%22%20stroke%3D%22black%22%20stroke-width%3D%2266.6667%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M250%20346.223H338.89L405.557%20257.333L472.223%20435.11L538.89%20346.223H650%22%20stroke%3D%22black%22%20stroke-width%3D%2266.6667%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3C%2Fsvg%3E";
-  return link;
-};
-
+	const createFavicon = (hex) => {
+		const link = document.createElement('link');
+		link.rel = 'icon';
+		link.type = 'image/svg';
+		link.className = 'icon';
+		link.href =
+			'data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20700%20650%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cpath%20id%3D%22heartfill%22%20d%3D%22M606.741%20293.71C606.741%20293.71%20600.896%20300.729%20589.331%20312.063C577.765%20323.396%20365.117%20531.767%20365.117%20531.767C361.382%20535.426%20356.502%20537.251%20351.612%20537.251C346.723%20537.251%20341.842%20535.426%20338.108%20531.767C338.108%20531.767%20125.459%20323.387%20113.894%20312.053C102.328%20300.72%2096.4834%20293.701%2096.4834%20293.701C76.9911%20270.95%2065.1008%20241.741%2065.1008%20209.697C65.1008%20137.336%20124.963%2078.6758%20198.806%2078.6758C235.728%2078.6758%20269.154%2093.3315%20293.345%20117.056L293.431%20116.972L338.108%20160.742C345.567%20168.051%20357.658%20168.051%20365.117%20160.742L409.793%20116.972L409.879%20117.056C434.07%2093.3315%20467.497%2078.6758%20504.418%2078.6758C578.262%2078.6758%20638.124%20137.336%20638.124%20209.697C638.124%20241.741%20626.234%20270.95%20606.741%20293.71Z%22%20fill%3D%22%23' +
+			hex +
+			'%22%2F%3E%20%3Cpath%20d%3D%22M504.419%20116.11C499.137%20116.11%20494.868%20120.294%20494.868%20125.469C494.868%20130.644%20499.137%20134.828%20504.419%20134.828C546.612%20134.828%20580.822%20168.351%20580.822%20209.697C580.822%20214.873%20585.091%20219.056%20590.372%20219.056C595.653%20219.056%20599.922%20214.873%20599.922%20209.697C599.922%20158.019%20557.156%20116.11%20504.419%20116.11Z%22%20fill%3D%22black%22%2F%3E%20%3Cpath%20d%3D%22M649.94%20224C651.093%20181.02%20635.267%20137.669%20602.467%20104.867C539.087%2041.4883%20436.33%2041.4883%20372.95%20104.867L350%20127.818L327.05%20104.867C263.67%2041.4883%20160.913%2041.4883%2097.534%20104.867C34.1553%20168.246%2034.1553%20271.003%2097.534%20334.383L350%20586.846L413.117%20523.73%22%20stroke%3D%22black%22%20stroke-width%3D%2266.6667%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3Cpath%20d%3D%22M250%20346.223H338.89L405.557%20257.333L472.223%20435.11L538.89%20346.223H650%22%20stroke%3D%22black%22%20stroke-width%3D%2266.6667%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%20%3C%2Fsvg%3E';
+		return link;
+	};
 </script>
 <html lang="en" data-theme="dark">
 	<head>
@@ -31,17 +37,13 @@ const createFavicon = (hex) => {
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" type="image/png">
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" type="image/png" />
 
-		<link  rel="manifest" crossorigin="use-credentials" href="%sveltekit.assets%/manifest.json" />
+		<link rel="manifest" crossorigin="use-credentials" href="%sveltekit.assets%/manifest.json" />
 
 		<meta name="viewport" content="width=device-width" />
 		%sveltekit.head%
 	</head>
 	<!-- <body data-sveltekit-preload-data="hover"> -->
-	<div style="display: contents;">
-		
-		%sveltekit.body%
-	</div>
-
+	<div style="display: contents">%sveltekit.body%</div>
 </html>

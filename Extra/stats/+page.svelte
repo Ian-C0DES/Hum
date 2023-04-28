@@ -59,57 +59,42 @@
 		</div>
 		<table>
 			<tr>
-
 				<td>
-
 					<div class="chartContainer-small">
 						<div class="chart">
-							<Chart goal={expected} chartType={"bmi"} userdata={userStats["bmi"]} />
+							<Chart goal={expected} chartType={'bmi'} userdata={userStats['bmi']} />
 						</div>
 					</div>
-
 				</td>
 
-
-				
 				<td>
-
 					<div class="chartContainer-small">
 						<div class="chart">
 							<Chart goal={expected} chartType={currentChart} userdata={userStats[currentChart]} />
 						</div>
 					</div>
-
 				</td>
 			</tr>
 
 			<tr>
-
 				<td>
-
 					<div class="chartContainer-small">
 						<div class="chart">
 							<Chart goal={expected} chartType={currentChart} userdata={userStats[currentChart]} />
 						</div>
 					</div>
-
 				</td>
 
-
-				
 				<td>
-
 					<div class="chartContainer-small">
 						<div class="chart">
 							<Chart goal={expected} chartType={currentChart} userdata={userStats[currentChart]} />
 						</div>
 					</div>
-
 				</td>
 			</tr>
-			
 		</table>
-			<!-- {#key currentChart}
+		<!-- {#key currentChart}
 				<h1>
 					{#each currentChart as letter}
 						{' ' + letter + ' '}
@@ -156,10 +141,7 @@
 				</button>
 			</div> -->
 
-
-			
 		<!-- </div> -->
-
 	</div>
 </body>
 
@@ -261,14 +243,14 @@
 			box-shadow: 10px 10px 0px var(--bgcolor);
 		}
 	}
-	table{
+	table {
 		display: flex;
 		flex-direction: column;
-    	align-items: center;
-		tr{
+		align-items: center;
+		tr {
 			// width: 100%;
 		}
-		td{
+		td {
 			padding: 2rem;
 		}
 	}
