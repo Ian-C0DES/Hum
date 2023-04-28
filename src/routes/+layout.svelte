@@ -8,8 +8,6 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import PreloadingIndicator from './PreloadingIndicator.svelte';
 	import '../app.scss';
-	import '@fontsource/iceland';
-	import '@fontsource/jetbrains-mono';
 	export let data;
 	import { fade, fly, slide } from 'svelte/transition';
 	import PageTransition from '$lib/components/PageTransition.svelte';
