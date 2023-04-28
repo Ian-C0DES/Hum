@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import { onMount, onDestroy } from 'svelte';
-	import {fly} from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	export let isFresh;
 	export let cardNumber;
 
@@ -12,7 +12,7 @@
 	// console.log(exercise)
 	// console.log(weight)
 	// console.log(sets)
-	// console.log(reps)
+	console.log(isFresh);
 
 	// import squat from "$lib/assets/images/exercises/dallesquat.png"
 
@@ -40,17 +40,14 @@
 		}
 	];
 
+	const getImageUrl = (name) => {
+		if ($page.route.id == '/workout/view/[...catchall]') {
+			return new URL(`../assets/images/exercises/${name}.png`, import.meta.url).href;
+		}
+		return new URL(`../assets/images/exercises/${name}.png`, import.meta.url).href;
+	};
 
-	const getImageUrl = (name) =>{
-	if ($page.route.id == '/workout/view/[...catchall]') {
-    return new URL(`../assets/images/exercises/${name}.png`, import.meta.url).href;
-	}
-    return new URL(`../assets/images/exercises/${name}.png`, import.meta.url).href;
-};
-
-// let badgeImage = getImageUrl(selectedWorkout);
-
-
+	// let badgeImage = getImageUrl(selectedWorkout);
 
 	// const getImageUrl = (selectedWorkout) => {
 	// 	console.log($page.route.id == '/workout/view/[...catchall]');
@@ -60,11 +57,6 @@
 
 	// 	return `background-image: url("../src/lib/assets/images/exercises/${selectedWorkout}.png");`;
 	// };
-
-
-
-
-
 
 	// let x = selectedWorkout.value
 	onMount(() => {
@@ -86,14 +78,15 @@
 </script>
 
 {#if isFresh}
-	<div class="card"
-	in:fly={{ x:-30, duration:1050}}
-	out:fly={{x:30, duration: 1000 }}>
+	<div
+		class="card"
+		in:fly={{ x: -30, duration: 550, delay: 500 }}
+		out:fly={{ x: 30, duration: 500 }}
+	>
 		{#key selectedWorkout}
-			<div class="image"  style=" background-image: url({bgImage});">
+			<div class="image" style=" background-image: url({bgImage});">
 				<!-- <img src={bgImage} alt=""> -->
-			</div>	
-
+			</div>
 		{/key}
 
 		<!-- {#if selectedWorkout}
@@ -184,9 +177,9 @@
 						value={reps}
 					/>
 				</div>
-
-				{/if}
-			</div>
+			{/if}
+		</div>
+		{#if isFresh == 'logging'}
 			{#if isCompleted}
 				<button class="completedbtn" on:click|preventDefault={setCompleted} style="">
 					<input
@@ -210,11 +203,14 @@
 					<i class="fa-solid fa-check rgtext" />
 				</button>
 			{/if}
+		{/if}
 	</div>
 {:else}
-	<div class="card"
-	in:fly={{ x:-30, duration:1050}}
-	out:fly={{x:30, duration: 1000 }}>
+	<div
+		class="card"
+		in:fly={{ x: -30, duration: 550, delay: 500 }}
+		out:fly={{ x: 30, duration: 500 }}
+	>
 		{#key selectedWorkout}
 			<div class="image" style="background-image: url({bgImage});" />
 		{/key}
@@ -243,6 +239,32 @@
 				<input readonly value={reps} style="opacity: 1;" />
 			</div>
 		</div>
+		<!-- {#if isFresh == false}
+		{#if isCompleted}
+			<button class="completedbtn" on:click|preventDefault={setCompleted} style="">
+				<input
+					style="display: none;"
+					type="text"
+					name="workout[{this_cardNumber}][completed]"
+					id=""
+					value={isCompleted}
+				/>
+				<i style="color: green; opacity:1;" class="fa-solid fa-check" />
+			</button>
+		{:else}
+			<button class="completedbtn" on:click|preventDefault={setCompleted} style="">
+				<input
+					style="display: none;"
+					type="text"
+					name="workout[{this_cardNumber}][completed]"
+					id=""
+					value={isCompleted}
+				/>
+				<i class="fa-solid fa-check rgtext" />
+			</button>
+			
+		{/if}
+		{/if} -->
 	</div>
 {/if}
 
@@ -349,36 +371,34 @@
 				opacity: 1;
 			}
 		}
-		.completedbtn{
+		.completedbtn {
 			all: unset;
 			position: absolute;
 			// bottom: 100px;
-							// color:gray;
-							font-weight: 900;
-							font-size: 3.6rem;
-							cursor: pointer;
-							width: 25vw;
-							display: flex;
-							justify-content: center;
-							i {
-								// position: relative;
-								
-								opacity: 0.2;
-							}
-						
-						}
-						&:hover {
-							&{
-								filter: drop-shadow(3px 3px 8px rgba(255,255,255,.2));
-							}
-							
-							i {
-									// filter: blur(-10px);
-									opacity: 1;
-									color: #000000;
-								}
-							
-						}
+			// color:gray;
+			font-weight: 900;
+			font-size: 3.6rem;
+			cursor: pointer;
+			width: 25vw;
+			display: flex;
+			justify-content: center;
+			i {
+				// position: relative;
+
+				opacity: 0.2;
+			}
+		}
+		&:hover {
+			& {
+				filter: drop-shadow(3px 3px 8px rgba(255, 255, 255, 0.2));
+			}
+
+			i {
+				// filter: blur(-10px);
+				opacity: 1;
+				color: #000000;
+			}
+		}
 	}
 	/* Chrome, Safari, Edge, Opera */
 	input::-webkit-outer-spin-button,
@@ -401,6 +421,4 @@
 	//       left: 100px;
 	//       z-index: 2;
 	//     }
-
-	
 </style>

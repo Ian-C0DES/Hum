@@ -17,21 +17,22 @@ export const actions = {
 			caloric_intake: '{}',
 			routine_stats: '{}'
 		};
-		
+
 		try {
 			await locals.pb
 				.collection('users')
-				.create({ username, ...defaultUserData, ...formData, "badges":EmptyBadge}).then(async result => {
-								await locals.pb.collection('user_statistics').create({
-				"userID": [result.id],
-				...defaultStatsData,
-				"badges": EmptyBadge
-			});
-			
-						await locals.pb.collection('likes').create({
-				"user": result.id,
-			});
-			await locals.pb.collection('user_meals').create({"user": result.id});
+				.create({ username, ...defaultUserData, ...formData, badges: EmptyBadge })
+				.then(async (result) => {
+					await locals.pb.collection('user_statistics').create({
+						userID: [result.id],
+						...defaultStatsData,
+						badges: EmptyBadge
+					});
+
+					await locals.pb.collection('likes').create({
+						user: result.id
+					});
+					await locals.pb.collection('user_meals').create({ user: result.id });
 				});
 		} catch (err) {
 			throw error(500, err);

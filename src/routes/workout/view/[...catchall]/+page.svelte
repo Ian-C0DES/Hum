@@ -66,31 +66,33 @@
 
 				{#if data.user.id == routine.expand?.userID?.id}
 					{#if modalShow}
-						<form action="?/delete" method="post" id="delete">
+						<form
+							action="?/delete"
+							method="post"
+							id="delete"
+							style="position: absolute; right: 100%"
+						>
 							<div class="modalContainer">
 								<div class="modal">
-									<p>Are you sure you want to delete this routine?</p>
+									<article>Are you sure you want to delete this routine?</article>
 									<div class="confirm">
 										<button on:click={confirmDelete}>
-											<a
-												>Confirm
-												<span />
-												<span />
-											</a>
+											<p>Confirm</p>
+											<span />
+											<span />
 										</button>
 
 										<button
 											class="cancelBtn"
 											on:click|preventDefault={() => {
 												!modalShow ? (modalShow = true) : (modalShow = false);
-												console.log(modalShow);
 											}}
 										>
-											<a
-												>Cancel
+											<p>
+												Cancel
 												<span />
 												<span />
-											</a>
+											</p>
 										</button>
 									</div>
 
@@ -125,7 +127,7 @@
 							weight={thisExercise.weight}
 							sets={thisExercise.sets}
 							reps={thisExercise.reps}
-							isFresh={true}
+							isFresh={'logging'}
 						/>
 					{/each}
 				</div>
@@ -270,7 +272,7 @@
 			width: fit-content;
 			justify-content: center;
 			border-radius: 2rem;
-			p {
+			article {
 				margin: 3rem;
 				color: var(--textcolor);
 				// text-decoration: underline red;
@@ -296,7 +298,7 @@
 			//     color: gray;
 			// }
 
-			a {
+			p {
 				border-radius: 12px;
 				border: 3px outset #888;
 				position: relative;
@@ -317,7 +319,7 @@
 
 				transition: 0.2s;
 			}
-			a:hover {
+			p:hover {
 				border: 3px outset #ddd;
 				color: #fff;
 				//   background: linear-gradient(160deg, #666, #444);
@@ -326,55 +328,55 @@
 				transition-delay: 1s;
 			}
 
-			a span {
+			p span {
 				position: absolute;
 				display: block;
 			}
 
-			a span:nth-child(1) {
+			p span:nth-child(1) {
 				top: 0;
 				left: -100%;
 				width: 100%;
 				height: 2px;
 				background: linear-gradient(90deg, var(--accent1), var(--accent2));
 			}
-			a:hover span:nth-child(1) {
+			p:hover span:nth-child(1) {
 				left: 100%;
 				transition: 1s;
 			}
-			a span:nth-child(2) {
+			p span:nth-child(2) {
 				top: -100%;
 				right: 0;
 				width: 2px;
 				height: 100%;
 				background: linear-gradient(90deg, var(--accent1), var(--accent2));
 			}
-			a:hover span:nth-child(2) {
+			p:hover span:nth-child(2) {
 				top: 100%;
 				transition: 1s;
 				transition-delay: 0.25s;
 			}
-			a span:nth-child(3) {
+			p span:nth-child(3) {
 				bottom: 0;
 				right: -100%;
 				width: 100%;
 				height: 2px;
 				//   background: linear-gradient(270deg, transparent, #eee);
 			}
-			a:hover span:nth-child(3) {
+			p:hover span:nth-child(3) {
 				right: 100%;
 				transition: 1s;
 				transition-delay: 0.5s;
 			}
 
-			a span:nth-child(4) {
+			p span:nth-child(4) {
 				bottom: -100%;
 				left: 0;
 				width: 2px;
 				height: 100%;
 				//   background: linear-gradient(360deg, transparent, #eee);
 			}
-			a:hover span:nth-child(4) {
+			p:hover span:nth-child(4) {
 				bottom: 100%;
 				transition: 1s;
 				transition-delay: 0.75s;

@@ -2,16 +2,18 @@ import { serializeNonPOJOs } from '$lib/utils';
 import { error, redirect } from '@sveltejs/kit';
 
 export async function load({ locals, params }) {
-	console.log(params.catchall);
-	let routine;
-	const record = await locals.pb.collection('routines').getOne(params.catchall, {
-		expand: 'userID'
-	});
-	routine = serializeNonPOJOs(record);
-	console.log(routine);
-	return {
-		routine: routine
-	};
+	if (params.catchall != 'undefined') {
+		console.log(params.catchall);
+		let routine;
+		const record = await locals.pb.collection('routines').getOne(params.catchall, {
+			expand: 'userID'
+		});
+		routine = serializeNonPOJOs(record);
+		console.log(routine);
+		return {
+			routine: routine
+		};
+	}
 }
 export const actions = {
 	delete: async ({ locals, params }) => {

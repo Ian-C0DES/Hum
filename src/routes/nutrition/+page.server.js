@@ -1,20 +1,24 @@
 import { error, redirect } from '@sveltejs/kit';
 export async function load({ locals, url }) {
-   let x = await locals.pb.collection('user_meals').getFirstListItem("user='" + locals.user.id + "'" );
-   console.log(x);
-return {
-    meals:x.meals
-};
+	let x = await locals.pb
+		.collection('user_meals')
+		.getFirstListItem("user='" + locals.user.id + "'");
+	console.log(x);
+	return {
+		meals: x.meals
+	};
 }
 export const actions = {
 	test: async ({ request, locals }) => {
-        const data = await request.formData();
+		const data = await request.formData();
 		const form = Object.fromEntries(data);
-        let usermeals = await locals.pb.collection('user_meals').getFirstListItem("user='" + locals.user.id + "'" );
-        // usermeals.meals
-        let mealitems = {
-            [form.mealtype]:[]
-        };
+		let usermeals = await locals.pb
+			.collection('user_meals')
+			.getFirstListItem("user='" + locals.user.id + "'");
+		// usermeals.meals
+		let mealitems = {
+			[form.mealtype]: []
+		};
 
 		let iterations = Object.entries(form).length / 5;
 
@@ -26,13 +30,14 @@ export const actions = {
 				carbs: form['item[' + i + '][carbs]'],
 				fats: form['item[' + i + '][fats]']
 			};
-			mealitems[form.mealtype].push({['item']:{...thisItem}});
+			mealitems[form.mealtype].push({ ['item']: { ...thisItem } });
 		}
-        
 
 		try {
 			Promise.all([
-                await locals.pb.collection('user_meals').update(usermeals.id, {"meals":{...usermeals.meals,...mealitems}}),
+				await locals.pb
+					.collection('user_meals')
+					.update(usermeals.id, { meals: { ...usermeals.meals, ...mealitems } })
 			]);
 		} catch (err) {
 			console.log('Error: ', err);
@@ -40,5 +45,5 @@ export const actions = {
 		}
 
 		throw redirect(303, '/nutrition');
-	},
+	}
 };

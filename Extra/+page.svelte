@@ -1,146 +1,103 @@
 <script>
- import { onMount } from "svelte";
- import IntakeTable from '$lib/components/IntakeTable.svelte';
- let dateNow = new Date();
+	import { onMount } from 'svelte';
+	import IntakeTable from '$lib/components/IntakeTable.svelte';
+	let dateNow = new Date();
 
- $: time = dateNow.toLocaleTimeString();
- $: date = dateNow.toDateString();
- $: mealType = getMealType(new Date().getHours());
+	$: time = dateNow.toLocaleTimeString();
+	$: date = dateNow.toDateString();
+	$: mealType = getMealType(new Date().getHours());
 
-
-
-
-
-
-
-
-
-
- const getMealType = (hours) => {
-		console.log(hours);	
+	const getMealType = (hours) => {
+		console.log(hours);
 		let mealType;
-		
-		if(hours >= 4 && hours <= 11){
-		mealType = 'Breakfast'
-	}
-	else if  (hours >= 12 && hours <= 15){
-		mealType = 'Lunch'
-	} else if (hours >= 17 && hours <= 22){
-		
-		mealType = 'Dinner'
-	} else{
-		mealType = 'Snack'	
-	}
+
+		if (hours >= 4 && hours <= 11) {
+			mealType = 'Breakfast';
+		} else if (hours >= 12 && hours <= 15) {
+			mealType = 'Lunch';
+		} else if (hours >= 17 && hours <= 22) {
+			mealType = 'Dinner';
+		} else {
+			mealType = 'Snack';
+		}
 		return mealType;
 	};
 
- onMount(() => {
-   const timerId = setInterval(() => {
-	dateNow = new Date();
-   }, 1000);
-   return () => {
-     clearInterval(timerId);
-   };
- });
-
+	onMount(() => {
+		const timerId = setInterval(() => {
+			dateNow = new Date();
+		}, 1000);
+		return () => {
+			clearInterval(timerId);
+		};
+	});
 </script>
 
 <body>
-    <div id="content">
-        
+	<div id="content">
 		<div class="bannerContainer">
 			<div class="banner">
-
-				<div class="datetimeContainer"> 
+				<div class="datetimeContainer">
 					<span class="date">{date}</span>
 					<span class="time rgtext">{time}</span>
 				</div>
 
 				<div class="mealtime underline-gradient">
 					<span>
-						<i class="fa-solid fa-apple-whole"></i>
+						<i class="fa-solid fa-apple-whole" />
 					</span>
 					{mealType}
 				</div>
 
-
 				<div class="metricsContainer">
+					<div class="calories rgtext">100 Calories</div>
 
-					<div class="calories rgtext">
-						100 Calories
-					</div>
-				
 					<div class="protein">
 						<span>
-							<i class="fa-solid fa-drumstick-bite"></i>
+							<i class="fa-solid fa-drumstick-bite" />
 						</span>
-						<span class="macro">	
-						PROTEIN 
-						</span>	
-						<span class="arrows">
-							→
-						</span>
-						<span class="number">	
-							13
-						</span>
+						<span class="macro"> PROTEIN </span>
+						<span class="arrows"> → </span>
+						<span class="number"> 13 </span>
 						g
 					</div>
 
 					<div class="carbs">
 						<span>
-							<i class="fa-solid fa-wheat-awn"></i>
+							<i class="fa-solid fa-wheat-awn" />
 						</span>
-						<span class="macro">
-							CARBS 
-						</span>
-						<span class="arrows">
-							→
-						</span>
-						<span class="number">
-							25
-						</span>
-						 g
-					</div>
-					
-					<div class="fats">
-						<span>
-							<i class="fa-solid fa-bacon"></i>
-						</span>
-						<span class="macro">
-							FATS 
-						</span>
-						<span class="arrows">
-							→
-						</span>
-						<span class="number">
-
-							10
-						</span>
+						<span class="macro"> CARBS </span>
+						<span class="arrows"> → </span>
+						<span class="number"> 25 </span>
 						g
 					</div>
 
+					<div class="fats">
+						<span>
+							<i class="fa-solid fa-bacon" />
+						</span>
+						<span class="macro"> FATS </span>
+						<span class="arrows"> → </span>
+						<span class="number"> 10 </span>
+						g
+					</div>
 				</div>
 				<!-- //TODO: meal type (breakfast brunch lunch dinner, 3 hours since last ate? snack:stomach )) -->
 			</div>
 		</div>
 
+		<div>
+			<IntakeTable mealtype={mealType} />
+		</div>
 
-
-<div>
-<IntakeTable mealtype={mealType}/>
-</div>
-
-
-<div class="controls">
-<!-- //TODO: buttons here (select day, add table row, change to liquids/pills.) -->
-</div>
-
-    </div>
+		<div class="controls">
+			<!-- //TODO: buttons here (select day, add table row, change to liquids/pills.) -->
+		</div>
+	</div>
 </body>
 
-
 <style lang="scss">
-* {
+	* {
 		// outline: 1px red solid;
 		// color: yellow;
 	}
@@ -156,38 +113,41 @@
 	#content {
 		margin-left: 8vw;
 		max-width: 90vw;
-    }
-	.bannerContainer{
+	}
+	.bannerContainer {
 		// background-color: aqua;
 		display: flex;
 		justify-content: center;
 		padding: 5%;
-		
-		.banner{
+
+		.banner {
 			padding: 3%;
 			// background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent2) 31.85%, var(--textcolor) 100%);
-			background: radial-gradient(150.81% 167.43% at 0% 0%, rgba(0,0,0,.2) 31.85%, rgba(0,0,0,.05) 100%);
+			background: radial-gradient(
+				150.81% 167.43% at 0% 0%,
+				rgba(0, 0, 0, 0.2) 31.85%,
+				rgba(0, 0, 0, 0.05) 100%
+			);
 			width: 60%;
 			display: flex;
 			border-radius: 18px;
 		}
-		.datetimeContainer{
+		.datetimeContainer {
 			display: flex;
 			flex-direction: column;
-			.date{
+			.date {
 				font-family: var(--font);
 				font-weight: 900;
 				color: var(--textcolor);
 				font-size: 2rem;
 			}
-			.time{
+			.time {
 				font-weight: 600;
 				font-family: var(--font);
 				font-size: 1.4rem;
-
 			}
 		}
-		.mealtime{
+		.mealtime {
 			font-family: var(--font);
 			position: relative;
 			right: 33%;
@@ -197,19 +157,23 @@
 			font-size: 2rem;
 			font-weight: 900;
 			color: #ffffff;
-			span{
-				i{
-					background: radial-gradient(150.81% 167.43% at 0% 0%, rgb(248, 137, 137) 31.85%, rgb(255, 0, 0) 100%);
+			span {
+				i {
+					background: radial-gradient(
+						150.81% 167.43% at 0% 0%,
+						rgb(248, 137, 137) 31.85%,
+						rgb(255, 0, 0) 100%
+					);
 					-webkit-text-fill-color: transparent;
 					-webkit-background-clip: text;
 					background-clip: text;
 					color: transparent;
 					position: relative;
-					bottom: .2rem;
+					bottom: 0.2rem;
 				}
 			}
 		}
-		.metricsContainer{
+		.metricsContainer {
 			// margin-top: 7%;
 			position: relative;
 			right: 10%;
@@ -218,57 +182,65 @@
 			font-size: 2rem;
 			font-weight: 900;
 			color: var(--textcolor);
-			
-			.number, .macro{
-				color: #ffffff;	
-				}
-			.arrows{
-				background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
+
+			.number,
+			.macro {
+				color: #ffffff;
+			}
+			.arrows {
+				background: radial-gradient(
+					150.81% 167.43% at 0% 0%,
+					var(--accent1) 31.85%,
+					var(--accent2) 100%
+				);
 				-webkit-text-fill-color: transparent;
 				-webkit-background-clip: text;
 				background-clip: text;
 				color: transparent;
 				font-size: 3rem;
 			}
-			.calories{
+			.calories {
 				text-align: center;
 				font-family: var(--font);
 			}
-			.protein{
+			.protein {
 				font-family: var(--font);
-				span{
+				span {
 					font-family: var(--font);
-					i{
-						background: linear-gradient(rgb(102, 68, 41), rgb(193, 129, 78) 50%, rgb(193, 129, 78) 80%);
+					i {
+						background: linear-gradient(
+							rgb(102, 68, 41),
+							rgb(193, 129, 78) 50%,
+							rgb(193, 129, 78) 80%
+						);
 						-webkit-text-fill-color: transparent;
 						-webkit-background-clip: text;
 						background-clip: text;
 						color: transparent;
 					}
 				}
-
 			}
-			.carbs{
+			.carbs {
 				font-family: var(--font);
-				span{
-					i{
-				background: linear-gradient(rgb(255, 234, 130), rgb(255, 212, 120) 50%, #cba716 80%);
-				-webkit-text-fill-color: transparent;
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
+				span {
+					i {
+						background: linear-gradient(rgb(255, 234, 130), rgb(255, 212, 120) 50%, #cba716 80%);
+						-webkit-text-fill-color: transparent;
+						-webkit-background-clip: text;
+						background-clip: text;
+						color: transparent;
 					}
 				}
 			}
-			.fats{
+			.fats {
 				font-family: var(--font);
-				span{
-					i{
-					background: linear-gradient(rgb(255, 167, 167), rgb(243, 128, 128) 50%, #ffeaea 80%);
-					-webkit-text-fill-color: transparent;
-					-webkit-background-clip: text;
-					background-clip: text;
-					color: transparent;
+				span {
+					i {
+						background: linear-gradient(rgb(255, 167, 167), rgb(243, 128, 128) 50%, #ffeaea 80%);
+						-webkit-text-fill-color: transparent;
+						-webkit-background-clip: text;
+						background-clip: text;
+						color: transparent;
 					}
 				}
 			}

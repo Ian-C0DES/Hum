@@ -17,9 +17,9 @@
 	<div class="progress-container">
 		<div class="progress" style="width: {p * 100}%" />
 	</div>
-	{/if}
-	
-	{#if p >= 0.4}
+{/if}
+
+{#if p >= 0.4}
 	<div class="fade" />
 {/if}
 
@@ -39,7 +39,11 @@
 		left: 0;
 		top: 0;
 		height: 2%;
-		background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
+		background: radial-gradient(
+			150.81% 167.43% at 0% 0%,
+			var(--accent1) 31.85%,
+			var(--accent2) 100%
+		);
 		transition: width 0.4s;
 	}
 	.fade {

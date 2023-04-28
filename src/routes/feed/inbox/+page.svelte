@@ -65,7 +65,7 @@
 				<div class="friendsContainer">
 					{#each friends as friend}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
-						<div on:click={showUsercard((data = friend))} class="friendCell" >
+						<div on:click={showUsercard((data = friend))} class="friendCell">
 							<div class="userdisplay">
 								<img
 									class="thumb"
