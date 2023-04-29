@@ -23,9 +23,9 @@
 		<!-- {viewedUser.id} -->
 		<div class="bannerContainer">
 			<div class="banner">
-				<div class="pfp" style="border-radius: 50%; width:150px; height: 150px;">
+				<div class="pfp">
 					<img
-						style="border-radius: 50%; width:150px; height: 150px;"
+						style="border-radius: 50%; width:100px; height: 100px;"
 						src={viewedUser?.avatar
 							? getImageURL(viewedUser?.collectionId, viewedUser?.id, viewedUser?.avatar)
 							: 'https://ui-avatars.com/api/?name=$' + viewedUser?.displayName}
@@ -378,5 +378,212 @@
 		// .Badge{
 		//     width: 1px;
 		// }
+	}
+
+	@media only screen and (max-width: 500px){
+		body {
+		min-height: 100vh;
+		overflow-x: hidden;
+		background: radial-gradient(
+			400.81% 400.43% at -275% -220%,
+			var(--textcolor) 40.22%,
+			var(--dark) 100%
+		);
+	}
+	#content {
+		margin-left: 8vw;
+		max-width: 90vw;
+	}
+	.bannerContainer {
+		height: 30vh;
+		display: flex;
+		background-image: radial-gradient(var(--accent1) 1px, transparent 0);
+		background-size: 40px 40px;
+		background-position: -19px -19px;
+		flex-direction: column;
+		justify-content: flex-end;
+		.banner {
+			display: flex;
+			align-items: center;
+			color: var(--textcolor);
+			font-family: var(--font);
+			padding-bottom: 2vh;
+			// justify-content: space-between;
+			width: 100%;
+			.pfp {
+				width: 0px;
+  				height: 150px;
+			}
+			.displayName {
+				padding-top: 25vw;
+				padding-right: 10vw;
+				font-size: 1rem;
+				font-weight: bold;
+				.username {
+					font-weight: normal;
+					font-size: 1rem;
+				}
+			}
+			.friends {
+				padding-top: 25vw;
+				display: flex;
+				align-items: center;
+				flex-wrap: nowrap;
+				flex-direction: row;
+				font-size: 1.5rem;
+				span {
+					font-size: 1.5rem;
+				}
+			}
+			.score {
+				padding-top: 25vw;
+				display: flex;
+				align-items: center;
+				flex-wrap: nowrap;
+				flex-direction: row;
+				
+				font-size: 1.5rem;
+				span {
+					
+					font-size: 1.5rem;
+				}
+			}
+		}
+		.subbanner {
+			height: 20%;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			flex-direction: row;
+			// filter: blur(2px);
+			// backdrop-filter: blur(1000px);
+			// opacity: 70%;
+			// background-color: black;
+			background: radial-gradient(
+				500.81% 500.43% at -250% -250%,
+				var(--textcolor) -100.22%,
+				var(--dark) 100%
+			);
+			width: 100%;
+			border-radius: 0 0 18px 18px;
+			.addFriend {
+				height: 50%;
+			}
+			div {
+				// filter: blur(10px);
+				width: fit-content;
+				// padding: .5rem;
+				// align-self: center;
+				// text-align: center;
+				// vertical-align: middle;
+				color: var(--textcolor);
+				font-family: var(--font);
+				border-radius: 18px;
+				font-weight: bold;
+				opacity: 20%;
+				cursor: pointer;
+				transition: all 1s;
+
+				&:hover {
+					// filter: blur(0px);
+					text-shadow: 0px 0px 2px #ffffff;
+					background-color: rgba($color: #ffffff, $alpha: 0.05);
+					opacity: 100%;
+					transition: all 1s;
+				}
+			}
+		}
+	}
+
+	//legacy code
+	.messagesContainer {
+		height: 65vh;
+		top: 0px;
+		width: 90vw;
+		display: flex;
+		flex-wrap: nowrap;
+		flex-direction: column-reverse;
+		align-items: center;
+		overflow-y: scroll;
+
+		.message {
+			border: 1px groove var(--accent2);
+			border-left: none;
+			border-right: none;
+			width: 75vw;
+			padding: 30px;
+			min-height: 30vh;
+			background-image: radial-gradient(var(--accent1) 1px, transparent 0);
+			background-size: 40px 40px;
+			background-position: -19px -19px;
+			.messageAuthor {
+				font-family: var(--font);
+				display: grid;
+				grid-template-areas:
+					'pfp username username time'
+					'pfp handle handle handle';
+				img {
+					grid-area: pfp;
+					border-radius: 50%;
+					width: min-content;
+					width: 75px;
+					height: 75px;
+					border: var(--dark) 1px solid;
+				}
+
+				.handle {
+					grid-area: handle;
+					position: relative;
+					right: 12vw;
+					color: var(--accent2);
+					font-size: 0.8rem;
+				}
+				.name {
+					font-family: var(--font);
+					grid-area: username;
+					position: relative;
+					right: 12vw;
+					color: var(--textcolor);
+					font-size: 1.7rem;
+				}
+				.time {
+					grid-area: time;
+					text-align: right;
+					color: var(--accent2);
+					font-size: 1rem;
+				}
+			}
+			.messageContent {
+				padding-top: 1rem;
+				color: var(--textcolor);
+			}
+		}
+	}
+	.badgeContainer {
+    
+    position: relative;
+    right: 125;
+	bottom: 25;
+    color: var(--textcolor);
+    width: 25vw;
+    background-color: rgba(15, 15, 15, 0.75);
+    box-shadow: 5px 5px 5px #000000;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    padding: 1%;
+    margin: 0px;
+    min-width: 100%;
+    font-family: var(--font);
+}
+
+p {
+    font-family: var(--font);
+}
+
 	}
 </style>
