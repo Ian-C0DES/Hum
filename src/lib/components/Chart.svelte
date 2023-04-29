@@ -1,13 +1,24 @@
 <script>
+
 	import { chart } from 'svelte-apexcharts';
 	export let userdata;
 	export let goal;
 	export let chartType;
 	export let context;
-	let options;
+	let options, keysArray, valuesArray;
 
-	const keysArray = Object.keys(userdata);
-	const valuesArray = Object.values(userdata);
+
+	// const keysArray = Object.keys(userdata);
+	// const valuesArray = Object.values(userdata);
+
+	// onMount(async () => {
+	// 	const res = await fetch(`/tutorial/api/album`);
+	// 	photos = await res.json();
+	// });
+
+	keysArray = Object.keys(userdata);
+ valuesArray = Object.values(userdata);
+
 
 	// console.log(userdata);
 	// console.log(keysArray);
@@ -248,7 +259,6 @@
 {:else}
 	<div class="chart" use:chart={options} />
 {/if}
-
 <style lang="scss">
 	* {
 		color: black;

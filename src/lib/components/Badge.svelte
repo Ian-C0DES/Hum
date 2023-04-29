@@ -43,11 +43,12 @@
 </script>
 
 {#if tier != 0}
+<div>
 	{#if active}
 		<div
 			class="hintContainer"
-			in:fly={{ y: 10, duration: 1000 }}
-			out:fly={{ y: 10, duration: 1500 }}
+			in:fly={{ y: 5, duration: 500 }}
+			out:fly={{ y: 5, duration: 550 }}
 		>
 			<div style="width:{size};" class="hint">
 				<div class="text">{BadgeData[name].hint}</div>
@@ -58,22 +59,24 @@
 			</div>
 		</div>
 	{/if}
+</div>
 	<div
 		class="badgeContainer {active ? 'active' : ''}"
 		on:mouseenter={() => {
-			console.log('enter');
 			active = true;
 		}}
 		on:mouseleave={() => {
-			console.log('leave');
 			active = false;
 		}}
 	>
-		<img style="height:{size};" src={badgeImage} alt="" />
+		<img style="height:{size}; width:{size}; aspect-ratio: 1/1;" src={badgeImage} alt="" />
 	</div>
 {/if}
 
 <style lang="scss">
+	*{
+		// outline: 1px red solid;
+	}
 	.badgeContainer.active {
 		// background-color: black;
 		filter: grayscale(0.7);
@@ -92,11 +95,17 @@
 
 	.hintContainer {
 		z-index: 999;
-		// outline: red 1px solid;
+		// outline: blue 1px solid;
 		position: absolute;
-		top: 0vh;
+		// top: 0vh;
 		// right: 1vw;
+		display: flex;
+		flex-direction: column-reverse;
+		max-height: 1px;
+		max-width: 100%;
+		align-items: center;
 		.hint {
+
 			// pointer-events:all;
 			padding: 20%;
 
@@ -108,7 +117,7 @@
 			);
 			border-radius: 18px;
 			position: relative;
-			right: 60%;
+			// right: 60%;
 			display: flex;
 			flex-direction: column;
 			align-items: center;

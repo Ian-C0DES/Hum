@@ -34,7 +34,7 @@
 
 				<div class="container">
 					<div class="popupContainer">
-						<a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a>
+						<!-- <a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a> -->
 						<a href="https://www.iandowlatkhah.com" target="_blank" class="popup"
 							><i class="fa-solid fa-earth-americas" /></a
 						>
