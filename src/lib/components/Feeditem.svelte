@@ -684,7 +684,7 @@
 				padding: 20%;
 				// border: red 1px solid;
 				position:absolute;
-				top:2340%;
+				top:1800%;
 				right: 50%;
 				width:fit-content;
 				height:fit-content;
@@ -808,7 +808,6 @@
 			position: relative;
         	width: 0;
         	height: 0;
-			top: 10vh;
 			left: 90%;
 			display: flex;
 			flex-direction: row;

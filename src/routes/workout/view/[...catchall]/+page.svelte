@@ -4,13 +4,13 @@
 	import { page } from '$app/stores';
 	export let data;
 	const { routine } = data;
-
-	let modalShow = false;
-	let logging = false;
-	let shareClicked = false;
+	import { fly } from 'svelte/transition';
+	// let modalShow = false;
+	// let logging = false;
+	// let shareClicked = false;
+	let { shareClicked, logging, modalShow } = false;
 	let deleteForm;
 	onMount(() => {
-		console.log('mounted');
 		deleteForm = document.getElementById('delete');
 	});
 
@@ -43,11 +43,12 @@
 			<div class="btnContainer">
 				{#if !logging}
 					{#if shareClicked}
-						<div class="sharetoast">Copied to clipboard</div>
+						<div class="sharetoast" in:fly={{ y: -30, duration: 550, delay: 0 }}
+						out:fly={{ y: -30, duration: 500 }}> <i class="fa-solid fa-clipboard-check rgtext"></i> Copied to clipboard</div>
 					{/if}
 					<button
 						on:click={() => {
-							!shareClicked ? (shareClicked = true) : null;
+							(!shareClicked ? shareClicked = true : "");
 							setTimeout(() => {
 								shareClicked = false;
 							}, 4500);
@@ -383,17 +384,143 @@
 			}
 		}
 	}
+	// .sharetoast {
+	// 	color: var(--textcolor);
+	// 	font-family: var(--font);
+	// 	position: absolute;
+	// 	padding: 1.5%;
+	// 	background-color: rgba($color: #000000, $alpha: 0.5);
+	// 	border-radius: 18px;
+	// 	opacity: 1;
+	// 	left: 50%;
+	// 	top: 0;
+	// 	animation: fadeOut 3s forwards;
+	// 	animation-delay: 1s;
+	// }
 	.sharetoast {
+		z-index: 999;
+		font-size: 5vw;
 		color: var(--textcolor);
 		font-family: var(--font);
-		position: absolute;
-		padding: 0.5rem;
+		position: fixed;
+		padding: 5%;
 		background-color: rgba($color: #000000, $alpha: 0.5);
 		border-radius: 18px;
 		opacity: 1;
-		right: 13rem;
-		top: 0;
-		animation: fadeOut 3s forwards;
-		animation-delay: 1s;
+		left: 17.5%;
+		top: 3%;
+		width: 55%;
+		text-align: center;
+		font-weight: 900;
+		i{
+			position: absolute;
+			right: 89%;
+			top:25%;
+			font-size: 150%;
+		}
 	}
+
+		@media only screen and (max-width: 500px) {
+					.container {
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: column;
+			align-items: center;
+			margin-bottom: 15vh;
+			// background-color: black;
+			// .card{
+				//     margin: 1%;
+				//     background-color: red;
+			//     width: 25vw;
+			//     height: 25vh;
+			// }
+		}
+		#content {
+		margin-left: 0vw;
+		max-width: 100vw;
+		.head {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			background: linear-gradient(90deg, var(--accent1), var(--accent2));
+			background-size: 100% 3px;
+			background-repeat: no-repeat;
+			background-position: bottom;
+			flex-direction: column;
+    		flex-wrap: wrap;
+			h1, span {
+				color: var(--textcolor);
+				font-size: 2.5rem;
+				font-family: var(--font);
+				font-weight: 800;
+				margin-bottom: 1rem;
+				white-space: nowrap;
+				overflow-x: hidden;
+				text-align: center;
+				width: 100%;
+			}
+			button {
+				cursor: pointer;
+				background: none;
+				border: none;
+				margin: 0rem 1rem 0rem 2rem;
+				i {
+					font-size: 3rem;
+				}
+				&:hover {
+					opacity: 40%;
+				}
+			}
+			.info {
+				display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+				h1 {
+					font-size: 1rem;
+					margin: 0px;
+					padding: .2rem;
+				}
+				span {
+					margin: 0px;
+					padding: .2rem;
+					// width: 100%;
+					// text-align: right;
+					font-size: 1rem;
+					span {
+						padding: 0;
+					}
+				}
+			}
+		}
+		}
+		.btnContainer{
+			display: flex;
+			width: 100%;
+    justify-content: center;
+	padding: 5% 0 5% 0;
+		}
+	}
+	// .sharetoast {
+	// 	z-index: 999;
+	// 	font-size: 5vw;
+	// 	color: var(--textcolor);
+	// 	font-family: var(--font);
+	// 	position: fixed;
+	// 	padding: 5%;
+	// 	background-color: rgba($color: #000000, $alpha: 0.5);
+	// 	border-radius: 18px;
+	// 	opacity: 1;
+	// 	left: 17.5%;
+	// 	top: 3%;
+	// 	width: 55%;
+	// 	text-align: center;
+	// 	font-weight: 900;
+	// 	i{
+	// 		position: absolute;
+	// 		right: 89%;
+	// 		top:25%;
+	// 		font-size: 150%;
+	// 	}
+	// }
 </style>
