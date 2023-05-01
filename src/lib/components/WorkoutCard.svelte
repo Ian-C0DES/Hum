@@ -36,7 +36,7 @@
 		},
 		{
 			optGroup: 'Shoulder & Back',
-			opts: ['Upright Row', 'Shoulder Press', 'Lateral Pulldown']
+			opts: ['Upright Row', 'Shoulder Press', 'Lateral Pulldown', 'Pull-up']
 		}
 	];
 
