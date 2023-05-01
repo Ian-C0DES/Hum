@@ -14,7 +14,7 @@
 	// console.log(sets)
 	// console.log(reps)
 
-	// import squat from "$lib/assets/images/exercises/dallesquat.png"
+
 
 	let x;
 	cardNumber++;
@@ -28,15 +28,15 @@
 	let subopts = [
 		{
 			optGroup: 'Arms',
-			opts: ['Bicep Curls', 'Bench Press']
+			opts: ['Bicep Curl', 'Bench Press']
 		},
 		{
 			optGroup: 'Leg',
-			opts: ['Squat', 'Calf Raises']
+			opts: ['Squat', 'Calf Raise']
 		},
 		{
 			optGroup: 'Shoulder & Back',
-			opts: ['Upright Rows', 'Shoulder Press']
+			opts: ['Upright Row', 'Shoulder Press']
 		}
 	];
 
