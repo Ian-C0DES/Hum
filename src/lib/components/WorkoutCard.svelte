@@ -14,6 +14,8 @@
 	// console.log(sets)
 	// console.log(reps)
 
+
+
 	let x;
 	cardNumber++;
 	let this_cardNumber = cardNumber;
