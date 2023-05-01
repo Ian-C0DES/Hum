@@ -32,7 +32,7 @@
 		},
 		{
 			optGroup: 'Leg',
-			opts: ['Squat', 'Calf Raise']
+			opts: ['Squat', 'Calf Raise', 'Leg Extension', 'Romanian Deadlift']
 		},
 		{
 			optGroup: 'Shoulder & Back',
