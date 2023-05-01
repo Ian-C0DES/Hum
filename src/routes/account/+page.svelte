@@ -599,7 +599,7 @@
 		font-family: var(--font);
 	}
 
-	@media only screen and (max-width: 500px) and (min-width: 390px) {
+	@media only screen and (max-width: 500px){
 		.themeWrapper {
 			position: relative;
 			width: 0;
@@ -714,6 +714,7 @@
 			position: relative;
 			width: auto;
 			height: 200px;
+			right: 20px;
 		}
 		.welcome {
 			background-color: rgba(15, 15, 15, 0.75);
@@ -764,7 +765,6 @@
 		.userData .field {
 			width: 100%;
 			flex-direction: row;
-			justify-content: space-between;
 			align-items: center;
 			padding: 10px;
 			margin-bottom: 20px;
@@ -780,15 +780,25 @@
 			font-family: var(--font);
 			font-size: 16px;
 			color: var(--textcolor);
-			width: 100%;
+			width: 2rem;
+		}
+		.userData .field .birthdate-input {
+			border: none;
+			outline: none;
+			font-family: var(--font);
+			font-size: 16px;
+			color: var(--textcolor);
+			width: 11rem;
 		}
 		.userData .field .icon {
 			font-size: 30px;
 			color: var(--accent2);
+			margin-left: 150px;
 		}
 		.userData .field .staticicon {
 			font-size: 30px;
 			width: 100%;
+			margin-left: 30px;
 			color: var(--accent2);
 			display: inline-block;
 			vertical-align: middle;
@@ -817,7 +827,8 @@
 		.badgeContainer {
 			position: relative;
 			margin-top: 50px;
-			margin-bottom: 3vh;
+			left: 20px;
+			margin-bottom: 15vh;
 			padding: 5px 15px 10px 15px;
 			color: var(--textcolor);
 			width: 80vw;
