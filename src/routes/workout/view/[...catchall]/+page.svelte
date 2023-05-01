@@ -3,12 +3,11 @@
 	import WorkoutCard from '$lib/components/WorkoutCard.svelte';
 	import { page } from '$app/stores';
 	export let data;
-	const { routine } = data;
+	let { routine } = data;
 	import { fly } from 'svelte/transition';
-	// let modalShow = false;
-	// let logging = false;
-	// let shareClicked = false;
-	let { shareClicked, logging, modalShow } = false;
+	let modalShow = false;
+	let logging = false;
+	let shareClicked = false;
 	let deleteForm;
 	onMount(() => {
 		deleteForm = document.getElementById('delete');
@@ -23,7 +22,7 @@
 	<div id="content">
 		<div class="head">
 			<h1>
-				{routine.name}
+				{routine?.name}
 			</h1>
 
 			<div class="info">
@@ -32,11 +31,11 @@
 					{routine.expand?.userID?.displayName}
 				</span>
 				<h1>
-					Author: {routine.expand?.userID?.displayName}
+					Author: {routine?.expand?.userID?.displayName}
 				</h1>
 
 				<h1>
-					Created: {routine.created.slice(0, 10)}
+					Created: {routine?.created?.slice(0, 10)}
 				</h1>
 			</div>
 
@@ -70,7 +69,7 @@
 					}}><i class="fa-solid fa-pen-ruler rgtext" /></button
 				>
 
-				{#if data.user.id == routine.expand?.userID?.id}
+				{#if data?.user?.id == routine.expand?.userID?.id}
 					{#if modalShow}
 						<form
 							action="?/delete"
@@ -125,7 +124,7 @@
 		{#if logging}
 			<form action="?/log" method="POST" id="form">
 				<div class="container">
-					{#each Object.values(routine.routine) as thisExercise, i}
+					{#each Object.values(routine?.routine) as thisExercise, i}
 						<!-- <li>{i + 1}</li> -->
 						<WorkoutCard
 							cardNumber={i++}
@@ -140,7 +139,7 @@
 			</form>
 		{:else}
 			<div class="container">
-				{#each Object.values(routine.routine) as thisExercise, i}
+				{#each Object.values(routine?.routine) as thisExercise, i}
 					<!-- <li>{i + 1}</li> -->
 					<WorkoutCard
 						cardNumber={i++}

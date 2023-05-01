@@ -18,7 +18,7 @@
 
 	let x;
 	cardNumber++;
-	const this_cardNumber = cardNumber;
+	let this_cardNumber = cardNumber;
 	let selectedWorkout;
 	$: selectedWorkout;
 	$: bgImage = getImageUrl(selectedWorkout);
