@@ -12,9 +12,7 @@
 	// console.log(exercise)
 	// console.log(weight)
 	// console.log(sets)
-	console.log(isFresh);
-
-	// import squat from "$lib/assets/images/exercises/dallesquat.png"
+	// console.log(reps)
 
 	let x;
 	cardNumber++;
