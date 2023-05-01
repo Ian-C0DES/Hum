@@ -239,8 +239,7 @@
 			);
 			min-height: 100vh;
 			height: fit-content;
-			overflow-x: hidden;
-			// overflow-y: hidden;
+			overflow: hidden;
 			// margin-bottom: 50vh;
 			/* background-image: radial-gradient(var(--textcolor) 1px, transparent 0); */
 			/* background-size: 40px 40px; */
@@ -251,7 +250,30 @@
 		}
 		#content {
 			margin-left: 3vw;
-			// margin-bottom: 50vh;
+			// margin-bottom: 10vh;
+			.infoBanner {
+			position: absolute;
+			background-color: rgba(0, 0, 0, 0.2);
+			border-radius: 18px;
+			width: fit-content;
+			padding: 0.5%;
+			left: 75vw;
+			.label {
+				font-size: 0.6rem;
+				text-align: center;
+			}
+			.date {
+				font-size: 0.6rem;
+			}
+			.time {
+				font-size: 1rem;
+			}
+			p {
+				font-family: var(--font);
+				color: var(--textcolor);
+				// font-size: 1.2rem;
+			}
+		}
 		}
 		.chartContainer {
 			display: flex;
