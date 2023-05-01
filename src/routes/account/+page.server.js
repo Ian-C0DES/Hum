@@ -41,7 +41,7 @@ export const actions = {
 			throw error(500, 'Something went wrong when updating settings');
 		}
 
-		throw redirect(303, '/profile');
+		throw redirect(303, '/account');
 	},
 	setTheme: async ({ url, cookies }) => {
 		const theme = url.searchParams.get('theme');

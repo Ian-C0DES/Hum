@@ -87,11 +87,13 @@
 
 		<div class="feedContainer">
 			<div class="messagesContainer" bind:this={element}>
-				{#each messages as message (message.id)}
+				{#each messages as message, i (message.id)}
 					<form hidden method="POST" id="messageForm{message.id}">
 						<input type="text" name="message" value={message.id} />
 					</form>
-					<Feeditem data={message} userLikes={likes} context={data.user} />
+					<div style="" class={i == 0 ? 'first' : ''}>
+						<Feeditem data={message} userLikes={likes} context={data.user} />
+					</div>
 				{/each}
 			</div>
 		</div>
@@ -563,57 +565,14 @@
 		.messagesContainer {
 			height: 80vh;
 			top: 0px;
-			width: 95vw;
+			width: 100vw;
 			display: flex;
 			flex-wrap: nowrap;
 			flex-direction: column-reverse;
 			align-items: center;
 			overflow-y: scroll;
-
-			.message {
-				border: 1px groove var(--accent2);
-				border-left: none;
-				border-right: none;
-				width: 85vw;
-				padding: 30px;
-				min-height: 30vh;
-				background-image: radial-gradient(var(--accent1) 1px, transparent 0);
-				background-size: 40px 40px;
-				background-position: -19px -19px;
-				.messageAuthor {
-					font-family: var(--font);
-					display: grid;
-					grid-template-areas:
-						'pfp username username time'
-						'pfp handle handle handle';
-					img {
-						grid-area: pfp;
-						border-radius: 50%;
-						width: min-content;
-						width: 75px;
-						height: 75px;
-						border: var(--dark) 1px solid;
-					}
-
-					.handle {
-						position: static;
-						right: 0;
-						font-size: 1rem;
-					}
-					.name {
-						position: static;
-						right: 0;
-						font-size: 1rem;
-					}
-
-					.time {
-						font-size: 0.8rem;
-					}
-				}
-				.messageContent {
-					padding-top: 1rem;
-					color: var(--textcolor);
-				}
+			.first {
+				margin-bottom: 20vh;
 			}
 		}
 	}

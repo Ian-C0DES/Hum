@@ -47,28 +47,18 @@
 					<p>Workout</p>
 				</a>
 
-				<form action="/logout" method="POST" class="logout">
+				<form action="/logout" method="POST" class="logoutform">
 					<button type="submit" class="logout">
-						<i
-							style="position: relative;
-                  left:1vw;"
-							class="fa-solid fa-door-closed rgtext"
-						/>
-						<i
-							style="position: relative;
-                  right:1.5vw;
-                  opacity:0;
-                  "
-							class="fa-solid fa-door-open rgtext open"
-						/>
+						<!-- left:1vw; -->
+						<i class="fa-solid fa-door-closed rgtext" />
+						<!-- right:1.5vw; -->
+						<i class="fa-solid fa-door-open rgtext open" />
 					</button>
 				</form>
 			</div>
 		</div>
 	</div>
-{:else}
-	//empty
-{/if}
+{:else}{/if}
 
 <style lang="scss">
 	* {
@@ -170,6 +160,8 @@
 					font-size: 1rem;
 				}
 			}
+			.logoutform {
+			}
 			.logout {
 				cursor: pointer;
 				background: none;
@@ -178,6 +170,15 @@
 				font-size: 30px;
 				position: relative;
 				top: 5vh;
+				:nth-child(1) {
+					left: 1vw;
+					position: relative;
+				}
+				:nth-child(2) {
+					position: relative;
+					right: 1.5vw;
+					opacity: 0;
+				}
 			}
 			.logout:hover {
 				color: var(--accent1);
@@ -228,7 +229,7 @@
 				display: flex;
 				width: inherit;
 				position: relative;
-				// top: 20%;
+				top: 40%;
 				z-index: 9999;
 				justify-content: space-around;
 				flex-direction: row;
@@ -249,6 +250,7 @@
 							display: none;
 						}
 						p {
+							display: contents;
 							color: var(--textcolor);
 							height: 6vh;
 							opacity: 1;
@@ -263,6 +265,7 @@
 						font-size: 1.5rem;
 					}
 					p {
+						display: none;
 						// font-family: "iceland";
 						font-family: var(--font);
 						font-weight: 900;
@@ -279,14 +282,28 @@
 						font-size: 1rem;
 					}
 				}
+				.logoutform {
+					// position: relative;
+					// top: -1000%;
+				}
 				.logout {
+					// position: absolute;
 					cursor: pointer;
 					background: none;
 					border: none;
 					color: var(--accent2);
 					font-size: 30px;
 					position: relative;
-					top: 0vh;
+					top: -2vh;
+					right: 5vw;
+					:nth-child(1) {
+						left: unset;
+						position: absolute;
+					}
+					:nth-child(2) {
+						right: unset;
+						position: absolute;
+					}
 				}
 				.logout:hover {
 					color: var(--accent1);
@@ -299,11 +316,14 @@
 				}
 				.navItem:hover {
 					i {
-						animation: fadeOut 0.7s forwards;
+						opacity: 0;
+						transition: all 0.3s;
 					}
 					p {
-						opacity: 0;
-						animation: fadeIn 1.5s forwards;
+						display: contents;
+						opacity: 1;
+						transition: all 0.3s;
+						// animation: fadeIn 1.5s forwards;
 					}
 				}
 			}
