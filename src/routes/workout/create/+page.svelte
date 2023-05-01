@@ -139,8 +139,8 @@
 			margin-bottom: 15vh;
 			// background-color: black;
 			// .card{
-				//     margin: 1%;
-				//     background-color: red;
+			//     margin: 1%;
+			//     background-color: red;
 			//     width: 25vw;
 			//     height: 25vh;
 			// }
@@ -156,6 +156,5 @@
 				opacity: 40%;
 			}
 		}
-		
 	}
 </style>

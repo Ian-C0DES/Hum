@@ -43,23 +43,19 @@
 </script>
 
 {#if tier != 0}
-<div>
-	{#if active}
-		<div
-			class="hintContainer"
-			in:fly={{ y: 5, duration: 500 }}
-			out:fly={{ y: 5, duration: 550 }}
-		>
-			<div style="width:{size};" class="hint">
-				<div class="text">{BadgeData[name].hint}</div>
-				<label class="progesslabel" for="progess"
-					>{progress}/{BadgeData[name].threshold[tier]}</label
-				>
-				<progress id="progess" value={progress} max={BadgeData[name].threshold[tier]} />
+	<div>
+		{#if active}
+			<div class="hintContainer" in:fly={{ y: 5, duration: 500 }} out:fly={{ y: 5, duration: 550 }}>
+				<div style="width:{size};" class="hint">
+					<div class="text">{BadgeData[name].hint}</div>
+					<label class="progesslabel" for="progess"
+						>{progress}/{BadgeData[name].threshold[tier]}</label
+					>
+					<progress id="progess" value={progress} max={BadgeData[name].threshold[tier]} />
+				</div>
 			</div>
-		</div>
-	{/if}
-</div>
+		{/if}
+	</div>
 	<div
 		class="badgeContainer {active ? 'active' : ''}"
 		on:mouseenter={() => {
@@ -74,7 +70,7 @@
 {/if}
 
 <style lang="scss">
-	*{
+	* {
 		// outline: 1px red solid;
 	}
 	.badgeContainer.active {
@@ -105,7 +101,6 @@
 		max-width: 100%;
 		align-items: center;
 		.hint {
-
 			// pointer-events:all;
 			padding: 5%;
 

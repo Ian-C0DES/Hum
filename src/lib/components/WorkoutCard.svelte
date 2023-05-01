@@ -32,11 +32,11 @@
 		},
 		{
 			optGroup: 'Shoulders',
-			opts: ['Shoulder Press','Upright Rows' ]
+			opts: ['Shoulder Press', 'Upright Rows']
 		},
 		{
 			optGroup: 'Back',
-			opts: ['Pull Up', 'Dumbbell Row', 'Lat Pulldown', ]
+			opts: ['Pull Up', 'Dumbbell Row', 'Lat Pulldown']
 		},
 		{
 			optGroup: 'Biceps',
@@ -52,7 +52,7 @@
 		},
 		{
 			optGroup: 'Quadriceps',
-			opts: [ 'Leg Extension']
+			opts: ['Leg Extension']
 		},
 		{
 			optGroup: 'Hamstrings',
@@ -65,7 +65,7 @@
 		{
 			optGroup: 'Calves',
 			opts: ['Calf Raises']
-		},
+		}
 	];
 
 	const getImageUrl = (name) => {
@@ -451,136 +451,135 @@
 	//     }
 	@media only screen and (max-width: 500px) {
 		.card {
-		margin: 1%;
-		background-color: rgba($color: #000000, $alpha: 0.3);
-		border-radius: 18px;
-		width: 100%;
-		height: 35vh;
-		display: flex;
-		flex-direction: column;
-		input,
-		select {
-			-webkit-appearance: none;
-			appearance: none;
-			margin: 0px;
-			all: unset;
-			font-family: var(--font);
-			color: var(--textcolor);
-			// background-color: rgba($color: #000000, $alpha: .30);
-			background-color: transparent;
-		}
-		.image {
-			// background-image: url(../assets/images/dallesquat.png);
-			height: 100%;
-			width: 80%;
+			margin: 1%;
+			background-color: rgba($color: #000000, $alpha: 0.3);
+			border-radius: 18px;
+			width: 100%;
+			height: 35vh;
 			display: flex;
-			align-self: center;
-			// border-radius: 18px 18px 0px 0px;
-			// border-radius: 18px;
-			background-size: cover;
-			// background-size: 100%;
-			background-position: center;
-			background-repeat: no-repeat;
+			flex-direction: column;
+			input,
+			select {
+				-webkit-appearance: none;
+				appearance: none;
+				margin: 0px;
+				all: unset;
+				font-family: var(--font);
+				color: var(--textcolor);
+				// background-color: rgba($color: #000000, $alpha: .30);
+				background-color: transparent;
+			}
+			.image {
+				// background-image: url(../assets/images/dallesquat.png);
+				height: 100%;
+				width: 80%;
+				display: flex;
+				align-self: center;
+				// border-radius: 18px 18px 0px 0px;
+				// border-radius: 18px;
+				background-size: cover;
+				// background-size: 100%;
+				background-position: center;
+				background-repeat: no-repeat;
 
-			filter: var(--huerotation);
-			// filter: hue-rotate(295deg);
+				filter: var(--huerotation);
+				// filter: hue-rotate(295deg);
 
-			// filter:contrast(10);
-			// mix-blend-mode: multiply;
+				// filter:contrast(10);
+				// mix-blend-mode: multiply;
 
-			// filter: hue-rotate(90deg);
-			// position: relative;
-			// z-index: 2;
-		}
-		.fields {
-			// z-index: 1;
-			// position: relative;
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: center;
-			font-size: 0.8rem;
-			font-family: var(--font);
-			color: var(--textcolor);
-			.exercise {
-				select option {
-					background-color: gray;
-				}
-				select optgroup {
-					background-color: black;
-				}
-			}
-			.weight {
-				input {
-					width: 4rem;
-					opacity: 0.4;
-				}
-				&::after {
-					content: 'lbs';
-					position: relative;
-					right: 2rem;
-					opacity: 0.4;
-				}
-			}
-			.sets {
-				input {
-					width: 4rem;
-					opacity: 0.4;
-				}
-				&::after {
-					content: 'x';
-					position: relative;
-					right: 2.5rem;
-					opacity: 0.4;
-				}
-			}
-			.reps {
-				input {
-					width: 4rem;
-					opacity: 0.4;
-				}
-				&::after {
-					content: 'x';
-					position: relative;
-					right: 2.5rem;
-					opacity: 0.4;
-				}
-			}
-
-			input:focus {
-				// color: red;
-				opacity: 1;
-			}
-		}
-		.completedbtn {
-			all: unset;
-			position: absolute;
-			// bottom: 100px;
-			// color:gray;
-			font-weight: 900;
-			font-size: 3.6rem;
-			cursor: pointer;
-			width: 25vw;
-			display: flex;
-			justify-content: center;
-			i {
+				// filter: hue-rotate(90deg);
 				// position: relative;
+				// z-index: 2;
+			}
+			.fields {
+				// z-index: 1;
+				// position: relative;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				font-size: 0.8rem;
+				font-family: var(--font);
+				color: var(--textcolor);
+				.exercise {
+					select option {
+						background-color: gray;
+					}
+					select optgroup {
+						background-color: black;
+					}
+				}
+				.weight {
+					input {
+						width: 4rem;
+						opacity: 0.4;
+					}
+					&::after {
+						content: 'lbs';
+						position: relative;
+						right: 2rem;
+						opacity: 0.4;
+					}
+				}
+				.sets {
+					input {
+						width: 4rem;
+						opacity: 0.4;
+					}
+					&::after {
+						content: 'x';
+						position: relative;
+						right: 2.5rem;
+						opacity: 0.4;
+					}
+				}
+				.reps {
+					input {
+						width: 4rem;
+						opacity: 0.4;
+					}
+					&::after {
+						content: 'x';
+						position: relative;
+						right: 2.5rem;
+						opacity: 0.4;
+					}
+				}
 
-				opacity: 0.2;
+				input:focus {
+					// color: red;
+					opacity: 1;
+				}
+			}
+			.completedbtn {
+				all: unset;
+				position: absolute;
+				// bottom: 100px;
+				// color:gray;
+				font-weight: 900;
+				font-size: 3.6rem;
+				cursor: pointer;
+				width: 25vw;
+				display: flex;
+				justify-content: center;
+				i {
+					// position: relative;
+
+					opacity: 0.2;
+				}
+			}
+			&:hover {
+				& {
+					filter: drop-shadow(3px 3px 8px rgba(255, 255, 255, 0.2));
+				}
+
+				i {
+					// filter: blur(-10px);
+					opacity: 1;
+					color: #000000;
+				}
 			}
 		}
-		&:hover {
-			& {
-				filter: drop-shadow(3px 3px 8px rgba(255, 255, 255, 0.2));
-			}
-
-			i {
-				// filter: blur(-10px);
-				opacity: 1;
-				color: #000000;
-			}
-		}
-	}
-
 	}
 </style>

@@ -43,12 +43,17 @@
 			<div class="btnContainer">
 				{#if !logging}
 					{#if shareClicked}
-						<div class="sharetoast" in:fly={{ y: -30, duration: 550, delay: 0 }}
-						out:fly={{ y: -30, duration: 500 }}> <i class="fa-solid fa-clipboard-check rgtext"></i> Copied to clipboard</div>
+						<div
+							class="sharetoast"
+							in:fly={{ y: -30, duration: 550, delay: 0 }}
+							out:fly={{ y: -30, duration: 500 }}
+						>
+							<i class="fa-solid fa-clipboard-check rgtext" /> Copied to clipboard
+						</div>
 					{/if}
 					<button
 						on:click={() => {
-							(!shareClicked ? shareClicked = true : "");
+							!shareClicked ? (shareClicked = true) : '';
 							setTimeout(() => {
 								shareClicked = false;
 							}, 4500);
@@ -412,16 +417,16 @@
 		width: 55%;
 		text-align: center;
 		font-weight: 900;
-		i{
+		i {
 			position: absolute;
 			right: 89%;
-			top:25%;
+			top: 25%;
 			font-size: 150%;
 		}
 	}
 
-		@media only screen and (max-width: 500px) {
-					.container {
+	@media only screen and (max-width: 500px) {
+		.container {
 			display: flex;
 			flex-wrap: wrap;
 			flex-direction: column;
@@ -429,76 +434,77 @@
 			margin-bottom: 15vh;
 			// background-color: black;
 			// .card{
-				//     margin: 1%;
-				//     background-color: red;
+			//     margin: 1%;
+			//     background-color: red;
 			//     width: 25vw;
 			//     height: 25vh;
 			// }
 		}
 		#content {
-		margin-left: 0vw;
-		max-width: 100vw;
-		.head {
-			display: flex;
-			justify-content: space-between;
-			align-items: baseline;
-			background: linear-gradient(90deg, var(--accent1), var(--accent2));
-			background-size: 100% 3px;
-			background-repeat: no-repeat;
-			background-position: bottom;
-			flex-direction: column;
-    		flex-wrap: wrap;
-			h1, span {
-				color: var(--textcolor);
-				font-size: 2.5rem;
-				font-family: var(--font);
-				font-weight: 800;
-				margin-bottom: 1rem;
-				white-space: nowrap;
-				overflow-x: hidden;
-				text-align: center;
-				width: 100%;
-			}
-			button {
-				cursor: pointer;
-				background: none;
-				border: none;
-				margin: 0rem 1rem 0rem 2rem;
-				i {
-					font-size: 3rem;
-				}
-				&:hover {
-					opacity: 40%;
-				}
-			}
-			.info {
+			margin-left: 0vw;
+			max-width: 100vw;
+			.head {
 				display: flex;
-    flex-direction: column;
-    align-self: center;
-    align-items: center;
-				h1 {
-					font-size: 1rem;
-					margin: 0px;
-					padding: .2rem;
-				}
+				justify-content: space-between;
+				align-items: baseline;
+				background: linear-gradient(90deg, var(--accent1), var(--accent2));
+				background-size: 100% 3px;
+				background-repeat: no-repeat;
+				background-position: bottom;
+				flex-direction: column;
+				flex-wrap: wrap;
+				h1,
 				span {
-					margin: 0px;
-					padding: .2rem;
-					// width: 100%;
-					// text-align: right;
-					font-size: 1rem;
+					color: var(--textcolor);
+					font-size: 2.5rem;
+					font-family: var(--font);
+					font-weight: 800;
+					margin-bottom: 1rem;
+					white-space: nowrap;
+					overflow-x: hidden;
+					text-align: center;
+					width: 100%;
+				}
+				button {
+					cursor: pointer;
+					background: none;
+					border: none;
+					margin: 0rem 1rem 0rem 2rem;
+					i {
+						font-size: 3rem;
+					}
+					&:hover {
+						opacity: 40%;
+					}
+				}
+				.info {
+					display: flex;
+					flex-direction: column;
+					align-self: center;
+					align-items: center;
+					h1 {
+						font-size: 1rem;
+						margin: 0px;
+						padding: 0.2rem;
+					}
 					span {
-						padding: 0;
+						margin: 0px;
+						padding: 0.2rem;
+						// width: 100%;
+						// text-align: right;
+						font-size: 1rem;
+						span {
+							padding: 0;
+						}
 					}
 				}
 			}
 		}
-		}
-		.btnContainer{
+		.btnContainer {
 			display: flex;
 			width: 100%;
-    justify-content: center;
-	padding: 5% 0 5% 0;
+			justify-content: center;
+			padding: 5% 0 5% 0;
 		}
 	}
 	// .sharetoast {

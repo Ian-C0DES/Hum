@@ -1,12 +1,10 @@
 <script>
-
 	import { chart } from 'svelte-apexcharts';
 	export let userdata;
 	export let goal;
 	export let chartType;
 	export let context;
 	let options, keysArray, valuesArray;
-
 
 	// const keysArray = Object.keys(userdata);
 	// const valuesArray = Object.values(userdata);
@@ -17,8 +15,7 @@
 	// });
 
 	keysArray = Object.keys(userdata);
- valuesArray = Object.values(userdata);
-
+	valuesArray = Object.values(userdata);
 
 	// console.log(userdata);
 	// console.log(keysArray);
@@ -259,6 +256,7 @@
 {:else}
 	<div class="chart" use:chart={options} />
 {/if}
+
 <style lang="scss">
 	* {
 		color: black;

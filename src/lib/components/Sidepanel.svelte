@@ -90,7 +90,7 @@
 {/if}
 
 <style lang="scss">
-	*{
+	* {
 		// outline: red 1px solid;
 	}
 	.homeBtn {
@@ -179,86 +179,85 @@
 		}
 	}
 
-
 	@media only screen and (max-width: 500px) {
-	.sidepanelContainer {
-		overflow-x: hidden;
-		overflow-y: hidden;
-		z-index: 9999;
-		pointer-events: none;
-		width: 75%;
-		position: absolute;
-		right: 0;
-		top: 3vh;
-		height: 90%;
-
-		.expandBtnContainer {
-			pointer-events: all;
+		.sidepanelContainer {
+			overflow-x: hidden;
+			overflow-y: hidden;
+			z-index: 9999;
+			pointer-events: none;
+			width: 75%;
 			position: absolute;
 			right: 0;
-			font-size: 3rem;
-		}
+			top: 3vh;
+			height: 90%;
 
-		.sidepanel {
-			pointer-events: all;
-			position: absolute;
-			background-color: rgba($color: #000000, $alpha: 0.9);
-			width: 100%;
-			height: 100%;
-			border-radius: 18px 0px 0px 18px;
+			.expandBtnContainer {
+				pointer-events: all;
+				position: absolute;
+				right: 0;
+				font-size: 3rem;
+			}
 
-			.panelItems {
-				flex-direction: column;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+			.sidepanel {
+				pointer-events: all;
+				position: absolute;
+				background-color: rgba($color: #000000, $alpha: 0.9);
 				width: 100%;
 				height: 100%;
-				.menuContainer {
-					.menuOpts {
-						ul {
-							padding: 0;
-							list-style-type: none;
-							li {
-								font-family: var(--font);
-								font-weight: 700;
-								padding: 0.5rem;
-								margin: 0.5rem;
-								font-size: 2rem;
-								border-radius: 18px;
-								color: gray;
-								&:hover {
-									background-color: rgba($color: #ffffff, $alpha: 0.05);
+				border-radius: 18px 0px 0px 18px;
+
+				.panelItems {
+					flex-direction: column;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 100%;
+					height: 100%;
+					.menuContainer {
+						.menuOpts {
+							ul {
+								padding: 0;
+								list-style-type: none;
+								li {
+									font-family: var(--font);
+									font-weight: 700;
+									padding: 0.5rem;
+									margin: 0.5rem;
+									font-size: 2rem;
+									border-radius: 18px;
+									color: gray;
+									&:hover {
+										background-color: rgba($color: #ffffff, $alpha: 0.05);
+										color: var(--textcolor);
+										span {
+											text-shadow: 0px 0px 3px #ffffff;
+										}
+									}
+								}
+								.active {
+									background-color: rgba(255, 255, 255, 0.05);
 									color: var(--textcolor);
 									span {
 										text-shadow: 0px 0px 3px #ffffff;
 									}
 								}
 							}
-							.active {
-								background-color: rgba(255, 255, 255, 0.05);
-								color: var(--textcolor);
-								span {
-									text-shadow: 0px 0px 3px #ffffff;
-								}
-							}
+							color: var(--textcolor);
 						}
-						color: var(--textcolor);
 					}
 				}
-			}
 
-			.panelCloseContainer {
-				position: absolute;
-				bottom: 1px;
-				padding: 10%;
-				.panelClose {
-					i {
-						font-size: 2rem;
+				.panelCloseContainer {
+					position: absolute;
+					bottom: 1px;
+					padding: 10%;
+					.panelClose {
+						i {
+							font-size: 2rem;
+						}
 					}
 				}
 			}
 		}
 	}
-}
 </style>

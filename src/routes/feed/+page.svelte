@@ -87,11 +87,11 @@
 
 		<div class="feedContainer">
 			<div class="messagesContainer" bind:this={element}>
-				{#each messages as message, i (message.id)  }
+				{#each messages as message, i (message.id)}
 					<form hidden method="POST" id="messageForm{message.id}">
 						<input type="text" name="message" value={message.id} />
 					</form>
-					<div style="" class={ i == 0 ? 'first' : ''}>
+					<div style="" class={i == 0 ? 'first' : ''}>
 						<Feeditem data={message} userLikes={likes} context={data.user} />
 					</div>
 				{/each}
@@ -571,12 +571,9 @@
 			flex-direction: column-reverse;
 			align-items: center;
 			overflow-y: scroll;
-			.first{
+			.first {
 				margin-bottom: 20vh;
 			}
-
-			
-			
 		}
 	}
 </style>
