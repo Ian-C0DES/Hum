@@ -192,7 +192,7 @@
 						i {
 							// padding-top: 1rem;
 							cursor: pointer;
-							padding: 1rem;
+							padding: 0rem;
 							width: 100%;
 							text-align: center;
 							font-size: 3rem;
@@ -227,8 +227,9 @@
 
 	@media only screen and (max-width: 500px) {
 		#content {
-			margin-left: 4vw;
-			max-width: 92vw;
+			margin-left: 0vw;
+			max-width: 100vw;
+			padding: 1%;
 			h1 {
 				text-align: center;
 			}
@@ -245,7 +246,7 @@
 					font-size: 2rem;
 					font-family: var(--font);
 					font-weight: 800;
-					margin-bottom: 1rem;
+					margin-bottom: 0rem;
 					background: linear-gradient(90deg, var(--accent1), var(--accent2));
 					background-size: 100% 3px;
 					background-repeat: no-repeat;
@@ -303,7 +304,7 @@
 							align-items: center;
 							i {
 								cursor: pointer;
-								padding: 1rem;
+								padding: 0rem;
 								width: 100%;
 								text-align: center;
 								font-size: 2rem;

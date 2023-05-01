@@ -23,9 +23,9 @@
 		<!-- {viewedUser.id} -->
 		<div class="bannerContainer">
 			<div class="banner">
-				<div class="pfp" style="border-radius: 50%; width:150px; height: 150px;">
+				<div class="pfp" style="">
 					<img
-						style="border-radius: 50%; width:150px; height: 150px;"
+						style=""
 						src={viewedUser?.avatar
 							? getImageURL(viewedUser?.collectionId, viewedUser?.id, viewedUser?.avatar)
 							: 'https://ui-avatars.com/api/?name=$' + viewedUser?.displayName}
@@ -33,6 +33,8 @@
 					/>
 				</div>
 
+				<div class="info">
+					
 				<div class="displayName">
 					{viewedUser.displayName}
 					<div class="username">
@@ -50,6 +52,7 @@
 					<span> {abbrNum(viewedUserStats.score, 2)} </span>
 				</div>
 
+			</div>
 				<!-- <div class="badgeContainer"> -->
 				<div class="badgeContainer">
 					<h1>
@@ -59,9 +62,9 @@
 					</h1>
 
 					{#each Object.entries(viewedUser?.badges) as badge (badge[0])}
-						<div style="padding: 3%;">
+						<div style="padding: 1%; width: 50px; height: 50px;">
 							<Badge
-								size={3 + 'vw'}
+								size={100+'%'}
 								progress={badge[1].progress}
 								tier={badge[1].tier}
 								name={badge[0]}
@@ -177,6 +180,7 @@
 	body {
 		min-height: 100vh;
 		overflow-x: hidden;
+		overflow-y: scroll;
 		background: radial-gradient(
 			400.81% 400.43% at -275% -220%,
 			var(--textcolor) 40.22%,
@@ -188,7 +192,7 @@
 		max-width: 90vw;
 	}
 	.bannerContainer {
-		height: 30vh;
+		min-height: fit-content;
 		display: flex;
 		background-image: radial-gradient(var(--accent1) 1px, transparent 0);
 		background-size: 40px 40px;
@@ -201,42 +205,49 @@
 			color: var(--textcolor);
 			font-family: var(--font);
 			padding-bottom: 2vh;
+			height: fit-content;
 			// justify-content: space-between;
 			width: 100%;
-			.pfp {
+			.pfp, img{
+				border-radius: 50%;
+				 width:150px; 
+				 height: 150px;
 			}
-			.displayName {
-				padding-left: 3vw;
-				padding-right: 10vw;
-				font-size: 2rem;
-				font-weight: bold;
-				.username {
-					font-weight: normal;
-					font-size: 1rem;
-				}
-			}
-			.friends {
+			.info{
 				display: flex;
-				align-items: center;
-				flex-wrap: nowrap;
-				flex-direction: row;
-				// padding-left: 3vw;
-				font-size: 3rem;
-				span {
-					padding: 10%;
+				.displayName {
+					padding-left: 3vw;
+					padding-right: 10vw;
 					font-size: 2rem;
+					font-weight: bold;
+					.username {
+						font-weight: normal;
+						font-size: 1rem;
+					}
 				}
-			}
-			.score {
-				display: flex;
-				align-items: center;
-				flex-wrap: nowrap;
-				flex-direction: row;
-				padding-left: 5vw;
-				font-size: 3rem;
-				span {
-					padding: 10%;
-					font-size: 2rem;
+				.friends {
+					display: flex;
+					align-items: center;
+					flex-wrap: nowrap;
+					flex-direction: row;
+					// padding-left: 3vw;
+					font-size: 3rem;
+					span {
+						padding: 10%;
+						font-size: 2rem;
+					}
+				}
+				.score {
+					display: flex;
+					align-items: center;
+					flex-wrap: nowrap;
+					flex-direction: row;
+					padding-left: 5vw;
+					font-size: 3rem;
+					span {
+						padding: 10%;
+						font-size: 2rem;
+					}
 				}
 			}
 		}
@@ -307,47 +318,7 @@
 			background-image: radial-gradient(var(--accent1) 1px, transparent 0);
 			background-size: 40px 40px;
 			background-position: -19px -19px;
-			.messageAuthor {
-				font-family: var(--font);
-				display: grid;
-				grid-template-areas:
-					'pfp username username time'
-					'pfp handle handle handle';
-				img {
-					grid-area: pfp;
-					border-radius: 50%;
-					width: min-content;
-					width: 75px;
-					height: 75px;
-					border: var(--dark) 1px solid;
-				}
 
-				.handle {
-					grid-area: handle;
-					position: relative;
-					right: 12vw;
-					color: var(--accent2);
-					font-size: 0.8rem;
-				}
-				.name {
-					font-family: var(--font);
-					grid-area: username;
-					position: relative;
-					right: 12vw;
-					color: var(--textcolor);
-					font-size: 1.7rem;
-				}
-				.time {
-					grid-area: time;
-					text-align: right;
-					color: var(--accent2);
-					font-size: 1rem;
-				}
-			}
-			.messageContent {
-				padding-top: 1rem;
-				color: var(--textcolor);
-			}
 		}
 	}
 	.badgeContainer {
@@ -379,4 +350,144 @@
 		//     width: 1px;
 		// }
 	}
+
+	@media only screen and (max-width: 500px) {
+		#content {
+		margin-left: 0vw;
+		margin-bottom: 10vh;
+		max-width: 100vw;
+	}
+	.bannerContainer {
+		height: fit-content;
+		display: flex;
+		background-image: radial-gradient(var(--accent1) 1px, transparent 0);
+		background-size: 40px 40px;
+		background-position: -19px -19px;
+		.banner {
+			// padding-top: 20vh;
+			display: flex;
+			align-items: center;
+			color: var(--textcolor);
+			font-family: var(--font);
+			padding-bottom: 2vh;
+			flex-direction: column;
+		justify-content: flex-end;
+			// justify-content: space-between;
+			width: 100%;
+			.pfp, img{
+				border-radius: 50%;
+				 width:150px; 
+				 height: 150px;
+			}
+			.info{
+			.displayName {
+				padding-left: 3vw;
+				padding-right: 10vw;
+				font-size: 1rem;
+				font-weight: bold;
+				.username {
+					font-weight: normal;
+					font-size: 1rem;
+				}
+			}
+			.friends {
+				display: flex;
+				align-items: center;
+				flex-wrap: nowrap;
+				flex-direction: row;
+				// padding-left: 3vw;
+				font-size: 1.5rem;
+				span {
+					padding: 10%;
+					font-size: 1rem;
+				}
+			}
+			.score {
+				display: flex;
+				align-items: center;
+				flex-wrap: nowrap;
+				flex-direction: row;
+				padding-left: 5vw;
+				font-size: 1.5rem;
+				span {
+					padding: 10%;
+					font-size: 1rem;
+				}
+			}
+		}
+		}
+	}
+
+	.badgeContainer {
+		// margin: 3%;
+		margin-left: 0%;
+		position: relative;
+		// margin-top: 50px;
+		// margin-bottom: 3vh;
+		padding: 2.5%;
+		// left: 10vw;
+		color: var(--textcolor);
+		width: 90%;
+		// height: 10vh;
+		background-color: rgba(15, 15, 15, 0.75);
+		box-shadow: 5px 5px 5px #000000;
+		display: flex;
+		flex-wrap: wrap;
+		h1 {
+			font-size: 1.5rem;
+			padding: 1%;
+			margin: 0px;
+			min-width: 100%;
+			font-family: var(--font);
+		}
+		p {
+			font-family: var(--font);
+		}
+	}
+	.subbanner {
+			height: 20%;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			flex-direction: row;
+			font-size: 16px;
+			// filter: blur(2px);
+			// backdrop-filter: blur(1000px);
+			// opacity: 70%;
+			// background-color: black;
+			background: radial-gradient(
+				500.81% 500.43% at -250% -250%,
+				var(--textcolor) -100.22%,
+				var(--dark) 100%
+			);
+			width: 100%;
+			border-radius: 0 0 18px 18px;
+			.addFriend {
+				height: 50%;
+			}
+			div {
+				// filter: blur(10px);
+				width: fit-content;
+				// padding: .5rem;
+				// align-self: center;
+				// text-align: center;
+				// vertical-align: middle;
+				color: var(--textcolor);
+				font-family: var(--font);
+				border-radius: 18px;
+				font-weight: bold;
+				opacity: 20%;
+				cursor: pointer;
+				transition: all 1s;
+
+				&:hover {
+					// filter: blur(0px);
+					text-shadow: 0px 0px 2px #ffffff;
+					background-color: rgba($color: #ffffff, $alpha: 0.05);
+					opacity: 100%;
+					transition: all 1s;
+				}
+			}
+		}
+}
 </style>

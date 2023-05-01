@@ -107,7 +107,7 @@
 		.hint {
 
 			// pointer-events:all;
-			padding: 20%;
+			padding: 5%;
 
 			min-width: fit-content;
 			background: radial-gradient(
