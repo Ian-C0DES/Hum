@@ -34,25 +34,23 @@
 				</div>
 
 				<div class="info">
-					
-				<div class="displayName">
-					{viewedUser.displayName}
-					<div class="username">
-						<span class="rgtext">@</span>{viewedUser.username}
+					<div class="displayName">
+						{viewedUser.displayName}
+						<div class="username">
+							<span class="rgtext">@</span>{viewedUser.username}
+						</div>
+					</div>
+
+					<div class="friends">
+						<i class="fa-solid fa-user-group rgtext" />
+						<span> {viewedUser.friends} </span>
+					</div>
+
+					<div class="score">
+						<i class="fa-solid fa-dumbbell rgtext" />
+						<span> {abbrNum(viewedUserStats.score, 2)} </span>
 					</div>
 				</div>
-
-				<div class="friends">
-					<i class="fa-solid fa-user-group rgtext" />
-					<span> {viewedUser.friends} </span>
-				</div>
-
-				<div class="score">
-					<i class="fa-solid fa-dumbbell rgtext" />
-					<span> {abbrNum(viewedUserStats.score, 2)} </span>
-				</div>
-
-			</div>
 				<!-- <div class="badgeContainer"> -->
 				<div class="badgeContainer">
 					<h1>
@@ -64,7 +62,7 @@
 					{#each Object.entries(viewedUser?.badges) as badge (badge[0])}
 						<div style="padding: 1%; width: 50px; height: 50px;">
 							<Badge
-								size={100+'%'}
+								size={100 + '%'}
 								progress={badge[1].progress}
 								tier={badge[1].tier}
 								name={badge[0]}
@@ -208,12 +206,13 @@
 			height: fit-content;
 			// justify-content: space-between;
 			width: 100%;
-			.pfp, img{
+			.pfp,
+			img {
 				border-radius: 50%;
-				 width:150px; 
-				 height: 150px;
+				width: 150px;
+				height: 150px;
 			}
-			.info{
+			.info {
 				display: flex;
 				.displayName {
 					padding-left: 3vw;
@@ -318,7 +317,6 @@
 			background-image: radial-gradient(var(--accent1) 1px, transparent 0);
 			background-size: 40px 40px;
 			background-position: -19px -19px;
-
 		}
 	}
 	.badgeContainer {
@@ -353,98 +351,99 @@
 
 	@media only screen and (max-width: 500px) {
 		#content {
-		margin-left: 0vw;
-		margin-bottom: 10vh;
-		max-width: 100vw;
-	}
-	.bannerContainer {
-		height: fit-content;
-		display: flex;
-		background-image: radial-gradient(var(--accent1) 1px, transparent 0);
-		background-size: 40px 40px;
-		background-position: -19px -19px;
-		.banner {
-			// padding-top: 20vh;
+			margin-left: 0vw;
+			margin-bottom: 10vh;
+			max-width: 100vw;
+		}
+		.bannerContainer {
+			height: fit-content;
 			display: flex;
-			align-items: center;
-			color: var(--textcolor);
-			font-family: var(--font);
-			padding-bottom: 2vh;
-			flex-direction: column;
-		justify-content: flex-end;
-			// justify-content: space-between;
-			width: 100%;
-			.pfp, img{
-				border-radius: 50%;
-				 width:150px; 
-				 height: 150px;
-			}
-			.info{
-			.displayName {
-				padding-left: 3vw;
-				padding-right: 10vw;
-				font-size: 1rem;
-				font-weight: bold;
-				.username {
-					font-weight: normal;
-					font-size: 1rem;
-				}
-			}
-			.friends {
+			background-image: radial-gradient(var(--accent1) 1px, transparent 0);
+			background-size: 40px 40px;
+			background-position: -19px -19px;
+			.banner {
+				// padding-top: 20vh;
 				display: flex;
 				align-items: center;
-				flex-wrap: nowrap;
-				flex-direction: row;
-				// padding-left: 3vw;
-				font-size: 1.5rem;
-				span {
-					padding: 10%;
-					font-size: 1rem;
+				color: var(--textcolor);
+				font-family: var(--font);
+				padding-bottom: 2vh;
+				flex-direction: column;
+				justify-content: flex-end;
+				// justify-content: space-between;
+				width: 100%;
+				.pfp,
+				img {
+					border-radius: 50%;
+					width: 150px;
+					height: 150px;
 				}
-			}
-			.score {
-				display: flex;
-				align-items: center;
-				flex-wrap: nowrap;
-				flex-direction: row;
-				padding-left: 5vw;
-				font-size: 1.5rem;
-				span {
-					padding: 10%;
-					font-size: 1rem;
+				.info {
+					.displayName {
+						padding-left: 3vw;
+						padding-right: 10vw;
+						font-size: 1rem;
+						font-weight: bold;
+						.username {
+							font-weight: normal;
+							font-size: 1rem;
+						}
+					}
+					.friends {
+						display: flex;
+						align-items: center;
+						flex-wrap: nowrap;
+						flex-direction: row;
+						// padding-left: 3vw;
+						font-size: 1.5rem;
+						span {
+							padding: 10%;
+							font-size: 1rem;
+						}
+					}
+					.score {
+						display: flex;
+						align-items: center;
+						flex-wrap: nowrap;
+						flex-direction: row;
+						padding-left: 5vw;
+						font-size: 1.5rem;
+						span {
+							padding: 10%;
+							font-size: 1rem;
+						}
+					}
 				}
 			}
 		}
-		}
-	}
 
-	.badgeContainer {
-		// margin: 3%;
-		margin-left: 0%;
-		position: relative;
-		// margin-top: 50px;
-		// margin-bottom: 3vh;
-		padding: 2.5%;
-		// left: 10vw;
-		color: var(--textcolor);
-		width: 90%;
-		// height: 10vh;
-		background-color: rgba(15, 15, 15, 0.75);
-		box-shadow: 5px 5px 5px #000000;
-		display: flex;
-		flex-wrap: wrap;
-		h1 {
-			font-size: 1.5rem;
-			padding: 1%;
-			margin: 0px;
-			min-width: 100%;
-			font-family: var(--font);
+		.badgeContainer {
+			// margin: 3%;
+			margin-left: 0%;
+			position: relative;
+			// margin-top: 50px;
+			// margin-bottom: 3vh;
+			padding: 2.5%;
+			// left: 10vw;
+			color: var(--textcolor);
+			width: 90%;
+			// height: 10vh;
+			background-color: rgba(15, 15, 15, 0.75);
+			box-shadow: 5px 5px 5px #000000;
+			display: flex;
+			flex-wrap: wrap;
+			h1 {
+				font-size: 1.5rem;
+				padding: 1%;
+				margin: 0px;
+				min-width: 100%;
+				font-family: var(--font);
+			}
+			p {
+				font-family: var(--font);
+			}
 		}
-		p {
-			font-family: var(--font);
-		}
-	}
-	.subbanner {
+		.subbanner {
 			height: 20%;
 			display: flex;
 			align-items: center;
@@ -489,5 +488,5 @@
 				}
 			}
 		}
-}
+	}
 </style>

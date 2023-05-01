@@ -50,21 +50,15 @@
 				<form action="/logout" method="POST" class="logoutform">
 					<button type="submit" class="logout">
 						<!-- left:1vw; -->
-						<i
-							class="fa-solid fa-door-closed rgtext"
-						/>
+						<i class="fa-solid fa-door-closed rgtext" />
 						<!-- right:1.5vw; -->
-						<i
-							class="fa-solid fa-door-open rgtext open"
-						/>
+						<i class="fa-solid fa-door-open rgtext open" />
 					</button>
 				</form>
 			</div>
 		</div>
 	</div>
-{:else}
-
-{/if}
+{:else}{/if}
 
 <style lang="scss">
 	* {
@@ -166,7 +160,8 @@
 					font-size: 1rem;
 				}
 			}
-			.logoutform{}
+			.logoutform {
+			}
 			.logout {
 				cursor: pointer;
 				background: none;
@@ -175,14 +170,14 @@
 				font-size: 30px;
 				position: relative;
 				top: 5vh;
-				:nth-child(1){
-					left:1vw;
+				:nth-child(1) {
+					left: 1vw;
 					position: relative;
 				}
-				:nth-child(2){
+				:nth-child(2) {
 					position: relative;
-					right:1.5vw; 
-					opacity:0;
+					right: 1.5vw;
+					opacity: 0;
 				}
 			}
 			.logout:hover {
@@ -287,7 +282,7 @@
 						font-size: 1rem;
 					}
 				}
-				.logoutform{
+				.logoutform {
 					// position: relative;
 					// top: -1000%;
 				}
@@ -301,14 +296,13 @@
 					position: relative;
 					top: -2vh;
 					right: 5vw;
-					:nth-child(1){
+					:nth-child(1) {
 						left: unset;
 						position: absolute;
 					}
-					:nth-child(2){
+					:nth-child(2) {
 						right: unset;
 						position: absolute;
-
 					}
 				}
 				.logout:hover {
@@ -323,12 +317,12 @@
 				.navItem:hover {
 					i {
 						opacity: 0;
-						transition: all .3s;
+						transition: all 0.3s;
 					}
 					p {
 						display: contents;
 						opacity: 1;
-						transition: all .3s;
+						transition: all 0.3s;
 						// animation: fadeIn 1.5s forwards;
 					}
 				}
