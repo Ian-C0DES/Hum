@@ -32,11 +32,11 @@
 		},
 		{
 			optGroup: 'Leg',
-			opts: ['Squat', 'Calf Raise', 'Leg Extension', 'Romanian Deadlift']
+			opts: ['Squat', 'Calf Raise', 'Leg Extension', 'Romanian Deadlift', 'Hip Thrust']
 		},
 		{
 			optGroup: 'Shoulder & Back',
-			opts: ['Upright Row', 'Shoulder Press']
+			opts: ['Upright Row', 'Shoulder Press', 'Lateral Pulldown']
 		}
 	];
 
