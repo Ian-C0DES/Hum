@@ -2,7 +2,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 // import { imagetools } from 'vite-imagetools'
 import { defineConfig } from 'vitest/config';
 export default defineConfig({
-	assetsInclude: ['../assets/images/badges/*.*', '../assets/images/exercises/*.*'],
+	assetsInclude: ['../assets/images/badges/*.*', '../assets/images/exercises/*.*', '../assets/images/logo.png'],
 	plugins: [
 		sveltekit()
 		// imagetools(),

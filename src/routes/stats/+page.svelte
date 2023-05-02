@@ -236,6 +236,7 @@
 		}
 		#content {
 			margin-left: 3vw;
+			overflow: hidden;
 		}
 		.chartContainer {
 			.chart {

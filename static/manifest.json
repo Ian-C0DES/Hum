@@ -2,61 +2,596 @@
 	"display_override": ["window-controls-overlay"],
 	"screenshots": [
 		{
-			"src": "https://www.pwabuilder.com/assets/screenshots/screen1.png",
-			"sizes": "2880x1800",
+			"src": "screenshot1.png",
+			"sizes": "2880x1450",
 			"type": "image/png",
-			"description": "PWABuilder Home Screen"
+			"description": "Hum is the comprehensive health and fitness app that caters to all levels of fitness enthusiasts.",
+			"platform": "wide"
 		},
 		{
-			"src": "https://www.pwabuilder.com/assets/screenshots/screen2.png",
-			"sizes": "2880/1800",
+			"src": "screenshot2.png",
+			"sizes": "2880x1450",
 			"type": "image/png",
-			"description": "PWABuilder Report Card"
+			"description": "Create groups, join communities, and follow other users to be part of a supportive community of like-minded individuals.",
+			"platform": "wide"
 		},
 		{
-			"src": "https://www.pwabuilder.com/assets/screenshots/screen3.png",
-			"sizes": "2880x1800",
+			"src": "screenshot3.png",
+			"sizes": "2880x1450",
 			"type": "image/png",
-			"description": "Manifest information on the Report Card"
+			"description": "Hum's intelligent tracking system is designed to help you achieve your fitness goals with ease.",
+			"platform": "wide"
 		}
 	],
 	"orientation": "any",
-	"short_name": "svelte-pwa",
-	"name": "svelte-test-pwa",
+	"short_name": "HUM",
+	"name": "Hum Wellness",
 	"start_url": "/login",
-	"icons": [
-		{
-			"src": "logo_512.png",
-			"type": "image/png",
-			"sizes": "512x512"
-		}
-	],
-	"background_color": "#3367D6",
+	"background_color": "#212121",
 	"display": "fullscreen",
 	"scope": "/",
-	"theme_color": "#3367D6",
-
-	"description": "Lofi to lofi beats, while using the scratchpad to list down tasks and thoughts",
-	"shortcuts": [
+	"theme_color": "#212121",
+	"description": "A Wellness app for everyone | Forever free and accessible anywhere",
+	"icons": [
 		{
-			"name": "The name you would like to be displayed for your shortcut",
-			"url": "The url you would like to open when the user chooses this shortcut. This must be a URL local to your PWA. For example: If my start_url is /, this URL must be something like /shortcut",
-			"description": "A description of the functionality of this shortcut"
-		}
-	],
-
-	"protocol_handlers": [
+			"src": "windows11/SmallTile.scale-100.png",
+			"sizes": "71x71",
+			"purpose": "maskable any"
+		},
 		{
-			"protocol": "The protocol you would like to handle. For example: web+myapp",
-			"url": "The url you would like to open when the user chooses this shortcut. This must be a URL local to your PWA. For example: If my start_url is /, this URL must be something like /shortcut"
-		}
-	],
-	"file_handlers": [
+			"src": "windows11/SmallTile.scale-125.png",
+			"sizes": "89x89",
+			"purpose": "maskable any"
+		},
 		{
-			"action": "The url you would like to open when the user chooses to share content to your app. This URL must have code to do something with the returned file.",
-			"accept": {
-				"text/*": [".txt"]
-			}
+			"src": "windows11/SmallTile.scale-150.png",
+			"sizes": "107x107",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/SmallTile.scale-200.png",
+			"sizes": "142x142",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/SmallTile.scale-400.png",
+			"sizes": "284x284",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square150x150Logo.scale-100.png",
+			"sizes": "150x150",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square150x150Logo.scale-125.png",
+			"sizes": "188x188",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square150x150Logo.scale-150.png",
+			"sizes": "225x225",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square150x150Logo.scale-200.png",
+			"sizes": "300x300",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square150x150Logo.scale-400.png",
+			"sizes": "600x600",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Wide310x150Logo.scale-100.png",
+			"sizes": "310x150",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Wide310x150Logo.scale-125.png",
+			"sizes": "388x188",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Wide310x150Logo.scale-150.png",
+			"sizes": "465x225",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Wide310x150Logo.scale-200.png",
+			"sizes": "620x300",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Wide310x150Logo.scale-400.png",
+			"sizes": "1240x600",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/LargeTile.scale-100.png",
+			"sizes": "310x310",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/LargeTile.scale-125.png",
+			"sizes": "388x388",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/LargeTile.scale-150.png",
+			"sizes": "465x465",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/LargeTile.scale-200.png",
+			"sizes": "620x620",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/LargeTile.scale-400.png",
+			"sizes": "1240x1240",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.scale-100.png",
+			"sizes": "44x44",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.scale-125.png",
+			"sizes": "55x55",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.scale-150.png",
+			"sizes": "66x66",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.scale-200.png",
+			"sizes": "88x88",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.scale-400.png",
+			"sizes": "176x176",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/StoreLogo.scale-100.png",
+			"sizes": "50x50",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/StoreLogo.scale-125.png",
+			"sizes": "63x63",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/StoreLogo.scale-150.png",
+			"sizes": "75x75",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/StoreLogo.scale-200.png",
+			"sizes": "100x100",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/StoreLogo.scale-400.png",
+			"sizes": "200x200",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/SplashScreen.scale-100.png",
+			"sizes": "620x300",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/SplashScreen.scale-125.png",
+			"sizes": "775x375",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/SplashScreen.scale-150.png",
+			"sizes": "930x450",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/SplashScreen.scale-200.png",
+			"sizes": "1240x600",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/SplashScreen.scale-400.png",
+			"sizes": "2480x1200",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-16.png",
+			"sizes": "16x16",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-20.png",
+			"sizes": "20x20",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-24.png",
+			"sizes": "24x24",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-30.png",
+			"sizes": "30x30",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-32.png",
+			"sizes": "32x32",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-36.png",
+			"sizes": "36x36",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-40.png",
+			"sizes": "40x40",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-44.png",
+			"sizes": "44x44",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-48.png",
+			"sizes": "48x48",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-60.png",
+			"sizes": "60x60",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-64.png",
+			"sizes": "64x64",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-72.png",
+			"sizes": "72x72",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-80.png",
+			"sizes": "80x80",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-96.png",
+			"sizes": "96x96",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.targetsize-256.png",
+			"sizes": "256x256",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-16.png",
+			"sizes": "16x16",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-20.png",
+			"sizes": "20x20",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-24.png",
+			"sizes": "24x24",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-30.png",
+			"sizes": "30x30",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-32.png",
+			"sizes": "32x32",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-36.png",
+			"sizes": "36x36",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-40.png",
+			"sizes": "40x40",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-44.png",
+			"sizes": "44x44",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-48.png",
+			"sizes": "48x48",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-60.png",
+			"sizes": "60x60",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-64.png",
+			"sizes": "64x64",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-72.png",
+			"sizes": "72x72",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-80.png",
+			"sizes": "80x80",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-96.png",
+			"sizes": "96x96",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-unplated_targetsize-256.png",
+			"sizes": "256x256",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-16.png",
+			"sizes": "16x16",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-20.png",
+			"sizes": "20x20",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-24.png",
+			"sizes": "24x24",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-30.png",
+			"sizes": "30x30",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-32.png",
+			"sizes": "32x32",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-36.png",
+			"sizes": "36x36",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-40.png",
+			"sizes": "40x40",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-44.png",
+			"sizes": "44x44",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-48.png",
+			"sizes": "48x48",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-60.png",
+			"sizes": "60x60",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-64.png",
+			"sizes": "64x64",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-72.png",
+			"sizes": "72x72",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-80.png",
+			"sizes": "80x80",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-96.png",
+			"sizes": "96x96",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "windows11/Square44x44Logo.altform-lightunplated_targetsize-256.png",
+			"sizes": "256x256",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "android/android-launchericon-512-512.png",
+			"sizes": "512x512",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "android/android-launchericon-192-192.png",
+			"sizes": "192x192",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "android/android-launchericon-144-144.png",
+			"sizes": "144x144",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "android/android-launchericon-96-96.png",
+			"sizes": "96x96",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "android/android-launchericon-72-72.png",
+			"sizes": "72x72",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "android/android-launchericon-48-48.png",
+			"sizes": "48x48",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/16.png",
+			"sizes": "16x16",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/20.png",
+			"sizes": "20x20",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/29.png",
+			"sizes": "29x29",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/32.png",
+			"sizes": "32x32",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/40.png",
+			"sizes": "40x40",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/50.png",
+			"sizes": "50x50",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/57.png",
+			"sizes": "57x57",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/58.png",
+			"sizes": "58x58",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/60.png",
+			"sizes": "60x60",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/64.png",
+			"sizes": "64x64",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/72.png",
+			"sizes": "72x72",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/76.png",
+			"sizes": "76x76",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/80.png",
+			"sizes": "80x80",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/87.png",
+			"sizes": "87x87",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/100.png",
+			"sizes": "100x100",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/114.png",
+			"sizes": "114x114",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/120.png",
+			"sizes": "120x120",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/128.png",
+			"sizes": "128x128",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/144.png",
+			"sizes": "144x144",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/152.png",
+			"sizes": "152x152",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/167.png",
+			"sizes": "167x167",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/180.png",
+			"sizes": "180x180",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/192.png",
+			"sizes": "192x192",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/256.png",
+			"sizes": "256x256",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/512.png",
+			"sizes": "512x512",
+			"purpose": "maskable any"
+		},
+		{
+			"src": "ios/1024.png",
+			"sizes": "1024x1024",
+			"purpose": "maskable any"
 		}
 	]
 }
