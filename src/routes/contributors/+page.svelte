@@ -48,6 +48,7 @@
 						Ian-C0DES
 					</p>
 					<p>Engineer <span class="rgtext">-</span> Hiker <span class="rgtext">-</span> Gamer</p>
+					<i class="fa-brands fa-playstation rgtext"></i>
 					<p class="text">
 						Lead Programmer:
 						<span>
@@ -70,7 +71,7 @@
 
 				<div class="container">
 					<div class="popupContainer">
-						<a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a>
+						<!-- <a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a> -->
 						<a href="#" target="_blank" class="popup"><i class="fa-solid fa-earth-americas" /></a>
 						<a href="https://github.com/naddington1" target="_blank" class="popup"><i class="fa-brands fa-github" /></a>
 					</div>
@@ -80,6 +81,7 @@
 						naddington1
 					</p>
 					<p>Coder <span class="rgtext">-</span> Basketball <span class="rgtext">-</span> Gamer</p>
+					<i class="fa-solid fa-desktop rgtext"></i>
 					<p class="text">
 						Frontend Developer:
 						<span> We wanted to create an app that was visually appealing and easy to navigate.
@@ -93,24 +95,25 @@
 			<div class="card">
 				<div class="img-container">
 					<div class="avatarContainer">
-						<img class="avatar" src="https://avatars.githubusercontent.com/u/93730836?v=4" alt="" />
+						<img class="avatar" src="https://avatars.githubusercontent.com/u/60993017?v=4" alt="" />
 					</div>
 				</div>
 
 				<div class="container">
 					<div class="popupContainer">
-						<a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a>
+						<!-- <a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a> -->
 						<a href="" target="_blank" class="popup"><i class="fa-solid fa-earth-americas" /></a>
 						<a href="" target="_blank" class="popup"><i class="fa-brands fa-github" /></a>
 					</div>
-					<h1>Name</h1>
+					<h1>Nic Bechtel</h1>
 					<p>
 						<span class="rgtext"> @ </span>
-						GITHUB
+						nicb21
 					</p>
-					<p>Your_3_word_intro</p>
+					<p>Programmer <span class="rgtext">-</span> Dancer <span class="rgtext">-</span> Gamer</p>
+					<i class="fa-brands fa-xbox rgtext"></i>
 					<p class="text">
-						Your_role:
+						Code Architect:
 						<span> xxx </span>
 					</p>
 				</div>
@@ -119,25 +122,26 @@
 			<div class="card">
 				<div class="img-container">
 					<div class="avatarContainer">
-						<img class="avatar" src="https://avatars.githubusercontent.com/u/93730836?v=4" alt="" />
+						<img class="avatar" src="https://avatars.githubusercontent.com/u/101366511?v=4" alt="" />
 					</div>
 				</div>
 
 				<div class="container">
 					<div class="popupContainer">
-						<a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a>
+						<!-- <a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a> -->
 						<a href="" target="_blank" class="popup"><i class="fa-solid fa-earth-americas" /></a>
-						<a href="" target="_blank" class="popup"><i class="fa-brands fa-github" /></a>
+						<a href="https://github.com/nicb21" target="_blank" class="popup"><i class="fa-brands fa-github" /></a>
 					</div>
-					<h1>Name</h1>
+					<h1>Joseph Kolarik</h1>
 					<p>
 						<span class="rgtext"> @ </span>
-						GITHUB
+						jkolarikGGC
 					</p>
-					<p>Your_3_word_intro</p>
+					<p>Developer <span class="rgtext">-</span> Swimmer <span class="rgtext">-</span> Gamer</p>
+					<i class="fa-solid fa-desktop rgtext"></i>
 					<p class="text">
-						Your_role:
-						<span> xxx </span>
+						Graphic Designer:
+						<span>  </span>
 					</p>
 				</div>
 			</div>
