@@ -84,8 +84,8 @@
 						Frontend Developer:
 						<span> We wanted to create an app that was visually appealing and easy to navigate.
 							   Not only for  <span style="color: white;">desktop</span> users but also for 
-							   <span style="color: white;">mobile</span> users of the app. I worked on the
-							    development of the mobile styling of the app in addition to the workout feature. </span>
+							   <span style="color: white;">mobile</span> users of the app. I worked on devloping 
+							   the mobile view of the app in addition to prototyping the UI. </span>
 					</p>
 				</div>
 			</div>
