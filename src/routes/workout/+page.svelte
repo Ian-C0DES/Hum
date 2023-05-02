@@ -3,8 +3,6 @@
 	const { userRoutines } = data;
 	let newRoutinename;
 	let viewedRoutineID;
-	// const {userRoutines} = data;
-	console.log(userRoutines.length);
 
 	const setNewname = (e) => {
 		newRoutinename = e.target.value;
@@ -64,9 +62,7 @@
 					{#each userRoutines as routine (routine.id)}
 						<div class="card">
 							<div class="icon">
-								<!-- <input type="text" placeholder="routine id" name="id" value="{routine.id}" > -->
 								<a href="/workout/view/{routine.id}">
-									<!-- <i class="fa-solid fa-circle-plus rgtext"></i> -->
 									<i class="fa-solid fa-eye rgtext" />
 								</a>
 							</div>
@@ -96,10 +92,6 @@
 </body>
 
 <style lang="scss">
-	* {
-		// outline: 1px red solid;
-		color: blanchedalmond;
-	}
 	body {
 		min-height: 100vh;
 		overflow-x: hidden;
@@ -117,7 +109,6 @@
 		}
 		.container {
 			flex-direction: column;
-			// flex-direction: row;
 			flex-wrap: nowrap;
 			justify-content: space-evenly;
 			display: flex;
@@ -142,7 +133,6 @@
 				font-size: 1rem;
 			}
 			.cardContainer {
-				// min-height: 60vh;
 				padding: 1rem;
 				background-color: rgba($color: #000000, $alpha: 0.1);
 				.card {
@@ -156,7 +146,6 @@
 					border-radius: 18px;
 					padding: 0.5rem;
 					margin-bottom: 1rem;
-					// background-color: blue;
 
 					.title {
 						grid-area: title;
@@ -190,7 +179,6 @@
 						justify-content: center;
 						align-items: center;
 						i {
-							// padding-top: 1rem;
 							cursor: pointer;
 							padding: 0rem;
 							width: 100%;

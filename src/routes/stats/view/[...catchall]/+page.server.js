@@ -1,5 +1,4 @@
 import { serializeNonPOJOs } from '$lib/utils';
-import { error, redirect } from '@sveltejs/kit';
 
 export async function load({ locals, params }) {
 	let viewedUser;
@@ -15,18 +14,12 @@ export async function load({ locals, params }) {
 			.collection('user_statistics')
 			.getFirstListItem('userID ~ "' + locals.user.id + '"')
 	);
-	// console.log(record);
-	// userStats = serializeNonPOJOs(record);
-	console.log(userStats);
-	// viewedUser = serializeNonPOJOs(record);
 
 	viewedUserStats = serializeNonPOJOs(
 		await locals.pb
 			.collection('user_statistics')
 			.getFirstListItem('userID ~ "' + viewedUser.id + '"')
 	);
-
-	console.log(viewedUserStats);
 
 	return {
 		viewedUser: { ...viewedUser },

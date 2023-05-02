@@ -1,61 +1,40 @@
 <script>
-	// import QuickSearchBar from "svelte-quicksearch-bar@latest";
-	// import Search from "svelte-search";
+	import { getImageURL } from '$lib/utils.js';
+
+	import Sidepanel from '$lib/components/Sidepanel.svelte';
+
 	export let data;
 	let { friends, params, openDMS } = data;
-	import { enhance } from '$app/forms';
-	import { getImageURL } from '$lib/utils.js';
-	import { fade, fly, slide } from 'svelte/transition';
-	// const {friends ,pendingOUTRequests, pendingINRequests} = data;
-	import Sidepanel from '$lib/components/Sidepanel.svelte';
-	// import UserCard from '$lib/components/UserCard.svelte';
-	let showOutgoing = false;
-	let obj;
-	let openUsercard = params ? friends.find((obj) => obj.displayName == params) : null;
-	let openUsercontext;
+
 	let openUsermessages;
+	let innerWidth;
+	let panel;
+	let openUsercard = params ? friends.find((obj) => obj.displayName == params) : null;
 	let messagePanel = true;
 
-	// let obj = friends.find(obj => obj.displayName == params);
-	// console.log(openDMS);
+	$: isMobile = innerWidth <= 500;
+	$: if (isMobile && openUsermessages) {
+		scrollToBottom(panel);
+	}
 
-	// console.log(openDMS);
-	// console.log(pb);
 	const toggleMessagepanel = () => {
 		messagePanel ? (messagePanel = false) : (messagePanel = true);
 	};
 	function showUsercard(data, context) {
 		openUsermessages = openDMS[data?.username]?.messages == null ? null : openDMS[data?.username];
-		// console.log(data);
-		console.log(openUsermessages);
-		openUsercontext = context;
-		// (console.log(openUsercontext));
 		openUsercard = data;
-		// console.log(e);
 	}
-	function toggleTab() {
-		console.log(showOutgoing);
-		showOutgoing == false ? (showOutgoing = true) : (showOutgoing = false);
-		console.log(showOutgoing);
-	}
-
-	//    async function getRandomNumber() {
-	// 		const res = await fetch(`/tutorial/random-number`);
-	// 		const text = await res.text();
-
-	// 		if (res.ok) {
-	// 			return text;
-	// 		} else {
-	// 			throw new Error(text);
-	// 		}
-	// 	}
+	const scrollToBottom = async (node) => {
+		node.scroll({ top: node.scrollHeight, behavior: 'smooth' });
+	};
 </script>
 
+<svelte:window bind:innerWidth />
 <body>
 	<div id="content">
 		<Sidepanel sidePanel={false} {data} />
 
-		<div class="panel">
+		<div class="panel" bind:this={panel}>
 			<div class="LeftContainer">
 				<div class="searchContainer">
 					<i class="fa-solid fa-magnifying-glass rgtext" />
@@ -104,15 +83,10 @@
 										<i class="fa-solid fa-envelope-open rgtext" />
 									{:else if openDMS[friend?.username]?.messages[Object.keys(openDMS[friend?.username]?.messages).length - 1].author == friend?.username}
 										<i class="fa-solid fa-envelope rgtext" />
-										<!-- {:else if openUsercard?.username == friend?.username } -->
-										<!-- {(openDMS[friend?.username]?.messages[(Object.keys(openDMS[friend?.username]?.messages).length)-1].author == data.user.username?"Sent":"Recieved")? :} -->
 									{/if}
 								</div>
 							</div>
 						</div>
-						<!-- {#key friends}
-                {friends}
-                {/key} -->
 					{/each}
 				</div>
 			</div>
@@ -121,9 +95,6 @@
 				<div class="DMcontainer">
 					{#if openUsercard != null}
 						{#key openUsercard}
-							<!-- {console.log(Object.keys(openDMS).find(key => openDMS[key] === openUsercard.username))}
-                {Object.keys(openDMS).find(key => openDMS[key] === openUsercard.username)} -->
-
 							<form hidden id="userCard" name="userCard" method="POST">
 								<input hidden name="user" value={openUsercard?.id} />
 								<input hidden name="name" value={openUsercard?.displayName} />
@@ -180,10 +151,6 @@
 													</div>
 												</div>
 											{/if}
-											<!-- {message[1]?.author}
-                {message[1]?.message} -->
-
-											<!-- {console.log(message[0])} -->
 										{/each}
 									{/key}
 								{/if}
@@ -192,8 +159,6 @@
 							{#if !messagePanel}
 								<div class="messagepanelContainer">
 									<div class="draftBtnContainer">
-										<!-- <div class="draftBtnContainer" in:fly="{{ y: 30, duration: 2000 }}" out:fly="{{ y: 30, duration: 1500 }}"> -->
-
 										<button
 											style="all:unset; cursor:pointer;"
 											on:click={toggleMessagepanel}
@@ -206,8 +171,6 @@
 							{:else}
 								<div class="messagepanelContainer">
 									<div class="messagepanel">
-										<!-- <div class="messagepanel" in:fly="{{ y: 30, duration: 2000 }}" out:fly="{{ y: 30, duration: 1500 }}"> -->
-
 										<form action="?/send" method="POST">
 											<input type="hidden" name="dmID" value={openDMS[openUsercard.username]?.id} />
 											<div class="inputContainer">
@@ -227,9 +190,6 @@
 									</div>
 								</div>
 							{/if}
-
-							<!-- {/key} -->
-							<!-- {/if} -->
 						{/key}
 					{/if}
 				</div>
@@ -239,11 +199,6 @@
 </body>
 
 <style lang="scss">
-	* {
-		// outline: 1px red solid;
-		// color:var(--textcolor);
-		// font-family: var(--font);
-	}
 	body {
 		min-height: 100vh;
 		overflow-x: hidden;
@@ -280,7 +235,6 @@
 			}
 			.friendCell {
 				background-color: rgba($color: #000000, $alpha: 0.4);
-				// border: 1px solid rgba($color: #ffffff, $alpha: .1);
 				border-radius: 18px;
 				margin: 3%;
 				font-family: var(--font);
@@ -317,8 +271,6 @@
 					font-size: 0.8rem;
 					display: flex;
 					justify-content: space-between;
-					// display: inline-block;
-					// flex:001 100%;
 				}
 			}
 		}
@@ -337,8 +289,6 @@
 		background-color: rgba($color: #000000, $alpha: 0.4);
 		width: 100%;
 		height: 100%;
-		// border-radius: 18px;
-		// display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
@@ -346,17 +296,13 @@
 		.recipientContainer {
 			background-color: rgba($color: #000000, $alpha: 0.4);
 			position: relative;
-			// width: 50%;
-			// pad
 			display: flex;
 			align-items: center;
-			// justify-content: space-evenly;
 			padding: 3%;
 			.thumb {
 				border-radius: 50%;
 				width: 10%;
 				aspect-ratio: 1/1;
-				// margin-bottom: 3%;
 			}
 			.name {
 				color: var(--textcolor);
@@ -377,7 +323,6 @@
 			padding: 2%;
 			border-radius: 18px;
 			margin-top: 3%;
-			// background:linear-gradient(to top, var(--accent1), var(--accent2));
 			span {
 				color: var(--textcolor);
 			}
@@ -455,7 +400,6 @@
 	}
 
 	.messagesContainer {
-		// background-color: green;
 		height: 80%;
 		width: 100%;
 		display: flex;
@@ -527,11 +471,11 @@
 		.messagepanel {
 			pointer-events: all;
 			position: absolute;
-			background-color: var(--dark);
+			background: rgba(0, 0, 0, 0.7);
+			-webkit-backdrop-filter: blur(10px);
+			backdrop-filter: blur(10px);
 			width: 100%;
 			height: 100%;
-			// border-radius: 18px 18px 0px 0px;
-
 			.inputContainer {
 				.textinputContainer {
 					height: 100%;
@@ -579,6 +523,174 @@
 					transition: opacity 0.3s;
 				}
 			}
+		}
+	}
+	@media only screen and (max-width: 500px) {
+		#content {
+			overflow-y: scroll;
+			margin-left: 0vw;
+			max-width: 100vw;
+			.panel {
+				overflow-y: scroll;
+				border-radius: 0px 0px 18px 18px;
+				padding: 0.4rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				background-color: rgba($color: #000000, $alpha: 0.4);
+			}
+			.LeftContainer {
+				border-radius: 0px;
+				padding: 2.5%;
+				display: flex;
+				width: 95%;
+				height: 95vh;
+				background-color: rgba($color: #ffffff, $alpha: 0.1);
+				flex-direction: column;
+				.friendsContainer {
+					width: 100%;
+					height: 100%;
+					background-color: rgba($color: #000000, $alpha: 0.4);
+					border-radius: 0 0 18px 18px;
+				}
+				.friendCell {
+					background-color: rgba($color: #000000, $alpha: 0.4);
+					border-radius: 18px;
+					margin: 3%;
+					font-family: var(--font);
+					display: flex;
+					padding: 1rem;
+
+					flex-direction: column;
+
+					&:hover {
+						box-shadow: 0 0 0.2rem #ffffff;
+						transition: all 0.3s;
+					}
+					.userdisplay {
+						display: flex;
+						align-items: center;
+						justify-content: space-around;
+						.thumb {
+							border-radius: 50%;
+							width: 10%;
+							aspect-ratio: 1/1;
+						}
+						.username {
+							color: var(--textcolor);
+						}
+						.name {
+							color: var(--textcolor);
+							font-size: 1.3rem;
+							font-weight: 900;
+						}
+					}
+					.messagePreview {
+						padding: 3% 0 0 0;
+						color: var(--textcolor);
+						font-size: 0.8rem;
+						display: flex;
+						justify-content: space-between;
+					}
+				}
+			}
+			.RightContainer {
+				border-radius: 0px 18px 18px 0px;
+				padding: 2.5%;
+				min-width: unset;
+				width: 95%;
+				max-width: 100%;
+				height: 95vh;
+				display: flex;
+				border-radius: 0px;
+				background-color: rgba($color: #ffffff, $alpha: 0.1);
+				margin-bottom: 10vh;
+			}
+		}
+
+		.messagepanelContainer {
+			pointer-events: none;
+			min-width: 100%;
+			position: relative;
+			bottom: 7.5%;
+			height: 20%;
+			left: 0px;
+			.draftBtnContainer {
+				pointer-events: all;
+				position: absolute;
+				right: 1%;
+				bottom: 7.5%;
+				font-size: 3rem;
+				&:hover {
+					opacity: 0.5;
+					transform: scale(1.2);
+					transition: transform, opacity 0.3s;
+				}
+			}
+
+			.messagepanel {
+				pointer-events: all;
+				position: absolute;
+
+				width: 100%;
+				height: 100%;
+
+				.inputContainer {
+					.textinputContainer {
+						height: 100%;
+						width: 95%;
+						margin: 2%;
+						textarea {
+							color: var(--textcolor);
+							font-family: var(--font);
+							font-size: 0.8rem;
+							min-height: 16vh;
+							background-color: transparent;
+							width: 95%;
+							resize: none;
+							padding: 1rem;
+							border: none;
+							outline: none;
+						}
+					}
+				}
+				.sendbtn {
+					position: absolute;
+					background-color: green;
+					bottom: 15%;
+					right: 1%;
+					cursor: pointer;
+					background-color: transparent;
+					border: none;
+					font-size: 1.7rem;
+					&:hover {
+						opacity: 0.5;
+						transform: translate(10%, -10%);
+						transition: transform, opacity 0.3s;
+					}
+				}
+				.cancelbtn {
+					cursor: pointer;
+					position: absolute;
+					right: 1%;
+					background-color: transparent;
+					border: none;
+					font-size: 3rem;
+					top: 1%;
+					&:hover {
+						opacity: 0.5;
+						transition: opacity 0.3s;
+					}
+				}
+			}
+		}
+
+		.messagesContainer {
+			height: 80%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			overflow-y: scroll;
 		}
 	}
 </style>

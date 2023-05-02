@@ -12,26 +12,26 @@
 	"iarc_rating_id": "e58c174a-81d2-5c3c-32cc-34b8de4a52e9",
 	"shortcuts": [
 		{
-		  "name": "Account",
-		  "url": "/account",
-		  "description": "Your account"
+			"name": "Account",
+			"url": "/account",
+			"description": "Your account"
 		},
 		{
 			"name": "Feed",
 			"url": "/feed",
 			"description": "Whats the Hum?"
-		  },
+		},
 		{
 			"name": "Workouts",
 			"url": "/workouts",
 			"description": "View or create workout routines"
-		  },
-		  {
+		},
+		{
 			"name": "Nutrition",
 			"url": "/nutrition",
 			"description": "Log your meals"
-		  }
-	  ],
+		}
+	],
 	"screenshots": [
 		{
 			"src": "screenshot1.png",

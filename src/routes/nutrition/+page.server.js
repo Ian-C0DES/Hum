@@ -3,7 +3,6 @@ export async function load({ locals, url }) {
 	let x = await locals.pb
 		.collection('user_meals')
 		.getFirstListItem("user='" + locals.user.id + "'");
-	console.log(x);
 	return {
 		meals: x.meals
 	};
@@ -15,7 +14,6 @@ export const actions = {
 		let usermeals = await locals.pb
 			.collection('user_meals')
 			.getFirstListItem("user='" + locals.user.id + "'");
-		// usermeals.meals
 		let mealitems = {
 			[form.mealtype]: []
 		};
@@ -40,7 +38,6 @@ export const actions = {
 					.update(usermeals.id, { meals: { ...usermeals.meals, ...mealitems } })
 			]);
 		} catch (err) {
-			console.log('Error: ', err);
 			throw error(500, 'Something went wrong when logging meal');
 		}
 

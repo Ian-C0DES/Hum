@@ -1,7 +1,6 @@
 <script>
-	import { onMount, onDestroy } from 'svelte';
-	import { enhance } from '$app/forms';
-	import { fade, fly, slide } from 'svelte/transition';
+	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
 	import Sidepanel from '$lib/components/Sidepanel.svelte';
 	import Feeditem, { replyingTo } from '$lib/components/Feeditem.svelte';
 
@@ -9,35 +8,7 @@
 	const { messages, likes } = data;
 
 	let draftbtn;
-	console.log($replyingTo);
-	console.log(draftbtn);
-	// console.log(likes);
-	// console.log(messages);
-	// console.log(messages[9]);
-	// console.log(likes.filter(e => e.id == message.id).length > 0);
 
-	const messageAction = (input) => {
-		// let form = Object.fromEntries(input?.data);
-		// console.log(form);
-		// console.log(likes);
-		// console.log(input.form);
-		// if (input.action.search == '?/likemessage'){
-		// console.log("liking a message");
-		// console.log(messages);
-		// messages.slice(x);
-		// let x = likes.findIndex(e => e.id === form.message);
-		// console.log(x);
-		// }
-		// let x = likes.findIndex(e => e.id === form.message);
-		return async ({ update }) => {
-			// messages.pop();
-			// console.log(x);
-			// editing = false;
-			// likes.slice(x);
-			await update({ reset: false });
-			// await update();
-		};
-	};
 	let sidePanel = false;
 	let messagePanel = false;
 
@@ -50,19 +21,14 @@
 		sidePanel ? (sidePanel = false) : (sidePanel = true);
 	};
 	const toggleMessagepanel = () => {
-		// messagePanel ? (messagePanel = false) : (messagePanel = true);
-		// console.log(messagePanel == true || $replyingTo != "none");
 		if (messagePanel) {
 			messagePanel = false;
-			// replyingTo.set("none")
-			// $replyingTo = String("none");
 		} else {
 			messagePanel = true;
 		}
 	};
 
 	let element;
-	// console.log(messagesContainer)
 	let newMessage = '';
 
 	onMount(() => scrollToBottom(element));
@@ -99,8 +65,6 @@
 		</div>
 
 		{#if messagePanel == true}
-			<!-- if statement to force open panel when commenting is focused -->
-			<!-- {#if (messagePanel == true || $replyingTo != "none")} -->
 			<div class="messagepanelContainer">
 				<div
 					class="messagepanel"
@@ -157,10 +121,6 @@
 </body>
 
 <style lang="scss">
-	* {
-		// outline: 1px red solid;
-		// color:blanchedalmond;
-	}
 	body {
 		height: 100vh;
 		overflow-y: hidden;
@@ -236,7 +196,6 @@
 
 			.inputContainer {
 				.textinputContainer {
-					// height: 100%;
 					width: 95%;
 					margin: 2%;
 					textarea {
@@ -284,8 +243,6 @@
 		}
 	}
 
-	//Legacy CSS
-
 	.messagesContainer {
 		max-height: 80vh;
 		top: 0px;
@@ -295,139 +252,6 @@
 		flex-direction: column-reverse;
 		align-items: center;
 		overflow-y: scroll;
-
-		// .message {
-		// 	border: 2px dotted var(--accent1);
-		// 	border-left: none;
-		// 	border-right: none;
-		// 	width: 75vw;
-		// 	padding: 30px;
-		// 	min-height: 30vh;
-		// 	max-height: 60vh;
-		// 	background-image: radial-gradient(var(--accent1) 1px, transparent 0);
-		// 	background-size: 40px 40px;
-		// 	background-position: -19px -19px;
-		// 	.messageAuthor {
-		// 		font-family: var(--font);
-		// 		display: grid;
-		// 		grid-template-areas:
-		// 			'pfp username username time'
-		// 			'pfp handle handle handle';
-		// 		img {
-		// 			grid-area: pfp;
-		// 			border-radius: 50%;
-		// 			width: min-content;
-		// 			width: 75px;
-		// 			height: 75px;
-		// 			border: var(--dark) 1px solid;
-		// 		}
-
-		// 		.handle {
-		// 			grid-area: handle;
-		// 			position: relative;
-		// 			right: 12vw;
-		// 			color: var(--accent2);
-		// 			font-size: 0.8rem;
-		// 		}
-		// 		.name {
-		// 			font-family: var(--font);
-		// 			grid-area: username;
-		// 			position: relative;
-		// 			right: 12vw;
-		// 			color: var(--textcolor);
-		// 			font-size: 1.7rem;
-		// 		}
-		// 		.time {
-		// 			grid-area: time;
-		// 			text-align: right;
-		// 			color: var(--accent2);
-		// 			font-size: 1rem;
-		// 		}
-		// 	}
-		// 	.messageContent {
-		// 		padding-top: 1rem;
-		// 		color: var(--textcolor);
-		// 		font-size: 1.4rem;
-		// 	}
-		// 	.actionsContainer{
-		// 	// min-width: fit-content;
-		// 	// width: fit-content;
-		// 	// max-width: fit-content;
-		// 	position: relative;
-		// 	width: 0;
-		// 	height: 0;
-		// 	top: 10vh;
-		// 	left: 90%;
-		// 	display: flex;
-		// 	flex-direction: row;
-		// 	flex-wrap: nowrap;
-		// 	padding: 1%;
-		// 	.likebtn{
-		// 		all: unset;
-		// 		font-size: 2rem;
-		// 		padding: 20%;
-
-		// 		// border: red 1px solid;
-		// 		position:absolute;
-		// 		top:525%;
-		// 		right: 50%;
-		// 		width:fit-content;
-		// 		height:fit-content;
-		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
-		// 		-webkit-text-fill-color: transparent;
-		// 		-webkit-background-clip: text;
-		// 		background-clip: text;
-		// 		color: transparent;
-		// 		cursor: pointer;
-		// 		span{
-		// 			font-size: 1.5rem;
-		// 		}
-		// 		&:hover{
-		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
-		// 		-webkit-text-fill-color: transparent;
-		// 		-webkit-background-clip: text;
-		// 		background-clip: text;
-		// 		color: transparent;
-		// 		}
-		// 		&.liked{
-		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, orange 31.85%, red 100%);
-		// 		-webkit-text-fill-color: transparent;
-		// 		-webkit-background-clip: text;
-		// 		background-clip: text;
-		// 		color: transparent;
-		// 		}
-		// 	}
-		// 	.commentbtn{
-		// 		all: unset;
-		// 		padding: 20%;
-		// 		font-size: 2rem;
-
-		// 		// border: blue 1px solid;
-		// 		position:absolute;
-		// 		top:525%;
-		// 		left:225%;
-		// 		width:fit-content;
-		// 		height:fit-content;
-		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, gray 31.85%, black 100%);
-		// 		-webkit-text-fill-color: transparent;
-		// 		-webkit-background-clip: text;
-		// 		background-clip: text;
-		// 		color: transparent;
-		// 		cursor: pointer;
-		// 		span{
-		// 			font-size: 1.5rem;
-		// 		}
-		// 		&:hover{
-		// 		background: radial-gradient(150.81% 167.43% at 0% 0%, var(--accent1) 31.85%, var(--accent2) 100%);
-		// 		-webkit-text-fill-color: transparent;
-		// 		-webkit-background-clip: text;
-		// 		background-clip: text;
-		// 		color: transparent;
-		// 		}
-		// 		}
-		// 	}
-
-		// }
 	}
 
 	@media only screen and (max-width: 500px) {

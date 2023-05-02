@@ -6,7 +6,6 @@
 
 <div class="transition-outer" style="background-image: url({image});">
 	{#key url}
-
 		<div
 			class="transition-inner"
 			in:fly={{ x: -50, duration: 250, delay: 300 }}
@@ -41,5 +40,4 @@
 		height: 100vh;
 		max-height: 100vh;
 	}
-
 </style>

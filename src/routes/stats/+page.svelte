@@ -20,21 +20,17 @@
 
 	let subopts = [];
 
-	// let workouts = userStats?.routine_stats;
-
 	Object.entries(userStats?.routine_stats).forEach((element) => {
 		subopts.push(element[0]);
 	});
 
 	const incrementChart = () => {
 		pointer + 1 > Object.entries(charts).length - 1 ? (pointer = 0) : pointer++;
-		console.log(pointer);
 		selected = null;
 	};
 
 	const decrementChart = () => {
 		pointer - 1 < 0 ? (pointer = Object.entries(charts).length - 1) : pointer--;
-		console.log(pointer);
 		selected = null;
 	};
 </script>
@@ -108,11 +104,7 @@
 	</div>
 </body>
 
-<!-- <Chart options={options}/> -->
 <style lang="scss">
-	* {
-		// outline: 1px solid red;
-	}
 	body {
 		background: radial-gradient(
 			400.81% 400.43% at -275% -220%,
@@ -121,25 +113,15 @@
 		);
 		min-height: 100vh;
 		overflow-x: hidden;
-		/* background-image: radial-gradient(var(--textcolor) 1px, transparent 0); */
-		/* background-size: 40px 40px; */
-		/* background-position: -19px -19px; */
-		/* // background-image: url("../../lib/assets/svg/wave.svg"); */
-		/* // background-repeat: no-repeat; */
-		/* // background-position: bottom ; */
 	}
 	#content {
 		margin-left: 5vw;
 		h1 {
-			// font: 2rem center var(--font) 900;
 			font-family: var(--font);
 			opacity: 0%;
-			// white-space: break-spaces;
-			// word-spacing: 100px;
 			word-spacing: 4rem;
 			font-size: 3rem;
 			color: var(--textcolor);
-			// animation: fadeIn forwards 15s;
 			animation: collapseSpacing forwards 4s, fadeIn forwards 4s;
 		}
 		.infoBanner {
@@ -162,10 +144,8 @@
 			p {
 				font-family: var(--font);
 				color: var(--textcolor);
-				// font-size: 1.2rem;
 			}
 		}
-		// height: 200vh;
 	}
 	.chartContainer {
 		display: flex;
@@ -180,33 +160,26 @@
 				background-color: transparent;
 				border: none;
 				color: var(--accent1);
-				// border: 3px solid;
+
 				border-color: var(--bgcolor);
 				font-size: 4rem;
-				// margin: 12rem;
 			}
 		}
 		.chart {
 			padding: 20px;
 			width: 80vw;
 			height: 60vh;
-			// background-image: radial-gradient(var(--textcolor) 1px, transparent 0);
-			// background-size: 40px 40px;
-			// background-position: 0px 0px;
 
-			// background: radial-gradient(400.81% 400.43% at -275% -220%, #0003 40.22%, var(--textcolor) 100%);
-			// border-radius: 10%;
 			border: 3px solid;
 			border-radius: 18px;
 			border-color: var(--bgcolor);
-			// box-shadow: 10px 10px 0px var(--bgcolor);
 		}
 	}
 	select {
 		all: unset;
 		background-color: rgba(0, 0, 0, 0.2);
 		margin: 1rem;
-		// padding: 0%;
+
 		border: 1px solid rgba(0, 0, 0, 0.2);
 		border-radius: 18px;
 		color: var(--textcolor);
@@ -218,7 +191,6 @@
 			font-size: 1rem;
 			color: black;
 			background-color: rgba(0, 0, 0, 0.2);
-			// padding: 3rem;
 		}
 	}
 	@keyframes collapseSpacing {
@@ -237,6 +209,28 @@
 		#content {
 			margin-left: 3vw;
 			overflow: hidden;
+			.infoBanner {
+				position: absolute;
+				background-color: rgba(0, 0, 0, 0.2);
+				border-radius: 18px;
+				width: fit-content;
+				padding: 0.5%;
+				left: 0%;
+				.label {
+					font-size: 0.4rem;
+					text-align: center;
+				}
+				.date {
+					font-size: 0.3rem;
+				}
+				.time {
+					font-size: 0.5rem;
+				}
+				p {
+					font-family: var(--font);
+					color: var(--textcolor);
+				}
+			}
 		}
 		.chartContainer {
 			.chart {

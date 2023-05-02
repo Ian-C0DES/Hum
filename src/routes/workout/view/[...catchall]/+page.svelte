@@ -100,9 +100,6 @@
 											</p>
 										</button>
 									</div>
-
-									<!-- <button type="submit">CONFIRM</button>
-                    <button style="padding-top: 3rem; " on:click|preventDefault={()=>{(!modalShow? modalShow=true:modalShow=false); console.log(modalShow)}}>CANCEL</button> -->
 								</div>
 							</div>
 						</form>
@@ -111,21 +108,17 @@
 					<button
 						on:click={() => {
 							!modalShow ? (modalShow = true) : null;
-							console.log(modalShow);
 						}}
 						id="deleteBTN"><i class="fa-solid fa-trash-can rgtext" /></button
 					>
 				{/if}
 			</div>
 		</div>
-		<!-- <form action="?/save" method="POST"> -->
-		<!-- <div class="container"> -->
 
 		{#if logging}
 			<form action="?/log" method="POST" id="form">
 				<div class="container">
 					{#each Object.values(routine?.routine) as thisExercise, i}
-						<!-- <li>{i + 1}</li> -->
 						<WorkoutCard
 							cardNumber={i++}
 							exercise={thisExercise.exercise}
@@ -140,7 +133,6 @@
 		{:else}
 			<div class="container">
 				{#each Object.values(routine?.routine) as thisExercise, i}
-					<!-- <li>{i + 1}</li> -->
 					<WorkoutCard
 						cardNumber={i++}
 						exercise={thisExercise.exercise}
@@ -152,24 +144,10 @@
 				{/each}
 			</div>
 		{/if}
-
-		<!-- {#if cardAmount > 0}
-<button class="saveBtn">
-    <i class="fa-regular fa-floppy-disk rgtext"></i>
-</button>
-{/if} -->
-
-		<!-- </div> -->
-		<!-- </form> -->
 	</div>
 </body>
 
 <style lang="scss">
-	* {
-		// outline: 1px red solid;
-		// color:var(--textcolor);
-		// font-family: var(--font);
-	}
 	body {
 		min-height: 100vh;
 		overflow-x: hidden;
@@ -224,8 +202,6 @@
 				span {
 					margin: 0px;
 					padding: 2rem;
-					// width: 100%;
-					// text-align: right;
 					font-size: 1rem;
 					span {
 						padding: 0;
@@ -237,13 +213,6 @@
 	.container {
 		display: flex;
 		flex-wrap: wrap;
-		// background-color: black;
-		// .card{
-		//     margin: 1%;
-		//     background-color: red;
-		//     width: 25vw;
-		//     height: 25vh;
-		// }
 	}
 	.saveBtn {
 		all: unset;
@@ -261,18 +230,12 @@
 		height: 80vh;
 		position: absolute;
 		z-index: 99;
-		// background-color: red;
 		left: 10vw;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		.modal {
 			background-color: rgba($color: #000000, $alpha: 0.7);
-			// background-image: url(../../../../lib/assets/images/abstract4.jpeg);
-			// filter: blur(-30px);
-			// display: flex;
-			// flex-direction: column;
-			// align-items: center;
 			height: 20vw;
 			width: fit-content;
 			justify-content: center;
@@ -280,7 +243,6 @@
 			article {
 				margin: 3rem;
 				color: var(--textcolor);
-				// text-decoration: underline red;
 				font-family: var(--font);
 				font-size: 2rem;
 				font-weight: 900;
@@ -291,18 +253,9 @@
 			}
 			.confirm {
 				width: 100%;
-				// height: 100%;
 				display: flex;
-				// background-color: red;
 				justify-content: center;
 			}
-			// button{
-			//     font-size: 3rem;
-			//     text-decoration: initial;
-			//     font-family: var(--font);
-			//     color: gray;
-			// }
-
 			p {
 				border-radius: 12px;
 				border: 3px outset #888;
@@ -319,7 +272,6 @@
 				font-size: 28px;
 				font-weight: bolder;
 				text-decoration: none;
-				//   background:linear-gradient(160deg, #666, #444);
 				text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 
 				transition: 0.2s;
@@ -327,7 +279,6 @@
 			p:hover {
 				border: 3px outset #ddd;
 				color: #fff;
-				//   background: linear-gradient(160deg, #666, #444);
 				text-shadow: 0px 0px 4px #ccc;
 				box-shadow: 0 0 1rem var(--accent1), 0 0 0.1rem var(--accent2), 0 0 1rem var(--accent1);
 				transition-delay: 1s;
@@ -366,7 +317,6 @@
 				right: -100%;
 				width: 100%;
 				height: 2px;
-				//   background: linear-gradient(270deg, transparent, #eee);
 			}
 			p:hover span:nth-child(3) {
 				right: 100%;
@@ -379,7 +329,6 @@
 				left: 0;
 				width: 2px;
 				height: 100%;
-				//   background: linear-gradient(360deg, transparent, #eee);
 			}
 			p:hover span:nth-child(4) {
 				bottom: 100%;
@@ -388,19 +337,6 @@
 			}
 		}
 	}
-	// .sharetoast {
-	// 	color: var(--textcolor);
-	// 	font-family: var(--font);
-	// 	position: absolute;
-	// 	padding: 1.5%;
-	// 	background-color: rgba($color: #000000, $alpha: 0.5);
-	// 	border-radius: 18px;
-	// 	opacity: 1;
-	// 	left: 50%;
-	// 	top: 0;
-	// 	animation: fadeOut 3s forwards;
-	// 	animation-delay: 1s;
-	// }
 	.sharetoast {
 		z-index: 999;
 		font-size: 5vw;

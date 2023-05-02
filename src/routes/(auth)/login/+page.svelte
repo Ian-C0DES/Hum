@@ -1,5 +1,5 @@
 <script>
-	import Humman from '$lib/assets/humman.svelte';
+	import Humman from '$lib/components/humman.svelte';
 	import { enhance } from '$app/forms';
 
 	let loginstatus;
@@ -19,8 +19,6 @@
 
 <head>
 	<title>Login</title>
-	<!-- <link rel="stylesheet" href="../../styles/style.scss"> -->
-	<!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
 </head>
 
 <body>
@@ -86,13 +84,10 @@
 
 <style lang="scss">
 	* {
-		// outline: 1px red solid;
 	}
-
 	body {
 		overflow-x: hidden;
 		background-color: #151515;
-		// background: radial-gradient(400.81% 400.43% at -275% -220%, var(--textcolor) 40.22%, var(--dark) 100%);
 	}
 	#content {
 		width: 100vw;
@@ -103,9 +98,8 @@
 			top: 0px;
 			width: inherit;
 			height: inherit;
-			// bottom: 100vh;
 			z-index: 1;
-			background-image: url('../../../lib/assets/images/abstract4.jpeg');
+			background-image: url('../../../lib/assets/images/abstract2.jpeg');
 			background-repeat: no-repeat;
 			background-size: cover;
 			filter: blur(35px);
@@ -116,18 +110,12 @@
 	.navtab {
 		z-index: 999;
 		color: var(--textcolor);
-		// padding: 2rem;
 		position: absolute;
-		// top: 2vh;
 		display: flex;
 		min-width: 100vw;
-		// background-color: rgba($color: #ffffff, $alpha: 0.015);
 		border-bottom: solid 1px;
-		// border-color: rgba($color: #000000, $alpha: 0.15);
-
 		border-color: #ffffff1a;
 		background-color: #0003;
-
 		justify-content: space-between;
 		flex-wrap: nowrap;
 		flex-direction: row;
@@ -146,8 +134,6 @@
 		}
 		nav {
 			width: fit-content;
-			// padding: 1rem;
-			// border-radius: 10px;
 			padding: 0.5rem;
 			font-weight: 500;
 			margin: 0.3rem;
@@ -202,7 +188,6 @@
 		align-items: center;
 		min-height: 80vh;
 		justify-content: center;
-
 		h1 {
 			font-family: var(--font);
 			text-align: center;
@@ -264,7 +249,6 @@
 	}
 
 	@media only screen and (max-width: 500px) {
-
 		.navtab {
 			nav {
 				padding: 0.1rem;

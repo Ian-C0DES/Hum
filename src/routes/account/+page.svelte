@@ -1,23 +1,12 @@
 <script>
 	export let data;
-	// let {x} = data;
 	import { getImageURL } from '$lib/utils.js';
-	import { fade, fly, slide } from 'svelte/transition';
-	import { page } from '$app/stores';
+	import { fly, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { enhance } from '$app/forms';
 	import Badge from '$lib/components/Badge.svelte';
-	import { end_hydrating } from 'svelte/internal';
 
-	onMount(() => {
-		// console.log(document.getElementsByTagName('html')[0]);
-		// console.log(onMount());
-		// console.log($page);
-		//  theme = $page.url.searchParams.get('theme');
-		// theme = "light"
-		// document.documentElement.setAttribute('data-theme',theme);
-		// console.log(document.documentElement.getRootNode().cookie);
-	});
+	onMount(() => {});
 
 	let BMI =
 		Math.round(703 * (data?.user?.weight / (data?.user?.height * data?.user?.height)) * 100) / 100;
@@ -29,28 +18,20 @@
 	let theme;
 	$: bmi = BMI;
 
-	// console.log(getCookie('colortheme'));
-
 	const themeToggle = () => {
 		themedropdown != true ? (themedropdown = true) : (themedropdown = false);
 	};
 	const submitTheme = ({ action }) => {
-		// console.log(action);
 		theme = action.searchParams.get('theme');
-		// console.log(cookies.get("colortheme"));
-		// console.log(theme);
 		localStorage.setItem('colortheme', theme);
 		document.documentElement.setAttribute('data-theme', theme);
 		return async ({ update }) => {
-			// editing = false;
 			await update();
 			location.reload();
 		};
 	};
 
-	// console.log(data.user.badges);
 	const submitForm = (input) => {
-		// console.log(input);
 		return async ({ update }) => {
 			editing = false;
 			await update();
@@ -70,18 +51,13 @@
 	};
 
 	const handleEdit = (e) => {
-		// if (editing == false) {
-		// 	editing = true;
-		// }
 		editing ? null : (editing = true);
 		if (e.target.name == 'weight') {
 			BMI = Math.round(703 * (e.target.value / (data.user.height * data.user.height)) * 100) / 100;
 			data.user.weight = e.target.value;
-			console.log(data.user.weight);
 		} else if (e.target.name == 'height') {
 			BMI = Math.round(703 * (data.user.weight / (e.target.value * e.target.value)) * 100) / 100;
 			data.user.height = e.target.value;
-			console.log(data.user.height);
 		}
 		console.log(bmi);
 	};
@@ -146,7 +122,6 @@
 				: 'https://ui-avatars.com/api/?name=' + data.user.displayName}
 			alt="Profile"
 		/>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div
 			class="chan"
 			on:click={() => {
@@ -156,9 +131,6 @@
 			<i class="fa-solid fa-square-plus rgtext" />
 		</div>
 	</div>
-	<!-- <div class="pfpContainer" style="background-image: url({defaultpfp});">
-<img src='' alt="">
-    </div> -->
 
 	<div class="welcomeContainer">
 		<div class="welcome">
@@ -276,7 +248,6 @@
 		<h1>
 			<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);">a</span>dges
 		</h1>
-		<!-- {#each data.user.badges as badge, i} -->
 		{#if Object.entries(data.user?.badges).length > 0}
 			{#each Object.entries(data.user?.badges) as badge (badge[0])}
 				<div style="padding: 1%;">
@@ -287,10 +258,6 @@
 						name={badge[0]}
 					/>
 				</div>
-				<!-- {badge[0]}
-        {badge[1].tier}
-        {badge[1].progress} -->
-				<!-- {console.log(badge)} -->
 			{/each}
 		{/if}
 	</div>
@@ -298,7 +265,6 @@
 
 <style lang="scss">
 	body {
-		// background-image: url(../../lib/assets/svg/bgblob.svg);
 		background: radial-gradient(
 			400.81% 400.43% at -275% -220%,
 			var(--textcolor) 40.22%,
@@ -379,13 +345,11 @@
 					min-height: fit-content;
 					button {
 						all: unset;
-						// overflow-x: visible;
 						white-space: nowrap;
 						cursor: pointer;
 						font-family: var(--font);
 						font-weight: 900;
 						color: var(--textcolor);
-
 						font-size: 0.8rem;
 					}
 					&:hover {
@@ -429,7 +393,6 @@
 		.username {
 			font-size: 0.8rem;
 			float: right;
-			// width: 100%;
 		}
 		.bmi {
 			font-weight: 900;
@@ -462,9 +425,6 @@
 		p {
 			font-family: var(--font);
 		}
-		// .Badge{
-		//     width: 1px;
-		// }
 	}
 	.pfpContainer {
 		border: var(--dark) 2px solid;
@@ -543,7 +503,6 @@
 				color: var(--accent2);
 				cursor: default;
 				.cake {
-					// margin-left: 150px;
 				}
 			}
 			.edit {
@@ -599,7 +558,7 @@
 		font-family: var(--font);
 	}
 
-	@media only screen and (max-width: 500px){
+	@media only screen and (max-width: 500px) {
 		.themeWrapper {
 			.themeContainer {
 				left: 70vw;

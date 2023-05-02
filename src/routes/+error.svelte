@@ -7,7 +7,6 @@
 	onMount(async () => {
 		redirecting = true;
 		setTimeout(() => {
-			// window.location.replace((document.referrer != ($page.url.href)? document.referrer : "/"));
 			window.location.replace(data.user ? '/account' : '/');
 		}, 3000);
 	});

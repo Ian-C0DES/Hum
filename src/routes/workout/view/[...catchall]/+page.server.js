@@ -3,13 +3,11 @@ import { error, redirect } from '@sveltejs/kit';
 
 export async function load({ locals, params }) {
 	if (params.catchall != 'undefined') {
-		console.log(params.catchall);
 		let routine;
 		const record = await locals.pb.collection('routines').getOne(params.catchall, {
 			expand: 'userID'
 		});
 		routine = serializeNonPOJOs(record);
-		console.log(routine);
 		return {
 			routine: routine
 		};
@@ -17,12 +15,9 @@ export async function load({ locals, params }) {
 }
 export const actions = {
 	delete: async ({ locals, params }) => {
-		// console.log(request);
 		try {
-			console.log(params.catchall);
 			await locals.pb.collection('routines').delete(params.catchall);
 		} catch (err) {
-			console.log('Error: ', err);
 			throw error(500, 'You can not delete Routines that you do not own');
 		}
 
@@ -60,7 +55,6 @@ export const actions = {
 				score: updatedScore
 			});
 		} catch (err) {
-			console.log('Error: ', err);
 			throw error(500, 'Something went wrong when logging your data');
 		}
 

@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import Humman from '../assets/humman.svelte';
+	import Humman from '$lib/components/humman.svelte';
 	let visible = true;
 	const handleClick = () => (visible = !visible);
 </script>
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 	</div>
-{:else}{/if}
+{/if}
 
 <style lang="scss">
 	* {

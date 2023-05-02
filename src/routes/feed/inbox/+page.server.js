@@ -16,18 +16,9 @@ export async function load({ locals, url }) {
 			expand: 'adressee,requester,messages'
 		})
 	);
-	// let openDMS2 =serializeNonPOJOs( await locals.pb.collection('user_messages').getList(1, 50, {
-	//   filter: 'friendship = "'+ accpetedRequests.items[0].id +'"',
-	//   expand: 'friendship.adressee'
-	// }));
-	console.log(accpetedRequests);
 
 	accpetedRequests?.items.forEach((element) => {
 		if (element.adressee != locals.user.id) {
-			// let openDMS2 =serializeNonPOJOs( await locals.pb.collection('user_messages').getList(1, 50, {
-			//   filter: 'friendship = "'+ accpetedRequests.items[0].id +'"',
-			//   expand: 'friendship.adressee'
-			// }));
 			friends.push(element.expand.adressee);
 			openDMS = { ...openDMS, [element?.expand?.adressee?.username]: element?.expand?.messages };
 		} else {
@@ -35,7 +26,7 @@ export async function load({ locals, url }) {
 			openDMS = { ...openDMS, [element?.expand?.requester?.username]: element?.expand?.messages };
 		}
 	});
-	console.log(openDMS);
+
 	return {
 		friends: friends,
 		openDMS: openDMS,
@@ -47,7 +38,6 @@ export const actions = {
 		let updatedMessage;
 		let messages;
 		const form = Object.fromEntries(await request.formData());
-		console.log(form);
 
 		let record = await locals.pb.collection('user_messages').getOne(form.dmID);
 
