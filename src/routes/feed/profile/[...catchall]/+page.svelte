@@ -357,59 +357,24 @@
 		}
 		.bannerContainer {
 			height: fit-content;
-			display: flex;
-			background-image: radial-gradient(var(--accent1) 1px, transparent 0);
-			background-size: 40px 40px;
-			background-position: -19px -19px;
 			.banner {
-				// padding-top: 20vh;
-				display: flex;
-				align-items: center;
-				color: var(--textcolor);
-				font-family: var(--font);
-				padding-bottom: 2vh;
 				flex-direction: column;
 				justify-content: flex-end;
-				// justify-content: space-between;
 				width: 100%;
 				.pfp,
-				img {
-					border-radius: 50%;
-					width: 150px;
-					height: 150px;
-				}
 				.info {
 					.displayName {
-						padding-left: 3vw;
-						padding-right: 10vw;
 						font-size: 1rem;
-						font-weight: bold;
-						.username {
-							font-weight: normal;
-							font-size: 1rem;
-						}
 					}
 					.friends {
-						display: flex;
-						align-items: center;
-						flex-wrap: nowrap;
-						flex-direction: row;
-						// padding-left: 3vw;
 						font-size: 1.5rem;
 						span {
-							padding: 10%;
 							font-size: 1rem;
 						}
 					}
 					.score {
-						display: flex;
-						align-items: center;
-						flex-wrap: nowrap;
-						flex-direction: row;
-						padding-left: 5vw;
 						font-size: 1.5rem;
 						span {
-							padding: 10%;
 							font-size: 1rem;
 						}
 					}
@@ -418,75 +383,12 @@
 		}
 
 		.badgeContainer {
-			// margin: 3%;
 			margin-left: 0%;
-			position: relative;
-			// margin-top: 50px;
-			// margin-bottom: 3vh;
 			padding: 2.5%;
-			// left: 10vw;
-			color: var(--textcolor);
 			width: 90%;
-			// height: 10vh;
-			background-color: rgba(15, 15, 15, 0.75);
-			box-shadow: 5px 5px 5px #000000;
-			display: flex;
-			flex-wrap: wrap;
-			h1 {
-				font-size: 1.5rem;
-				padding: 1%;
-				margin: 0px;
-				min-width: 100%;
-				font-family: var(--font);
-			}
-			p {
-				font-family: var(--font);
-			}
 		}
 		.subbanner {
-			height: 20%;
-			display: flex;
-			align-items: center;
-			justify-content: space-evenly;
-			flex-direction: row;
 			font-size: 16px;
-			// filter: blur(2px);
-			// backdrop-filter: blur(1000px);
-			// opacity: 70%;
-			// background-color: black;
-			background: radial-gradient(
-				500.81% 500.43% at -250% -250%,
-				var(--textcolor) -100.22%,
-				var(--dark) 100%
-			);
-			width: 100%;
-			border-radius: 0 0 18px 18px;
-			.addFriend {
-				height: 50%;
-			}
-			div {
-				// filter: blur(10px);
-				width: fit-content;
-				// padding: .5rem;
-				// align-self: center;
-				// text-align: center;
-				// vertical-align: middle;
-				color: var(--textcolor);
-				font-family: var(--font);
-				border-radius: 18px;
-				font-weight: bold;
-				opacity: 20%;
-				cursor: pointer;
-				transition: all 1s;
-
-				&:hover {
-					// filter: blur(0px);
-					text-shadow: 0px 0px 2px #ffffff;
-					background-color: rgba($color: #ffffff, $alpha: 0.05);
-					opacity: 100%;
-					transition: all 1s;
-				}
-			}
 		}
 	}
 </style>
