@@ -1,38 +1,94 @@
-# create-svelte
+<style>
+/* (This is a CSS comment). The below `img` style sets the default CSS styling for all images
+hereafter in this markdown file. */
+img[src*='#flow'] {
+    align: left;
+    height:100px;
+}
+img[src*='#left'] {
+    float: left;
+}
+img[src*='#right'] {
+    float: right;
+}
+img[src*='#center'] {
+    display: block;
+    margin: auto;
+}
+</style>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+# ![Image Title](https://i.imgur.com/zBSRs0Y.png#flow) __Hum Wellness Web App (PWA)__
+___
+Welcome to Hum, the all-in-one health and fitness app that helps you achieve your goals and become the best version of yourself.
+<br clear="left"/>
+-----
+![Image Title](https://i.imgur.com/XNnGCQJ.png)
+![Image Title](https://i.imgur.com/XkbcPEK.png)
+![Image Title](https://i.imgur.com/IFK0i0D.png)
+![Image Title](https://i.imgur.com/mCsbpm2.png)
+![Image Title](https://i.imgur.com/gc7lR2x.png)
 
-## Creating a project
+## Powered by
 
-If you're seeing this, you've probably already done this step. Congrats!
+Sveltekit                   |  PocketBase               | Sass                      | Vite|
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
+![](https://kit.svelte.dev/_app/immutable/assets/svelte-kit-machine.93687d2d.avif#left)  |  ![](https://pocketbase.io/images/logo.svg) | ![](https://sass-lang.com/assets/img/logos/logo-b6e1ef6e.svg)|![](https://vitejs.dev/logo.svg)
+
+-----
+## Running the Project
+
+Environment Varibales are assigned to your pocketbase url in the .env file
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
+# Private
+VITE_POCKETBASE_URL=https://your-URL:443
 
-# create a new project in my-app
-npm create svelte@latest my-app
+# Public
+PUBLIC_VARIABLES={...PUBLIC_VARIABLES}
 ```
 
-## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Now its time to run the server
 
 ```bash
+# install dependencies
+npm install
+
+# run the webserver on localhost
 npm run dev
 
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+-----
+## How to contribute
 
-## Building
+* Fork the project repository
 
-To create a production version of your app:
+* Clone your fork
+    ```bash
+    git clone https://github.com/{GithubUsername}/hum.git
+    ```
+* Create a feature branch
+   * Check that your fork is the "origin" remote
+* Commit your changes
+   * Test changes
+* Create Pull request
+   * Be descriptive about what is being added/changed
+* Your are now a contributor 🥳
+   * your github account will be featured on the contributors page of the hosted app
 
-```bash
-npm run build
-```
+### What to contribute
+Vist the github issues: https://github.com/Ian-C0DES/Hum/issues
 
-You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+-----
+
+[1]: http://www.github.com/your_contact_info
+[2]: https://www.linkedin.com/in/your_contact_info
+[3]: https://www.facebook.com/your_contact_info
+[![github](https://cloud.githubusercontent.com/assets/17016297/18839843/0e06a67a-83d2-11e6-993a-b35a182500e0.png)][1][![facebook](https://cloud.githubusercontent.com/assets/17016297/18839836/0a06deb4-83d2-11e6-8078-1d0974af0f63.png#center)][2][![linkedin](https://cloud.githubusercontent.com/assets/17016297/18839848/0fc7e74e-83d2-11e6-8c6a-277fc9d6e067.png#right)][3]
+
+
+
+
