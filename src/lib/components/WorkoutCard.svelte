@@ -14,8 +14,6 @@
 	// console.log(sets)
 	// console.log(reps)
 
-
-
 	let x;
 	cardNumber++;
 	let this_cardNumber = cardNumber;
@@ -48,7 +46,7 @@
 		},
 		{
 			optGroup: 'Quadriceps',
-			opts: ['Leg Extension','Squat']
+			opts: ['Leg Extension', 'Squat']
 		},
 		{
 			optGroup: 'Hamstrings',

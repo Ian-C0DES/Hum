@@ -8,19 +8,12 @@
 	import { getImageURL, abbrNum } from '$lib/utils.js';
 	import Feeditem, { replyingTo } from '$lib/components/Feeditem.svelte';
 
-	onMount(() => {
-		console.log(($page.route.id.match(/\//g) || []).length);
-		console.log($page.route.id);
-		console.log(viewedUser.badges);
-	});
+	onMount(() => {});
 </script>
 
 <body>
 	<div id="content">
 		<Sidepanel sidePanel={false} {data} />
-
-		<!-- {#if viewedUser.id != data.user.id} -->
-		<!-- {viewedUser.id} -->
 		<div class="bannerContainer">
 			<div class="banner">
 				<div class="pfp" style="">
@@ -51,7 +44,6 @@
 						<span> {abbrNum(viewedUserStats.score, 2)} </span>
 					</div>
 				</div>
-				<!-- <div class="badgeContainer"> -->
 				<div class="badgeContainer">
 					<h1>
 						<span style="color: var(--accent1);">B</span><span style="color: var(--accent2);"
@@ -70,8 +62,6 @@
 						</div>
 					{/each}
 				</div>
-
-				<!-- </div> -->
 			</div>
 
 			<div class="subbanner">
@@ -79,19 +69,16 @@
 					<div class="addFriend">
 						{#if friendShipStatus?.accepted == undefined}
 							<form name="form" action="?/sendfriendRequest" method="post">
-								<!-- <input type="hidden" name="requester" value={data.user.id}> -->
 								<input type="hidden" name="adressee" value={viewedUser.id} />
 								<button style="all:unset;" type="submit"> Send Friend Request </button>
 							</form>
 						{:else if friendShipStatus?.accepted == true}
 							<form name="form" action="?/deletefriendRequest" method="post">
-								<!-- <input type="hidden" name="requester" value={data.user.id}> -->
 								<input type="hidden" name="adressee" value={viewedUser.id} />
 								<button style="all:unset;" type="submit"> Remove Friend </button>
 							</form>
 						{:else if friendShipStatus?.accepted == false && friendShipStatus.requester == data.user.id}
 							<form name="form" action="?/deletefriendRequest" method="post">
-								<!-- <input type="hidden" name="requester" value={data.user.id}> -->
 								<input type="hidden" name="adressee" value={viewedUser.id} />
 								<button style="all:unset;" type="submit"> Pending </button>
 							</form>
@@ -119,15 +106,7 @@
 							Send Private Message
 						{/if}
 					</div>
-					<!-- <div class="buttonContainer">
-                    
-                    <button formmethod="post" formaction="?/sendRequest">Send Request</button>
-                    <button>no</button>
-
-                </div> -->
-				{:else}
-					<!-- {"Hey this is u"} -->
-				{/if}
+				{:else}{/if}
 			</div>
 		</div>
 
@@ -138,43 +117,13 @@
 						<input type="text" name="message" value={viewedUserMessage.id} />
 					</form>
 					<Feeditem data={viewedUserMessage} userLikes={likes} context={data.user} />
-					<!-- <div class="message">
-						<div class="messageAuthor">
-							<img
-								src={viewedUserMessage.expand?.user?.avatar
-									? getImageURL(
-											viewedUserMessage.expand?.user?.collectionId,
-											viewedUserMessage.expand?.user?.id,
-											viewedUserMessage.expand?.user?.avatar
-									  )
-									: 'https://ui-avatars.com/api/?name=$' + viewedUserMessage.expand?.user?.name}
-								alt=""
-							/>
-
-							<div class="name">{viewedUserMessage.expand?.user?.displayName}</div>
-							<div class="handle">@{viewedUserMessage.expand?.user?.username}</div>
-							<div class="time">{viewedUserMessage.created}</div>
-						</div>
-						<div class="messageContent">
-							{viewedUserMessage.text}
-						</div>
-					</div> -->
 				{/each}
 			</div>
 		</div>
-
-		<!-- {:else}
-        {"ur not the users"}
-        {/if} -->
 	</div>
 </body>
 
 <style lang="scss">
-	* {
-		// outline: 1px red solid;
-		// color:var(--textcolor);
-		// font-family: var(--font);
-	}
 	body {
 		min-height: 100vh;
 		overflow-x: hidden;
@@ -204,7 +153,6 @@
 			font-family: var(--font);
 			padding-bottom: 2vh;
 			height: fit-content;
-			// justify-content: space-between;
 			width: 100%;
 			.pfp,
 			img {
@@ -229,7 +177,6 @@
 					align-items: center;
 					flex-wrap: nowrap;
 					flex-direction: row;
-					// padding-left: 3vw;
 					font-size: 3rem;
 					span {
 						padding: 10%;
@@ -256,10 +203,6 @@
 			align-items: center;
 			justify-content: space-evenly;
 			flex-direction: row;
-			// filter: blur(2px);
-			// backdrop-filter: blur(1000px);
-			// opacity: 70%;
-			// background-color: black;
 			background: radial-gradient(
 				500.81% 500.43% at -250% -250%,
 				var(--textcolor) -100.22%,
@@ -271,12 +214,7 @@
 				height: 50%;
 			}
 			div {
-				// filter: blur(10px);
 				width: fit-content;
-				// padding: .5rem;
-				// align-self: center;
-				// text-align: center;
-				// vertical-align: middle;
 				color: var(--textcolor);
 				font-family: var(--font);
 				border-radius: 18px;
@@ -286,7 +224,6 @@
 				transition: all 1s;
 
 				&:hover {
-					// filter: blur(0px);
 					text-shadow: 0px 0px 2px #ffffff;
 					background-color: rgba($color: #ffffff, $alpha: 0.05);
 					opacity: 100%;
@@ -320,16 +257,11 @@
 		}
 	}
 	.badgeContainer {
-		// margin: 3%;
 		margin-left: 5%;
 		position: relative;
-		// margin-top: 50px;
-		// margin-bottom: 3vh;
 		padding: 0.5%;
-		// left: 10vw;
 		color: var(--textcolor);
 		width: 25vw;
-		// height: 10vh;
 		background-color: rgba(15, 15, 15, 0.75);
 		box-shadow: 5px 5px 5px #000000;
 		display: flex;
@@ -344,9 +276,6 @@
 		p {
 			font-family: var(--font);
 		}
-		// .Badge{
-		//     width: 1px;
-		// }
 	}
 
 	@media only screen and (max-width: 500px) {

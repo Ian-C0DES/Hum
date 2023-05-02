@@ -1,40 +1,20 @@
 <script>
-	// import QuickSearchBar from "svelte-quicksearch-bar@latest";
-	// import Search from "svelte-search";
 	export let data;
 	import { enhance } from '$app/forms';
 	import { getImageURL } from '$lib/utils.js';
 	const { friends, pendingOUTRequests, pendingINRequests } = data;
 	import Sidepanel from '$lib/components/Sidepanel.svelte';
 	import Badge from '$lib/components/Badge.svelte';
-	// import UserCard from '$lib/components/UserCard.svelte';
 	let showOutgoing = false;
 	let openUsercard = null;
 	let openUsercontext;
-	// console.log(pb);
 	function showUsercard(data, context) {
-		console.log(data);
 		openUsercontext = context;
-		console.log(openUsercontext);
 		openUsercard = data;
-		// console.log(e);
 	}
 	function toggleTab() {
-		console.log(showOutgoing);
 		showOutgoing == false ? (showOutgoing = true) : (showOutgoing = false);
-		console.log(showOutgoing);
 	}
-
-	//    async function getRandomNumber() {
-	// 		const res = await fetch(`/tutorial/random-number`);
-	// 		const text = await res.text();
-
-	// 		if (res.ok) {
-	// 			return text;
-	// 		} else {
-	// 			throw new Error(text);
-	// 		}
-	// 	}
 </script>
 
 <body>
@@ -51,9 +31,6 @@
 					<!-- svelte-ignore a11y-click-events-have-key-events -->
 					<div on:click={toggleTab} class="outgoingTab {showOutgoing ? 'active' : ''}">
 						<span class="rgtext"> Outgoing Requests </span>
-						<!-- <div class="number">
-                           {pendingOUTRequests.totalItems}
-                        </div> -->
 					</div>
 					{#if showOutgoing == true}
 						{#each pendingOUTRequests.items as pendingOUTRequest (pendingOUTRequest.id)}
@@ -116,13 +93,6 @@
 									<span class="rgtext"> @ </span>
 									{pendingINRequest.expand?.requester?.username}
 								</span>
-								<!-- <div class="buttons">
-                        <button><i class="fa-solid fa-square-check rgtext"></i></button>
-                        <button><i class="fa-solid fa-square-xmark rgtext"></i></button>
-                        <a href={"profile/"+ pendingINRequest.expand?.requester?.username}>
-                            <i class="fa-solid fa-square-up-right rgtext"></i>
-                        </a>
-                    </div> -->
 							</div>
 						{/each}
 
@@ -145,10 +115,6 @@
 									{friend.username}
 								</span>
 							</div>
-
-							<!-- {#key friends}
-                {friends}
-                {/key} -->
 						{/each}
 					{/if}
 				</div>
@@ -162,8 +128,6 @@
 								<input hidden name="user" value={openUsercard?.id} />
 								<input hidden name="name" value={openUsercard?.displayName} />
 							</form>
-							<!-- {(openUsercontext==undefined? "":openUsercontext.status)} -->
-							<!-- <UserCard openUsercard={openUsercard}/> -->
 							<img
 								class="thumb"
 								src={openUsercard?.avatar
@@ -220,7 +184,7 @@
 								{#each Object.entries(openUsercard?.badges) as badge (badge[0])}
 									<div style="padding: 3%;">
 										<Badge
-											size={5 + 'vw'}
+											size={10 + 'vh'}
 											progress={badge[1].progress}
 											tier={badge[1].tier}
 											name={badge[0]}
@@ -237,11 +201,6 @@
 </body>
 
 <style lang="scss">
-	* {
-		// outline: 1px red solid;
-		// color:var(--textcolor);
-		// font-family: var(--font);
-	}
 	body {
 		min-height: 100vh;
 		overflow-x: hidden;
@@ -270,31 +229,19 @@
 			background-color: rgba($color: #ffffff, $alpha: 0.1);
 			flex-direction: column;
 			.friendsContainer {
-				// overflow-y:scroll;
 				width: 100%;
 				height: 100%;
 				background-color: rgba($color: #000000, $alpha: 0.4);
 				border-radius: 0 0 18px 18px;
 			}
 			.pending {
-				// background-color: yellow;
 				box-shadow: 0 0 0.2rem var(--accent1);
-				// // padding: 0px;
-				// // margin: 0px;
-				// background-clip: padding-box;
-				// max-width: fit-content;
-				// border-style: solid;
-				// border-width: 1px;
-				// border-image: radial-gradient(rgb(0,143,104), rgb(250,224,66)) 1;
+
 				.buttons {
 					cursor: pointer;
 					font-size: 3rem;
-					// backdrop-filter: blur(10px);
-					// display: none;
-
 					visibility: hidden;
 					position: absolute;
-					// left: -100px;
 					> * {
 						padding: 0 10px 0 10px;
 					}
@@ -311,14 +258,11 @@
 						i:hover {
 							font-size: 3.5rem;
 						}
-						// position: absolute;
-						// left: -100px;
 					}
 				}
 			}
 			.friendCell {
 				background-color: rgba($color: #000000, $alpha: 0.4);
-				// border: 1px solid rgba($color: #ffffff, $alpha: .1);
 				border-radius: 18px;
 				margin: 3%;
 				font-family: var(--font);
@@ -388,7 +332,6 @@
 			padding: 2%;
 			border-radius: 18px;
 			margin-top: 3%;
-			// background:linear-gradient(to top, var(--accent1), var(--accent2));
 			span {
 				color: var(--textcolor);
 			}
@@ -429,7 +372,6 @@
 			color: var(--textcolor);
 			font-family: var(--font);
 			font-weight: bold;
-			// display: flex;
 			button {
 				all: unset;
 				cursor: pointer;
@@ -483,14 +425,12 @@
 		position: relative;
 		left: 65%;
 		display: flex;
-		// background-color: red;
 		max-width: fit-content;
 		margin: 0px;
 		align-items: baseline;
 		background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0), rgb(0, 0, 0));
 		padding: 3%;
 		border-radius: 18px 18px 0 0;
-		// align-content: baseline;
 		span {
 			padding-bottom: 1%;
 			color: var(--textcolor);
@@ -520,16 +460,10 @@
 	}
 
 	.badgeContainer {
-		// margin: 3%;
-		// margin-left: 5%;
 		position: relative;
-		// margin-top: 50px;
-		// margin-bottom: 3vh;
 		padding: 0.5%;
-		// left: 10vw;
 		color: var(--textcolor);
 		width: 25vw;
-		// height: 10vh;
 		background-color: rgba(15, 15, 15, 0.75);
 		box-shadow: 5px 5px 5px #000000;
 		display: flex;
@@ -545,8 +479,61 @@
 		p {
 			font-family: var(--font);
 		}
-		// .Badge{
-		//     width: 1px;
-		// }
+	}
+	@media only screen and (max-width: 500px) {
+		#content {
+			overflow-x: hidden;
+			margin-left: 0vw;
+			max-width: 100vw;
+			.panel {
+				border-radius: 0px 0px 18px 18px;
+				padding: 0.4rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				background-color: rgba($color: #000000, $alpha: 0.4);
+			}
+			.LeftContainer {
+				border-radius: 0px;
+				padding: 2.5%;
+				display: flex;
+				width: 95%;
+				height: 95vh;
+				background-color: rgba($color: #ffffff, $alpha: 0.1);
+				flex-direction: column;
+			}
+			.RightContainer {
+				border-radius: 0px 18px 18px 0px;
+				padding: 2.5%;
+				min-width: unset;
+				width: 95%;
+				max-width: 100%;
+				height: 95vh;
+				display: flex;
+				border-radius: 0px;
+				background-color: rgba($color: #ffffff, $alpha: 0.1);
+				margin-bottom: 10vh;
+			}
+		}
+
+		.usercard {
+			.thumb {
+				width: 50%;
+			}
+			.buttons {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+
+		.outgoingTab {
+			left: 40%;
+		}
+
+		.badgeContainer {
+			width: 95%;
+			min-height: 15%;
+		}
 	}
 </style>

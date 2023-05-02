@@ -5,21 +5,14 @@
 
 	export let data;
 	let newRoutinename = 'New Routine_name';
-	// let cardContainer;
 	let cardAmount = 0;
-	// customElements.define(WorkoutCard);
 	onMount(() => {
-		console.log('mounted');
 		newRoutinename = localStorage.getItem('humCookie');
-		// cardContainer = document.getElementsByClassName('container')[0];
-		// node = document.createElement("WorkoutCard");
-		// menu.removeChild(menu.lastElementChild);
 	});
 
 	const addCard = () => {
 		if (cardAmount < 12) {
 			cardAmount++;
-			console.log(cardAmount);
 		}
 	};
 	const removeCard = () => {
@@ -111,15 +104,6 @@
 	.container {
 		display: flex;
 		flex-wrap: wrap;
-		// overflow-y: scroll;
-		// overflow-y: scroll;
-		// background-color: black;
-		// .card{
-		//     margin: 1%;
-		//     background-color: red;
-		//     width: 25vw;
-		//     height: 25vh;
-		// }
 	}
 	.saveBtn {
 		all: unset;
@@ -134,12 +118,12 @@
 	}
 	@media only screen and (max-width: 500px) {
 		#content {
-		.head {
-			h1 {
-				font-size: 1.5rem;
+			.head {
+				h1 {
+					font-size: 1.5rem;
+				}
 			}
 		}
-	}
 		.container {
 			flex-direction: column;
 			align-items: center;

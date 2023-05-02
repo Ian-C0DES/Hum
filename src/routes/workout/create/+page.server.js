@@ -21,7 +21,6 @@ export const actions = {
 			};
 			routine['exercise' + i] = thisWorkout;
 		}
-		console.log(routine);
 
 		try {
 			await locals.pb.collection('routines').create({
@@ -30,7 +29,6 @@ export const actions = {
 				routine: routine
 			});
 		} catch (err) {
-			console.log('Error: ', err);
 			throw error(500, 'Something went wrong when saving your routine');
 		}
 

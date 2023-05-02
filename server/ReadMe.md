@@ -23,6 +23,4 @@ WantedBy = multi-user.target
 
 ## Crontabs perform regularly scheduled actions such as backups, report generation, and so on, placed in the ???? directory
 
-
-
 ---

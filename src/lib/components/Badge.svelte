@@ -127,11 +127,5 @@
 	}
 
 	@media only screen and (max-width: 600px) {
-		img {
-			width: 2rem;
-			max-height: 2rem;
-			&:hover {
-			}
-		}
 	}
 </style>

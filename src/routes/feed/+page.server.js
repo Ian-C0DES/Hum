@@ -6,15 +6,12 @@ export const load = async ({ fetch, locals }) => {
 		sort: 'created',
 		expand: 'user'
 	});
-	console.log(resultList);
 	messages = serializeNonPOJOs(resultList.items);
-
 	const records = await locals.pb.collection('likes').getList(1, 50, {
 		filter: 'user = "' + locals.user.id + '"',
 		sort: '-updated',
 		expand: 'messages,comments'
 	});
-	console.log(records);
 	likes = serializeNonPOJOs(records.items[0]?.expand?.messages);
 	return {
 		messages: messages,
@@ -28,14 +25,10 @@ export const load = async ({ fetch, locals }) => {
 export const actions = {
 	send: async ({ request, locals }) => {
 		const message = Object.fromEntries(await request.formData());
-		console.log(message);
-		// newMessage = '';
 		if (message?.replyto) {
-			console.log(message.replyto);
 			const record = await locals.pb
 				.collection('message_comments')
 				.getFirstListItem("message='" + message.replyto + "'");
-			console.log(record);
 
 			try {
 				const record2 = await locals.pb.collection('comments').create({
@@ -48,16 +41,13 @@ export const actions = {
 					.update(record.id, { comment: [...record?.comment, record2.id] });
 			} catch (error) {
 				if (error.data.data.user.code === 'validation_not_unique') {
-					console.log(error);
 				}
 			}
 		} else {
 			const data = {
 				user: locals.user.id,
 				text: message.message
-				// "username": locals.user.username
 			};
-			// console.log(data);
 
 			const record = await locals.pb.collection('messages').create(data);
 			await locals.pb.collection('message_comments').create({ message: record.id });
@@ -98,7 +88,6 @@ export const actions = {
 	},
 	likecomment: async ({ request, locals }) => {
 		const data = Object.fromEntries(await request.formData());
-		console.log(data);
 
 		let userLikes = await locals.pb
 			.collection('likes')

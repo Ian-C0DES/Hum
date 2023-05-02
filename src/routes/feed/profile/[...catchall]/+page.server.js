@@ -8,7 +8,6 @@ export async function load({ locals, params }) {
 		let viewedUserStats;
 		let friendShipStatus;
 		let likes;
-		// viewedUser = serializeNonPOJOs(record);
 
 		viewedUser = serializeNonPOJOs(
 			await locals.pb.collection('users').getFirstListItem("username='" + params.catchall + "'")
@@ -40,23 +39,18 @@ export async function load({ locals, params }) {
 		);
 
 		if (friendShipStatus?.items.length >= 1 && friendShipStatus?.items[0]?.accepted == false) {
-			// console.log("FriendshipStatus exists but not accepted");
 		} else if (
 			friendShipStatus?.items.length >= 1 &&
 			friendShipStatus?.items[0]?.accepted == true
 		) {
-			// console.log("FriendshipStatus Accepted");
 		} else if (friendShipStatus?.items.length == 0) {
-			// console.log("FriendshipStatus DNE");
 		}
-		console.log(friendShipStatus?.items[0]);
 
 		viewedUserStats = serializeNonPOJOs(
 			await locals.pb
 				.collection('user_statistics')
 				.getFirstListItem("userID='" + viewedUser.id + "'")
 		);
-		// console.log(viewedUserStats);
 
 		const resultList = await locals.pb.collection('messages').getList(1, 50, {
 			filter: "user ='" + viewedUser.id + "'",
@@ -109,7 +103,6 @@ export const actions = {
 					'"'
 			})
 		);
-		console.log(form);
 		await locals.pb.collection('friendships').delete(FriendShipStatus?.items[0]?.id);
 	},
 	likemessage: async ({ request, locals }) => {
@@ -147,7 +140,6 @@ export const actions = {
 	},
 	likecomment: async ({ request, locals }) => {
 		const data = Object.fromEntries(await request.formData());
-		console.log(data);
 
 		let userLikes = await locals.pb
 			.collection('likes')

@@ -30,12 +30,10 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		/* height: 100vh; */
 		z-index: 999;
 	}
 	.progress {
 		position: absolute;
-		/* width: 0; */
 		left: 0;
 		top: 0;
 		height: 2%;

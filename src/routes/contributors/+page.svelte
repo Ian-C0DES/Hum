@@ -1,5 +1,5 @@
 <script>
-	import Humman from '$lib/assets/humman.svelte';
+	import Humman from '$lib/components/humman.svelte';
 </script>
 
 <head>
@@ -48,7 +48,7 @@
 						Ian-C0DES
 					</p>
 					<p>Engineer <span class="rgtext">-</span> Hiker <span class="rgtext">-</span> Gamer</p>
-					<i class="fa-brands fa-playstation rgtext"></i>
+					<i class="fa-brands fa-playstation rgtext" />
 					<p class="text">
 						Lead Programmer:
 						<span>
@@ -65,7 +65,11 @@
 			<div class="card">
 				<div class="img-container">
 					<div class="avatarContainer">
-						<img class="avatar" src="https://avatars.githubusercontent.com/u/92188039?s=400&v=4" alt="" />
+						<img
+							class="avatar"
+							src="https://avatars.githubusercontent.com/u/92188039?s=400&v=4"
+							alt=""
+						/>
 					</div>
 				</div>
 
@@ -73,7 +77,9 @@
 					<div class="popupContainer">
 						<!-- <a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a> -->
 						<a href="#" target="_blank" class="popup"><i class="fa-solid fa-earth-americas" /></a>
-						<a href="https://github.com/naddington1" target="_blank" class="popup"><i class="fa-brands fa-github" /></a>
+						<a href="https://github.com/naddington1" target="_blank" class="popup"
+							><i class="fa-brands fa-github" /></a
+						>
 					</div>
 					<h1>Nicholas Addington</h1>
 					<p>
@@ -81,13 +87,15 @@
 						naddington1
 					</p>
 					<p>Coder <span class="rgtext">-</span> Basketball <span class="rgtext">-</span> Gamer</p>
-					<i class="fa-solid fa-desktop rgtext"></i>
+					<i class="fa-solid fa-desktop rgtext" />
 					<p class="text">
 						Frontend Developer:
-						<span> We wanted to create an app that was visually appealing and easy to navigate.
-							   Not only for  <span style="color: white;">desktop</span> users but also for 
-							   <span style="color: white;">mobile</span> users of the app. I worked on devloping 
-							   the mobile view of the app in addition to prototyping the UI. </span>
+						<span>
+							We wanted to create an app that was visually appealing and easy to navigate. Not only
+							for <span style="color: white;">desktop</span> users but also for
+							<span style="color: white;">mobile</span> users of the app. I worked on devloping the mobile
+							view of the app in addition to prototyping the UI.
+						</span>
 					</p>
 				</div>
 			</div>
@@ -111,7 +119,7 @@
 						nicb21
 					</p>
 					<p>Programmer <span class="rgtext">-</span> Dancer <span class="rgtext">-</span> Gamer</p>
-					<i class="fa-brands fa-xbox rgtext"></i>
+					<i class="fa-brands fa-xbox rgtext" />
 					<p class="text">
 						Code Architect:
 						<span> xxx </span>
@@ -122,7 +130,11 @@
 			<div class="card">
 				<div class="img-container">
 					<div class="avatarContainer">
-						<img class="avatar" src="https://avatars.githubusercontent.com/u/101366511?v=4" alt="" />
+						<img
+							class="avatar"
+							src="https://avatars.githubusercontent.com/u/101366511?v=4"
+							alt=""
+						/>
 					</div>
 				</div>
 
@@ -130,7 +142,9 @@
 					<div class="popupContainer">
 						<!-- <a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a> -->
 						<a href="" target="_blank" class="popup"><i class="fa-solid fa-earth-americas" /></a>
-						<a href="https://github.com/nicb21" target="_blank" class="popup"><i class="fa-brands fa-github" /></a>
+						<a href="https://github.com/nicb21" target="_blank" class="popup"
+							><i class="fa-brands fa-github" /></a
+						>
 					</div>
 					<h1>Joseph Kolarik</h1>
 					<p>
@@ -138,10 +152,10 @@
 						jkolarikGGC
 					</p>
 					<p>Developer <span class="rgtext">-</span> Swimmer <span class="rgtext">-</span> Gamer</p>
-					<i class="fa-solid fa-desktop rgtext"></i>
+					<i class="fa-solid fa-desktop rgtext" />
 					<p class="text">
 						Graphic Designer:
-						<span>  </span>
+						<span />
 					</p>
 				</div>
 			</div>
@@ -161,11 +175,7 @@
 		background: #212121;
 	}
 	.emgithub-container {
-		// z-index: 998;
 		max-height: 10px;
-	}
-	* {
-		// outline: 1px red solid;
 	}
 
 	body {
@@ -175,15 +185,13 @@
 	#content {
 		width: 100vw;
 		height: 200vh;
-		// min-height: fit-content;
-
 		.bgimg {
 			position: absolute;
 			top: 0px;
 			width: inherit;
 			height: inherit;
 			z-index: 1;
-			background-image: url('../../lib/assets/images/abstract7.webp');
+			background-image: url('../../lib/assets/images/abstract4.webp');
 			background-repeat: no-repeat;
 			background-size: cover;
 			background-position: right;
@@ -288,8 +296,6 @@
 	}
 
 	.cardContainer {
-		// min-width: 100vw;
-		// // padding-top: 30vh;
 		padding: 5% 5% 5% 5%;
 		z-index: 999;
 		display: flex;
@@ -339,30 +345,23 @@
 		width: 100%;
 		display: flex;
 		height: fit-content;
-		//   justify-content:center;
-		//   align-items:center;
-		//   padding-top:20px;
 		z-inder: 1;
 		.avatarContainer {
 			display: flex;
 			width: fit-content;
 			height: fit-content;
 			flex-direction: row-reverse;
-			// float: right;
 			.avatar {
 				padding: 5%;
 				width: 60%;
 				aspect-ratio: 1/1;
-				// width: 50%;
 				border-radius: 50%;
 			}
 		}
 	}
 	.card .container {
 		position: relative;
-		//   padding:20px;
 		display: flex;
-		//   justify-content:center;
 		align-items: center;
 		flex-direction: column;
 		z-index: 2;
@@ -387,7 +386,6 @@
 		top: 100px;
 		opacity: 0;
 		padding: 10px 30px;
-		//   margin-top:15px;
 		margin: 0 0 0 3%;
 		color: #000000;
 		text-decoration: none;
@@ -396,8 +394,6 @@
 		text-transform: uppercase;
 		font-size: 2rem;
 		letter-spacing: 1px;
-		//   padding: 20%;
-		//   z-index: 999
 		transition: 2.5s;
 		i {
 			background: radial-gradient(150.81% 167.43% at 0% 0%, #ffffff 31.85%, #000000 100%);

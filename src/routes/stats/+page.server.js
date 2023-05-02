@@ -8,10 +8,7 @@ export const load = async ({ fetch, locals }) => {
 			.collection('user_statistics')
 			.getFirstListItem('userID ~ "' + locals.user.id + '"');
 		userStats = serializeNonPOJOs(record);
-		// console.log(userStats);
-	} catch (err) {
-		console.log(err);
-	}
+	} catch (err) {}
 	return {
 		userStats: userStats
 	};
