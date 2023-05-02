@@ -32,7 +32,7 @@
 		},
 		{
 			optGroup: 'Shoulders',
-			opts: ['Shoulder Press', 'Upright Rows']
+			opts: ['Shoulder Press', 'Upright Row']
 		},
 		{
 			optGroup: 'Back',
@@ -40,19 +40,15 @@
 		},
 		{
 			optGroup: 'Biceps',
-			opts: ['Bicep Curls', 'Hammer Curl']
+			opts: ['Bicep Curl', 'Hammer Curl']
 		},
 		{
 			optGroup: 'Triceps',
 			opts: ['Standing Triceps Extension', 'Lying Triceps Extension']
 		},
 		{
-			optGroup: 'Leg',
-			opts: ['Squat']
-		},
-		{
 			optGroup: 'Quadriceps',
-			opts: ['Leg Extension']
+			opts: ['Leg Extension','Squat']
 		},
 		{
 			optGroup: 'Hamstrings',
@@ -64,7 +60,7 @@
 		},
 		{
 			optGroup: 'Calves',
-			opts: ['Calf Raises']
+			opts: ['Calf Raise']
 		}
 	];
 
