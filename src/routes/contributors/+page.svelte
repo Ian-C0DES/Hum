@@ -141,7 +141,10 @@
 					<i class="fa-solid fa-desktop rgtext"></i>
 					<p class="text">
 						Graphic Designer:
-						<span>  </span>
+						<span> We did not want to use stock images for our workouts, so we decided we would need to create our own.
+						I was in charge of creating the <span style="color: white;">in-house assets</span>, 
+						providing a wide array of simple two-step instructional sequences
+						that all shared one cohesive style, and were easily modifiable. </span>
 					</p>
 				</div>
 			</div>

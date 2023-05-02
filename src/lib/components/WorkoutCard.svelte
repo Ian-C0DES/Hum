@@ -28,7 +28,7 @@
 	let subopts = [
 		{
 			optGroup: 'Chest',
-			opts: ['Bench Press']
+			opts: ['Bench Press', 'Bar Dip']
 		},
 		{
 			optGroup: 'Shoulders',
