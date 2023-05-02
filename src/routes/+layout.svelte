@@ -21,22 +21,22 @@
 		{#if $navigating}
 			<PreloadingIndicator />
 		{/if}
-		<PageTransition url={$page.url}>
+		<!-- <PageTransition url={$page.url}> -->
 			<slot />
-		</PageTransition>
+		<!-- </PageTransition> -->
 	</main>
 {:else}
+<main>
+	{#if $navigating}
+	<PreloadingIndicator />
+	{/if}
+	
+	<Navbar />
+	
 	<PageTransition url={$page.url}>
-		<main>
-			{#if $navigating}
-				<PreloadingIndicator />
-			{/if}
-
-			<Navbar />
-
 			<slot />
+		</PageTransition>
 		</main>
-	</PageTransition>
 {/if}
 
 <style lang="scss">
