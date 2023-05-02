@@ -122,7 +122,7 @@
 					<i class="fa-brands fa-xbox rgtext" />
 					<p class="text">
 						Code Architect:
-						<span> xxx </span>
+						<span> I have worked in education for ten years. I have seen firsthand what horrors await people who do not manage their own health and wellness. After surveying my students, it was clear that a <span style="color: white;">user friendly tool for improving health would be an extraordinary aid to mankind</span>. I was fortunate to serve as Code Architect for my team. I operated in every project file to ensure that each file fits together well, and to see a concise implementation executed. </span>
 					</p>
 				</div>
 			</div>
