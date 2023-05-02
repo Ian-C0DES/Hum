@@ -19,23 +19,26 @@
 
 <style>
 	.transition-outer {
-		all: unset;
-		overflow: hidden;
 		display: grid;
+		overflow-x: hidden;
 		grid-template: 1fr;
 		background-repeat: no-repeat;
 		background-position: center;
-		max-width: 100vw;
-		max-height: 100vh;
+		width: 100vw;
+		/* max-width: 100vw; */
+		height: 100vh;
+		/* max-height: 100vh; */
 	}
 	.transition-inner {
-		all: unset;
-		overflow: hidden;
+		overflow-x: hidden;
+		/* overflow: hidden; */
 		background-color: transparent;
 		grid-row: 1;
 		grid-column: 1;
 		grid-area: 1fr;
+		width: 100vw;
 		max-width: 100vw;
+		height: 100vh;
 		max-height: 100vh;
 	}
 
