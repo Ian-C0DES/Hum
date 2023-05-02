@@ -1,21 +1,3 @@
-<style>
-/* (This is a CSS comment). The below `img` style sets the default CSS styling for all images
-hereafter in this markdown file. */
-img[src*='#flow'] {
-    align: left;
-    height:100px;
-}
-img[src*='#left'] {
-    float: left;
-}
-img[src*='#right'] {
-    float: right;
-}
-img[src*='#center'] {
-    display: block;
-    margin: auto;
-}
-</style>
 
 # ![Image Title](https://i.imgur.com/zBSRs0Y.png#flow) __Hum Wellness Web App (PWA)__
 ___
