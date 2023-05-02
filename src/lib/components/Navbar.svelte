@@ -204,8 +204,6 @@
 		.filter {
 			min-width: 100vw;
 			height: 10vh;
-			// max-height: 20vh;
-			position: fixed;
 			top: 90vh;
 			backdrop-filter: blur(18px);
 			background-color: transparent transparent;
@@ -214,7 +212,6 @@
 		.navContainer {
 			z-index: 998;
 			pointer-events: all;
-			position: absolute;
 			min-width: 100vw;
 			height: 10vh;
 			align-items: center;
@@ -226,74 +223,26 @@
 				display: none;
 			}
 			.menuopts {
-				display: flex;
-				width: inherit;
-				position: relative;
 				top: 40%;
-				z-index: 9999;
-				justify-content: space-around;
 				flex-direction: row;
-				flex-wrap: wrap;
-				align-items: center;
-
 				.navItem {
-					// height: 5vh;
-					text-decoration: none;
-					// color: var(--accent1);
 					padding: 0rem 0px 0rem 0px;
-					text-align: center;
-					position: relative;
 					right: 0vw;
-
 					&.active {
-						i {
-							display: none;
-						}
 						p {
 							display: contents;
-							color: var(--textcolor);
-							height: 6vh;
-							opacity: 1;
-							position: relative;
 							top: -2vw;
-							// height: 0px;
 						}
-						// background-color: red;
 					}
 					i {
-						animation: fadeIn 3s forwards;
 						font-size: 1.5rem;
 					}
 					p {
 						display: none;
-						// font-family: "iceland";
-						font-family: var(--font);
-						font-weight: 900;
-						// text-align: center;
-						position: relative;
-						// color: var(--accent2);
-						// color: var(--textcolor);
-						color: gray;
-						opacity: 0%;
 						top: -70%;
-						height: 0px;
-						// display: none;
-						// animation: fadeOut 1s forwards;
-						font-size: 1rem;
 					}
 				}
-				.logoutform {
-					// position: relative;
-					// top: -1000%;
-				}
 				.logout {
-					// position: absolute;
-					cursor: pointer;
-					background: none;
-					border: none;
-					color: var(--accent2);
-					font-size: 30px;
-					position: relative;
 					top: -2vh;
 					right: 5vw;
 					:nth-child(1) {
@@ -305,15 +254,6 @@
 						position: absolute;
 					}
 				}
-				.logout:hover {
-					color: var(--accent1);
-					i {
-						animation: fadeOut 0.5s forwards;
-					}
-					.open {
-						animation: fadeIn 0.3s forwards;
-					}
-				}
 				.navItem:hover {
 					i {
 						opacity: 0;
@@ -323,7 +263,6 @@
 						display: contents;
 						opacity: 1;
 						transition: all 0.3s;
-						// animation: fadeIn 1.5s forwards;
 					}
 				}
 			}

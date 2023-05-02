@@ -432,39 +432,20 @@
 
 	@media only screen and (max-width: 500px) {
 		body {
-			height: 100vh;
 			overflow-x: hidden;
-			overflow-y: hidden;
-			background: radial-gradient(
-				400.81% 400.43% at -275% -220%,
-				var(--textcolor) 40.22%,
-				var(--dark) 100%
-			);
 		}
 		#content {
 			margin-left: 0;
 			width: 98vw;
 		}
 		.head {
-			background-image: radial-gradient(var(--accent1) 1px, transparent 0);
-			background-size: 40px 40px;
-			background-position: -19px -19px;
-			display: flex;
 			flex-direction: column;
-			align-content: center;
-			align-items: center;
-			justify-content: space-evenly;
 			h1 {
 				font-size: 2rem;
 				padding: 0.6rem;
-				font-family: var(--font);
-				color: var(--textcolor);
 			}
 			.searchContainer {
 				width: 95%;
-				border-radius: 18px;
-				display: flex;
-				background-color: rgba($color: #000000, $alpha: 0.4);
 				align-items: center;
 				margin-top: 1rem;
 				margin-bottom: 1rem;
@@ -474,89 +455,23 @@
 				}
 				input {
 					font-size: 1rem;
-					background-color: transparent;
-					color: var(--textcolor);
-					outline: none;
-					border: none;
 				}
 			}
 		}
 
 		.messagepanelContainer {
-			pointer-events: none;
-			width: 90vw;
-			position: absolute;
-			right: 2vw;
-			bottom: 0vh;
-			height: 30%;
 			.draftBtnContainer {
-				pointer-events: all;
-				position: absolute;
-				right: 1%;
 				bottom: 35%;
-				font-size: 3rem;
-				&:hover {
-					opacity: 0.5;
-					transform: scale(1.2);
-					transition: transform, opacity 0.3s;
-				}
 			}
 
 			.messagepanel {
-				pointer-events: all;
-				position: absolute;
-				background-color: rgba($color: #000000, $alpha: 0.9);
-				width: 100%;
-				height: 100%;
 				right: 3vw;
 				bottom: 10vh;
-				border-radius: 18px 18px 0px 0px;
 
 				.inputContainer {
 					.textinputContainer {
 						height: 100%;
 						width: 95%;
-						margin: 2%;
-						textarea {
-							color: var(--textcolor);
-							font-family: var(--font);
-							font-size: 1.2rem;
-							min-height: 20vh;
-							background-color: transparent;
-							width: 95%;
-							resize: none;
-							padding: 1rem;
-							border: none;
-							outline: none;
-						}
-					}
-				}
-				.sendbtn {
-					position: absolute;
-					background-color: green;
-					bottom: 15%;
-					right: 1%;
-					cursor: pointer;
-					background-color: transparent;
-					border: none;
-					font-size: 1.7rem;
-					&:hover {
-						opacity: 0.5;
-						transform: translate(10%, -10%);
-						transition: transform, opacity 0.3s;
-					}
-				}
-				.cancelbtn {
-					cursor: pointer;
-					position: absolute;
-					right: 1%;
-					background-color: transparent;
-					border: none;
-					font-size: 3rem;
-					top: 1%;
-					&:hover {
-						opacity: 0.5;
-						transition: opacity 0.3s;
 					}
 				}
 			}
@@ -564,13 +479,7 @@
 
 		.messagesContainer {
 			height: 80vh;
-			top: 0px;
 			width: 100vw;
-			display: flex;
-			flex-wrap: nowrap;
-			flex-direction: column-reverse;
-			align-items: center;
-			overflow-y: scroll;
 			.first {
 				margin-bottom: 20vh;
 			}

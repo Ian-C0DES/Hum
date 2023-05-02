@@ -64,25 +64,28 @@
 			<div class="card">
 				<div class="img-container">
 					<div class="avatarContainer">
-						<img class="avatar" src="https://avatars.githubusercontent.com/u/93730836?v=4" alt="" />
+						<img class="avatar" src="https://avatars.githubusercontent.com/u/92188039?s=400&v=4" alt="" />
 					</div>
 				</div>
 
 				<div class="container">
 					<div class="popupContainer">
 						<a href="#" target="_blank" class="popup"><i class="fa-solid fa-icons" /></a>
-						<a href="" target="_blank" class="popup"><i class="fa-solid fa-earth-americas" /></a>
-						<a href="" target="_blank" class="popup"><i class="fa-brands fa-github" /></a>
+						<a href="#" target="_blank" class="popup"><i class="fa-solid fa-earth-americas" /></a>
+						<a href="https://github.com/naddington1" target="_blank" class="popup"><i class="fa-brands fa-github" /></a>
 					</div>
-					<h1>Name</h1>
+					<h1>Nicholas Addington</h1>
 					<p>
 						<span class="rgtext"> @ </span>
-						GITHUB
+						naddington1
 					</p>
-					<p>Your_3_word_intro</p>
+					<p>Coder <span class="rgtext">-</span> Basketball <span class="rgtext">-</span> Gamer</p>
 					<p class="text">
-						Your_role:
-						<span> xxx </span>
+						Frontend Developer:
+						<span> We wanted to create an app that was visually appealing and easy to navigate.
+							   Not only for  <span style="color: white;">desktop</span> users but also for 
+							   <span style="color: white;">mobile</span> users of the app. I worked on the
+							    development of the mobile styling of the app in addition to the workout feature. </span>
 					</p>
 				</div>
 			</div>

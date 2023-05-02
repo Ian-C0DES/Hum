@@ -232,82 +232,16 @@
 
 	@media only screen and (max-width: 500px) {
 		body {
-			background: radial-gradient(
-				400.81% 400.43% at -275% -220%,
-				var(--textcolor) 40.22%,
-				var(--dark) 100%
-			);
-			min-height: 100vh;
 			height: fit-content;
-			overflow: hidden;
-			// margin-bottom: 50vh;
-			/* background-image: radial-gradient(var(--textcolor) 1px, transparent 0); */
-			/* background-size: 40px 40px; */
-			/* background-position: -19px -19px; */
-			/* // background-image: url("../../lib/assets/svg/wave.svg"); */
-			/* // background-repeat: no-repeat; */
-			/* // background-position: bottom ; */
 		}
 		#content {
 			margin-left: 3vw;
-			// margin-bottom: 10vh;
-			.infoBanner {
-			position: absolute;
-			background-color: rgba(0, 0, 0, 0.2);
-			border-radius: 18px;
-			width: fit-content;
-			padding: 0.5%;
-			left: 75vw;
-			.label {
-				font-size: 0.6rem;
-				text-align: center;
-			}
-			.date {
-				font-size: 0.6rem;
-			}
-			.time {
-				font-size: 1rem;
-			}
-			p {
-				font-family: var(--font);
-				color: var(--textcolor);
-				// font-size: 1.2rem;
-			}
-		}
+			overflow: hidden;
 		}
 		.chartContainer {
-			display: flex;
-			width: 95vw;
-			justify-content: center;
-			flex-direction: column;
-			align-items: center;
-			.btnContainer {
-				display: flex;
-				button {
-					cursor: pointer;
-					background-color: transparent;
-					border: none;
-					color: var(--accent1);
-					// border: 3px solid;
-					border-color: var(--bgcolor);
-					font-size: 4rem;
-					// margin: 12rem;
-				}
-			}
 			.chart {
 				padding: 0px;
-				width: 80vw;
 				height: 50vh;
-				// background-image: radial-gradient(var(--textcolor) 1px, transparent 0);
-				// background-size: 40px 40px;
-				// background-position: 0px 0px;
-
-				// background: radial-gradient(400.81% 400.43% at -275% -220%, #0003 40.22%, var(--textcolor) 100%);
-				// border-radius: 10%;
-				border: 3px solid;
-				border-radius: 18px;
-				border-color: var(--bgcolor);
-				// box-shadow: 10px 10px 0px var(--bgcolor);
 			}
 		}
 		@keyframes collapseSpacing {

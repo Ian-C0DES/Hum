@@ -131,30 +131,17 @@
 		}
 	}
 	@media only screen and (max-width: 500px) {
+		#content {
+		.head {
+			h1 {
+				font-size: 1.5rem;
+			}
+		}
+	}
 		.container {
-			display: flex;
-			flex-wrap: wrap;
 			flex-direction: column;
 			align-items: center;
 			margin-bottom: 15vh;
-			// background-color: black;
-			// .card{
-			//     margin: 1%;
-			//     background-color: red;
-			//     width: 25vw;
-			//     height: 25vh;
-			// }
-		}
-		.saveBtn {
-			all: unset;
-			cursor: pointer;
-			position: fixed;
-			right: 5%;
-			top: 80%;
-			font-size: 3rem;
-			&:hover {
-				opacity: 40%;
-			}
 		}
 	}
 </style>
