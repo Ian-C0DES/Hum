@@ -64,6 +64,46 @@ export const timeSince = (date) => {
 // Utils for Badges
 
 export const BadgeData = {
+	Weight_Goal: {
+		tier: 0,
+		progress: 0,
+		hint: 'Earn points by hitting your weight goal and staying in good standing BMI range',
+		threshold: {
+			1: 3,
+			2: 7,
+			3: 14
+		}
+	},
+	Workout_Log_Consistency: {
+		tier: 0,
+		progress: 0,
+		hint: 'Earn points by hitting your weight goal and staying in good standing BMI range',
+		threshold: {
+			1: 3,
+			2: 7,
+			3: 14
+		}
+	},
+	Score_Goal: {
+		tier: 0,
+		progress: 0,
+		hint: 'Earn points by hitting your weight goal and staying in good standing BMI range',
+		threshold: {
+			1: 3,
+			2: 7,
+			3: 14
+		}
+	},
+	Encouragement_Num: {
+		tier: 0,
+		progress: 0,
+		hint: 'Earn points by hitting your weight goal and staying in good standing BMI range',
+		threshold: {
+			1: 3,
+			2: 7,
+			3: 14
+		}
+	},
 	Login_Goal: {
 		tier: 0,
 		progress: 0,
@@ -74,7 +114,7 @@ export const BadgeData = {
 			3: 14
 		}
 	},
-	Weight_Goal: {
+	Friends_Num: {
 		tier: 0,
 		progress: 0,
 		hint: 'Earn points by hitting your weight goal and staying in good standing BMI range',
@@ -83,18 +123,77 @@ export const BadgeData = {
 			2: 7,
 			3: 14
 		}
-	}
+	},
+	Private_Message_Num: {
+		tier: 0,
+		progress: 0,
+		hint: 'Earn points by hitting your weight goal and staying in good standing BMI range',
+		threshold: {
+			1: 3,
+			2: 7,
+			3: 14
+		}
+	},
+	Comment_Num: {
+		tier: 0,
+		progress: 0,
+		hint: 'Earn points by hitting your weight goal and staying in good standing BMI range',
+		threshold: {
+			1: 3,
+			2: 7,
+			3: 14
+		}
+	},
+	Like_Num: {
+		tier: 0,
+		progress: 0,
+		hint: 'Earn points by hitting your weight goal and staying in good standing BMI range',
+		threshold: {
+			1: 3,
+			2: 7,
+			3: 14
+		}
+	}	
 };
 
 export const EmptyBadge = {
+	Weight_Goal: {
+		tier: 0,
+		progress: 0
+	},
+	Workout_Log_Consistency: {
+		tier: 0,
+		progress: 0
+	},
+	Score_Goal: {
+		tier: 0,
+		progress: 0
+	},
+	Encouragement_Num: {
+		tier: 0,
+		progress: 0
+	},
 	Login_Goal: {
 		tier: 0,
 		progress: 0
 	},
-	Weight_Goal: {
+	Friends_Num: {
+		tier: 0,
+		progress: 0
+	},
+	Private_Message_Num: {
+		tier: 0,
+		progress: 0
+	},
+	Comment_Num: {
+		tier: 0,
+		progress: 0
+	},
+	Like_Num: {
 		tier: 0,
 		progress: 0
 	}
+
 };
 
 // Utils for food Items
