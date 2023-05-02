@@ -86,7 +86,7 @@
 						Frontend Developer:
 						<span> We wanted to create an app that was visually appealing and easy to navigate.
 							   Not only for  <span style="color: white;">desktop</span> users but also for 
-							   <span style="color: white;">mobile</span> users of the app. I worked on devloping 
+							   <span style="color: white;">mobile</span> users of the app. I worked on developing 
 							   the mobile view of the app in addition to prototyping the UI. </span>
 					</p>
 				</div>
@@ -439,5 +439,39 @@
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: center;
+	}
+
+	@media only screen and (max-width: 500px){
+	.navtab {
+			width: 100vw;
+			nav {
+				padding: 0.1rem;
+				a {
+					font-size: 1.2rem;
+					&:last-child {
+						margin-right: 1rem;
+					}
+				}
+			}
+	}
+	.cardContainer {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	.card:nth-child(1){
+	margin-top: 10vh;
+}
+	.card {
+    width: auto;
+}
+.card .img-container .avatarContainer {
+    margin-left: auto;
+}
+.card .container .text {
+    font-size: 20px;
+}
+	.card .container .popup {
+		font-size: 1.5rem;
+	}
 	}
 </style>
